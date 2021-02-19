@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# FavOne
+Your place of your favorite  Movie/Drama/Actor. The users can add their favorite movies, dramas, actors and share them with the world. (FavOne) is the shortcut of Favorite One. nice name right? :)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Important Links
 
-## Available Scripts
+- [FaveOne Back-End Repo](https://git.generalassemb.ly/eman-e-alatawi/FavOne-BackEnd)
+- [Deployed FaveOne API](www.link.com)
+- [Deployed FaveOne React App](www.link.com)
 
-In the project directory, you can run:
 
-### `npm start`
+## Planning Story
+From Day-1 start choosing the idea and decide the name, design the ERD, wireframes and create the apps, repos.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies Used
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- React
+- React Router DOM
+- Bootstrap
+- AJAX (Axios)
+- javaScript
+- JSX
+- Visual Studio Code
+- Justinmind to design the Wireframe
+- GitHub
+- GitHub Pages
 
-### `npm test`
+## User Stories
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Catalog of Routes
+Verb         |	URI Pattern   |  Description
+------------ | -------------  |  -------------
+GET | /resources | describe
+GET | /resources/:id | describe
+POST | /resources | describe
+PATCH | /resources/:id | describe
+DELETE | /resources/:id | describe
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Images
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Wireframe:
+##### Home-UnLogged user
+![Home](https://i.ibb.co/TYdrbjq/Screen-Shot-2021-02-19-at-2-06-53-PM.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+##### Home-LoggedIn user
+![Home](https://i.ibb.co/K7mLsrL/Screen-Shot-2021-02-19-at-2-06-59-PM.png)
 
-### `npm run eject`
+##### Join
+![Join](https://i.ibb.co/QmTpgKX/Screen-Shot-2021-02-19-at-2-07-08-PM.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+##### LogIn
+![LogIn](https://i.ibb.co/sFR4Xgw/Screen-Shot-2021-02-19-at-2-07-13-PM.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##### Drama-Detail
+![Drama-Detail](https://i.ibb.co/7Vvfh0c/Screen-Shot-2021-02-19-at-2-07-38-PM.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+##### Movie-Detail
+![Movie-Detail](https://i.ibb.co/KmFfY1W/Screen-Shot-2021-02-19-at-2-08-13-PM.png)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### App Screenshot:
