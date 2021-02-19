@@ -26,14 +26,7 @@ From Day-1 start choosing the idea and decide the name, design the ERD, wirefram
 
 ## User Stories
 
-## Catalog of Routes
-Verb         |	URI Pattern   |  Description
------------- | -------------  |  -------------
-GET | /resources | describe
-GET | /resources/:id | describe
-POST | /resources | describe
-PATCH | /resources/:id | describe
-DELETE | /resources/:id | describe
+
 
 
 ## Images
