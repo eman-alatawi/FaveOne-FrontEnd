@@ -11,6 +11,11 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
+import HomeBanner from './HomeBanner';
+import MovieDramaSection from './MovieDramaSection';
+import ActorSection from './ActorSection';
+import SectionDivider from './SectionDivider';
+
 export default class App extends Component {
 
   state = {
@@ -130,7 +135,7 @@ export default class App extends Component {
           </div>
 
           {isAuth ? (
-            <Navbar collapseOnSelect expand="lg"  variant="dark" className="bg-blue-900 shadow">
+            <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-blue-900 shadow">
               <Navbar.Brand ><Link to="/" className="text-white ml-5 mr-11 text-2xl"><span class="material-icons">star</span>FaveOne</Link></Navbar.Brand>
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
@@ -188,11 +193,14 @@ export default class App extends Component {
               </Navbar>
             )}
         </nav>
-        <div>
 
-          <img className="h-64 w-full object-cover" src="https://coverfiles.alphacoders.com/161/thumb-1920-161470.jpg"></img>
-          <h1 className="text-center">hi</h1>
-        </div>
+        <HomeBanner></HomeBanner>
+        <MovieDramaSection></MovieDramaSection>
+        {/* <SectionDivider></SectionDivider> */}
+        <ActorSection></ActorSection>
+        {/* <SectionDivider></SectionDivider> */}
+        
+        
 
 
         {/* {isAuth ? () : ()} */}

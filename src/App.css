@@ -46,3 +46,12 @@ a{
   text-decoration: none !important;
   color: black;
 }
+
+.sectionScroll{
+  overflow-x: scroll !important;
+}
+
+.actorSection{
+  background-image: url(https://coverfiles.alphacoders.com/140/thumb-1920-140846.png);
+  
+}
