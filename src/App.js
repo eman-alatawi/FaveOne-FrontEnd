@@ -25,7 +25,8 @@ export default class App extends Component {
     user: null,
     errorMessage: null,
     successMessage: null,
-    isClicked: false
+    isClicked: false,
+    actors: []
 
   }
   componentDidMount() {
@@ -116,14 +117,18 @@ export default class App extends Component {
     axios.get("/favone/actor/index")
           .then(response =>{
             console.log(response);
+            this.setState({
+              actors: response.data
+            })
           })
           .catch(error =>{
+            console.log("Error while reteriving actors !!");
             console.log(error);
           })
   }
   clickHandler =() =>{
     this.setState({
-      isClicked: true
+      isClicked: !this.state.isClicked
     })
   }
 
@@ -209,8 +214,8 @@ export default class App extends Component {
                     </NavDropdown>
                   </Nav>
                   <Nav className="mr-5">
-                    <Nav.Link > <Link to="/register" className="hover:text-pink-400">Join</Link></Nav.Link>
-                    <Nav.Link >  <Link to="/login" className="hover:text-pink-400">Login</Link></Nav.Link>
+                    <Nav.Link > <Link to="/register" onClick={this.clickHandler} className="hover:text-pink-400">Join</Link></Nav.Link>
+                    <Nav.Link >  <Link to="/login" onClick={this.clickHandler} className="hover:text-pink-400">Login</Link></Nav.Link>
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>
@@ -220,11 +225,11 @@ export default class App extends Component {
         <HomeBanner></HomeBanner>
 
         
-        {/* <div className={`${this.state.isClicked === true ? 'invisible' : 'visible'}`}> */}
+        <div className={`${this.state.isClicked === true ? 'invisible' : 'visible'}`}>
         <MovieDramaSection></MovieDramaSection>
-        <ActorSection></ActorSection>
+        <ActorSection actors={this.state.actors} ></ActorSection>
         <EpisodeSection></EpisodeSection>
-        {/* </div> */}
+        </div>
        
         <Footer></Footer>
         
@@ -243,7 +248,8 @@ export default class App extends Component {
   <Route path="/authorIndex" component={() => <AuthorList authors={this.state.authors} articles={this.state.articles} loadAuthorList={this.loadAuthorList}></AuthorList>}></Route>
   <Route path="/articleIndex" component={() => <ArticleList articles={this.state.articles} authors={this.state.authors} loadArticleList={this.loadArticleList}></ArticleList>}></Route> */}
 
-          <Route path="/register" component={() => <Join register={this.registerHandler}  onClick={this.clickHandler}></Join>}></Route>
+          <Route path="/actorIndex" component={() => <ActorSection actors={this.state.actors}></ActorSection>}></Route>
+          <Route path="/register" component={() => <Join register={this.registerHandler}  ></Join>}></Route>
           <Route path="/login" component={() => <Login login={this.loginHandler} />}></Route>
         </div>
 

@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
-import RowCard from './RowCard';
+import ActorRowCard from './actor/ActorRowCard';
 export default class ActorSection extends Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            actors: props.actors
+        }
+    }
     
     render() {
         return (
@@ -10,12 +17,10 @@ export default class ActorSection extends Component {
                 </div>
                
                 <div className="h-64 w-full pr-12  inline-grid grid-cols-6 gap-x-4  gap-y-4 overflow-x-scroll overscroll-contain" >
-                    <RowCard></RowCard>
-                    <RowCard></RowCard>
-                    <RowCard></RowCard>
-                    <RowCard></RowCard>
-                    <RowCard></RowCard>
-                    <RowCard></RowCard>
+                   
+                    {this.props.actors.map((actor, index) =>
+                    <ActorRowCard {...actor}></ActorRowCard>
+                )}
                    
                 </div>
 
