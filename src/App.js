@@ -30,6 +30,7 @@ export default class App extends Component {
   }
   componentDidMount() {
     this.userAuthCheck();
+    this.loadActors();
 
   }
   userAuthCheck = () => {
@@ -111,6 +112,15 @@ export default class App extends Component {
 
   }
 
+  loadActors =() =>{
+    axios.get("/favone/actor/index")
+          .then(response =>{
+            console.log(response);
+          })
+          .catch(error =>{
+            console.log(error);
+          })
+  }
   clickHandler =() =>{
     this.setState({
       isClicked: true
@@ -168,10 +178,10 @@ export default class App extends Component {
                     <NavDropdown.Item ><Link to="/addActor" className="dropDownLink">Add Actor</Link></NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
-                <Nav>
+                <Nav className="mr-5">
                   {this.state.user ? <Navbar.Text className="mr-5"> Signed in as: {this.state.user.sub} </Navbar.Text> : null}
 
-                  <Nav.Link > <Link to="/logout" onClick={this.onLogoutHandeler} className="mr-5">Say Bye</Link></Nav.Link>
+                  <Nav.Link > <Link to="/logout" onClick={this.onLogoutHandeler} className="mr-5 hover:text-pink-400">Say Bye</Link></Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
@@ -183,28 +193,24 @@ export default class App extends Component {
                   <Nav className="mr-auto">
                     <NavDropdown title="Movie" id="collasible-nav-dropdown" className="mr-11 text-xl">
                       <NavDropdown.Item ><Link to="/movieIndex" className="dropDownLink"> Movie</Link></NavDropdown.Item>
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item ><Link to="/addMovie" className="dropDownLink">Add Movie</Link></NavDropdown.Item>
+         
                     </NavDropdown>
                     <NavDropdown title="Drama" id="collasible-nav-dropdown" className="mr-11 text-xl">
                       <NavDropdown.Item ><Link to="/dramaIndex" className="dropDownLink">Drama</Link></NavDropdown.Item>
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item ><Link to="/addDrama" className="dropDownLink">Add Drama</Link> </NavDropdown.Item>
+            
                     </NavDropdown>
                     <NavDropdown title="Episode" id="collasible-nav-dropdown" className="mr-11 text-xl">
                       <NavDropdown.Item ><Link to="/episodeIndex" className="dropDownLink"> Episode</Link></NavDropdown.Item>
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item ><Link to="/addEpisode" className="dropDownLink">Add Episode</Link></NavDropdown.Item>
+               
                     </NavDropdown>
                     <NavDropdown title="Actor" id="collasible-nav-dropdown" className="mr-11 text-xl">
                       <NavDropdown.Item ><Link to="/actorIndex" className="dropDownLink"> Actor</Link></NavDropdown.Item>
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item ><Link to="/addActor" className="dropDownLink">Add Actor</Link></NavDropdown.Item>
+                   
                     </NavDropdown>
                   </Nav>
-                  <Nav>
-                    <Nav.Link > <Link to="/register">Join</Link></Nav.Link>
-                    <Nav.Link >  <Link to="/login">Login</Link></Nav.Link>
+                  <Nav className="mr-5">
+                    <Nav.Link > <Link to="/register" className="hover:text-pink-400">Join</Link></Nav.Link>
+                    <Nav.Link >  <Link to="/login" className="hover:text-pink-400">Login</Link></Nav.Link>
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>
