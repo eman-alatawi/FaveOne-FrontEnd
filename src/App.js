@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import axios from 'axios';
 import { decode } from "jsonwebtoken";
 import { Alert } from "react-bootstrap";
@@ -13,7 +13,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 
 import HomeBanner from './HomeBanner';
 import MovieDramaSection from './MovieDramaSection';
-import ActorSection from './ActorSection';
+import ActorSection from './actor/ActorSection';
 import EpisodeSection from './EpisodeSection'
 import Footer from './Footer';
 
@@ -63,6 +63,7 @@ export default class App extends Component {
         console.log(response);
       })
       .catch((error) => {
+        console.log("Error in register user")
         console.log(error);
       });
   };
@@ -186,7 +187,7 @@ export default class App extends Component {
                 <Nav className="mr-5">
                   {this.state.user ? <Navbar.Text className="mr-5"> Signed in as: {this.state.user.sub} </Navbar.Text> : null}
 
-                  <Nav.Link > <Link to="/logout" onClick={this.onLogoutHandeler} className="mr-5 hover:text-pink-400">Say Bye</Link></Nav.Link>
+                  <Nav.Link > <Link to="/logout" onClick={this.onLogoutHandeler} className="mr-5 hover:text-pink-400 text-xl">Say Bye</Link></Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
@@ -214,8 +215,8 @@ export default class App extends Component {
                     </NavDropdown>
                   </Nav>
                   <Nav className="mr-5">
-                    <Nav.Link > <Link to="/register" onClick={this.clickHandler} className="hover:text-pink-400">Join</Link></Nav.Link>
-                    <Nav.Link >  <Link to="/login" onClick={this.clickHandler} className="hover:text-pink-400">Login</Link></Nav.Link>
+                    <Nav.Link > <Link to="/register" onClick={this.clickHandler} className="hover:text-pink-400 text-xl">Join</Link></Nav.Link>
+                    <Nav.Link >  <Link to="/login" onClick={this.clickHandler} className="hover:text-pink-400 text-xl">Login</Link></Nav.Link>
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>
@@ -227,7 +228,7 @@ export default class App extends Component {
         
         <div className={`${this.state.isClicked === true ? 'invisible' : 'visible'}`}>
         <MovieDramaSection></MovieDramaSection>
-        <ActorSection actors={this.state.actors} ></ActorSection>
+        <ActorSection actors={this.state.actors} loadActors={this.loadActors}></ActorSection>
         <EpisodeSection></EpisodeSection>
         </div>
        
@@ -248,9 +249,11 @@ export default class App extends Component {
   <Route path="/authorIndex" component={() => <AuthorList authors={this.state.authors} articles={this.state.articles} loadAuthorList={this.loadAuthorList}></AuthorList>}></Route>
   <Route path="/articleIndex" component={() => <ArticleList articles={this.state.articles} authors={this.state.authors} loadArticleList={this.loadArticleList}></ArticleList>}></Route> */}
 
+        <Switch>
           <Route path="/actorIndex" component={() => <ActorSection actors={this.state.actors}></ActorSection>}></Route>
           <Route path="/register" component={() => <Join register={this.registerHandler}  ></Join>}></Route>
           <Route path="/login" component={() => <Login login={this.loginHandler} />}></Route>
+          </Switch>
         </div>
 
 

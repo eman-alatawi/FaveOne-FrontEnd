@@ -9,7 +9,7 @@ export default class EpisodeSection extends Component {
                 <h3 className=" my-24  text-xl text-center">Episodes</h3>
                 </div>
                
-                <div className="h-64 w-full pr-12  inline-grid grid-cols-6 gap-x-4  gap-y-4 overflow-x-scroll overscroll-contain" >
+                <div className="h-64 w-full pr-12  inline-grid grid-cols-5 gap-x-4  gap-y-4 overflow-x-scroll overscroll-contain" >
                     <RowCard></RowCard>
                     <RowCard></RowCard>
                     <RowCard></RowCard>
