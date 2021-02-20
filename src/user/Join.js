@@ -12,7 +12,10 @@ export default class join extends Component {
     }
 
     registerHandler= () =>{
+    //    if(this.myFunction()) {
         this.props.register(this.state)
+    //    }
+        
     }
 
      myFunction =() =>{
@@ -64,7 +67,7 @@ export default class join extends Component {
                        </Form.Control>
                    </Form.Group>
 
-                   <Button variant="primary" block onClick={this.registerHandler}>Register</Button>
+                   <Button variant="primary" block onClick={() => this.registerHandler}>Register</Button>
                 </Container>
             
         )

@@ -3,11 +3,13 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import { decode } from "jsonwebtoken";
-
+import { Alert } from "react-bootstrap";
 import React, { Component } from 'react'
 import Join from './user/Join';
 import Login from './user/Login'
-
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 
 export default class App extends Component {
 
@@ -72,7 +74,7 @@ export default class App extends Component {
             successMessage: "Successfully logged in!!",
             errorMessage: null
           })
-        }else {
+        } else {
           this.setState({
             isAuth: false,
             user: null,
@@ -89,24 +91,125 @@ export default class App extends Component {
         })
       });
   };
+
+  onLogoutHandeler = (e) => {
+    //to go to the login page because it's by default prevent this
+    e.preventDefault();
+    localStorage.removeItem("token"); //so remove the token from local storage
+    this.setState({
+      isAuth: false, //user not athenticated
+      user: null
+    });
+
+  }
+
+
+
+
   render() {
+    const { isAuth } = this.state;
+
+    const errorMessage = this.state.errorMessage ? (
+      <Alert variant="danger">{this.state.errorMessage}</Alert>
+    ) : null;
+
+    const successMessage = this.state.successMessage ? (
+      <Alert variant="success">{this.state.successMessage}</Alert>
+    ) : null;
+
+
     return (
+
+
       <Router>
         <nav>
+          {/* <FadeIn> */}
           <div>
-            <Link to="/register">Register</Link> <Link to="/login">Login</Link>{" "}
-
-
+            {errorMessage}
+            {successMessage}
           </div>
+
+          {isAuth ? (
+            <Navbar collapseOnSelect expand="lg"  variant="dark" className="bg-blue-900 shadow">
+              <Navbar.Brand ><Link to="/" className="text-white ml-5 mr-11 text-2xl"><span class="material-icons">star</span>FaveOne</Link></Navbar.Brand>
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <Navbar.Collapse id="responsive-navbar-nav">
+                <Nav className="mr-auto">
+                  <NavDropdown title="Movie" id="collasible-nav-dropdown" className="mr-11 text-xl">
+                    <NavDropdown.Item ><Link to="/movieIndex" className="dropDownLink"> Movie</Link></NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item ><Link to="/addMovie" className="dropDownLink">Add Movie</Link></NavDropdown.Item>
+                  </NavDropdown>
+                  <NavDropdown title="Drama" id="collasible-nav-dropdown" className="mr-11 text-xl">
+                    <NavDropdown.Item ><Link to="/dramaIndex" className="dropDownLink">Drama</Link></NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item ><Link to="/addDrama" className="dropDownLink">Add Drama</Link> </NavDropdown.Item>
+                  </NavDropdown>
+                  <NavDropdown title="Episode" id="collasible-nav-dropdown" className="mr-11 text-xl">
+                    <NavDropdown.Item ><Link to="/episodeIndex" className="dropDownLink"> Episode</Link></NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item ><Link to="/addEpisode" className="dropDownLink">Add Episode</Link></NavDropdown.Item>
+                  </NavDropdown>
+                  <NavDropdown title="Actor" id="collasible-nav-dropdown" className="mr-11 text-xl">
+                    <NavDropdown.Item ><Link to="/actorIndex" className="dropDownLink"> Actor</Link></NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item ><Link to="/addActor" className="dropDownLink">Add Actor</Link></NavDropdown.Item>
+                  </NavDropdown>
+                </Nav>
+                <Nav>
+                  {this.state.user ? <Navbar.Text className="mr-5"> Signed in as: {this.state.user.sub} </Navbar.Text> : null}
+
+                  <Nav.Link > <Link to="/logout" onClick={this.onLogoutHandeler} className="mr-5">Say Bye</Link></Nav.Link>
+                </Nav>
+              </Navbar.Collapse>
+            </Navbar>
+          ) : (
+              <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                <Navbar.Brand><Link to="/"> BLOG APP</Link></Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                  <Nav className="mr-auto">
+                    <NavDropdown title="Author" id="collasible-nav-dropdown">
+                      <NavDropdown.Item ><Link to="/authorIndex" className="dropDownLink"> Author</Link></NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item ><Link to="/addAuthor" className="dropDownLink">Add Author</Link></NavDropdown.Item>
+                    </NavDropdown>
+                    <NavDropdown title="Article" id="collasible-nav-dropdown">
+                      <NavDropdown.Item ><Link to="/articleIndex" className="dropDownLink">Article</Link></NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item ><Link to="/addArticle" className="dropDownLink">Add Article</Link> </NavDropdown.Item>
+                    </NavDropdown>
+                  </Nav>
+                  <Nav>
+                    <Nav.Link > <Link to="/register">Join</Link></Nav.Link>
+                    <Nav.Link >  <Link to="/login">Login</Link></Nav.Link>
+                  </Nav>
+                </Navbar.Collapse>
+              </Navbar>
+            )}
         </nav>
-
-        <div className= "text-red">hi</div>
         <div>
-          <Route path="/register" component={() => <Join  register={this.registerHandler}></Join>}></Route>
 
-          <Route path="/login" component={() => <Login login={this.loginHandler} />}></Route>
-
+          <img className="h-64 w-full object-cover" src="https://coverfiles.alphacoders.com/161/thumb-1920-161470.jpg"></img>
+          <h1 className="text-center">hi</h1>
         </div>
+
+
+        {/* {isAuth ? () : ()} */}
+
+
+
+        <div>
+          {/* <Route exact path="/" component={App}></Route>
+  <Route path="/addAuthor" component={() => <AuthorNewForm addAuthor={this.addAuthor}></AuthorNewForm>}></Route>
+  <Route path="/addArticle" component={() => <NewArticle authors={this.state.authors} addArticle={this.addArticle}></NewArticle>}></Route>
+  <Route path="/authorIndex" component={() => <AuthorList authors={this.state.authors} articles={this.state.articles} loadAuthorList={this.loadAuthorList}></AuthorList>}></Route>
+  <Route path="/articleIndex" component={() => <ArticleList articles={this.state.articles} authors={this.state.authors} loadArticleList={this.loadArticleList}></ArticleList>}></Route> */}
+
+          <Route path="/register" component={() => <Join register={this.registerHandler}></Join>}></Route>
+          <Route path="/login" component={() => <Login login={this.loginHandler} />}></Route>
+        </div>
+
 
 
       </Router>

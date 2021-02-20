@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+a{
+  text-decoration: none !important;
+  color: white;
+}
+
+.dropDownLink{
+  text-decoration: none !important;
+  color: black;
+}
