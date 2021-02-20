@@ -9,7 +9,7 @@ export default class ActorSection extends Component {
                 <h3 className=" my-24  text-xl text-center text-white">Actors</h3>
                 </div>
                
-                <div className="h-64 w-full pr-12  inline-grid grid-cols-6 gap-x-4  gap-y-4 overflow-y-scroll" >
+                <div className="h-64 w-full pr-12  inline-grid grid-cols-6 gap-x-4  gap-y-4 overflow-x-scroll overscroll-contain" >
                     <RowCard></RowCard>
                     <RowCard></RowCard>
                     <RowCard></RowCard>
