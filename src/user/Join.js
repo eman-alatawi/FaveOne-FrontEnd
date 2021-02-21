@@ -40,9 +40,9 @@ export default class join extends Component {
                         <Form.Label column sm={2}>UserName</Form.Label>
                         <Col sm={10}>
                             <Form.Control required type="text" name="userName" onChange={this.changeHandler} placeholder="John Smith"></Form.Control>
-                            <Form.Control.Feedback type="invalid">
+                            {/* <Form.Control.Feedback type="invalid">
               Please choose a username.
-            </Form.Control.Feedback>
+            </Form.Control.Feedback> */}
                         </Col>
                     </Form.Group>
 

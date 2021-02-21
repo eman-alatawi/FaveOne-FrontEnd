@@ -16,6 +16,7 @@ import MovieDramaSection from './MovieDramaSection';
 import ActorSection from './actor/ActorSection';
 import EpisodeSection from './EpisodeSection'
 import Footer from './Footer';
+import NewActor from './actor/NewActor'
 
 
 export default class App extends Component {
@@ -127,6 +128,27 @@ export default class App extends Component {
             console.log(error);
           })
   }
+
+  addActorHandler =(actor) =>{
+
+    axios.post("/favone/actor/add", actor,
+    {
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem("token")
+      }
+    })
+    .then(response =>{
+      console.log("Actor Added");
+      console.log(response);
+      this.loadActors();
+    })
+    .catch(error =>{
+      console.log("Error while Adding actor !!");
+      console.log(error);
+    })
+  }
+
+
   clickHandler =() =>{
     this.setState({
       isClicked: !this.state.isClicked
@@ -226,11 +248,11 @@ export default class App extends Component {
         <HomeBanner></HomeBanner>
 
         
-        <div className={`${this.state.isClicked === true ? 'invisible' : 'visible'}`}>
+        {/* <div className={`${this.state.isClicked === true ? 'invisible' : 'visible'}`}> */}
         <MovieDramaSection></MovieDramaSection>
         <ActorSection actors={this.state.actors} loadActors={this.loadActors}></ActorSection>
         <EpisodeSection></EpisodeSection>
-        </div>
+        {/* </div> */}
        
         <Footer></Footer>
         
@@ -251,6 +273,7 @@ export default class App extends Component {
 
         <Switch>
           <Route path="/actorIndex" component={() => <ActorSection actors={this.state.actors}></ActorSection>}></Route>
+          <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler}></NewActor>}></Route>
           <Route path="/register" component={() => <Join register={this.registerHandler}  ></Join>}></Route>
           <Route path="/login" component={() => <Login login={this.loginHandler} />}></Route>
           </Switch>
