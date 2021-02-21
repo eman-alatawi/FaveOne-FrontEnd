@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Form, Button, Row, Col } from 'react-bootstrap'
+import Footer from '../Footer'
 
 export default class EditActor extends Component {
     constructor(props) {
@@ -27,9 +28,11 @@ export default class EditActor extends Component {
         this.props.editActor(this.state.actor)
     }
     render() {
+       
         return (
+            <div>
             <div class="container-sm flex flex-col justify-center my-5">
-
+               
             <h2 className="text-center opacity-75 mb-5">Edit Actor</h2>
             <Container>
                 <Form.Group as={Row} >
@@ -82,6 +85,8 @@ export default class EditActor extends Component {
                     <Button onClick={this.handleSubmit} className="btn w-64">Edit Actor</Button>
                 </div>
             </Container>
+        </div>
+        <Footer></Footer>
         </div>
         )
     }

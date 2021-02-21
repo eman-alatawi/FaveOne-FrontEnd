@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Container, Form, Button, Row, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
 import { Alert } from "react-bootstrap";
+import Footer from '../Footer';
 
 export default class join extends Component {
     state = {}
@@ -48,6 +49,7 @@ export default class join extends Component {
 
         return (
 
+            <div>
             <div class="container-sm flex flex-col justify-center my-5">
                 {message}
                 <h2 className="text-center opacity-75 mb-5">Sign up for an account</h2>
@@ -108,6 +110,8 @@ export default class join extends Component {
                         <Button type="submit" onClick={this.handleSubmit} className="btn w-64">Sign Up</Button>
                     </div>
                 </Container>
+            </div>
+            <Footer></Footer>
             </div>
 
         )

@@ -23,6 +23,7 @@ export default class App extends Component {
 
   state = {
     isAuth: false,
+    isSectionsShow: true,
     user: null,
     errorMessage: null,
     successMessage: null,
@@ -147,7 +148,7 @@ export default class App extends Component {
         this.loadActors();
 
         this.setState({
-          successMessage: "Successfully Added Actor!!"
+          successMessage: "Actor Added Successfully!!"
         })
       })
       .catch(error => {
@@ -160,15 +161,24 @@ export default class App extends Component {
   }
 
 
-  clickHandler = () => {
+  hideSectionsHandler = () => {
     this.setState({
-      isClicked: !this.state.isClicked
+      isSectionsShow: false
     })
   }
 
+  showSectionsHandler = () => {
+    this.setState({
+      isSectionsShow: true
+    })
+  }
+
+  //hide ActorIndex to show the EditActor
+  // hideActorIndex = () =>{
+  // }
 
   render() {
-    const { isAuth } = this.state;
+    const { isAuth, isSectionsShow } = this.state;
 
 
 
@@ -189,29 +199,29 @@ export default class App extends Component {
 
           {isAuth ? (
             <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-blue-900 shadow">
-              <Navbar.Brand ><Link to="/" className="text-white ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
+              <Navbar.Brand ><Link to="/"  onClick={this.showSectionsHandler} className="text-white ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
                   <NavDropdown title="Movie" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                    <NavDropdown.Item ><Link to="/movieIndex" className="dropDownLink"> Movie</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/movieIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Movies</Link></NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item ><Link to="/addMovie" className="dropDownLink">Add Movie</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/addMovie" onClick={this.hideSectionsHandler} className="dropDownLink">Add Movie</Link></NavDropdown.Item>
                   </NavDropdown>
                   <NavDropdown title="Drama" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                    <NavDropdown.Item ><Link to="/dramaIndex" className="dropDownLink">Drama</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/dramaIndex" onClick={this.hideSectionsHandler} className="dropDownLink">Dramas</Link></NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item ><Link to="/addDrama" className="dropDownLink">Add Drama</Link> </NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/addDrama" onClick={this.hideSectionsHandler} className="dropDownLink">Add Drama</Link> </NavDropdown.Item>
                   </NavDropdown>
                   <NavDropdown title="Episode" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                    <NavDropdown.Item ><Link to="/episodeIndex" className="dropDownLink"> Episode</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/episodeIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Episodes</Link></NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item ><Link to="/addEpisode" className="dropDownLink">Add Episode</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/addEpisode" onClick={this.hideSectionsHandler} className="dropDownLink">Add Episode</Link></NavDropdown.Item>
                   </NavDropdown>
                   <NavDropdown title="Actor" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                    <NavDropdown.Item ><Link to="/actorIndex" className="dropDownLink"> Actor</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/actorIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Actors</Link></NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item ><Link to="/addActor" className="dropDownLink">Add Actor</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/addActor" onClick={this.hideSectionsHandler} className="dropDownLink">Add Actor</Link></NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
                 <Nav className="mr-5">
@@ -223,30 +233,30 @@ export default class App extends Component {
             </Navbar>
           ) : (
               <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-blue-900 shadow">
-                <Navbar.Brand ><Link to="/" className="text-white ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
+                <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler}  className="text-white ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                   <Nav className="mr-auto">
                     <NavDropdown title="Movie" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                      <NavDropdown.Item ><Link to="/movieIndex" className="dropDownLink"> Movie</Link></NavDropdown.Item>
+                      <NavDropdown.Item ><Link to="/movieIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Movies</Link></NavDropdown.Item>
 
                     </NavDropdown>
                     <NavDropdown title="Drama" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                      <NavDropdown.Item ><Link to="/dramaIndex" className="dropDownLink">Drama</Link></NavDropdown.Item>
+                      <NavDropdown.Item ><Link to="/dramaIndex"  onClick={this.hideSectionsHandler} className="dropDownLink">Dramas</Link></NavDropdown.Item>
 
                     </NavDropdown>
                     <NavDropdown title="Episode" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                      <NavDropdown.Item ><Link to="/episodeIndex" className="dropDownLink"> Episode</Link></NavDropdown.Item>
+                      <NavDropdown.Item ><Link to="/episodeIndex"  onClick={this.hideSectionsHandler} className="dropDownLink"> Episodes</Link></NavDropdown.Item>
 
                     </NavDropdown>
                     <NavDropdown title="Actor" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                      <NavDropdown.Item ><Link to="/actorIndex" className="dropDownLink"> Actor</Link></NavDropdown.Item>
+                      <NavDropdown.Item ><Link to="/actorIndex" onClick={this.hideSectionsHandler} onClick={this.hideSectionsHandler} className="dropDownLink"> Actors</Link></NavDropdown.Item>
 
                     </NavDropdown>
                   </Nav>
                   <Nav className="mr-5">
-                    <Nav.Link > <Link to="/register" onClick={this.clickHandler} className="hover:text-pink-400 text-xl">Join</Link></Nav.Link>
-                    <Nav.Link >  <Link to="/login" onClick={this.clickHandler} className="hover:text-pink-400 text-xl">Login</Link></Nav.Link>
+                    <Nav.Link > <Link to="/register" onClick={this.hideSectionsHandler} className="hover:text-pink-400 text-xl">Join</Link></Nav.Link>
+                    <Nav.Link >  <Link to="/login" onClick={this.hideSectionsHandler} className="hover:text-pink-400 text-xl">Login</Link></Nav.Link>
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>
@@ -257,12 +267,19 @@ export default class App extends Component {
 
 
         {/* <div className={`${this.state.isClicked === true ? 'invisible' : 'visible'}`}> */}
-        <MovieDramaSection></MovieDramaSection>
-        <ActorSection actors={this.state.actors} loadActors={this.loadActors}></ActorSection>
-        <EpisodeSection></EpisodeSection>
+        {isSectionsShow ? (
+          <div>
+            <MovieDramaSection></MovieDramaSection>
+            <ActorSection actors={this.state.actors} loadActors={this.loadActors}></ActorSection>
+            <EpisodeSection></EpisodeSection>
+            <Footer></Footer>
+          </div>
+
+        ) : null}
+
         {/* </div> */}
 
-        <Footer></Footer>
+       
 
 
 
@@ -280,7 +297,7 @@ export default class App extends Component {
   <Route path="/articleIndex" component={() => <ArticleList articles={this.state.articles} authors={this.state.authors} loadArticleList={this.loadArticleList}></ArticleList>}></Route> */}
 
           <Switch>
-            <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth}></ActorIndex>}></Route>
+            <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors}></ActorIndex>}></Route>
             <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewActor>}></Route>
             <Route path="/register" component={() => <Join register={this.registerHandler} message={this.state.message} ></Join>}></Route>
             <Route path="/login" component={() => <Login login={this.loginHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} />}></Route>
