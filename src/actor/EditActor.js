@@ -86,7 +86,7 @@ export default class EditActor extends Component {
                 </div>
             </Container>
         </div>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
         </div>
         )
     }

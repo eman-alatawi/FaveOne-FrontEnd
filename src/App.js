@@ -28,7 +28,7 @@ export default class App extends Component {
     errorMessage: null,
     successMessage: null,
     message: null,
-    isClicked: false,
+    isShowActorIndx: true,
     actors: []
 
   }
