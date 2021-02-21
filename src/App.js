@@ -28,7 +28,6 @@ export default class App extends Component {
     errorMessage: null,
     successMessage: null,
     message: null,
-    isShowActorIndx: true,
     actors: []
 
   }
@@ -297,6 +296,7 @@ export default class App extends Component {
   <Route path="/articleIndex" component={() => <ArticleList articles={this.state.articles} authors={this.state.authors} loadArticleList={this.loadArticleList}></ArticleList>}></Route> */}
 
           <Switch>
+         
             <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors}></ActorIndex>}></Route>
             <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewActor>}></Route>
             <Route path="/register" component={() => <Join register={this.registerHandler} message={this.state.message} ></Join>}></Route>

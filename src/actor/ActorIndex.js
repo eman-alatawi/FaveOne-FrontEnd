@@ -4,7 +4,7 @@ import ActorRowCard from './ActorRowCard';
 import EditActor from './EditActor';
 import { Alert } from "react-bootstrap";
 import Footer from '../Footer';
-
+import ActorDetails from './ActorDetails'
 export default class ActorIndex extends Component {
     constructor(props) {
         super(props)
@@ -12,6 +12,8 @@ export default class ActorIndex extends Component {
         this.state = {
             actors: props.actors,
             isEdit: false,
+            isDetail:false,
+            actorDetail: [],
             clickedActorId: '',
             errorMessage: null,
             successMessage: null,
@@ -24,6 +26,39 @@ export default class ActorIndex extends Component {
             isEdit: !this.state.isEdit,
             clickedActorId: id
         })
+    }
+
+    detailView = (id) => {
+        this.setState({
+            isDetail: !this.state.isDetail,
+            clickedActorId: id
+        })
+
+       this.actorDetails(id);
+    }
+
+    actorDetails = (id) =>{
+        axios.get("/favone/actor/detail",
+        {
+            params: { id: id },
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            }
+        })
+            .then(response => {
+                console.log("get actor details");
+                console.log(response);
+                this.setState({
+                    actorDetail: response.data
+                })
+                
+                console.log(this.state.actorDetail)
+                // this.props.loadActors();
+            })
+            .catch(error => {
+                console.log("error in retriving actor details");
+                console.log(error);
+            })
     }
 
     editActor = (actor) => {
@@ -92,7 +127,7 @@ export default class ActorIndex extends Component {
 
 
                     {/* show all actors if the user didn't click the Edit icon - by default show the ActorRowCard */}
-                    {!this.state.isEdit ?
+                    {!this.state.isEdit && !this.state.isDetail ?
                         <div>
                             <div className="h-full w-full  ">
                                 <h3 className=" my-12  text-center text-gray-700 text-3xl">Actors</h3>
@@ -100,7 +135,7 @@ export default class ActorIndex extends Component {
                             <div className="h-full w-full   inline-grid grid-cols-6 gap-x-4  gap-y-10 " >
                                 {this.state.actors.map((actor, index) =>
                                     <div key={index}>
-                                        <ActorRowCard {...actor} isAuth={this.props.isAuth} editView={this.editView} deleteActor={this.deleteActor} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></ActorRowCard>
+                                        <ActorRowCard {...actor} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteActor={this.deleteActor} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></ActorRowCard>
                                     </div>
                                 )
                                 }
@@ -114,6 +149,13 @@ export default class ActorIndex extends Component {
                     {this.state.actors.map((actor, index) =>
                         <div key={index}>
                             {(this.state.isEdit && this.state.clickedActorId === actor.id) ? <EditActor actor={actor} editActor={this.editActor} ></EditActor> : null}
+                        </div>
+                    )}
+
+                    {/* if the user click the card  - show the ActorDetail [we need to loop again using map to know the clickedActorId by user and the actor.id in actors ] */}
+                    {this.state.actors.map((actor, index) =>
+                        <div key={index}>
+                            {(this.state.isDetail && this.state.clickedActorId === actor.id) ? <ActorDetails actor={this.state.actorDetail}></ActorDetails> : null}
                         </div>
                     )}
 
