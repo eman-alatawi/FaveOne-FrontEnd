@@ -14,20 +14,8 @@ export default class join extends Component {
     }
 
     handleSubmit = () => {
-        // event.preventDefault();
-        // const form = event.currentTarget;
+
         if (this.myFunction()) {
-            console.log("inside check")
-            // if (form.checkValidity() === false) {
-
-            //     event.preventDefault();
-            //     event.stopPropagation();
-            //   }
-
-            //   this.setState({
-            //     setValidated: true
-            //   })
-
             this.props.register(this.state)
         }
 
@@ -35,18 +23,15 @@ export default class join extends Component {
 
     myFunction = (e) => {
         var userName = document.getElementById("userName").value;
-        console.log("username value:" + userName);
         var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;
         var confirmPassword = document.getElementById("confirmPassword").value;
         var userRole = document.getElementById("userRole").value;
 
         if (userName === '' || email === '' || password === '' || confirmPassword === '' || userRole === '') {
-            console.log("inside if empty fields are null")
             swal("Empty!!", "Some Feilds are empty!", "error")
             return false;
         } else {
-            console.log("inside else fields not null")
             if (password !== confirmPassword) {
                 swal("Miss Match!", "Passwords do not match!", "error")
                 return false;
