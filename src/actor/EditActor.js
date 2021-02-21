@@ -30,7 +30,7 @@ export default class EditActor extends Component {
         return (
             <div class="container-sm flex flex-col justify-center my-5">
 
-            <h2 className="text-center opacity-75 mb-5">Add New Actor</h2>
+            <h2 className="text-center opacity-75 mb-5">Edit Actor</h2>
             <Container>
                 <Form.Group as={Row} >
                     <Form.Label column sm={2}>Full Name</Form.Label>

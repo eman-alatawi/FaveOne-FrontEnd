@@ -119,41 +119,48 @@ export default class App extends Component {
 
   }
 
-  loadActors =() =>{
+  loadActors = () => {
     axios.get("/favone/actor/index")
-          .then(response =>{
-            console.log(response);
-            this.setState({
-              actors: response.data
-            })
-          })
-          .catch(error =>{
-            console.log("Error while reteriving actors !!");
-            console.log(error);
-          })
+      .then(response => {
+        console.log(response);
+        this.setState({
+          actors: response.data
+        })
+      })
+      .catch(error => {
+        console.log("Error while reteriving actors !!");
+        console.log(error);
+      })
   }
 
-  addActorHandler =(actor) =>{
+  addActorHandler = (actor) => {
 
     axios.post("/favone/actor/add", actor,
-    {
-      headers: {
-        "Authorization": "Bearer " + localStorage.getItem("token")
-      }
-    })
-    .then(response =>{
-      console.log("Actor Added");
-      console.log(response);
-      this.loadActors();
-    })
-    .catch(error =>{
-      console.log("Error while Adding actor !!");
-      console.log(error);
-    })
+      {
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+      })
+      .then(response => {
+        console.log("Actor Added");
+        console.log(response);
+        this.loadActors();
+
+        this.setState({
+          successMessage: "Successfully Added Actor!!"
+        })
+      })
+      .catch(error => {
+        console.log("Error while Adding actor !!");
+        console.log(error);
+        this.setState({
+          errorMessage: "Error while Adding Actor, Try again later!!"
+        })
+      })
   }
 
 
-  clickHandler =() =>{
+  clickHandler = () => {
     this.setState({
       isClicked: !this.state.isClicked
     })
@@ -163,10 +170,10 @@ export default class App extends Component {
   render() {
     const { isAuth } = this.state;
 
-   
 
 
-   
+
+
 
 
     return (
@@ -176,8 +183,8 @@ export default class App extends Component {
         <nav>
           {/* <FadeIn> */}
           <div>
-            
-            
+
+
           </div>
 
           {isAuth ? (
@@ -222,19 +229,19 @@ export default class App extends Component {
                   <Nav className="mr-auto">
                     <NavDropdown title="Movie" id="collasible-nav-dropdown" className="mr-11 text-xl">
                       <NavDropdown.Item ><Link to="/movieIndex" className="dropDownLink"> Movie</Link></NavDropdown.Item>
-         
+
                     </NavDropdown>
                     <NavDropdown title="Drama" id="collasible-nav-dropdown" className="mr-11 text-xl">
                       <NavDropdown.Item ><Link to="/dramaIndex" className="dropDownLink">Drama</Link></NavDropdown.Item>
-            
+
                     </NavDropdown>
                     <NavDropdown title="Episode" id="collasible-nav-dropdown" className="mr-11 text-xl">
                       <NavDropdown.Item ><Link to="/episodeIndex" className="dropDownLink"> Episode</Link></NavDropdown.Item>
-               
+
                     </NavDropdown>
                     <NavDropdown title="Actor" id="collasible-nav-dropdown" className="mr-11 text-xl">
                       <NavDropdown.Item ><Link to="/actorIndex" className="dropDownLink"> Actor</Link></NavDropdown.Item>
-                   
+
                     </NavDropdown>
                   </Nav>
                   <Nav className="mr-5">
@@ -248,15 +255,15 @@ export default class App extends Component {
 
         <HomeBanner></HomeBanner>
 
-        
+
         {/* <div className={`${this.state.isClicked === true ? 'invisible' : 'visible'}`}> */}
         <MovieDramaSection></MovieDramaSection>
         <ActorSection actors={this.state.actors} loadActors={this.loadActors}></ActorSection>
         <EpisodeSection></EpisodeSection>
         {/* </div> */}
-       
+
         <Footer></Footer>
-        
+
 
 
 
@@ -272,11 +279,11 @@ export default class App extends Component {
   <Route path="/authorIndex" component={() => <AuthorList authors={this.state.authors} articles={this.state.articles} loadAuthorList={this.loadAuthorList}></AuthorList>}></Route>
   <Route path="/articleIndex" component={() => <ArticleList articles={this.state.articles} authors={this.state.authors} loadArticleList={this.loadArticleList}></ArticleList>}></Route> */}
 
-        <Switch>
-          <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth}></ActorIndex>}></Route>
-          <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler}></NewActor>}></Route>
-          <Route path="/register" component={() => <Join register={this.registerHandler} message={this.state.message} ></Join>}></Route>
-          <Route path="/login" component={() => <Login login={this.loginHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} />}></Route>
+          <Switch>
+            <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth}></ActorIndex>}></Route>
+            <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewActor>}></Route>
+            <Route path="/register" component={() => <Join register={this.registerHandler} message={this.state.message} ></Join>}></Route>
+            <Route path="/login" component={() => <Login login={this.loginHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} />}></Route>
           </Switch>
         </div>
 

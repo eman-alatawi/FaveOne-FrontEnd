@@ -15,13 +15,13 @@ export default class join extends Component {
 
     handleSubmit = () => {
 
-        if (this.myFunction()) {
+        if (this.validate()) {
             this.props.register(this.state)
         }
 
     }
 
-    myFunction = (e) => {
+    validate = () => {
         var userName = document.getElementById("userName").value;
         var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;
@@ -40,8 +40,6 @@ export default class join extends Component {
             }
 
         }
-
-
     }
     render() {
         const message = this.props.message ? (
