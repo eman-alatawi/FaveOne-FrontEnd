@@ -17,7 +17,7 @@ import ActorSection from './actor/ActorSection';
 import EpisodeSection from './EpisodeSection'
 import Footer from './Footer';
 import NewActor from './actor/NewActor'
-
+import ActorIndex from './actor/ActorIndex'
 
 export default class App extends Component {
 
@@ -26,6 +26,7 @@ export default class App extends Component {
     user: null,
     errorMessage: null,
     successMessage: null,
+    message: null,
     isClicked: false,
     actors: []
 
@@ -62,6 +63,9 @@ export default class App extends Component {
       .post("/favone/user/registration", user)
       .then((response) => {
         console.log(response);
+        this.setState({
+          message: response.data.message
+        })
       })
       .catch((error) => {
         console.log("Error in register user")
@@ -159,13 +163,10 @@ export default class App extends Component {
   render() {
     const { isAuth } = this.state;
 
-    const errorMessage = this.state.errorMessage ? (
-      <Alert variant="danger">{this.state.errorMessage}</Alert>
-    ) : null;
+   
 
-    const successMessage = this.state.successMessage ? (
-      <Alert variant="success">{this.state.successMessage}</Alert>
-    ) : null;
+
+   
 
 
     return (
@@ -175,8 +176,8 @@ export default class App extends Component {
         <nav>
           {/* <FadeIn> */}
           <div>
-            {errorMessage}
-            {successMessage}
+            
+            
           </div>
 
           {isAuth ? (
@@ -272,10 +273,10 @@ export default class App extends Component {
   <Route path="/articleIndex" component={() => <ArticleList articles={this.state.articles} authors={this.state.authors} loadArticleList={this.loadArticleList}></ArticleList>}></Route> */}
 
         <Switch>
-          <Route path="/actorIndex" component={() => <ActorSection actors={this.state.actors}></ActorSection>}></Route>
+          <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth}></ActorIndex>}></Route>
           <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler}></NewActor>}></Route>
-          <Route path="/register" component={() => <Join register={this.registerHandler}  ></Join>}></Route>
-          <Route path="/login" component={() => <Login login={this.loginHandler} />}></Route>
+          <Route path="/register" component={() => <Join register={this.registerHandler} message={this.state.message} ></Join>}></Route>
+          <Route path="/login" component={() => <Login login={this.loginHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} />}></Route>
           </Switch>
         </div>
 
