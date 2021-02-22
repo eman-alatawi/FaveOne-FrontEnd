@@ -83,7 +83,7 @@ export default class NewActor extends Component {
 
                     </Form.Group>
                     <Form.Group as={Row}>
-                        <Form.Label column sm={2}>Actor Picture</Form.Label>
+                        <Form.Label column sm={2}>Actor Picture URL</Form.Label>
                         <Col sm={10}>
                             <Form.Control required id="picture" type="text" name="picture" onChange={this.changeHandler} placeholder="https://YesungActorImage.com/"></Form.Control>
                         </Col>

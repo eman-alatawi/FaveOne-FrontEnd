@@ -18,6 +18,8 @@ import EpisodeSection from './EpisodeSection'
 import Footer from './Footer';
 import NewActor from './actor/NewActor'
 import ActorIndex from './actor/ActorIndex'
+import GenderIndex from './gender/GenderIndex';
+import NewGender from './gender/NewGender'
 
 export default class App extends Component {
 
@@ -28,16 +30,20 @@ export default class App extends Component {
     errorMessage: null,
     successMessage: null,
     message: null,
-    actors: []
+    actors: [],
+    genders: []
 
   }
   componentDidMount() {
     this.userAuthCheck();
     this.loadActors();
-
+    this.loadGenders();
   }
+
+
+  // USER AUTHENTICATION 
   userAuthCheck = () => {
-    //if there is a token in local storage?
+    //is there a token in local storage?
     let token = localStorage.getItem("token");
 
     //if yes
@@ -47,7 +53,7 @@ export default class App extends Component {
       if (user) { // yes their is user (not null) and the token not expired
         this.setState({
           isAuth: true, //so the user is athenticated
-          user: user // and put user to user
+          user: user // and put user to user state
 
         });
       } else if (!user) { // no user (it's null)
@@ -58,6 +64,10 @@ export default class App extends Component {
       }
     }
   }
+
+
+  // Handlers
+  // 1- registerHandler
   registerHandler = (user) => {
     axios
       .post("/favone/user/registration", user)
@@ -73,6 +83,7 @@ export default class App extends Component {
       });
   };
 
+  // 2- loginHandler
   loginHandler = (user) => {
     axios
       .post("/favone/user/authenticate", user)
@@ -108,6 +119,7 @@ export default class App extends Component {
       });
   };
 
+  // 3- onLogoutHandeler
   onLogoutHandeler = (e) => {
     //to go to the login page because it's by default prevent this
     e.preventDefault();
@@ -119,22 +131,8 @@ export default class App extends Component {
 
   }
 
-  loadActors = () => {
-    axios.get("/favone/actor/index")
-      .then(response => {
-        console.log(response);
-        this.setState({
-          actors: response.data
-        })
-      })
-      .catch(error => {
-        console.log("Error while reteriving actors !!");
-        console.log(error);
-      })
-  }
-
+  // 4- addActorHandler
   addActorHandler = (actor) => {
-
     axios.post("/favone/actor/add", actor,
       {
         headers: {
@@ -159,59 +157,110 @@ export default class App extends Component {
       })
   }
 
-
+  // 5- hideSectionsHandler
   hideSectionsHandler = () => {
     this.setState({
       isSectionsShow: false
     })
   }
 
+  // 6- showSectionsHandler
   showSectionsHandler = () => {
     this.setState({
       isSectionsShow: true
     })
   }
 
-  //hide ActorIndex to show the EditActor
-  // hideActorIndex = () =>{
-  // }
+  //7- addGenderHandler
+  addGenderHandler = (gender) =>{
+    axios.post("/favone/mdgender/add", gender,
+    {
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem("token")
+      }
+    })
+    .then(response => {
+      console.log("Gender Added");
+      console.log(response);
+      this.loadGenders();
+
+      this.setState({
+        successMessage: "Gender Added Successfully!!"
+      })
+    })
+    .catch(error => {
+      console.log("Error while Adding Gender !!");
+      console.log(error);
+      this.setState({
+        errorMessage: "Error while Adding gender, Try again later!!"
+      })
+    })
+  }
+
+
+  //Loaders
+  //1- loadActors
+  loadActors = () => {
+    axios.get("/favone/actor/index")
+      .then(response => {
+        console.log(response);
+        this.setState({
+          actors: response.data
+        })
+      })
+      .catch(error => {
+        console.log("Error while reteriving actors !!");
+        console.log(error);
+      })
+  }
+
+  //2- loadGenders
+  loadGenders = () => {
+    axios.get("/favone/mdgender/index")
+      .then(response => {
+        console.log(response);
+        this.setState({
+          genders: response.data
+        })
+      })
+      .catch(error => {
+        console.log("Error while reteriving Movie-Drama's Genders!!");
+        console.log(error);
+      })
+  }
+
+
 
   render() {
     const { isAuth, isSectionsShow } = this.state;
-
-
-
-
-
-
 
     return (
 
 
       <Router>
         <nav>
-          {/* <FadeIn> */}
           <div>
-
-
           </div>
 
           {isAuth ? (
             <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-blue-900 shadow">
-              <Navbar.Brand ><Link to="/"  onClick={this.showSectionsHandler} className="text-white ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
+              <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler} className="text-white ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                  <NavDropdown title="Movie" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                    <NavDropdown.Item ><Link to="/movieIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Movies</Link></NavDropdown.Item>
+                  <NavDropdown title="Movie - Drama" id="collasible-nav-dropdown" className="mr-11 text-xl">
+                    <NavDropdown.Item ><Link to="/movieDramaIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Movies - Dramas</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/imageGalleryIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Images Gallery</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/genderIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Genders</Link></NavDropdown.Item>
+
                     <NavDropdown.Divider />
-                    <NavDropdown.Item ><Link to="/addMovie" onClick={this.hideSectionsHandler} className="dropDownLink">Add Movie</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/addMovieDrama" onClick={this.hideSectionsHandler} className="dropDownLink">Add Movie - Drama</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/addImageGallery" onClick={this.hideSectionsHandler} className="dropDownLink"> Add Image Gallery</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/addGender" onClick={this.hideSectionsHandler} className="dropDownLink"> Add Gender</Link></NavDropdown.Item>
+
+
                   </NavDropdown>
-                  <NavDropdown title="Drama" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                    <NavDropdown.Item ><Link to="/dramaIndex" onClick={this.hideSectionsHandler} className="dropDownLink">Dramas</Link></NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item ><Link to="/addDrama" onClick={this.hideSectionsHandler} className="dropDownLink">Add Drama</Link> </NavDropdown.Item>
-                  </NavDropdown>
+
                   <NavDropdown title="Episode" id="collasible-nav-dropdown" className="mr-11 text-xl">
                     <NavDropdown.Item ><Link to="/episodeIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Episodes</Link></NavDropdown.Item>
                     <NavDropdown.Divider />
@@ -232,20 +281,17 @@ export default class App extends Component {
             </Navbar>
           ) : (
               <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-blue-900 shadow">
-                <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler}  className="text-white ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
+                <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler} className="text-white ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                   <Nav className="mr-auto">
-                    <NavDropdown title="Movie" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                      <NavDropdown.Item ><Link to="/movieIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Movies</Link></NavDropdown.Item>
-
-                    </NavDropdown>
-                    <NavDropdown title="Drama" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                      <NavDropdown.Item ><Link to="/dramaIndex"  onClick={this.hideSectionsHandler} className="dropDownLink">Dramas</Link></NavDropdown.Item>
-
+                    <NavDropdown title="Movie - Drama" id="collasible-nav-dropdown" className="mr-11 text-xl">
+                      <NavDropdown.Item ><Link to="/movieDramaIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Movies - Dramas</Link></NavDropdown.Item>
+                      <NavDropdown.Item ><Link to="/imageGalleryIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Images Gallery</Link></NavDropdown.Item>
+                      <NavDropdown.Item ><Link to="/genderIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Genders</Link></NavDropdown.Item>
                     </NavDropdown>
                     <NavDropdown title="Episode" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                      <NavDropdown.Item ><Link to="/episodeIndex"  onClick={this.hideSectionsHandler} className="dropDownLink"> Episodes</Link></NavDropdown.Item>
+                      <NavDropdown.Item ><Link to="/episodeIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Episodes</Link></NavDropdown.Item>
 
                     </NavDropdown>
                     <NavDropdown title="Actor" id="collasible-nav-dropdown" className="mr-11 text-xl">
@@ -278,10 +324,6 @@ export default class App extends Component {
 
         {/* </div> */}
 
-       
-
-
-
 
 
         {/* {isAuth ? () : ()} */}
@@ -296,11 +338,15 @@ export default class App extends Component {
   <Route path="/articleIndex" component={() => <ArticleList articles={this.state.articles} authors={this.state.authors} loadArticleList={this.loadArticleList}></ArticleList>}></Route> */}
 
           <Switch>
-         
-            <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors}></ActorIndex>}></Route>
-            <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewActor>}></Route>
             <Route path="/register" component={() => <Join register={this.registerHandler} message={this.state.message} ></Join>}></Route>
             <Route path="/login" component={() => <Login login={this.loginHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} />}></Route>
+            <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors}></ActorIndex>}></Route>
+            <Route path="/genderIndex" component={() => <GenderIndex genders={this.state.genders} isAuth={this.state.isAuth} loadGenders={this.loadGenders}></GenderIndex>}></Route>
+
+            <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewActor>}></Route>
+            <Route path="/addGender" component={() => <NewGender addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewGender>}></Route>
+
+
           </Switch>
         </div>
 
