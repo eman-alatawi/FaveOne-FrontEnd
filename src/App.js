@@ -239,7 +239,7 @@ export default class App extends Component {
 
       <Router>
         <nav>
-          <div>
+          <div> 
           </div>
 
           {isAuth ? (
@@ -340,8 +340,8 @@ export default class App extends Component {
           <Switch>
             <Route path="/register" component={() => <Join register={this.registerHandler} message={this.state.message} ></Join>}></Route>
             <Route path="/login" component={() => <Login login={this.loginHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} />}></Route>
-            <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors}></ActorIndex>}></Route>
-            <Route path="/genderIndex" component={() => <GenderIndex genders={this.state.genders} isAuth={this.state.isAuth} loadGenders={this.loadGenders} addGender={this.addGenderHandler}></GenderIndex>}></Route>
+            <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></ActorIndex>}></Route>
+            <Route path="/genderIndex" component={() => <GenderIndex genders={this.state.genders} isAuth={this.state.isAuth} loadGenders={this.loadGenders} addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></GenderIndex>}></Route>
 
             <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewActor>}></Route>
             <Route path="/addGender" component={() => <NewGender addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewGender>}></Route>

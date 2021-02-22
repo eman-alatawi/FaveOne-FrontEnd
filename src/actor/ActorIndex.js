@@ -119,10 +119,10 @@ export default class ActorIndex extends Component {
             <Alert variant="success">{this.props.successMessage}</Alert>
         ) : null;
         return (
-            <div>
+            <div className="genderBg bg-cover pt-4">
                 {errorMessage}
                 {successMessage}
-                <div className=" px-3 py-3  mb-10 w-full  flex flex-col  bg-cover bg-center ">
+                <div className=" px-3 py-3  mb-10 w-full  flex flex-col  bg-cover bg-center  ">
 
 
 
@@ -130,7 +130,7 @@ export default class ActorIndex extends Component {
                     {!this.state.isEdit && !this.state.isDetail ?
                         <div>
                             <div className="h-full w-full  ">
-                                <h3 className=" my-12  text-center text-gray-700 text-3xl">Actors</h3>
+                                <h3 className=" my-12  text-center text-gray-900 text-3xl opacity-75">Actors</h3>
                             </div>
                             <div className="h-full w-full   inline-grid grid-cols-6 gap-x-4  gap-y-10 " >
                                 {this.state.actors.map((actor, index) =>

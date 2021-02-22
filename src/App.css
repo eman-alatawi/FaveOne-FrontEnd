@@ -59,12 +59,22 @@ a{
   background-image: url(https://coverfiles.alphacoders.com/918/thumb-1920-91831.jpg);
 }
 
-.genderListBg{
-  background-image: url(https://coverfiles.alphacoders.com/595/thumb-1920-59530.jpg);
-}
+/* .genderListBg{
+  background-image: url();
+} */
 
 .genderBg{
   background-image: url(https://coverfiles.alphacoders.com/155/thumb-1920-155573.jpg);
   background-repeat: no-repeat;
 
+}
+
+.actorBg{
+  background-image: url(https://coverfiles.alphacoders.com/602/thumb-1920-60205.jpg);
+  background-repeat: no-repeat;
+}
+
+.mainBg{
+  background-image: url(https://coverfiles.alphacoders.com/595/thumb-1920-59530.jpg);
+  background-repeat: no-repeat;
 }

@@ -46,7 +46,7 @@ export default class NewGender extends Component {
 
         return (
             <div>
-                <div class="container-sm flex flex-col justify-center my-5">
+                <div class="container-sm flex flex-col justify-center my-5 bg-gray-100  rounded-2xl shadow p-10">
 
                     <h2 className="text-center opacity-75 mb-5">Add Gender</h2>
                     <Container>

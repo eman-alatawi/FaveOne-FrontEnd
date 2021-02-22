@@ -49,8 +49,8 @@ export default class join extends Component {
 
         return (
 
-            <div>
-            <div class="container-sm flex flex-col justify-center my-5">
+            <div className="mainBg bg-cover bg-center  pt-4" >
+            <div class="container-sm flex flex-col justify-center my-5 bg-gray-100  rounded-2xl shadow p-10">
                 {message}
                 <h2 className="text-center opacity-75 mb-5">Sign up for an account</h2>
                 <Container>

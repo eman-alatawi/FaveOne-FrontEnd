@@ -99,18 +99,22 @@ export default class GenderIndex extends Component {
                 {errorMessage}
                 {successMessage}
                 <div className="h-full w-full  ">
-                    <h3 className=" mb-12  text-center text-gray-700 text-3xl">Movie-Drama Genders</h3>
+                    <h3 className=" mb-12  text-center text-gray-900 text-3xl opacity-75 ">Movie-Drama Genders</h3>
                 </div>
                 <div className=" h-ful flex flex-row mx-5 my-10  ">
 
                     {/* partion 1 */}
-                    <div className=" w-1/4 flex flex-col justify-around px-5  ">
+                    <div className=" w-1/4 flex flex-col justify-around px-5 overflow-y-scroll h-1/4 ">
+                        {this.props.isAuth ? 
+                        <div>
                         <Card style={{ width: '12rem' }} className="mb-3 shadow " >
-                            <Card.Body className="text-center hover:bg-blue-900 hover:border-transparent hover:shadow-lg group border-2  border-dashed   border-gray-300">
+                            <Card.Body className="text-center hover:bg-blue-500 hover:border-transparent hover:shadow-lg group border-2  border-dashed   border-gray-300">
                                 <Card.Title className="group-hover:text-white">New Gender</Card.Title>
                                 <span  onClick={this.addView} className="material-icons transform hover:scale-110 motion-reduce:transform-none cursor-pointer text-2xl group-hover:text-white">add</span>
                             </Card.Body>
                         </Card>
+                        </div>
+                        : null}
                         {this.state.genders.map((gender, index) =>
                             <div key={index}>
                                 <GenderRowCard {...gender} isAuth={this.props.isAuth} editView={this.editView} deleteGender={this.deleteGender}></GenderRowCard>
