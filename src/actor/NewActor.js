@@ -45,7 +45,7 @@ export default class NewActor extends Component {
 
         return (
             <div>
-            <div class="container-sm flex flex-col justify-center my-5">
+            <div class="container-sm flex flex-col justify-center my-5 shadow">
                 {errorMessage}
                 {successMessage}
                 <h2 className="text-center opacity-75 mb-5">Add New Actor</h2>

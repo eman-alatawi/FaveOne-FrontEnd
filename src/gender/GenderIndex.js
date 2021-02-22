@@ -4,7 +4,8 @@ import EditGender from './EditGender'
 import GenderRowCard from './GenderRowCard'
 import { Alert } from "react-bootstrap";
 import axios from 'axios';
-
+import Card from 'react-bootstrap/Card'
+import NewGender from './NewGender'
 export default class GenderIndex extends Component {
     constructor(props) {
         super(props)
@@ -12,12 +13,18 @@ export default class GenderIndex extends Component {
         this.state = {
             genders: props.genders,
             isEdit: false,
+            isAdd: false,
             clickedGenderId: '',
             errorMessage: null,
             successMessage: null,
         }
     }
 
+    addView = () =>{
+        this.setState({
+            isAdd: !this.state.isAdd
+        })
+    }
 
     editView = (id) => {
         this.setState({
@@ -88,26 +95,38 @@ export default class GenderIndex extends Component {
         ) : null;
 
         return (
-            <div>
+            <div className="genderBg pt-5 bg-cover">
                 {errorMessage}
                 {successMessage}
                 <div className="h-full w-full  ">
-                    <h3 className=" my-12  text-center text-gray-700 text-3xl">Movie-Drama Genders</h3>
+                    <h3 className=" mb-12  text-center text-gray-700 text-3xl">Movie-Drama Genders</h3>
                 </div>
-                <div className="bg-red-200 h-ful flex flex-row mx-5 my-10 ">
-                    <div className="bg-blue-300 w-1/4 flex flex-col justify-around px-5 ">
+                <div className=" h-ful flex flex-row mx-5 my-10  ">
+
+                    {/* partion 1 */}
+                    <div className=" w-1/4 flex flex-col justify-around px-5  ">
+                        <Card style={{ width: '12rem' }} className="mb-3 shadow " >
+                            <Card.Body className="text-center hover:bg-blue-900 hover:border-transparent hover:shadow-lg group border-2  border-dashed   border-gray-300">
+                                <Card.Title className="group-hover:text-white">New Gender</Card.Title>
+                                <span  onClick={this.addView} className="material-icons transform hover:scale-110 motion-reduce:transform-none cursor-pointer text-2xl group-hover:text-white">add</span>
+                            </Card.Body>
+                        </Card>
                         {this.state.genders.map((gender, index) =>
                             <div key={index}>
                                 <GenderRowCard {...gender} isAuth={this.props.isAuth} editView={this.editView} deleteGender={this.deleteGender}></GenderRowCard>
                             </div>
                         )}
                     </div>
-                    <div className="bg-pink-300 w-9/12 flex flex-col justify-center h-72">
+
+                    {/* partion 2 */}
+                    <div className=" w-9/12 flex flex-col justify-center h-72">
                         {this.state.genders.map((gender, index) =>
                             <div key={index}>
                                 {(this.state.isEdit && this.state.clickedGenderId === gender.id) ? <EditGender gender={gender} editGender={this.editGender} ></EditGender> : null}
                             </div>
                         )}
+
+                        {this.state.isAdd ? <NewGender addGender={this.props.addGender}></NewGender> : null }
                     </div>
                 </div>
                 <Footer></Footer>
