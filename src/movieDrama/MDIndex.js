@@ -1,44 +1,40 @@
-import axios from 'axios';
 import React, { Component } from 'react'
-import ActorRowCard from './ActorRowCard';
-import EditActor from './EditActor';
-import { Alert } from "react-bootstrap";
 import Footer from '../Footer';
-import ActorDetails from './ActorDetails'
-export default class ActorIndex extends Component {
+import { Alert } from "react-bootstrap";
+import axios from 'axios';
+import MDRowCard from './MDRowCard'
+export default class MDIndex extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            actors: props.actors,
+            moviesDramas: props.moviesDramas,
             isEdit: false,
             isDetail:false,
-            actorDetail: [],
-            clickedActorId: '',
+            mdDetail: [],
+            clickedMDId: '',
             errorMessage: null,
             successMessage: null,
         }
     }
-
-
     editView = (id) => {
         this.setState({
             isEdit: !this.state.isEdit,
-            clickedActorId: id
+            clickedMDId: id
         })
     }
 
     detailView = (id) => {
         this.setState({
             isDetail: !this.state.isDetail,
-            clickedActorId: id
+            clickedMDId: id
         })
 
-       this.actorDetails(id);
+       this.mdDetails(id);
     }
 
-    actorDetails = (id) =>{
-        axios.get("/favone/actor/detail",
+    mdDetails = (id) =>{
+        axios.get("/favone/md/detail",
         {
             params: { id: id },
             headers: {
@@ -46,48 +42,48 @@ export default class ActorIndex extends Component {
             }
         })
             .then(response => {
-                console.log("get actor details");
+                console.log("get Movie - Drama details");
                 console.log(response);
-                this.setState({
-                    actorDetail: response.data
-                })
+                // this.setState({
+                //     mdDetail: response.data
+                // })
                 
                 console.log(this.state.actorDetail)
                 // this.props.loadActors();
             })
             .catch(error => {
-                console.log("error in retriving actor details");
+                console.log("error in retriving Movie - Drama details");
                 console.log(error);
             })
     }
 
-    editActor = (actor) => {
-        axios.put("/favone/actor/edit", actor,
+    editMD = (movieDrama) => {
+        axios.put("/favone/md/edit", movieDrama,
             {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem("token")
                 }
             })
             .then(response => {
-                console.log("edit actor");
+                console.log("edit movie-Drama");
                 console.log(response);
-                this.props.loadActors();
+                this.props.loadMoviesDramas();
                 this.setState({
-                    successMessage: "Actor Edited Successfully!!",
+                    successMessage: "movie-Drama Edited Successfully!!",
                     isEdit: false
                 })
             })
             .catch(error => {
-                console.log("error in editing actor");
+                console.log("error in editing movie-Drama");
                 console.log(error);
                 this.setState({
-                    errorMessage: "Error while Editing Actor, Try again later!!"
+                    errorMessage: "Error while Editing movie-Drama, Try again later!!"
                 })
             })
     }
 
-    deleteActor = (id) => {
-        axios.delete("/favone/actor/delete",
+    deleteMD = (id) => {
+        axios.delete("/favone/md/delete",
             {
                 params: { id: id },
                 headers: {
@@ -95,18 +91,18 @@ export default class ActorIndex extends Component {
                 }
             })
             .then(response => {
-                console.log("delete actor");
+                console.log("delete movie-Drama");
                 console.log(response);
-                this.props.loadActors();
+                this.props.loadMoviesDramas();
                 this.setState({
-                    successMessage: "Actor Deleted Successfully!!",
+                    successMessage: "movie-Drama Deleted Successfully!!",
                 })
             })
             .catch(error => {
-                console.log("error in deleting actor");
+                console.log("error in deleting movie-Drama");
                 console.log(error);
                 this.setState({
-                    errorMessage: "Error while Deleting Actor, Try again later!!"
+                    errorMessage: "Error while Deleting movie-Drama, Try again later!!"
                 })
             })
     }
@@ -119,23 +115,23 @@ export default class ActorIndex extends Component {
             <Alert variant="success">{this.props.successMessage}</Alert>
         ) : null;
         return (
-            <div className="genderBg bg-cover pt-4">
+            <div className="mdBg bg-cover pt-4">
                 {errorMessage}
                 {successMessage}
                 <div className="  py-3  mb-10 w-full  flex flex-col  justify-evenly ">
 
 
 
-                    {/* show all actors if the user didn't click the Edit icon - by default show the ActorRowCard */}
+                    {/* show all Movies-Dramas if the user didn't click the Edit icon - by default show the MDRowCard */}
                     {!this.state.isEdit && !this.state.isDetail ?
                         <div>
                             <div className="h-full w-full  ">
-                                <h3 className=" my-12  text-center text-gray-900 text-3xl opacity-75">Actors</h3>
+                                <h3 className=" my-12  text-center text-gray-900 text-3xl opacity-75">Movies - Dramas</h3>
                             </div>
                             <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
-                                {this.state.actors.map((actor, index) =>
+                                {this.state.moviesDramas.map((md, index) =>
                                     <div key={index}>
-                                        <ActorRowCard {...actor} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteActor={this.deleteActor} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></ActorRowCard>
+                                        <MDRowCard {...md} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteMD={this.deleteMD} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></MDRowCard>
                                     </div>
                                 )
                                 }
@@ -145,17 +141,17 @@ export default class ActorIndex extends Component {
                     }
 
 
-                    {/* if the user click the edit icon - show the EditActor [we need to loop again using map to know the clickedActorId by user and the actor.id in actors ] */}
-                    {this.state.actors.map((actor, index) =>
+                    {/* if the user click the edit icon - show the editMD [we need to loop again using map to know the clickedActorId by user and the actor.id in actors ] */}
+                    {this.state.moviesDramas.map((md, index) =>
                         <div key={index}>
-                            {(this.state.isEdit && this.state.clickedActorId === actor.id) ? <EditActor actor={actor} editActor={this.editActor} ></EditActor> : null}
+                            {/* {(this.state.isEdit && this.state.clickedMDId === md.id) ? <EditMD movieDrama={md} editMD={this.editMD} actors={this.props.actors} ></EditMD> : null} */}
                         </div>
                     )}
 
                     {/* if the user click the card  - show the ActorDetail [we need to loop again using map to know the clickedActorId by user and the actor.id in actors ] */}
-                    {this.state.actors.map((actor, index) =>
+                    {this.state.moviesDramas.map((md, index) =>
                         <div key={index}>
-                            {(this.state.isDetail && this.state.clickedActorId === actor.id) ? <ActorDetails actor={this.state.actorDetail}></ActorDetails> : null}
+                            {/* {(this.state.isDetail && this.state.clickedMDId === md.id) ? <MDDetails actor={this.state.actorDetail}></MDDetails> : null} */}
                         </div>
                     )}
 
