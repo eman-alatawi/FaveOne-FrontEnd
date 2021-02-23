@@ -18,7 +18,7 @@ export default class EditMD extends Component {
     }
     loadActors =() =>{
 
-        console.log("before"+ this.props.actors)
+        // console.log("before"+ this.props.actors)
 
         const thisMovieActors = this.props.actors.filter((actor) => {
             const index = actor.movieDramas.findIndex(x => x.id === this.props.movieDrama.id)
@@ -26,7 +26,7 @@ export default class EditMD extends Component {
             return  index != -1
         })
 
-        console.log("after"+ thisMovieActors)
+        // console.log("after"+ thisMovieActors)
         const updatedMovie = this.state.movieDrama
         updatedMovie['actors'] =[]
         updatedMovie['actors']=thisMovieActors
