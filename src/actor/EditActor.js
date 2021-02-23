@@ -77,9 +77,10 @@ export default class EditActor extends Component {
                             <Form.Label column sm={2}>Gender</Form.Label>
                             <Col sm={10}>
                                 <Form.Control required id="gender" as="select" name="gender" onChange={this.changeHandler}>
+                                    
                                     <option value="">Select Gender</option>
-                                    <option value="Female"> Female</option>
-                                    <option value="Male"> Male</option>
+                                    {this.state.actor.gender === 'Female' ? <option selected value="Female"> Female</option> : <option value="Female"> Female</option>}
+                                    {this.state.actor.gender === 'Male' ? <option selected value="Male"> Male</option> : <option value="Male"> Male</option>}
                                 </Form.Control>
                             </Col>
                         </Form.Group>

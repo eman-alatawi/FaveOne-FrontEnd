@@ -135,24 +135,9 @@ export default class EditMD extends Component {
                                 <Col sm={10}>
                                     <Form.Control required id="type" as="select" name="type" onChange={this.changeHandler}>
 
-                                        <option value={this.state.movieDrama.type} selected>{this.state.movieDrama.type}</option>
-
-                                        {/* {this.state.movieDrama.type === 'Movie' ? 
-                                         <div>
-                                          <option selected value="Movie"> Movie</option> 
-                                          <option value="">Select Type</option> 
-                                          <option value="Drama"> Drama</option> 
-                                          </div> :  null} 
-                                         {this.state.movieDrama.type === 'Drama' ?  
-                                         <div>
-                                         <option selected value="Drama"> Drama</option>
-                                         <option value="">Select Type</option> 
-                                         <option value="Movie"> Movie</option> 
-                                         </div> :  null}  */}
-
-
-
-
+                                        <option value="">Select Type</option>
+                                       {this.state.movieDrama.type === 'Movie' ? <option selected value="Movie"> Movie</option> : <option value="Movie"> Movie</option>  } 
+                                       {this.state.movieDrama.type === 'Drama' ? <option selected value="Drama"> Drama</option> : <option value="Drama"> Drama</option>  }
 
                                     </Form.Control>
                                 </Col>
@@ -188,11 +173,12 @@ export default class EditMD extends Component {
                                 <Col sm={10}>
                                     <Form.Control required id="contentRating" as="select" name="contentRating" onChange={this.changeHandler}>
                                         <option value="">Select Content Rate</option>
-                                        <option value="+13"> +13</option>
-                                        <option value="+15"> +15</option>
-                                        <option value="+17"> +17</option>
-                                        <option value="All Ages"> All Ages</option>
-                                        <option value="Not Yet Rated"> Not Yet Rated</option>
+                                         {this.state.movieDrama.contentRating === '+13' ? <option selected value="+13"> +13</option> : <option value="+13"> +13</option>}
+                                         {this.state.movieDrama.contentRating === '+15' ? <option selected value="+15"> +15</option> : <option value="+15"> +15</option>}
+                                         {this.state.movieDrama.contentRating === '+17' ? <option selected value="+17"> +17</option> : <option value="+17"> +17</option>}
+                                         {this.state.movieDrama.contentRating === 'All Ages' ? <option selected value="All Ages"> All Ages</option> : <option value="All Ages"> All Ages</option>}
+                                         {this.state.movieDrama.contentRating === 'Not Yet Rated' ? <option selected value="Not Yet Rated"> Not Yet Rated</option> : <option value="Not Yet Rated"> Not Yet Rated</option>}
+
                                     </Form.Control>
                                 </Col>
                             </Form.Group>
