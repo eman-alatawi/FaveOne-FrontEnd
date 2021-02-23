@@ -43,10 +43,6 @@ export default class NewMD extends Component {
             updatedMD[attributeToChange] = (newValue);
         }
 
-        //for genders
-    //    else{
-    //         updatedMD[attributeToChange] = (newValue);
-    //     }
         console.log(updatedMD);
 
         this.setState({
@@ -159,11 +155,15 @@ export default class NewMD extends Component {
                                     <Form.Control required id="score" type="text" name="score"  onChange={this.changeHandler} placeholder="9.0"></Form.Control>
                                 </Col>
                             </Form.Group>
+                            <Form.Text  muted>
+                            If you can't see the Actors/Genders in the list, you should add them first and then come back here.
+                            </Form.Text>
 
 
 
                         </div>
                         <div className="w-1/4 flex flex-col  pl-5">
+                            
                             <Form.Group className="border-2  border-gray-200 rounded-lg pl-5 h-64 overflow-y-scroll shadow-sm">
                                 <Form.Label className="text-lg underline"> Actors - Cast </Form.Label>
 

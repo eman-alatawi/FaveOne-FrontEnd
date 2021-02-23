@@ -12,7 +12,6 @@ import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
 import HomeBanner from './HomeBanner';
-import MovieDramaSection from './MovieDramaSection';
 import ActorSection from './actor/ActorSection';
 import EpisodeSection from './EpisodeSection'
 import Footer from './Footer';
@@ -23,6 +22,7 @@ import NewGender from './gender/NewGender'
 import MDIndex from './movieDrama/MDIndex';
 import EditMD from './movieDrama/EditMD';
 import NewMD from './movieDrama/NewMD'
+import MovieDramaSection from './movieDrama/MovieDramaSection'
 
 export default class App extends Component {
 
@@ -287,8 +287,8 @@ export default class App extends Component {
           </div>
 
           {isAuth ? (
-            <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-blue-900 shadow">
-              <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler} className="text-white ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
+            <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-gray-800 shadow">
+              <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler} className="text-gray-300 ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
@@ -319,13 +319,13 @@ export default class App extends Component {
                 <Nav className="mr-5">
                   {this.state.user ? <Navbar.Text className="mr-5"> Signed in as: {this.state.user.sub} </Navbar.Text> : null}
 
-                  <Nav.Link > <Link to="/logout" onClick={this.onLogoutHandeler} className="mr-5 hover:text-pink-400 text-xl">Say Bye</Link></Nav.Link>
+                  <Nav.Link > <Link to="/logout" onClick={this.onLogoutHandeler} className="mr-5 text-gray-300 hover:text-pink-600 text-xl">Say Bye</Link></Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
           ) : (
-              <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-blue-900 shadow">
-                <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler} className="text-white ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
+              <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-gray-800 shadow">
+                <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler} className="text-gray-300 ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                   <Nav className="mr-auto">
@@ -344,8 +344,8 @@ export default class App extends Component {
                     </NavDropdown>
                   </Nav>
                   <Nav className="mr-5">
-                    <Nav.Link > <Link to="/register" onClick={this.hideSectionsHandler} className="hover:text-pink-400 text-xl">Join</Link></Nav.Link>
-                    <Nav.Link >  <Link to="/login" onClick={this.hideSectionsHandler} className="hover:text-pink-400 text-xl">Login</Link></Nav.Link>
+                    <Nav.Link > <Link to="/register" onClick={this.hideSectionsHandler} className="text-gray-300 hover:text-pink-600 text-xl">Join</Link></Nav.Link>
+                    <Nav.Link >  <Link to="/login" onClick={this.hideSectionsHandler} className=" text-gray-300 hover:text-pink-600 text-xl">Login</Link></Nav.Link>
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>
@@ -358,8 +358,8 @@ export default class App extends Component {
         {/* <div className={`${this.state.isClicked === true ? 'invisible' : 'visible'}`}> */}
         {isSectionsShow ? (
           <div>
-            <MovieDramaSection></MovieDramaSection>
-            <ActorSection actors={this.state.actors} loadActors={this.loadActors}></ActorSection>
+            <MovieDramaSection moviesDramas={this.state.moviesDramas}></MovieDramaSection>
+            <ActorSection actors={this.state.actors} loadActors={this.loadActors} ></ActorSection>
             <EpisodeSection></EpisodeSection>
             <Footer></Footer>
           </div>
@@ -386,7 +386,7 @@ export default class App extends Component {
             <Route path="/login" component={() => <Login login={this.loginHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} />}></Route>
             <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></ActorIndex>}></Route>
             <Route path="/genderIndex" component={() => <GenderIndex genders={this.state.genders} isAuth={this.state.isAuth} loadGenders={this.loadGenders} addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></GenderIndex>}></Route>
-            <Route path="/movieDramaIndex" component={() => <MDIndex moviesDramas={this.state.moviesDramas} actors={this.state.actors} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas}></MDIndex>}></Route>
+            <Route path="/movieDramaIndex" component={() => <MDIndex moviesDramas={this.state.moviesDramas} actors={this.state.actors} genders={this.state.genders}  isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas}></MDIndex>}></Route>
 
             <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewActor>}></Route>
             <Route path="/addMovieDrama" component={() => <NewMD addMD={this.addMovieDramaHandler} actors={this.state.actors} genders={this.state.genders}  errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewMD>}></Route>

@@ -11,12 +11,12 @@ export default class ActorSection extends Component {
     
     render() {
         return (
-            <div className="h-72 px-3 py-3 w-full bg-blue-200 flex flex-row shadow-sm bg-cover bg-center actorSection ">
-                <div className="h-64 w-36 ">
-                <h3 className=" my-24  text-xl text-center text-white">Actors</h3>
+            <div className="h-2/5 px-3 py-3 w-full bg-blue-200 flex flex-row shadow-sm bg-cover bg-center actorSection ">
+                <div className="h-48 w-36 ">
+                <h3 className=" my-36 text-xl text-center text-white">Actors</h3>
                 </div>
                
-                <div className="h-64 w-full pr-12  inline-grid grid-cols-5 gap-x-4  gap-y-4 overflow-x-scroll overscroll-contain" >
+                <div className="h-96 w-full pr-12  inline-grid grid-cols-5 gap-x-4  gap-y-11 overflow-x-scroll overscroll-contain" >
                    
                     {this.props.actors.map((actor, index) =>
                     <ActorRowCard {...actor}></ActorRowCard>

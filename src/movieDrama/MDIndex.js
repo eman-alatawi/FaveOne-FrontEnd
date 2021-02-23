@@ -3,6 +3,7 @@ import Footer from '../Footer';
 import { Alert } from "react-bootstrap";
 import axios from 'axios';
 import MDRowCard from './MDRowCard'
+import EditMD from './EditMD'
 export default class MDIndex extends Component {
     constructor(props) {
         super(props)
@@ -44,12 +45,12 @@ export default class MDIndex extends Component {
             .then(response => {
                 console.log("get Movie - Drama details");
                 console.log(response);
-                // this.setState({
-                //     mdDetail: response.data
-                // })
+                this.setState({
+                    mdDetail: response.data
+                })
                 
-                console.log(this.state.actorDetail)
-                // this.props.loadActors();
+                console.log(this.state.mdDetail)
+                // this.props.loadMoviesDramas();
             })
             .catch(error => {
                 console.log("error in retriving Movie - Drama details");
@@ -118,7 +119,7 @@ export default class MDIndex extends Component {
             <div className="mdBg bg-cover pt-4">
                 {errorMessage}
                 {successMessage}
-                <div className="  py-3  mb-10 w-full  flex flex-col  justify-evenly ">
+                <div className="   mb-10 w-full  flex flex-col  justify-evenly ">
 
 
 
@@ -144,7 +145,7 @@ export default class MDIndex extends Component {
                     {/* if the user click the edit icon - show the editMD [we need to loop again using map to know the clickedActorId by user and the actor.id in actors ] */}
                     {this.state.moviesDramas.map((md, index) =>
                         <div key={index}>
-                            {/* {(this.state.isEdit && this.state.clickedMDId === md.id) ? <EditMD movieDrama={md} editMD={this.editMD} actors={this.props.actors} ></EditMD> : null} */}
+                            {(this.state.isEdit && this.state.clickedMDId === md.id) ? <EditMD movieDrama={md} editMD={this.editMD} actors={this.props.actors} genders={this.props.genders} ></EditMD> : null}
                         </div>
                     )}
 
