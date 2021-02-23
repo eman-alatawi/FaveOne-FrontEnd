@@ -86,7 +86,13 @@ a{
 }
 
 .newMdBg{
-  background-image: url(https://coverfiles.alphacoders.com/141/thumb-1920-141516.jpg);
+  background-image: url(https://coverfiles.alphacoders.com/675/thumb-1920-67588.png);
+  background-repeat: no-repeat;
+  
+}
+
+.editMdBg{
+  background-image: url(https://coverfiles.alphacoders.com/117/thumb-1920-117674.jpg);
   background-repeat: no-repeat;
   
 }

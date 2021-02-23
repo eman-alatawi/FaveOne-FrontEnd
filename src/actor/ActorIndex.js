@@ -119,10 +119,10 @@ export default class ActorIndex extends Component {
             <Alert variant="success">{this.props.successMessage}</Alert>
         ) : null;
         return (
-            <div className="genderBg bg-cover pt-4">
+            <div className=" mainBg bg-cover ">
                 {errorMessage}
                 {successMessage}
-                <div className="  py-3  mb-10 w-full  flex flex-col  justify-evenly ">
+                <div className="   mb-10 w-full  flex flex-col  justify-evenly ">
 
 
 

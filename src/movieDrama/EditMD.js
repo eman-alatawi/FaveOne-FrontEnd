@@ -8,20 +8,38 @@ export default class EditMD extends Component {
         super(props)
 
         this.state = {
-            movieDrama: props.movieDrama,
-            
-            newMovieDrama:{   
-                actors: [],
-                genders: []
-            }
+            movieDrama: props.movieDrama
+ 
         }
+    }
+
+    componentDidMount(){
+        this.loadActors();
+    }
+    loadActors =() =>{
+
+        console.log("before"+ this.props.actors)
+
+        const thisMovieActors = this.props.actors.filter((actor) => {
+            const index = actor.movieDramas.findIndex(x => x.id === this.props.movieDrama.id)
+            console.log(index)
+            return  index != -1
+        })
+
+        console.log("after"+ thisMovieActors)
+        const updatedMovie = this.state.movieDrama
+        updatedMovie['actors'] =[]
+        updatedMovie['actors']=thisMovieActors
+        this.setState({
+            movieDrama: updatedMovie
+        })
     }
     changeHandler = (event) => {
         const attributeToChange = event.target.name;
 
         const newValue = event.target.value;
 
-        const updatedMD = { ...this.state.newMovieDrama }
+        const updatedMD = { ...this.state.movieDrama }
         //for actors
         if (attributeToChange === 'actors') {
             if (event.target.checked) {
@@ -48,46 +66,16 @@ export default class EditMD extends Component {
         console.log(updatedMD);
 
         this.setState({
-            newMovieDrama: updatedMD
+            movieDrama: updatedMD
         })
     }
 
-    // state = {  
-    //     actors: [],
-    //     genders: []
-    //  }
 
-    // changeHandler = (e) => {
-    //     let temp = { ... this.state }
-    //     // temp[e.target.name] = e.target.value;
-    //     if (e.target.name === 'actors') {
-    //         if (e.target.checked) {
-    //             console.log(e.target.value);
-    //             console.log(this.props.actors[parseInt(e.target.value)]);
-    //             temp[e.target.name].push(this.props.actors[parseInt(e.target.value)]);
-    //         } else {
-    //             temp[e.target.name].splice(temp[e.target.name].findIndex((x) => x.id == this.props.actors[parseInt(e.target.value)].id), 1);
-    //         }
-
-    //     } else if (e.target.name === 'genders') {
-    //         if (e.target.checked) {
-    //             console.log(e.target.value);
-    //             console.log(this.props.genders[parseInt(e.target.value)]);
-    //             temp[e.target.name].push(this.props.genders[parseInt(e.target.value)]);
-    //         } else {
-    //             temp[e.target.name].splice(temp[e.target.name].findIndex((x) => x.id == this.props.genders[parseInt(e.target.value)].id), 1);
-    //         }
-
-    //     } else {
-    //         temp[e.target.name] = (e.target.value);
-    //     }
-    //     this.setState(temp)
-    //     console.log(temp);
-    // }
+   
 
     handleSubmit = () => {
         if (this.validate()) {
-            this.props.editMD(this.state.newMovieDrama)
+            this.props.editMD(this.state.movieDrama)
         }
     }
 
@@ -111,10 +99,15 @@ export default class EditMD extends Component {
         }
     }
 
+    componentWillUnmount(){
+        this.setState({
+            movieDrama: {}
+        })
+    }
     render() {
 
         return (
-            <div className="newMdBg bg-cover pt-4">
+            <div className="editMdBg bg-cover pt-4">
                 <div class="container-md flex flex-col   w-full justify-center  bg-gray-100  rounded-2xl shadow p-10  ">
                     {/* <Container> */}
                     <h2 className="text-center opacity-75 mb-5">Edit Movie - Drama </h2>
@@ -124,14 +117,14 @@ export default class EditMD extends Component {
                             <Form.Group as={Row} >
                                 <Form.Label column sm={2}>Title</Form.Label>
                                 <Col sm={10}>
-                                    <Form.Control required id="title" type="text" name="title" value={this.props.movieDrama.title} onChange={this.changeHandler} placeholder="Voice"></Form.Control>
+                                    <Form.Control required id="title" type="text" name="title" value={this.state.movieDrama.title}  onChange={this.changeHandler} placeholder="Voice"></Form.Control>
                                 </Col>
                             </Form.Group>
 
                             <Form.Group as={Row}>
                                 <Form.Label column sm={2}>Release Date </Form.Label>
                                 <Col sm={10}>
-                                    <Form.Control required id="releaseYear" type="date" name="releaseYear" value={this.props.movieDrama.releaseYear}  onChange={this.changeHandler} placeholder="2017-01-20"></Form.Control>
+                                    <Form.Control required id="releaseYear" type="date" name="releaseYear"  value={this.state.movieDrama.releaseYear} onChange={this.changeHandler} placeholder="2017-01-20"></Form.Control>
                                 </Col>
                             </Form.Group>
 
@@ -149,26 +142,26 @@ export default class EditMD extends Component {
                             <Form.Group as={Row}>
                                 <Form.Label column sm={2}>Description</Form.Label>
                                 <Col sm={10}>
-                                    <Form.Control as="textarea" id="description" required type="text" name="description" value={this.props.movieDrama.description} onChange={this.changeHandler} placeholder="About the crimes ..."></Form.Control>
+                                    <Form.Control as="textarea" id="description" required type="text" name="description" value={this.state.movieDrama.description}  onChange={this.changeHandler} placeholder="About the crimes ..."></Form.Control>
                                 </Col>
 
                             </Form.Group>
                             <Form.Group as={Row}>
                                 <Form.Label column sm={2}>Poster URL</Form.Label>
                                 <Col sm={10}>
-                                    <Form.Control required id="poster" type="text" name="poster" value={this.props.movieDrama.poster} onChange={this.changeHandler} placeholder="https://Drama-Movie-Poster.com/"></Form.Control>
+                                    <Form.Control required id="poster" type="text" name="poster" value={this.state.movieDrama.poster}  onChange={this.changeHandler} placeholder="https://Drama-Movie-Poster.com/"></Form.Control>
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row}>
                                 <Form.Label column sm={2}> Duration</Form.Label>
                                 <Col sm={10}>
-                                    <Form.Control required id="duration" type="text" name="duration" value={this.props.movieDrama.duration} onChange={this.changeHandler} placeholder="1 hour 30 min"></Form.Control>
+                                    <Form.Control required id="duration" type="text" name="duration" value={this.state.movieDrama.duration}  onChange={this.changeHandler} placeholder="1 hour 30 min"></Form.Control>
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row}>
                                 <Form.Label column sm={2}>  # Of Episods</Form.Label>
                                 <Col sm={10}>
-                                    <Form.Control required id="numOfEpisods" type="number" name="numOfEpisods" value={this.props.movieDrama.numOfEpisods} onChange={this.changeHandler} placeholder="16"></Form.Control>
+                                    <Form.Control required id="numOfEpisods" type="number" name="numOfEpisods" value={this.state.movieDrama.numOfEpisods}  onChange={this.changeHandler} placeholder="16"></Form.Control>
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row}>
@@ -187,7 +180,7 @@ export default class EditMD extends Component {
                             <Form.Group as={Row}>
                                 <Form.Label column sm={2}> Score</Form.Label>
                                 <Col sm={10}>
-                                    <Form.Control required id="score" type="text" name="score" value={this.props.movieDrama.score} onChange={this.changeHandler} placeholder="9.0"></Form.Control>
+                                    <Form.Control required id="score" type="text" name="score" value={this.state.movieDrama.score} onChange={this.changeHandler} placeholder="9.0"></Form.Control>
                                 </Col>
                             </Form.Group>
 
@@ -198,12 +191,23 @@ export default class EditMD extends Component {
                             <Form.Group className="border-2  border-gray-200 rounded-lg pl-5 h-64 overflow-y-scroll shadow-sm">
                                 <Form.Label className="text-lg underline"> Actors - Cast </Form.Label>
 
+                                {this.state.movieDrama.actors ?
+                                <div>
                                 {this.props.actors.map((actor, index) =>
-                                    <div>
+                                    <div>{this.state.movieDrama.actors.findIndex(x => x.id== actor.id) == -1 ? 
+                                        <div>
                                         <input className="mr-3" type="checkbox" name="actors" value={index} onChange={this.changeHandler} />
-                                        {actor.fullName}
+                                        {actor.fullName}</div>
+                                         :
+                                         <div>
+                                        <input className="mr-3" type="checkbox" checked name="actors" value={index} onChange={this.changeHandler} />
+                                        {actor.fullName}</div> }
+                                        
                                     </div>
                                 )}
+                                </div>
+
+                                : null }
 
                             </Form.Group>
 
@@ -211,9 +215,15 @@ export default class EditMD extends Component {
                                 <Form.Label className="text-lg underline"> Gender </Form.Label>
 
                                 {this.props.genders.map((gender, index) =>
-                                    <div>
+                                    <div>{this.state.movieDrama.genders.findIndex(x => x.id== gender.id) == -1 ? 
+                                        <div>
                                         <input className="mr-3" type="checkbox" name="genders" value={index} onChange={this.changeHandler} />
-                                        {gender.name}
+                                        {gender.name}</div>
+                                         :
+                                         <div>
+                                        <input className="mr-3" type="checkbox" checked name="genders" value={index} onChange={this.changeHandler} />
+                                        {gender.name}</div> }
+                                        
                                     </div>
                                 )}
                             </Form.Group>

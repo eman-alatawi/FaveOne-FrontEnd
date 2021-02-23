@@ -69,6 +69,7 @@ export default class MDIndex extends Component {
                 console.log("edit movie-Drama");
                 console.log(response);
                 this.props.loadMoviesDramas();
+                this.props.loadActors();
                 this.setState({
                     successMessage: "movie-Drama Edited Successfully!!",
                     isEdit: false
@@ -107,6 +108,9 @@ export default class MDIndex extends Component {
                 })
             })
     }
+
+
+    
     render() {
         const errorMessage = this.props.errorMessage ? (
             <Alert variant="danger">{this.props.errorMessage}</Alert>
@@ -116,7 +120,7 @@ export default class MDIndex extends Component {
             <Alert variant="success">{this.props.successMessage}</Alert>
         ) : null;
         return (
-            <div className="mdBg bg-cover pt-4">
+            <div className="mdBg bg-cover">
                 {errorMessage}
                 {successMessage}
                 <div className="   mb-10 w-full  flex flex-col  justify-evenly ">

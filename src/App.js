@@ -375,18 +375,18 @@ export default class App extends Component {
 
 
         <div>
-          {/* <Route exact path="/" component={App}></Route>
-  <Route path="/addAuthor" component={() => <AuthorNewForm addAuthor={this.addAuthor}></AuthorNewForm>}></Route>
+           {/* <Route exact path="/" component={() => <App></App>}></Route> */}
+  {/* <Route path="/addAuthor" component={() => <AuthorNewForm addAuthor={this.addAuthor}></AuthorNewForm>}></Route>
   <Route path="/addArticle" component={() => <NewArticle authors={this.state.authors} addArticle={this.addArticle}></NewArticle>}></Route>
   <Route path="/authorIndex" component={() => <AuthorList authors={this.state.authors} articles={this.state.articles} loadAuthorList={this.loadAuthorList}></AuthorList>}></Route>
-  <Route path="/articleIndex" component={() => <ArticleList articles={this.state.articles} authors={this.state.authors} loadArticleList={this.loadArticleList}></ArticleList>}></Route> */}
+  <Route path="/articleIndex" component={() => <ArticleList articles={this.state.articles} authors={this.state.authors} loadArticleList={this.loadArticleList}></ArticleList>}></Route>  */}
 
-          <Switch>
+          
             <Route path="/register" component={() => <Join register={this.registerHandler} message={this.state.message} ></Join>}></Route>
             <Route path="/login" component={() => <Login login={this.loginHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} />}></Route>
             <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></ActorIndex>}></Route>
             <Route path="/genderIndex" component={() => <GenderIndex genders={this.state.genders} isAuth={this.state.isAuth} loadGenders={this.loadGenders} addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></GenderIndex>}></Route>
-            <Route path="/movieDramaIndex" component={() => <MDIndex moviesDramas={this.state.moviesDramas} actors={this.state.actors} genders={this.state.genders}  isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas}></MDIndex>}></Route>
+            <Route path="/movieDramaIndex" component={() => <MDIndex moviesDramas={this.state.moviesDramas} actors={this.state.actors} genders={this.state.genders}  isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors}  errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></MDIndex>}></Route>
 
             <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewActor>}></Route>
             <Route path="/addMovieDrama" component={() => <NewMD addMD={this.addMovieDramaHandler} actors={this.state.actors} genders={this.state.genders}  errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewMD>}></Route>
@@ -394,7 +394,7 @@ export default class App extends Component {
             {/* <Route path="/addGender" component={() => <NewGender addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewGender>}></Route> */}
 
 
-          </Switch>
+       
         </div>
 
 
