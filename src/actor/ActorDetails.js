@@ -24,15 +24,6 @@ export default function ActorDetails(props) {
                 </div>
             </div>
 
-
-            {/* {window.setTimeout(() => {
-                      {props.actor.movieDramas.map((md, index) =>
-                        <div key={index}>
-                       <MDRowCard {...md} isAuth={props.actor.isAuth}></MDRowCard>
-                       </div>
-                       )}
-                    
-                }, 2000)} */}
             {props.actor.movieDramas ?
                 <div className=" flex flex-col  bg-gray-800  rounded-lg shadow p-10 ">
                     <h4 className="text-gray-300 mb-3 text-xl">Related Movies/Dramas:</h4>

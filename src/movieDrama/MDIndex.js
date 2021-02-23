@@ -4,6 +4,7 @@ import { Alert } from "react-bootstrap";
 import axios from 'axios';
 import MDRowCard from './MDRowCard'
 import EditMD from './EditMD'
+import MDDetails from './MDDetails'
 export default class MDIndex extends Component {
     constructor(props) {
         super(props)
@@ -156,7 +157,7 @@ export default class MDIndex extends Component {
                     {/* if the user click the card  - show the ActorDetail [we need to loop again using map to know the clickedActorId by user and the actor.id in actors ] */}
                     {this.state.moviesDramas.map((md, index) =>
                         <div key={index}>
-                            {/* {(this.state.isDetail && this.state.clickedMDId === md.id) ? <MDDetails actor={this.state.actorDetail}></MDDetails> : null} */}
+                            {(this.state.isDetail && this.state.clickedMDId === md.id) ? <MDDetails movieDrama={this.state.mdDetail}></MDDetails> : null}
                         </div>
                     )}
 
