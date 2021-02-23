@@ -163,6 +163,11 @@ export default class NewMD extends Component {
 
                         </div>
                         <div className="w-1/4 flex flex-col  pl-5">
+
+                             {/* show poster */}
+                             <div className="   mb-3 flex-row flex justify-center   h-72  ">
+                                <img src={this.state.movieDrama.poster} className="w-full bg-contain shadow-md "></img>
+                            </div>
                             
                             <Form.Group className="border-2  border-gray-200 rounded-lg pl-5 h-64 overflow-y-scroll shadow-sm">
                                 <Form.Label className="text-lg underline"> Actors - Cast </Form.Label>

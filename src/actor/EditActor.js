@@ -5,17 +5,17 @@ import swal from 'sweetalert';
 export default class EditActor extends Component {
     constructor(props) {
         super(props)
-    
+
         this.state = {
-             actor: props.actor
+            actor: props.actor
         }
     }
     changeHandler = (e) => {
         const attributeToChange = e.target.name;
-    
+
         const newValue = e.target.value;
 
-        const updatedActor = {...this.state.actor}
+        const updatedActor = { ...this.state.actor }
         updatedActor[attributeToChange] = newValue;
         console.log(updatedActor);
 
@@ -26,7 +26,7 @@ export default class EditActor extends Component {
 
     handleSubmit = () => {
         if (this.validate()) {
-        this.props.editActor(this.state.actor)
+            this.props.editActor(this.state.actor)
         }
     }
 
@@ -48,65 +48,69 @@ export default class EditActor extends Component {
     }
 
     render() {
-       
+
         return (
             <div>
-            <div class="container-sm flex flex-col justify-center my-5 bg-gray-100  rounded-2xl shadow p-10 mb-12 ">
-               
-            <h2 className="text-center opacity-75 mb-5">Edit Actor</h2>
-            <Container>
-                <Form.Group as={Row} >
-                    <Form.Label column sm={2}>Full Name</Form.Label>
-                    <Col sm={10}>
-                        <Form.Control required id="fullName" type="text" name="fullName" value={this.state.actor.fullName} onChange={this.changeHandler} placeholder="Kim Jong woon"></Form.Control>
-                    </Col>
-                </Form.Group>
+                <div class="container-sm flex flex-col justify-center my-5 bg-gray-100  rounded-2xl shadow p-10 mb-12 ">
 
-                <Form.Group as={Row}>
-                    <Form.Label column sm={2}>Date Of Birth </Form.Label>
-                    <Col sm={10}>
-                        <Form.Control required  id="dateOfBirth" type="date" name="dateOfBirth" value={this.state.actor.dateOfBirth} onChange={this.changeHandler} placeholder="1984-08-24"></Form.Control>
-                    </Col>
-                </Form.Group>
+                    <h2 className="text-center opacity-75 mb-5">Edit Actor</h2>
+                    {/* show poster */}
+                    <div className="   mb-3 flex-row flex justify-center   h-72  ">
+                        <img src={this.state.actor.picture} className=" bg-contain shadow-md "></img>
+                    </div>
+                    <Container>
+                        <Form.Group as={Row} >
+                            <Form.Label column sm={2}>Full Name</Form.Label>
+                            <Col sm={10}>
+                                <Form.Control required id="fullName" type="text" name="fullName" value={this.state.actor.fullName} onChange={this.changeHandler} placeholder="Kim Jong woon"></Form.Control>
+                            </Col>
+                        </Form.Group>
 
-                <Form.Group as={Row}>
-                    <Form.Label column sm={2}>Gender</Form.Label>
-                    <Col sm={10}>
-                        <Form.Control required id="gender" as="select" name="gender"   onChange={this.changeHandler}>
-                            <option value="">Select Gender</option>
-                            <option value="Female"> Female</option>
-                            <option value="Male"> Male</option>
-                        </Form.Control>
-                    </Col>
-                </Form.Group>
+                        <Form.Group as={Row}>
+                            <Form.Label column sm={2}>Date Of Birth </Form.Label>
+                            <Col sm={10}>
+                                <Form.Control required id="dateOfBirth" type="date" name="dateOfBirth" value={this.state.actor.dateOfBirth} onChange={this.changeHandler} placeholder="1984-08-24"></Form.Control>
+                            </Col>
+                        </Form.Group>
 
-                <Form.Group as={Row}>
-                    <Form.Label column sm={2}>biography</Form.Label>
-                    <Col sm={10}>
-                        <Form.Control as="textarea"  id="biography" required type="text" name="biography" value={this.state.actor.biography} onChange={this.changeHandler} placeholder="About the Actor ..."></Form.Control>
-                    </Col>
+                        <Form.Group as={Row}>
+                            <Form.Label column sm={2}>Gender</Form.Label>
+                            <Col sm={10}>
+                                <Form.Control required id="gender" as="select" name="gender" onChange={this.changeHandler}>
+                                    <option value="">Select Gender</option>
+                                    <option value="Female"> Female</option>
+                                    <option value="Male"> Male</option>
+                                </Form.Control>
+                            </Col>
+                        </Form.Group>
 
-                </Form.Group>
-                <Form.Group as={Row}>
-                    <Form.Label column sm={2}>Actor Picture URL</Form.Label>
-                    <Col sm={10}>
-                        <Form.Control required id="picture" type="text" name="picture" value={this.state.actor.picture} onChange={this.changeHandler} placeholder="https://YesungActorImage.com/"></Form.Control>
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row}>
-                    <Form.Label column sm={2}> Social Account</Form.Label>
-                    <Col sm={10}>
-                        <Form.Control required  id="socialAccount" type="text" name="socialAccount" value={this.state.actor.socialAccount} onChange={this.changeHandler} placeholder="instagram: @yesung1106"></Form.Control>
-                    </Col>
-                </Form.Group>
-              
+                        <Form.Group as={Row}>
+                            <Form.Label column sm={2}>biography</Form.Label>
+                            <Col sm={10}>
+                                <Form.Control as="textarea" id="biography" required type="text" name="biography" value={this.state.actor.biography} onChange={this.changeHandler} placeholder="About the Actor ..."></Form.Control>
+                            </Col>
 
-                <div className="w-full flex flex-row justify-center">
-                    <Button onClick={this.handleSubmit} className="btn w-64">Edit Actor</Button>
+                        </Form.Group>
+                        <Form.Group as={Row}>
+                            <Form.Label column sm={2}>Actor Picture URL</Form.Label>
+                            <Col sm={10}>
+                                <Form.Control required id="picture" type="text" name="picture" value={this.state.actor.picture} onChange={this.changeHandler} placeholder="https://YesungActorImage.com/"></Form.Control>
+                            </Col>
+                        </Form.Group>
+                        <Form.Group as={Row}>
+                            <Form.Label column sm={2}> Social Account</Form.Label>
+                            <Col sm={10}>
+                                <Form.Control required id="socialAccount" type="text" name="socialAccount" value={this.state.actor.socialAccount} onChange={this.changeHandler} placeholder="instagram: @yesung1106"></Form.Control>
+                            </Col>
+                        </Form.Group>
+
+
+                        <div className="w-full flex flex-row justify-center">
+                            <Button onClick={this.handleSubmit} className="btn w-64">Edit Actor</Button>
+                        </div>
+                    </Container>
                 </div>
-            </Container>
-        </div>
-        </div>
+            </div>
         )
     }
 }
