@@ -2,19 +2,26 @@ import React, { Component } from 'react'
 import { Container, Form, Button, Row, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
 import Footer from '../Footer';
+import axios from 'axios';
 
 export default class NewMD extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
+            user: {},
             movieDrama: {
                 actors: [],
-                genders: []
+                genders: [],
+                user: null
             }
         }
     }
+    componentDidMount() {
+        this.loadUser(this.props.user.emailAddress);
+    }
     changeHandler = (event) => {
+
         const attributeToChange = event.target.name;
 
         const newValue = event.target.value;
@@ -22,24 +29,36 @@ export default class NewMD extends Component {
         const updatedMD = { ...this.state.movieDrama }
         //for actors
         if (attributeToChange === 'actors') {
-            if(event.target.checked){
+            if (event.target.checked) {
                 console.log(newValue);
                 console.log(this.props.actors[parseInt(newValue)]);
                 updatedMD[attributeToChange].push(this.props.actors[parseInt(newValue)]);
-            }else{
-                updatedMD[attributeToChange].splice(updatedMD[attributeToChange].findIndex((x) => x.id == this.props.actors[parseInt(newValue)].id),1);
+            } else {
+                updatedMD[attributeToChange].splice(updatedMD[attributeToChange].findIndex((x) => x.id == this.props.actors[parseInt(newValue)].id), 1);
             }
-          
+
         } else if (attributeToChange === 'genders') {
-            if(event.target.checked){
+            if (event.target.checked) {
                 console.log(newValue);
                 console.log(this.props.genders[parseInt(newValue)]);
                 updatedMD[attributeToChange].push(this.props.genders[parseInt(newValue)]);
-            }else{
-                updatedMD[attributeToChange].splice(updatedMD[attributeToChange].findIndex((x) => x.id == this.props.genders[parseInt(newValue)].id),1);
+            } else {
+                updatedMD[attributeToChange].splice(updatedMD[attributeToChange].findIndex((x) => x.id == this.props.genders[parseInt(newValue)].id), 1);
             }
-          
-        }else{
+        }
+        else if (attributeToChange === 'user') {
+
+            if (event.target.checked) {
+
+                updatedMD[attributeToChange] = this.state.user;
+
+
+            } else {
+                swal("info", "You should select this ckeckbox")
+                updatedMD[attributeToChange] = null
+            }
+        }
+        else {
             updatedMD[attributeToChange] = (newValue);
         }
 
@@ -48,6 +67,28 @@ export default class NewMD extends Component {
         this.setState({
             movieDrama: updatedMD
         })
+    }
+
+    loadUser = (emailAddress) => {
+        axios.get("/favone/user/userProfile",
+            {
+                params: { emailAddress: emailAddress },
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                }
+            })
+            .then(response => {
+                console.log("get user profile");
+                console.log(response);
+
+                this.setState({
+                    user: response.data
+                })
+            })
+            .catch(error => {
+                console.log("Error while retriving user profile!!");
+                console.log(error);
+            })
     }
 
     handleSubmit = () => {
@@ -67,13 +108,27 @@ export default class NewMD extends Component {
         var numOfEpisods = document.getElementById("numOfEpisods").value;
         var contentRating = document.getElementById("contentRating").value;
         var score = document.getElementById("score").value;
+        var userCheckBox = document.getElementById("userCheckBox").value;
+
+        if(numOfEpisods <1){
+            swal("Undefiend!!", "Number of Episodes should be 1 or more", "error")
+            return false;
+        }
 
         if (title === '' || releaseYear === '' || type === '' || description === '' || poster === '' || duration === '' || numOfEpisods === '' || contentRating === '' || score === '' ) {
             swal("Empty!!", "Some Feilds are empty!", "error")
             return false;
-        } else {
+
+        }else if(  !userCheckBox.checked ){
+            swal("Empty!!", "The last checkbox is unchecked!", "error")
+            return false;
+        }
+         else {
             return true;
         }
+
+        
+
     }
 
     render() {
@@ -82,8 +137,8 @@ export default class NewMD extends Component {
             <div className="newMdBg bg-cover pt-4">
                 <div class="container-md flex flex-col   w-full justify-center  bg-gray-100  rounded-2xl shadow p-10 mb-12 ">
                     {/* <Container> */}
-                        <h2 className="text-center opacity-75 mb-5">Add Movie - Drama </h2>
-                        <div className=" flex flex-row w-full mb-3">
+                    <h2 className="text-center opacity-75 mb-5">Add Movie - Drama </h2>
+                    <div className=" flex flex-row w-full mb-3">
                         <div className="w-3/4 flex flex-col">
 
                             <Form.Group as={Row} >
@@ -96,7 +151,7 @@ export default class NewMD extends Component {
                             <Form.Group as={Row}>
                                 <Form.Label column sm={2}>Release Date </Form.Label>
                                 <Col sm={10}>
-                                    <Form.Control required id="releaseYear" type="date" name="releaseYear"  onChange={this.changeHandler} placeholder="2017-01-20"></Form.Control>
+                                    <Form.Control required id="releaseYear" type="date" name="releaseYear" onChange={this.changeHandler} placeholder="2017-01-20"></Form.Control>
                                 </Col>
                             </Form.Group>
 
@@ -114,26 +169,26 @@ export default class NewMD extends Component {
                             <Form.Group as={Row}>
                                 <Form.Label column sm={2}>Description</Form.Label>
                                 <Col sm={10}>
-                                    <Form.Control as="textarea" id="description" required type="text" name="description"  onChange={this.changeHandler} placeholder="About the crimes ..."></Form.Control>
+                                    <Form.Control as="textarea" id="description" required type="text" name="description" onChange={this.changeHandler} placeholder="About the crimes ..."></Form.Control>
                                 </Col>
 
                             </Form.Group>
                             <Form.Group as={Row}>
                                 <Form.Label column sm={2}>Poster URL</Form.Label>
                                 <Col sm={10}>
-                                    <Form.Control required id="poster" type="text" name="poster"  onChange={this.changeHandler} placeholder="https://Drama-Movie-Poster.com/"></Form.Control>
+                                    <Form.Control required id="poster" type="text" name="poster" onChange={this.changeHandler} placeholder="https://Drama-Movie-Poster.com/"></Form.Control>
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row}>
                                 <Form.Label column sm={2}> Duration</Form.Label>
                                 <Col sm={10}>
-                                    <Form.Control required id="duration" type="text" name="duration"  onChange={this.changeHandler} placeholder="1 hour 30 min"></Form.Control>
+                                    <Form.Control required id="duration" type="text" name="duration" onChange={this.changeHandler} placeholder="1 hour 30 min"></Form.Control>
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row}>
                                 <Form.Label column sm={2}>  # Of Episods</Form.Label>
                                 <Col sm={10}>
-                                    <Form.Control required id="numOfEpisods" type="number" name="numOfEpisods"  onChange={this.changeHandler} placeholder="16"></Form.Control>
+                                    <Form.Control required id="numOfEpisods" type="number" name="numOfEpisods" onChange={this.changeHandler} placeholder="16"></Form.Control>
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row}>
@@ -149,14 +204,22 @@ export default class NewMD extends Component {
                                     </Form.Control>
                                 </Col>
                             </Form.Group>
+
                             <Form.Group as={Row}>
                                 <Form.Label column sm={2}> Score</Form.Label>
                                 <Col sm={10}>
-                                    <Form.Control required id="score" type="text" name="score"  onChange={this.changeHandler} placeholder="9.0"></Form.Control>
+                                    <Form.Control required id="score" type="text" name="score" onChange={this.changeHandler} placeholder="9.0"></Form.Control>
                                 </Col>
                             </Form.Group>
-                            <Form.Text  muted>
-                            If you can't see the Actors/Genders in the list, you should add them first and then come back here.
+
+                            <div className="mt-10">
+                                <input required id="userCheckBox" className="mr-3" type="checkbox" name="user" onChange={this.changeHandler} />This Movie - Drama is  Added By me
+                             </div>
+                            <Form.Text muted>
+                                * If you can't see the Actors/Genders in the list, you should add them first and then come back here.
+                            </Form.Text>
+                            <Form.Text muted>
+                            * All the Feilds are required .
                             </Form.Text>
 
 
@@ -164,11 +227,11 @@ export default class NewMD extends Component {
                         </div>
                         <div className="w-1/4 flex flex-col  pl-5">
 
-                             {/* show poster */}
-                             <div className="   mb-3 flex-row flex justify-center   h-72  ">
+                            {/* show poster */}
+                            <div className="   mb-3 flex-row flex justify-center   h-72  ">
                                 <img src={this.state.movieDrama.poster} className="w-full bg-contain shadow-md "></img>
                             </div>
-                            
+
                             <Form.Group className="border-2  border-gray-200 rounded-lg pl-5 h-64 overflow-y-scroll shadow-sm">
                                 <Form.Label className="text-lg underline"> Actors - Cast </Form.Label>
 
@@ -185,7 +248,7 @@ export default class NewMD extends Component {
 
                                 {this.props.genders.map((gender, index) =>
                                     <div>
-                                        <input  className="mr-3" type="checkbox" name="genders" value={index} onChange={this.changeHandler} />
+                                        <input className="mr-3" type="checkbox" name="genders" value={index} onChange={this.changeHandler} />
                                         {gender.name}
                                     </div>
                                 )}
@@ -194,12 +257,13 @@ export default class NewMD extends Component {
 
 
                         </div>
-                        
-                        </div>
-                        <div className="w-full flex flex-row justify-center">
-                            <Button onClick={this.handleSubmit} className="btn w-64">Add Movie - Drama</Button>
-                        </div>
-                        
+
+                    </div>
+
+                    <div className="w-full flex flex-row justify-center">
+                        <Button onClick={this.handleSubmit} className="btn w-64">Add Movie - Drama</Button>
+                    </div>
+
                     {/* </Container> */}
                 </div>
                 <Footer></Footer>

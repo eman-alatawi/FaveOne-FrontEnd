@@ -101,16 +101,16 @@ export default class GenderIndex extends Component {
                 <div className="h-full w-full  ">
                     <h3 className=" mb-12  text-center text-gray-900 text-3xl opacity-75 ">Movie-Drama Genders</h3>
                 </div>
-                <div className=" h-ful flex flex-row mx-5 my-10  ">
+                <div className=" h-ful flex flex-col mx-5 my-10  ">
 
                     {/* partion 1 */}
-                    <div className=" w-1/4 flex flex-col justify-around px-5 overflow-y-scroll h-1/4 ">
+                    <div className=" w-full inline-grid grid-cols-5 gap-x-2  gap-y-3 justify-around px-5 overflow-x-scroll h-3/4">
                         {this.props.isAuth ? 
                         <div>
-                        <Card style={{ width: '12rem' }} className="mb-3 shadow " >
+                        <Card style={{ width: '12rem' }} className="mb-3 shadow h-24" >
                             <Card.Body className="text-center hover:bg-blue-500 hover:border-transparent hover:shadow-lg group border-2  border-dashed   border-gray-300">
                                 <Card.Title className="group-hover:text-white">New Gender</Card.Title>
-                                <span  onClick={this.addView} className="material-icons transform hover:scale-110 motion-reduce:transform-none cursor-pointer text-2xl group-hover:text-white">add</span>
+                                <span  onClick={this.addView} className="material-icons transform hover:scale-110 motion-reduce:transform-none cursor-pointer text-xl group-hover:text-white">add</span>
                             </Card.Body>
                         </Card>
                         </div>
@@ -123,7 +123,7 @@ export default class GenderIndex extends Component {
                     </div>
 
                     {/* partion 2 */}
-                    <div className=" w-9/12 flex flex-col justify-center h-72">
+                    <div className=" w-full flex flex-col justify-center h-2/4 ">
                         {this.state.genders.map((gender, index) =>
                             <div key={index}>
                                 {(this.state.isEdit && this.state.clickedGenderId === gender.id) ? <EditGender gender={gender} editGender={this.editGender} ></EditGender> : null}

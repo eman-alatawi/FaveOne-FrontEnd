@@ -30,6 +30,8 @@ export default class App extends Component {
     isAuth: false,
     isSectionsShow: true,
     user: null,
+    emailAddress: '',
+    userInfo: {},
     errorMessage: null,
     successMessage: null,
     message: null,
@@ -43,6 +45,7 @@ export default class App extends Component {
     this.loadActors();
     this.loadGenders();
     this.loadMoviesDramas();
+    
   }
 
 
@@ -106,6 +109,7 @@ export default class App extends Component {
             successMessage: "Successfully logged in!!",
             errorMessage: null
           })
+          console.log(this.state.user.sub)
         } else {
           this.setState({
             isAuth: false,
@@ -122,6 +126,7 @@ export default class App extends Component {
           errorMessage: "Error Occured. please try again later "
         })
       });
+
   };
 
   // 3- onLogoutHandeler
@@ -164,6 +169,7 @@ export default class App extends Component {
 
   // 5- hideSectionsHandler
   hideSectionsHandler = () => {
+    this.loadUserProfile();
     this.setState({
       isSectionsShow: false
     })
@@ -177,60 +183,88 @@ export default class App extends Component {
   }
 
   //7- addGenderHandler
-  addGenderHandler = (gender) =>{
+  addGenderHandler = (gender) => {
     axios.post("/favone/mdgender/add", gender,
-    {
-      headers: {
-        "Authorization": "Bearer " + localStorage.getItem("token")
-      }
-    })
-    .then(response => {
-      console.log("Gender Added");
-      console.log(response);
-      this.loadGenders();
+      {
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+      })
+      .then(response => {
+        console.log("Gender Added");
+        console.log(response);
+        this.loadGenders();
 
-      this.setState({
-        successMessage: "Gender Added Successfully!!"
+        this.setState({
+          successMessage: "Gender Added Successfully!!"
+        })
       })
-    })
-    .catch(error => {
-      console.log("Error while Adding Gender !!");
-      console.log(error);
-      this.setState({
-        errorMessage: "Error while Adding gender, Try again later!!"
+      .catch(error => {
+        console.log("Error while Adding Gender !!");
+        console.log(error);
+        this.setState({
+          errorMessage: "Error while Adding gender, Try again later!!"
+        })
       })
-    })
   }
 
   // 8- addMovieDramaHandler
-  addMovieDramaHandler =(movieDrama) =>{
+  addMovieDramaHandler = (movieDrama) => {
     axios.post("/favone/md/add", movieDrama,
-    {
-      headers: {
-        "Authorization": "Bearer " + localStorage.getItem("token")
-      }
-    })
-    .then(response => {
-      console.log("movie - Drama Added");
-      console.log(response);
-      this.loadMoviesDramas();
-
-      this.setState({
-        successMessage: "movie - Drama Added Successfully!!"
+      {
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem("token")
+        }
       })
-    })
-    .catch(error => {
-      console.log("Error while Adding movie - Drama !!");
-      console.log(error);
-      this.setState({
-        errorMessage: "Error while Adding movie -Drama, Try again later!!"
+      .then(response => {
+        console.log("movie - Drama Added");
+        console.log(response);
+        this.loadMoviesDramas();
+        this.loadActors();
+        this.setState({
+          successMessage: "movie - Drama Added Successfully!!"
+        })
       })
-    })
+      .catch(error => {
+        console.log("Error while Adding movie - Drama !!");
+        console.log(error);
+        this.setState({
+          errorMessage: "Error while Adding movie -Drama, Try again later!!"
+        })
+      })
   }
-  
+
+
 
   //Loaders
-  //1- loadActors
+
+
+  // 1- loadUserProfile
+  loadUserProfile = () => {
+    axios.get("/favone/user/userProfile",
+    {
+        params: { emailAddress: this.state.user.sub },
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+    })
+      .then(response => {
+        console.log("get user profile");
+        console.log(response);
+
+        this.setState({
+          userInfo: response.data,
+          emailAddress: response.data.emailAddress
+        })
+      })
+      .catch(error => {
+        console.log("Error while retriving user profile!!");
+        console.log(error);
+      })
+  }
+
+
+  //2- loadActors
   loadActors = () => {
     axios.get("/favone/actor/index")
       .then(response => {
@@ -245,7 +279,7 @@ export default class App extends Component {
       })
   }
 
-  //2- loadGenders
+  //3- loadGenders
   loadGenders = () => {
     axios.get("/favone/mdgender/index")
       .then(response => {
@@ -260,22 +294,22 @@ export default class App extends Component {
       })
   }
 
-  //3- loadMoviesDramasHandler
-  loadMoviesDramas = () =>{
+  //4- loadMoviesDramasHandler
+  loadMoviesDramas = () => {
     axios.get("/favone/md/index")
-    .then(response => {
-      console.log(response);
-      this.setState({
-        moviesDramas: response.data
+      .then(response => {
+        console.log(response);
+        this.setState({
+          moviesDramas: response.data
+        })
       })
-    })
-    .catch(error => {
-      console.log("Error while reteriving Movies-Dramas Genders!!");
-      console.log(error);
-    })
+      .catch(error => {
+        console.log("Error while reteriving Movies-Dramas Genders!!");
+        console.log(error);
+      })
   }
 
-  render(){
+  render() {
     const { isAuth, isSectionsShow } = this.state;
 
     return (
@@ -283,12 +317,12 @@ export default class App extends Component {
 
       <Router>
         <nav>
-          <div> 
+          <div>
           </div>
 
           {isAuth ? (
             <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-gray-800 shadow">
-              <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler} className="text-gray-300 ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
+              <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler} className="text-gray-200 ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
@@ -317,15 +351,15 @@ export default class App extends Component {
                   </NavDropdown>
                 </Nav>
                 <Nav className="mr-5">
-                  {this.state.user ? <Navbar.Text className="mr-5"> Signed in as: {this.state.user.sub} </Navbar.Text> : null}
+                  {this.state.user ? <Navbar.Text className="mr-5" > Signed in as:  {this.state.user.sub} {this.state.userInfo.id} <img  className="w-10 h-10 rounded-full" src={this.state.userInfo.profileImage} /> </Navbar.Text> : null}
 
-                  <Nav.Link > <Link to="/logout" onClick={this.onLogoutHandeler} className="mr-5 text-gray-300 hover:text-pink-600 text-xl">Say Bye</Link></Nav.Link>
+                  <Nav.Link > <Link to="/logout" onClick={this.onLogoutHandeler} className="mr-5 text-gray-200 hover:text-pink-600 text-xl">Say Bye</Link></Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
           ) : (
               <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-gray-800 shadow">
-                <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler} className="text-gray-300 ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
+                <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler} className="text-gray-200 ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                   <Nav className="mr-auto">
@@ -344,8 +378,8 @@ export default class App extends Component {
                     </NavDropdown>
                   </Nav>
                   <Nav className="mr-5">
-                    <Nav.Link > <Link to="/register" onClick={this.hideSectionsHandler} className="text-gray-300 hover:text-pink-600 text-xl">Join</Link></Nav.Link>
-                    <Nav.Link >  <Link to="/login" onClick={this.hideSectionsHandler} className=" text-gray-300 hover:text-pink-600 text-xl">Login</Link></Nav.Link>
+                    <Nav.Link > <Link to="/register" onClick={this.hideSectionsHandler} className="text-gray-200 hover:text-pink-600 text-xl">Join</Link></Nav.Link>
+                    <Nav.Link >  <Link to="/login" onClick={this.hideSectionsHandler} className=" text-gray-200 hover:text-pink-600 text-xl">Login</Link></Nav.Link>
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>
@@ -375,26 +409,26 @@ export default class App extends Component {
 
 
         <div>
-           {/* <Route exact path="/" component={() => <App></App>}></Route> */}
-  {/* <Route path="/addAuthor" component={() => <AuthorNewForm addAuthor={this.addAuthor}></AuthorNewForm>}></Route>
+          {/* <Route exact path="/" component={() => <App></App>}></Route> */}
+          {/* <Route path="/addAuthor" component={() => <AuthorNewForm addAuthor={this.addAuthor}></AuthorNewForm>}></Route>
   <Route path="/addArticle" component={() => <NewArticle authors={this.state.authors} addArticle={this.addArticle}></NewArticle>}></Route>
   <Route path="/authorIndex" component={() => <AuthorList authors={this.state.authors} articles={this.state.articles} loadAuthorList={this.loadAuthorList}></AuthorList>}></Route>
   <Route path="/articleIndex" component={() => <ArticleList articles={this.state.articles} authors={this.state.authors} loadArticleList={this.loadArticleList}></ArticleList>}></Route>  */}
 
-          
-            <Route path="/register" component={() => <Join register={this.registerHandler} message={this.state.message} ></Join>}></Route>
-            <Route path="/login" component={() => <Login login={this.loginHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} />}></Route>
-            <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></ActorIndex>}></Route>
-            <Route path="/genderIndex" component={() => <GenderIndex genders={this.state.genders} isAuth={this.state.isAuth} loadGenders={this.loadGenders} addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></GenderIndex>}></Route>
-            <Route path="/movieDramaIndex" component={() => <MDIndex moviesDramas={this.state.moviesDramas} actors={this.state.actors} genders={this.state.genders}  isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors}  errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></MDIndex>}></Route>
 
-            <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewActor>}></Route>
-            <Route path="/addMovieDrama" component={() => <NewMD addMD={this.addMovieDramaHandler} actors={this.state.actors} genders={this.state.genders}  errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewMD>}></Route>
+          <Route path="/register" component={() => <Join register={this.registerHandler} message={this.state.message} ></Join>}></Route>
+          <Route path="/login" component={() => <Login login={this.loginHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} />}></Route>
+          <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></ActorIndex>}></Route>
+          <Route path="/genderIndex" component={() => <GenderIndex genders={this.state.genders} isAuth={this.state.isAuth} loadGenders={this.loadGenders} addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></GenderIndex>}></Route>
+          <Route path="/movieDramaIndex" component={() => <MDIndex moviesDramas={this.state.moviesDramas} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></MDIndex>}></Route>
 
-            {/* <Route path="/addGender" component={() => <NewGender addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewGender>}></Route> */}
+          <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewActor>}></Route>
+          <Route path="/addMovieDrama" component={() => <NewMD  user={this.state.userInfo} addMD={this.addMovieDramaHandler} actors={this.state.actors} genders={this.state.genders} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewMD>}></Route>
+
+          {/* <Route path="/addGender" component={() => <NewGender addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewGender>}></Route> */}
 
 
-       
+
         </div>
 
 

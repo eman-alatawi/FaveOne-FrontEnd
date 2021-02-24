@@ -5,6 +5,7 @@ import axios from 'axios';
 import MDRowCard from './MDRowCard'
 import EditMD from './EditMD'
 import MDDetails from './MDDetails'
+
 export default class MDIndex extends Component {
     constructor(props) {
         super(props)
@@ -121,7 +122,7 @@ export default class MDIndex extends Component {
             <Alert variant="success">{this.props.successMessage}</Alert>
         ) : null;
         return (
-            <div className="mdBg bg-cover">
+            <div className="mainBg bg-cover">
                 {errorMessage}
                 {successMessage}
                 <div className="   mb-10 w-full  flex flex-col  justify-evenly ">
