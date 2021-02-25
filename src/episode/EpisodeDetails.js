@@ -1,5 +1,5 @@
 import React from 'react'
-
+import ReactPlayer from 'react-player'
 export default function EpisodeDetails(props) {
 
     // const movieTitle = props.moviesDramas.filter((movieDrama, index) => {
@@ -30,10 +30,8 @@ export default function EpisodeDetails(props) {
                     </div> */}
 
                     <div className="text-justify w-full px-5 h-full overflow-y-scroll">
-                        <video
-                            controls
-                            autoPlay
-                            src={props.episode.episodeVideoUrl} />
+
+                        <ReactPlayer url={props.episode.episodeVideoUrl}  controls={true} light={props.episode.thumbnail}/>
                     </div>
                 </div>
                 {/* <div className="w-1/12  text-center pt-10 mt-2 mb-4 flex flex-col bg-gray-700 shadow-xl text-gray-300">
@@ -48,10 +46,10 @@ export default function EpisodeDetails(props) {
                             )
 
                         ))} */}
-                        {/* {thisRelatedEpisodes.map((episode, index) =>
+                {/* {thisRelatedEpisodes.map((episode, index) =>
                             <li key={index} className="bg-pink-900 my-2 pl-1" >{episode.episodNum} </li>
                         )} */}
-                    {/* </ul>
+                {/* </ul>
 
                 </div> */}
 
