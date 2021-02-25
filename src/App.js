@@ -13,7 +13,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 
 import HomeBanner from './HomeBanner';
 import ActorSection from './actor/ActorSection';
-import EpisodeSection from './EpisodeSection'
+import EpisodeSection from './episode/EpisodeSection'
 import Footer from './Footer';
 import NewActor from './actor/NewActor'
 import ActorIndex from './actor/ActorIndex'
@@ -23,6 +23,8 @@ import MDIndex from './movieDrama/MDIndex';
 import EditMD from './movieDrama/EditMD';
 import NewMD from './movieDrama/NewMD'
 import MovieDramaSection from './movieDrama/MovieDramaSection'
+import EpisodeIndex from './episode/EpisodeIndex';
+import NewEpisode from './episode/NewEpisode';
 
 export default class App extends Component {
 
@@ -36,7 +38,8 @@ export default class App extends Component {
     message: null,
     actors: [],
     genders: [],
-    moviesDramas: []
+    moviesDramas: [],
+    episodes: []
 
   }
   componentDidMount() {
@@ -44,6 +47,7 @@ export default class App extends Component {
     this.loadActors();
     this.loadGenders();
     this.loadMoviesDramas();
+    this.loadEpisodes();
     
   }
 
@@ -232,6 +236,31 @@ export default class App extends Component {
       })
   }
 
+  // 9- addEpisodeHandler
+  addEpisodeHandler = (episode) => {
+    axios.post("/favone/episode/add", episode,
+      {
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+      })
+      .then(response => {
+        console.log("Episode Added");
+        console.log(response);
+        this.loadMoviesDramas();
+        this.loadEpisodes();
+        this.setState({
+          successMessage: "Episode Added Successfully!!"
+        })
+      })
+      .catch(error => {
+        console.log("Error while Adding Episode !!");
+        console.log(error);
+        this.setState({
+          errorMessage: "Error while Adding Episode, Try again later!!"
+        })
+      })
+  }
 
 
   //Loaders
@@ -265,7 +294,7 @@ export default class App extends Component {
       })
   }
 
-  //3- loadMoviesDramasHandler
+  //3- loadMoviesDramas
   loadMoviesDramas = () => {
     axios.get("/favone/md/index")
       .then(response => {
@@ -275,7 +304,22 @@ export default class App extends Component {
         })
       })
       .catch(error => {
-        console.log("Error while reteriving Movies-Dramas Genders!!");
+        console.log("Error while reteriving Movies-Dramas!!");
+        console.log(error);
+      })
+  }
+
+  //4- loadEpisodes
+  loadEpisodes = () => {
+    axios.get("/favone/episode/index")
+      .then(response => {
+        console.log(response);
+        this.setState({
+          episodes: response.data
+        })
+      })
+      .catch(error => {
+        console.log("Error while reteriving Episodes!!");
         console.log(error);
       })
   }
@@ -297,7 +341,7 @@ export default class App extends Component {
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                  <NavDropdown title="Movie - Drama" id="collasible-nav-dropdown" className="mr-11 text-xl">
+                  <NavDropdown title="Movies - Dramas" id="collasible-nav-dropdown" className="mr-11 text-xl">
                     <NavDropdown.Item ><Link to="/movieDramaIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Movies - Dramas</Link></NavDropdown.Item>
                     <NavDropdown.Item ><Link to="/imageGalleryIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Images Gallery</Link></NavDropdown.Item>
                     <NavDropdown.Item ><Link to="/genderIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Genders</Link></NavDropdown.Item>
@@ -310,12 +354,12 @@ export default class App extends Component {
 
                   </NavDropdown>
 
-                  <NavDropdown title="Episode" id="collasible-nav-dropdown" className="mr-11 text-xl">
+                  <NavDropdown title="Episodes" id="collasible-nav-dropdown" className="mr-11 text-xl">
                     <NavDropdown.Item ><Link to="/episodeIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Episodes</Link></NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item ><Link to="/addEpisode" onClick={this.hideSectionsHandler} className="dropDownLink">Add Episode</Link></NavDropdown.Item>
                   </NavDropdown>
-                  <NavDropdown title="Actor" id="collasible-nav-dropdown" className="mr-11 text-xl">
+                  <NavDropdown title="Actors" id="collasible-nav-dropdown" className="mr-11 text-xl">
                     <NavDropdown.Item ><Link to="/actorIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Actors</Link></NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item ><Link to="/addActor" onClick={this.hideSectionsHandler} className="dropDownLink">Add Actor</Link></NavDropdown.Item>
@@ -334,16 +378,16 @@ export default class App extends Component {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                   <Nav className="mr-auto">
-                    <NavDropdown title="Movie - Drama" id="collasible-nav-dropdown" className="mr-11 text-xl">
+                    <NavDropdown title="Movies - Dramas" id="collasible-nav-dropdown" className="mr-11 text-xl">
                       <NavDropdown.Item ><Link to="/movieDramaIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Movies - Dramas</Link></NavDropdown.Item>
                       <NavDropdown.Item ><Link to="/imageGalleryIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Images Gallery</Link></NavDropdown.Item>
                       <NavDropdown.Item ><Link to="/genderIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Genders</Link></NavDropdown.Item>
                     </NavDropdown>
-                    <NavDropdown title="Episode" id="collasible-nav-dropdown" className="mr-11 text-xl">
+                    <NavDropdown title="Episodes" id="collasible-nav-dropdown" className="mr-11 text-xl">
                       <NavDropdown.Item ><Link to="/episodeIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Episodes</Link></NavDropdown.Item>
 
                     </NavDropdown>
-                    <NavDropdown title="Actor" id="collasible-nav-dropdown" className="mr-11 text-xl">
+                    <NavDropdown title="Actors" id="collasible-nav-dropdown" className="mr-11 text-xl">
                       <NavDropdown.Item ><Link to="/actorIndex" onClick={this.hideSectionsHandler} onClick={this.hideSectionsHandler} className="dropDownLink"> Actors</Link></NavDropdown.Item>
 
                     </NavDropdown>
@@ -362,7 +406,7 @@ export default class App extends Component {
           <div>
             <MovieDramaSection moviesDramas={this.state.moviesDramas}></MovieDramaSection>
             <ActorSection actors={this.state.actors} loadActors={this.loadActors} ></ActorSection>
-            <EpisodeSection></EpisodeSection>
+            <EpisodeSection episodes={this.state.episodes} moviesDramas={this.state.moviesDramas}></EpisodeSection>
             <Footer></Footer>
           </div>
         ) : null}
@@ -374,9 +418,13 @@ export default class App extends Component {
           <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></ActorIndex>}></Route>
           <Route path="/genderIndex" component={() => <GenderIndex genders={this.state.genders} isAuth={this.state.isAuth} loadGenders={this.loadGenders} addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></GenderIndex>}></Route>
           <Route path="/movieDramaIndex" component={() => <MDIndex  emailAddress={this.state.user.sub} moviesDramas={this.state.moviesDramas} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></MDIndex>}></Route>
+          <Route path="/episodeIndex" component={() => <EpisodeIndex  episodes={this.state.episodes} moviesDramas={this.state.moviesDramas} isAuth={this.state.isAuth} loadEpisodes={this.loadEpisodes} loadMoviesDramas={this.loadMoviesDramas} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></EpisodeIndex>}></Route>
+
+
 
           <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewActor>}></Route>
           <Route path="/addMovieDrama" component={() => <NewMD  user={this.state.user} addMD={this.addMovieDramaHandler} actors={this.state.actors} genders={this.state.genders} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewMD>}></Route>
+          <Route path="/addEpisode" component={() => <NewEpisode  addEpisode={this.addEpisodeHandler} moviesDramas={this.state.moviesDramas}  errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewEpisode>}></Route>
 
           {/* <Route path="/addGender" component={() => <NewGender addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewGender>}></Route> */}
 

@@ -128,7 +128,7 @@ export default class NewMD extends Component {
     render() {
 
         return (
-            <div className="newMdBg bg-cover pt-4">
+            <div className="formBG bg-cover pt-4">
                 <div class="container-md flex flex-col   w-full justify-center  bg-gray-100  rounded-2xl shadow p-10 mb-12 ">
                     {/* <Container> */}
                     <h2 className="text-center opacity-75 mb-5">Add Movie - Drama </h2>

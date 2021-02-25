@@ -104,7 +104,7 @@ export default class EditMD extends Component {
     render() {
 
         return (
-            <div className="editMdBg bg-cover pt-4">
+            <div className="formBG bg-cover pt-4">
                 <div class="container-md flex flex-col   w-full justify-center  bg-gray-100  rounded-2xl shadow p-10  ">
                     {/* <Container> */}
 

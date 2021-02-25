@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import ActorRowCard from './ActorRowCard';
 export default class ActorSection extends Component {
-    constructor(props) {
-        super(props)
+    // constructor(props) {
+    //     super(props)
     
-        this.state = {
-            actors: props.actors
-        }
-    }
+    //     this.state = {
+    //         actors: props.actors
+    //     }
+    // }
     
     render() {
         return (

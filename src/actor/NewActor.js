@@ -44,7 +44,7 @@ export default class NewActor extends Component {
         ) : null;
 
         return (
-            <div className="actorBg bg-cover pt-4">
+            <div className="formBG bg-cover pt-4">
                 <div class="container-sm flex flex-col justify-center  bg-gray-100  rounded-2xl shadow p-10 mb-12 ">
                     {errorMessage}
                     {successMessage}

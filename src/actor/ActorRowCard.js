@@ -17,7 +17,7 @@ export default function ActorRowCard(props) {
         
         <Card style={{ width: '14rem' }} className="mr-5 shadow " >
         <Card.Img variant="top" className="h-64 w-full object-cover" src={props.picture} />
-        <Card.Body className="text-center bg-gray-900 text-gray-300 hover:bg-gray-50 hover:border-transparent hover:shadow-xl group">
+        <Card.Body className="text-center  bg-gray-50  text-gray-800 hover:bg-pink-200 hover:border-transparent hover:shadow-xl group">
           <Card.Title className="group-hover:text-gray-800  whitespace-nowrap overflow-x-scroll text-center">{props.fullName}</Card.Title>
           <Card.Text className="group-hover:text-gray-800">
           {year.getFullYear()}
