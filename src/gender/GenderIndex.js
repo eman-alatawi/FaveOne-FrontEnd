@@ -108,7 +108,7 @@ export default class GenderIndex extends Component {
                         {this.props.isAuth ? 
                         <div>
                         <Card style={{ width: '12rem' }} className="mb-3 shadow h-24" >
-                            <Card.Body className="text-center hover:bg-blue-500 hover:border-transparent hover:shadow-lg group border-2  border-dashed   border-gray-300">
+                            <Card.Body className="text-center hover:bg-pink-700 hover:border-transparent hover:shadow-lg group border-2  border-dashed   border-gray-300">
                                 <Card.Title className="group-hover:text-white">New Gender</Card.Title>
                                 <span  onClick={this.addView} className="material-icons transform hover:scale-110 motion-reduce:transform-none cursor-pointer text-xl group-hover:text-white">add</span>
                             </Card.Body>

@@ -18,7 +18,7 @@ export default function GenderRowCard(props) {
   return (
 
     <Card style={{ width: '12rem' }} className="mr-3 mb-5 shadow rounded-2xl" >
-      <Card.Body className="text-center bg-gray-100  flex flex-row w-full" >
+      <Card.Body className="text-center bg-purple-300 flex flex-row w-full" >
         <Card.Title className="w-3/4">{props.name}</Card.Title>
         <div className="w-1/4"> {showTool}</div>
       </Card.Body>

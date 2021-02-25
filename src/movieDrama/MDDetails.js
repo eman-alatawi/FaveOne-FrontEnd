@@ -47,7 +47,7 @@ export default function MDDetails(props) {
                         )}
                         </ul>
                         : null }
-                    </div>
+                </div>
             </div>
 {/* 
             {props.movieDrama.episodes ?

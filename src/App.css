@@ -63,8 +63,13 @@ a{
   background-image: url();
 } */
 
+.textShadow{
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+
 .genderBg{
-  background-image: url(https://coverfiles.alphacoders.com/155/thumb-1920-155573.jpg);
+  background-image: url(http://images6.fanpop.com/image/photos/41200000/Power-Rangers-2017-power-rangers-2017-41259647-1280-1024.jpg);
   background-repeat: no-repeat;
 
 }

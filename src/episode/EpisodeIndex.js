@@ -4,6 +4,7 @@ import { Alert } from "react-bootstrap";
 import Footer from '../Footer';
 import EditEpisode from './EditEpisode';
 import EpisodeRowCard from './EpisodeRowCard';
+import EpisodeDetails from './EpisodeDetails'
 export default class EpisodeIndex extends Component {
     constructor(props) {
         super(props)
@@ -47,9 +48,9 @@ export default class EpisodeIndex extends Component {
             .then(response => {
                 console.log("get Episode details");
                 console.log(response);
-                // this.setState({
-                //     episodeDetail: response.data
-                // })
+                this.setState({
+                    episodeDetail: response.data
+                })
                 
                 console.log(this.state.episodeDetail)
             })
@@ -152,11 +153,11 @@ export default class EpisodeIndex extends Component {
                     )}
 
                     {/* if the user click the card  - show the ActorDetail [we need to loop again using map to know the clickedActorId by user and the actor.id in actors ] */}
-                    {/* {this.state.episodes.map((episode, index) =>
-                        <div key={index}> */}
-                            {/* {(this.state.isDetail && this.state.clickedEpisodeId === episode.id) ? <ActorDetails episode={this.state.episodeDetail} isAuth={this.props.isAuth}></ActorDetails> : null} */}
-                        {/* </div>
-                    )} */}
+                    {this.state.episodes.map((episode, index) =>
+                        <div key={index}> 
+                            {(this.state.isDetail && this.state.clickedEpisodeId === episode.id) ? <EpisodeDetails episode={this.state.episodeDetail} allEpisodes={this.state.episodes} moviesDramas={this.props.moviesDramas} isAuth={this.props.isAuth}></EpisodeDetails> : null} 
+                         </div>
+                    )}
 
                 </div>
                 <Footer></Footer>
