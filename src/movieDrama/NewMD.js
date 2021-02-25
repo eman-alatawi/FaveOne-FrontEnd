@@ -106,7 +106,6 @@ export default class NewMD extends Component {
         var numOfEpisods = document.getElementById("numOfEpisods").value;
         var contentRating = document.getElementById("contentRating").value;
         var score = document.getElementById("score").value;
-        // var userCheckBox = document.getElementById("userCheckBox").value;
 
         if(numOfEpisods <1){
             swal("Undefiend!!", "Number of Episodes should be 1 or more", "error")
@@ -207,9 +206,6 @@ export default class NewMD extends Component {
                                 </Col>
                             </Form.Group>
 
-                            {/* <div className="mt-10">
-                                <input required id="userCheckBox" className="mr-3" type="checkbox" name="user" onChange={this.changeHandler} />This Movie - Drama is  Added By me
-                             </div> */}
                             <Form.Text muted>
                                 * If you can't see the Actors/Genders in the list, you should add them first and then come back here.
                             </Form.Text>

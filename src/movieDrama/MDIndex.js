@@ -52,7 +52,6 @@ export default class MDIndex extends Component {
                 })
                 
                 console.log(this.state.mdDetail)
-                // this.props.loadMoviesDramas();
             })
             .catch(error => {
                 console.log("error in retriving Movie - Drama details");
@@ -148,14 +147,14 @@ export default class MDIndex extends Component {
                     }
 
 
-                    {/* if the user click the edit icon - show the editMD [we need to loop again using map to know the clickedActorId by user and the actor.id in actors ] */}
+                    {/* if the user click the edit icon - show the editMD [we need to loop again using map to know the clickedMDId by user and the md.id in moviesDramas ] */}
                     {this.state.moviesDramas.map((md, index) =>
                         <div key={index}>
                             {(this.state.isEdit && this.state.clickedMDId === md.id) ? <EditMD movieDrama={md} editMD={this.editMD} actors={this.props.actors} genders={this.props.genders} ></EditMD> : null}
                         </div>
                     )}
 
-                    {/* if the user click the card  - show the ActorDetail [we need to loop again using map to know the clickedActorId by user and the actor.id in actors ] */}
+                    {/* if the user click the card  - show the movie-Drama Details [we need to loop again using map to know the clickedMDId by user and the md.id in moviesDramas ] */}
                     {this.state.moviesDramas.map((md, index) =>
                         <div key={index}>
                             {(this.state.isDetail && this.state.clickedMDId === md.id) ? <MDDetails movieDrama={this.state.mdDetail}></MDDetails> : null}

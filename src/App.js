@@ -31,7 +31,6 @@ export default class App extends Component {
     isSectionsShow: true,
     user: null,
     emailAddress: '',
-    userInfo: {},
     errorMessage: null,
     successMessage: null,
     message: null,
@@ -169,7 +168,6 @@ export default class App extends Component {
 
   // 5- hideSectionsHandler
   hideSectionsHandler = () => {
-    // this.loadUserProfile();
     this.setState({
       isSectionsShow: false
     })
@@ -237,34 +235,7 @@ export default class App extends Component {
 
 
   //Loaders
-
-
-  // 1- loadUserProfile
-  loadUserProfile = (emailAddress) => {
-    axios.get("/favone/user/userProfile",
-    {
-        params: { emailAddress: emailAddress },
-        headers: {
-            "Authorization": "Bearer " + localStorage.getItem("token")
-        }
-    })
-      .then(response => {
-        console.log("get user profile");
-        console.log(response);
-
-        this.setState({
-          userInfo: response.data,
-          emailAddress: response.data.emailAddress
-        })
-      })
-      .catch(error => {
-        console.log("Error while retriving user profile!!");
-        console.log(error);
-      })
-  }
-
-
-  //2- loadActors
+  //1- loadActors
   loadActors = () => {
     axios.get("/favone/actor/index")
       .then(response => {
@@ -279,7 +250,7 @@ export default class App extends Component {
       })
   }
 
-  //3- loadGenders
+  //2- loadGenders
   loadGenders = () => {
     axios.get("/favone/mdgender/index")
       .then(response => {
@@ -294,7 +265,7 @@ export default class App extends Component {
       })
   }
 
-  //4- loadMoviesDramasHandler
+  //3- loadMoviesDramasHandler
   loadMoviesDramas = () => {
     axios.get("/favone/md/index")
       .then(response => {
@@ -351,7 +322,7 @@ export default class App extends Component {
                   </NavDropdown>
                 </Nav>
                 <Nav className="mr-5">
-                  {this.state.user ? <Navbar.Text className="mr-5" > Signed in as:  {this.state.user.sub} {this.state.userInfo.id} <img  className="w-10 h-10 rounded-full" src={this.state.userInfo.profileImage} /> </Navbar.Text> : null}
+                  {this.state.user ? <Navbar.Text className="mr-5" > Signed in as:  {this.state.user.sub}</Navbar.Text> : null}
 
                   <Nav.Link > <Link to="/logout" onClick={this.onLogoutHandeler} className="mr-5 text-gray-200 hover:text-pink-600 text-xl">Say Bye</Link></Nav.Link>
                 </Nav>
@@ -387,9 +358,6 @@ export default class App extends Component {
         </nav>
 
         <HomeBanner></HomeBanner>
-
-
-        {/* <div className={`${this.state.isClicked === true ? 'invisible' : 'visible'}`}> */}
         {isSectionsShow ? (
           <div>
             <MovieDramaSection moviesDramas={this.state.moviesDramas}></MovieDramaSection>
@@ -397,27 +365,12 @@ export default class App extends Component {
             <EpisodeSection></EpisodeSection>
             <Footer></Footer>
           </div>
-
         ) : null}
 
-        {/* </div> */}
-
-
-
-        {/* {isAuth ? () : ()} */}
-
-
-
         <div>
-          {/* <Route exact path="/" component={() => <App></App>}></Route> */}
-          {/* <Route path="/addAuthor" component={() => <AuthorNewForm addAuthor={this.addAuthor}></AuthorNewForm>}></Route>
-  <Route path="/addArticle" component={() => <NewArticle authors={this.state.authors} addArticle={this.addArticle}></NewArticle>}></Route>
-  <Route path="/authorIndex" component={() => <AuthorList authors={this.state.authors} articles={this.state.articles} loadAuthorList={this.loadAuthorList}></AuthorList>}></Route>
-  <Route path="/articleIndex" component={() => <ArticleList articles={this.state.articles} authors={this.state.authors} loadArticleList={this.loadArticleList}></ArticleList>}></Route>  */}
-
-
           <Route path="/register" component={() => <Join register={this.registerHandler} message={this.state.message} ></Join>}></Route>
           <Route path="/login" component={() => <Login login={this.loginHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} />}></Route>
+
           <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></ActorIndex>}></Route>
           <Route path="/genderIndex" component={() => <GenderIndex genders={this.state.genders} isAuth={this.state.isAuth} loadGenders={this.loadGenders} addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></GenderIndex>}></Route>
           <Route path="/movieDramaIndex" component={() => <MDIndex  emailAddress={this.state.user.sub} moviesDramas={this.state.moviesDramas} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></MDIndex>}></Route>
@@ -427,13 +380,7 @@ export default class App extends Component {
 
           {/* <Route path="/addGender" component={() => <NewGender addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewGender>}></Route> */}
 
-
-
         </div>
-
-
-
-
       </Router>
     )
   }

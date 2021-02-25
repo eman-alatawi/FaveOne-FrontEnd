@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import RowCard from '../RowCard';
 import MDRowCard from './MDRowCard';
 export default class MovieDramaSection extends Component {
     
