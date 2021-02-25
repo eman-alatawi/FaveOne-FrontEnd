@@ -1,10 +1,18 @@
 import React from 'react'
 import MDRowCard from './MDRowCard'
+import  { Redirect } from 'react-router-dom'
+
+// const redirectFun =()=>{
+//     console.log("inside func")
+     
+// }
 export default function MDDetails(props) {
     const year = new Date(props.movieDrama.releaseYear);
+    // console.log(props.history);
     return (
         <div>
             <div className=" flex flex-row  bg-gray-50  rounded-lg shadow p-10 ">
+                {/* <button onClick={redirectFun}>Back</button> */}
                 <div className="h-96 w-80  mr-10 flex flex-col rounded-lg bg-pink-900 text-gray-300">
                     <img className=" h-80 w-80 mr-10 shadow  border-4 border-pink-100 object-cover" src={props.movieDrama.poster} />
                     <div className="w-64 mt-3  text-center flex flex-col">

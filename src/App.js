@@ -169,7 +169,7 @@ export default class App extends Component {
 
   // 5- hideSectionsHandler
   hideSectionsHandler = () => {
-    this.loadUserProfile();
+    // this.loadUserProfile();
     this.setState({
       isSectionsShow: false
     })
@@ -240,10 +240,10 @@ export default class App extends Component {
 
 
   // 1- loadUserProfile
-  loadUserProfile = () => {
+  loadUserProfile = (emailAddress) => {
     axios.get("/favone/user/userProfile",
     {
-        params: { emailAddress: this.state.user.sub },
+        params: { emailAddress: emailAddress },
         headers: {
             "Authorization": "Bearer " + localStorage.getItem("token")
         }
@@ -420,10 +420,10 @@ export default class App extends Component {
           <Route path="/login" component={() => <Login login={this.loginHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} />}></Route>
           <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></ActorIndex>}></Route>
           <Route path="/genderIndex" component={() => <GenderIndex genders={this.state.genders} isAuth={this.state.isAuth} loadGenders={this.loadGenders} addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></GenderIndex>}></Route>
-          <Route path="/movieDramaIndex" component={() => <MDIndex moviesDramas={this.state.moviesDramas} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></MDIndex>}></Route>
+          <Route path="/movieDramaIndex" component={() => <MDIndex  emailAddress={this.state.user.sub} moviesDramas={this.state.moviesDramas} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></MDIndex>}></Route>
 
           <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewActor>}></Route>
-          <Route path="/addMovieDrama" component={() => <NewMD  user={this.state.userInfo} addMD={this.addMovieDramaHandler} actors={this.state.actors} genders={this.state.genders} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewMD>}></Route>
+          <Route path="/addMovieDrama" component={() => <NewMD  user={this.state.user} addMD={this.addMovieDramaHandler} actors={this.state.actors} genders={this.state.genders} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewMD>}></Route>
 
           {/* <Route path="/addGender" component={() => <NewGender addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewGender>}></Route> */}
 

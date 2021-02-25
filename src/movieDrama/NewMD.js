@@ -18,7 +18,7 @@ export default class NewMD extends Component {
         }
     }
     componentDidMount() {
-        this.loadUser(this.props.user.emailAddress);
+        this.loadUser(this.props.user.sub);
     }
     changeHandler = (event) => {
 
@@ -44,18 +44,6 @@ export default class NewMD extends Component {
                 updatedMD[attributeToChange].push(this.props.genders[parseInt(newValue)]);
             } else {
                 updatedMD[attributeToChange].splice(updatedMD[attributeToChange].findIndex((x) => x.id == this.props.genders[parseInt(newValue)].id), 1);
-            }
-        }
-        else if (attributeToChange === 'user') {
-
-            if (event.target.checked) {
-
-                updatedMD[attributeToChange] = this.state.user;
-
-
-            } else {
-                swal("info", "You should select this ckeckbox")
-                updatedMD[attributeToChange] = null
             }
         }
         else {
@@ -84,11 +72,21 @@ export default class NewMD extends Component {
                 this.setState({
                     user: response.data
                 })
+                this.addUserToMD();
             })
             .catch(error => {
                 console.log("Error while retriving user profile!!");
                 console.log(error);
             })
+    }
+
+
+    addUserToMD =()=>{
+        const updatedMD = this.state.movieDrama
+        updatedMD['user']=this.state.user
+        this.setState({
+            movieDrama: updatedMD
+        })
     }
 
     handleSubmit = () => {
@@ -108,7 +106,7 @@ export default class NewMD extends Component {
         var numOfEpisods = document.getElementById("numOfEpisods").value;
         var contentRating = document.getElementById("contentRating").value;
         var score = document.getElementById("score").value;
-        var userCheckBox = document.getElementById("userCheckBox").value;
+        // var userCheckBox = document.getElementById("userCheckBox").value;
 
         if(numOfEpisods <1){
             swal("Undefiend!!", "Number of Episodes should be 1 or more", "error")
@@ -119,9 +117,6 @@ export default class NewMD extends Component {
             swal("Empty!!", "Some Feilds are empty!", "error")
             return false;
 
-        }else if(  !userCheckBox.checked ){
-            swal("Empty!!", "The last checkbox is unchecked!", "error")
-            return false;
         }
          else {
             return true;
@@ -212,9 +207,9 @@ export default class NewMD extends Component {
                                 </Col>
                             </Form.Group>
 
-                            <div className="mt-10">
+                            {/* <div className="mt-10">
                                 <input required id="userCheckBox" className="mr-3" type="checkbox" name="user" onChange={this.changeHandler} />This Movie - Drama is  Added By me
-                             </div>
+                             </div> */}
                             <Form.Text muted>
                                 * If you can't see the Actors/Genders in the list, you should add them first and then come back here.
                             </Form.Text>
