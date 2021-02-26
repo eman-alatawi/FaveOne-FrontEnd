@@ -17,8 +17,8 @@ From Day-1 start choosing the idea and decide the name, design the ERD, wirefram
 - React Router DOM
 - ReactPlayer
 - React-Toastify
-- Bootstrap
-- AJAX (Axios)
+- React-Bootstrap
+- Axios
 - javaScript
 - JSX
 - Visual Studio Code
@@ -63,4 +63,71 @@ From Day-1 start choosing the idea and decide the name, design the ERD, wirefram
 
 ## Installtion:
 
-### 
+### 1- React Router DOM:
+DOM bindings for React Router
+  - In the terminal inside your react  app,  use the command below: 
+  ```
+   npm install react-router-dom 
+   ```
+  - In the App.js add the import below:
+ ```
+ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+```
+
+### 2- ReactPlayer:
+A React component for playing a variety of URLs, including file paths, YouTube, Facebook, Twitch, SoundCloud, Streamable, Vimeo, Wistia, Mixcloud, and DailyMotion.
+  - In the terminal inside your react app, use the command below: 
+  ```
+  npm install react-player
+  ```
+  - Add the import below in the js file you want to use the Router:
+  ```
+  import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+  ```
+ - [Documentation](https://www.npmjs.com/package/morphizm-react-player)
+
+  ### 3- React-Toastify:
+React-Toastify allows you to add notifications to your app with ease. No more nonsense!.
+  - In the terminal inside your react app, use the command below: 
+  ```
+  npm install --save react-toastify
+  ```
+  - In the index.js (the root component) add the imports below:
+  ```
+ import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+  ```
+   - then call the ToastContainer as shown below:
+  ```
+  <ToastContainer />
+  ```
+  - Add the import below in the js file you want to use toastify:
+  ```
+  import {toast } from 'react-toastify';
+  ```
+
+  - [Documentation](https://www.npmjs.com/package/react-toastify)
+
+ ### 4- React-Bootstrap:
+React-Bootstrap is a complete re-implementation of the Bootstrap components using React. It has no dependency on either bootstrap.js or jQuery. If you have React setup and React-Bootstrap installed, you have everything you need.
+  - In the terminal inside your react app, use the command below: 
+  ```
+  npm install react-bootstrap bootstrap
+  ```
+  - In the index.js (the root component) add the import below:
+  ```
+ import 'bootstrap/dist/css/bootstrap.min.css';
+  ```
+ - [Documentation](https://react-bootstrap.github.io/getting-started/introduction/)
+
+ ### 6- Axios:
+Promise based HTTP client for the browser and node.js
+  - In the terminal inside your react app, use the command below: 
+  ```
+  npm install axios
+  ```
+  - Add the import below in the js file you want to use axios:
+  ```
+import axios from 'axios';
+  ```
+ - [Documentation](https://www.npmjs.com/package/axios)
