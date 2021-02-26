@@ -2,9 +2,11 @@ import axios from 'axios';
 import React, { Component } from 'react'
 import ActorRowCard from './ActorRowCard';
 import EditActor from './EditActor';
-import { Alert } from "react-bootstrap";
+// import { Alert } from "react-bootstrap";
 import Footer from '../Footer';
 import ActorDetails from './ActorDetails'
+import {toast } from 'react-toastify';
+
 export default class ActorIndex extends Component {
     constructor(props) {
         super(props)
@@ -14,9 +16,7 @@ export default class ActorIndex extends Component {
             isEdit: false,
             isDetail:false,
             actorDetail: [],
-            clickedActorId: '',
-            errorMessage: null,
-            successMessage: null,
+            clickedActorId: ''
         }
     }
 
@@ -73,16 +73,14 @@ export default class ActorIndex extends Component {
                 console.log(response);
                 this.props.loadActors();
                 this.setState({
-                    successMessage: "Actor Edited Successfully!!",
                     isEdit: false
                 })
+                toast.success("Actor has been Edited Successfully!!")
             })
             .catch(error => {
                 console.log("error in editing actor");
                 console.log(error);
-                this.setState({
-                    errorMessage: "Error while Editing Actor, Try again later!!"
-                })
+                toast.error("Error Occured while trying to Edit Actor. Please try again later")
             })
     }
 
@@ -98,30 +96,20 @@ export default class ActorIndex extends Component {
                 console.log("delete actor");
                 console.log(response);
                 this.props.loadActors();
-                this.setState({
-                    successMessage: "Actor Deleted Successfully!!",
-                })
+                toast.success("Actor has been Deleted Successfully!!")
             })
             .catch(error => {
                 console.log("error in deleting actor");
                 console.log(error);
-                this.setState({
-                    errorMessage: "Error while Deleting Actor, Try again later!!"
-                })
+                toast.error("Error Occured while trying to Delete Actor.")
+                toast.info("You're not allowed to delete")
             })
     }
     render() {
-        const errorMessage = this.props.errorMessage ? (
-            <Alert variant="danger">{this.props.errorMessage}</Alert>
-        ) : null;
-
-        const successMessage = this.props.successMessage ? (
-            <Alert variant="success">{this.props.successMessage}</Alert>
-        ) : null;
+    
         return (
             <div className=" mainBg bg-cover ">
-                {errorMessage}
-                {successMessage}
+              
                 <div className="   mb-10 w-full  flex flex-col  justify-evenly ">
 
 
@@ -135,7 +123,7 @@ export default class ActorIndex extends Component {
                             <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
                                 {this.state.actors.map((actor, index) =>
                                     <div key={index}>
-                                        <ActorRowCard {...actor} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteActor={this.deleteActor} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></ActorRowCard>
+                                        <ActorRowCard {...actor} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteActor={this.deleteActor}></ActorRowCard>
                                     </div>
                                 )
                                 }

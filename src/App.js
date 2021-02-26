@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import axios from 'axios';
 import { decode } from "jsonwebtoken";
 import { Alert } from "react-bootstrap";
+import {toast } from 'react-toastify';
 import React, { Component } from 'react'
 import Join from './user/Join';
 import Login from './user/Login'
@@ -33,8 +34,6 @@ export default class App extends Component {
     isSectionsShow: true,
     user: null,
     emailAddress: '',
-    errorMessage: null,
-    successMessage: null,
     message: null,
     actors: [],
     genders: [],
@@ -87,10 +86,12 @@ export default class App extends Component {
         this.setState({
           message: response.data.message
         })
+        toast.info(this.state.message)
       })
       .catch((error) => {
         console.log("Error in register user")
         console.log(error);
+        toast.error("Error Occured while trying to Join. Please try again later")
       });
   };
 
@@ -109,16 +110,15 @@ export default class App extends Component {
           this.setState({
             isAuth: true,
             user: user,
-            successMessage: "Successfully logged in!!",
-            errorMessage: null
           })
+          toast.success("Successfully logged in!!");
           console.log(this.state.user.sub)
         } else {
           this.setState({
             isAuth: false,
             user: null,
-            errorMessage: "Incorrect Username or password"
           })
+          toast.warn("Incorrect EmailAddress or Password")
         }
 
       })
@@ -126,8 +126,8 @@ export default class App extends Component {
         console.log(error);
         this.setState({
           isAuth: false,
-          errorMessage: "Error Occured. please try again later "
         })
+        toast.error("Error Occured. Please try again later")
       });
 
   };
@@ -141,6 +141,7 @@ export default class App extends Component {
       isAuth: false, //user not athenticated
       user: null
     });
+    toast("Bye Bye See You Later")
 
   }
 
@@ -156,17 +157,14 @@ export default class App extends Component {
         console.log("Actor Added");
         console.log(response);
         this.loadActors();
-
-        this.setState({
-          successMessage: "Actor Added Successfully!!"
-        })
+        toast.success("The actor has been Added Successfully")
+        toast.info("Added in Actors Section")
       })
       .catch(error => {
         console.log("Error while Adding actor !!");
         console.log(error);
-        this.setState({
-          errorMessage: "Error while Adding Actor, Try again later!!"
-        })
+        toast.error("Error Occured while trying to Add Actor. Please try again later")
+
       })
   }
 
@@ -197,17 +195,12 @@ export default class App extends Component {
         console.log("Gender Added");
         console.log(response);
         this.loadGenders();
-
-        this.setState({
-          successMessage: "Gender Added Successfully!!"
-        })
+        toast.success("The Gender has been Added Successfully")
       })
       .catch(error => {
         console.log("Error while Adding Gender !!");
         console.log(error);
-        this.setState({
-          errorMessage: "Error while Adding gender, Try again later!!"
-        })
+        toast.error("Error Occured while trying to Add Gender. Please try again later")
       })
   }
 
@@ -224,16 +217,13 @@ export default class App extends Component {
         console.log(response);
         this.loadMoviesDramas();
         this.loadActors();
-        this.setState({
-          successMessage: "movie - Drama Added Successfully!!"
-        })
+        toast.success("The Movie/Drama has been Added Successfully")
+        toast.info("Added in Movies-Dramas Section")
       })
       .catch(error => {
         console.log("Error while Adding movie - Drama !!");
         console.log(error);
-        this.setState({
-          errorMessage: "Error while Adding movie -Drama, Try again later!!"
-        })
+        toast.error("Error Occured while trying to Add Movie/Drama. Please try again later")
       })
   }
 
@@ -250,16 +240,13 @@ export default class App extends Component {
         console.log(response);
         this.loadMoviesDramas();
         this.loadEpisodes();
-        this.setState({
-          successMessage: "Episode Added Successfully!!"
-        })
+        toast.success("The Episode has been Added Successfully")
+        toast.info("Added in Episodes Section")
       })
       .catch(error => {
         console.log("Error while Adding Episode !!");
         console.log(error);
-        this.setState({
-          errorMessage: "Error while Adding Episode, Try again later!!"
-        })
+        toast.error("Error while trying to Add Episode, Try again later!!")
       })
   }
 
@@ -350,8 +337,6 @@ export default class App extends Component {
                     <NavDropdown.Divider />
                     <NavDropdown.Item ><Link to="/addMovieDrama" onClick={this.hideSectionsHandler} className="dropDownLink">Add Movie - Drama</Link></NavDropdown.Item>
                     <NavDropdown.Item ><Link to="/addImageGallery" onClick={this.hideSectionsHandler} className="dropDownLink"> Add Image Gallery</Link></NavDropdown.Item>
-                    {/* <NavDropdown.Item ><Link to="/addGender" onClick={this.hideSectionsHandler} className="dropDownLink"> Add Gender</Link></NavDropdown.Item> */}
-
 
                   </NavDropdown>
 
@@ -413,26 +398,24 @@ export default class App extends Component {
         ) : null}
 
         <div>
-          <Route path="/register" component={() => <Join register={this.registerHandler} message={this.state.message} ></Join>}></Route>
-          <Route path="/login" component={() => <Login login={this.loginHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} />}></Route>
+          <Route path="/register" component={() => <Join register={this.registerHandler}  ></Join>}></Route>
+          <Route path="/login" component={() => <Login login={this.loginHandler} />}></Route>
 
-          <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></ActorIndex>}></Route>
-          <Route path="/genderIndex" component={() => <GenderIndex genders={this.state.genders} isAuth={this.state.isAuth} loadGenders={this.loadGenders} addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></GenderIndex>}></Route>
+          <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors}></ActorIndex>}></Route>
+          <Route path="/genderIndex" component={() => <GenderIndex genders={this.state.genders} isAuth={this.state.isAuth} loadGenders={this.loadGenders} addGender={this.addGenderHandler}></GenderIndex>}></Route>
           {this.state.user !== null? 
-          <Route path="/movieDramaIndex" component={() => <MDIndex  emailAddress={this.state.user.sub} moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></MDIndex>}></Route>
+          <Route path="/movieDramaIndex" component={() => <MDIndex  emailAddress={this.state.user.sub} moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors}></MDIndex>}></Route>
           : 
-          <Route path="/movieDramaIndex" component={() => <MDIndex  moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></MDIndex>}></Route>
+          <Route path="/movieDramaIndex" component={() => <MDIndex  moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors}></MDIndex>}></Route>
  
           }
-          <Route path="/episodeIndex" component={() => <EpisodeIndex  episodes={this.state.episodes} moviesDramas={this.state.moviesDramas} isAuth={this.state.isAuth} loadEpisodes={this.loadEpisodes} loadMoviesDramas={this.loadMoviesDramas} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></EpisodeIndex>}></Route>
+          <Route path="/episodeIndex" component={() => <EpisodeIndex  episodes={this.state.episodes} moviesDramas={this.state.moviesDramas} isAuth={this.state.isAuth} loadEpisodes={this.loadEpisodes} loadMoviesDramas={this.loadMoviesDramas}></EpisodeIndex>}></Route>
 
 
 
-          <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewActor>}></Route>
-          <Route path="/addMovieDrama" component={() => <NewMD  user={this.state.user} addMD={this.addMovieDramaHandler} actors={this.state.actors} genders={this.state.genders} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewMD>}></Route>
-          <Route path="/addEpisode" component={() => <NewEpisode  addEpisode={this.addEpisodeHandler} moviesDramas={this.state.moviesDramas}  errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewEpisode>}></Route>
-
-          {/* <Route path="/addGender" component={() => <NewGender addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></NewGender>}></Route> */}
+          <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} ></NewActor>}></Route>
+          <Route path="/addMovieDrama" component={() => <NewMD  user={this.state.user} addMD={this.addMovieDramaHandler} actors={this.state.actors} genders={this.state.genders} ></NewMD>}></Route>
+          <Route path="/addEpisode" component={() => <NewEpisode  addEpisode={this.addEpisodeHandler} moviesDramas={this.state.moviesDramas}></NewEpisode>}></Route>
 
         </div>
       </Router>
