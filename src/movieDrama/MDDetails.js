@@ -35,12 +35,12 @@ export default function MDDetails(props) {
                     <div className=" flex flex-row justify-start w-full pl-1 mb-4  rounded-l-lg bg-gray-700 shadow-xl text-gray-300">
                         <h5 className="mr-2">Duration: </h5><div className="mr-20">{props.movieDrama.duration}</div>
                         <h5 className="mr-2">Content Rating: </h5><div className="mr-20">{props.movieDrama.contentRating}</div>
-                        <h5 className="mr-2"># Episodes: </h5><div className="mr-20">{props.movieDrama.numOfEpisods}</div>
+                        <h5 className="mr-2"># Of Episodes: </h5><div className="mr-20">{props.movieDrama.numOfEpisods}</div>
 
                     </div>
                 </div>
                 <div className="w-1/12  text-center pt-10 mt-2 mb-4 flex flex-col bg-gray-700 shadow-xl text-gray-300">
-                    <h5 className="text-left pl-1">Gender: </h5>
+                    <h5 className="text-left pl-1">Genders: </h5>
                         {props.movieDrama.genders ?
                         <ul className="text-left  h-64 overflow-y-scroll">
                         {props.movieDrama.genders.map((gender, index) =>

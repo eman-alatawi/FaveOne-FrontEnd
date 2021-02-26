@@ -25,7 +25,7 @@ export default function ActorDetails(props) {
             </div>
 
             {props.actor.movieDramas ?
-                <div className=" flex flex-col  bg-gray-800  rounded-lg shadow p-10 ">
+                <div className=" flex flex-col  bg-gray-800  rounded-lg shadow p-10  w-full overflow-x-scroll ">
                     <h4 className="text-gray-300 mb-3 text-xl">Related Movies/Dramas:</h4>
                     <div className="flex flex-row " > {
                         props.actor.movieDramas.map((md, index) =>
