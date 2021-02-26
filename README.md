@@ -1,5 +1,5 @@
 # FavOne
-Your place of your favorite  Movie/Drama/Actor. The users can add their favorite movies, dramas, actors and share them with the world. (FavOne) is the shortcut of Favorite One. nice name right? :)
+Your place of your favorite Movie/Drama/Episode/Actor. The users can add their favorite movies, dramas, episodes, and actors and share them with the world. (FavOne) is the shortcut of Favorite One, nice name right? :)
 
 ## Important Links
 
@@ -9,7 +9,7 @@ Your place of your favorite  Movie/Drama/Actor. The users can add their favorite
 
 
 ## Planning Story
-From Day-1 start choosing the idea and decide the name, design the ERD, wireframes and create the apps, repos.
+From Day-1 start choosing the idea and decide the name, design the ERD, Wireframes and create the Apps, Repos. Continue by creating one Model/Controller in the back-end and check it with the Postman then go and design the related components in the front-end. For each 2 days there is a complete feature in the front-end with design and styles and the back-end functionality.
 
 ## Technologies Used
 
@@ -20,6 +20,10 @@ From Day-1 start choosing the idea and decide the name, design the ERD, wirefram
 - React-Bootstrap
 - Axios
 - javaScript
+- jsonwebtoken
+- material-design-icons
+- swal(sweetalert)
+- tailwindcss
 - JSX
 - Visual Studio Code
 - Justinmind to design the Wireframe
@@ -120,7 +124,7 @@ React-Bootstrap is a complete re-implementation of the Bootstrap components usin
   ```
  - [Documentation](https://react-bootstrap.github.io/getting-started/introduction/)
 
- ### 6- Axios:
+ ### 5- Axios:
 Promise based HTTP client for the browser and node.js
   - In the terminal inside your react app, use the command below: 
   ```
@@ -131,3 +135,58 @@ Promise based HTTP client for the browser and node.js
 import axios from 'axios';
   ```
  - [Documentation](https://www.npmjs.com/package/axios)
+
+ ### 6- jsonwebtoken:
+JSON Web Token (JWT) is a compact, URL-safe means of representing
+   claims to be transferred between two parties.  The claims in a JWT
+   are encoded as a JSON object that is used as the payload of a JSON
+   Web Signature (JWS) structure or as the plaintext of a JSON Web
+   Encryption (JWE) structure, enabling the claims to be digitally
+   signed or integrity protected with a Message Authentication Code
+   (MAC) and/or encrypted.
+  - In the terminal inside your react app, use the command below: 
+  ```
+  npm install jsonwebtoken
+  ```
+  - Add the import below in the js file you want to use  decode method:
+  ```
+import { decode } from "jsonwebtoken";
+  ```
+ - [Documentation](https://www.npmjs.com/package/jsonwebtoken)
+
+### 7- material-design-icons:
+Material icons are delightful, beautifully crafted symbols for common actions and items. Download on desktop to use them in your digital products for Android, iOS, and web.
+  - In the terminal inside your react app, use the command below: 
+  ```
+ npm install material-design-icons
+  ```
+  - Add the link below in the head of index.html file:
+  ```js
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  ```
+ - [Documentation](https://material.io/resources/icons/?style=baseline)
+
+ ### 8- sweetalert:
+A beautiful replacement for JavaScript's "alert"
+  - In the terminal inside your react app, use the command below: 
+  ```
+npm install --save sweetalert
+  ```
+  - Add the import below in the js file you want to use swal:
+  ```
+import swal from 'sweetalert';
+  ```
+ - [Documentation](https://www.npmjs.com/package/sweetalert)
+
+  ### 9- tailwindcss:
+A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.
+
+  - In the terminal inside your react app, use the command below: 
+  ```
+npm install -D tailwindcss@npm:@tailwindcss/postcss7-compat @tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
+
+  ```
+  - After that, You should follow the installation instructions provided on the tailwindcss official website since there is a lot of steps.
+
+ - [Documentation](https://tailwindcss.com/docs/guides/create-react-app#setting-up-tailwind-css)
