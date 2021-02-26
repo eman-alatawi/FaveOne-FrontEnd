@@ -18,11 +18,23 @@ export default function EpisodeRowCard(props) {
         <Card.Img variant="top" className="h-64 w-full object-cover" src={props.thumbnail} />
         <Card.Body className="text-center bg-purple-900 text-gray-300 hover:bg-gray-50 hover:border-transparent hover:shadow-xl group">
           <Card.Title className="group-hover:text-gray-800  whitespace-nowrap overflow-x-scroll text-center"> Episode #{props.episodNum}</Card.Title>
+          {/* called from EpisodeIndex  - Dispay Movie-Drama Title*/}
+          {props.moviesDramas  ? 
+          <div>
             {props.moviesDramas.map((md, index) =>
             
-           md.episodes.findIndex(x => x.id == props.id) !== -1 ? <Card.Text className="group-hover:text-gray-800">{md.title} </Card.Text> : null 
+            md.episodes.findIndex(x => x.id == props.id) !== -1 ? <Card.Text className="group-hover:text-gray-800">{md.title} </Card.Text> : null 
+ 
+             )}
+          </div> : null}
 
-            )}
+
+          {/* called from MDDetails  - Dispay Movie-Drama Title*/}
+          {props.movieDrama ?
+          <div className="group-hover:text-gray-800">
+            {props.movieDrama.title}
+          </div> : null}
+            
            
            {showTool}
         </Card.Body>

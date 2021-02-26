@@ -1,6 +1,7 @@
 import React from 'react'
 import MDRowCard from './MDRowCard'
 import  { Redirect } from 'react-router-dom'
+import EpisodeRowCard from '../episode/EpisodeRowCard';
 
 // const redirectFun =()=>{
 //     console.log("inside func")
@@ -49,21 +50,21 @@ export default function MDDetails(props) {
                         : null }
                 </div>
             </div>
-{/* 
+
             {props.movieDrama.episodes ?
                 <div className=" flex flex-col  bg-gray-800  rounded-lg shadow p-10 ">
-                    <h4 className="text-gray-300 mb-3 text-xl">Related Movies/Dramas:</h4>
+                    <h4 className="text-gray-300 mb-3 text-xl">Related Episodes:</h4>
                     <div className="flex flex-row " > {
-                        props.actor.movieDramas.map((md, index) =>
+                        props.movieDrama.episodes.map((episode, index) =>
                             <div key={index}>
-                                <MDRowCard {...md} isAuth={props.actor.isAuth}></MDRowCard>
+                                <EpisodeRowCard {...episode} movieDrama={props.movieDrama}></EpisodeRowCard>
                             </div>
                         )
                     }
                     </div>
                 </div>
 
-                : null} */}
+                : null}
 
 
 

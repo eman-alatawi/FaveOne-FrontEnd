@@ -172,6 +172,7 @@ export default class App extends Component {
 
   // 5- hideSectionsHandler
   hideSectionsHandler = () => {
+
     this.setState({
       isSectionsShow: false
     })
@@ -379,7 +380,7 @@ export default class App extends Component {
                 <Navbar.Collapse id="responsive-navbar-nav">
                   <Nav className="mr-auto">
                     <NavDropdown title="Movies - Dramas" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                      {/* <NavDropdown.Item ><Link to="/movieDramaIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Movies - Dramas</Link></NavDropdown.Item> */}
+                      <NavDropdown.Item ><Link to="/movieDramaIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Movies - Dramas</Link></NavDropdown.Item>
                       <NavDropdown.Item ><Link to="/imageGalleryIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Images Gallery</Link></NavDropdown.Item>
                       <NavDropdown.Item ><Link to="/genderIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Genders</Link></NavDropdown.Item>
                     </NavDropdown>
@@ -417,7 +418,12 @@ export default class App extends Component {
 
           <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></ActorIndex>}></Route>
           <Route path="/genderIndex" component={() => <GenderIndex genders={this.state.genders} isAuth={this.state.isAuth} loadGenders={this.loadGenders} addGender={this.addGenderHandler} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></GenderIndex>}></Route>
-          <Route path="/movieDramaIndex" component={() => <MDIndex  emailAddress={this.state.user.sub} moviesDramas={this.state.moviesDramas} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></MDIndex>}></Route>
+          {this.state.user !== null? 
+          <Route path="/movieDramaIndex" component={() => <MDIndex  emailAddress={this.state.user.sub} moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></MDIndex>}></Route>
+          : 
+          <Route path="/movieDramaIndex" component={() => <MDIndex  moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></MDIndex>}></Route>
+ 
+          }
           <Route path="/episodeIndex" component={() => <EpisodeIndex  episodes={this.state.episodes} moviesDramas={this.state.moviesDramas} isAuth={this.state.isAuth} loadEpisodes={this.loadEpisodes} loadMoviesDramas={this.loadMoviesDramas} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage}></EpisodeIndex>}></Route>
 
 
