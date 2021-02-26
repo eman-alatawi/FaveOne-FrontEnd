@@ -20,7 +20,7 @@ export default function MDRowCard(props) {
 
     return (
         
-        <Card style={{ width: '14rem' }} className="mr-5 shadow " >
+        <Card style={{ width: '14rem' }} className="ml-3 mr-4 shadow " >
         <Card.Img variant="top" className="h-64  w-full object-cover" src={props.poster} />
         <Card.Body className="text-center bg-pink-900 text-gray-300 hover:bg-gray-50 hover:border-transparent hover:shadow-xl group">
           <Card.Title className="group-hover:text-gray-800  whitespace-nowrap overflow-x-scroll text-center">{props.title}</Card.Title>
