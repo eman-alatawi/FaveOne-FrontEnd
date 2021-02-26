@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Footer from '../Footer'
 import EditGender from './EditGender'
 import GenderRowCard from './GenderRowCard'
-import { Alert } from "react-bootstrap";
+import {toast } from 'react-toastify';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card'
 import NewGender from './NewGender'
@@ -45,16 +45,16 @@ export default class GenderIndex extends Component {
                 console.log(response);
                 this.props.loadGenders();
                 this.setState({
-                    successMessage: "Gender Edited Successfully!!",
                     isEdit: false
                 })
+                toast.success("Gender has been Edited Successfully!!")
+
             })
             .catch(error => {
                 console.log("error in editing gender");
                 console.log(error);
-                this.setState({
-                    errorMessage: "Error while Editing Gender, Try again later!!"
-                })
+                toast.error("Error Occured while trying to Edit Gender. Please try again later")
+
             })
     }
 
@@ -71,33 +71,23 @@ export default class GenderIndex extends Component {
                 console.log("delete gender");
                 console.log(response);
                 this.props.loadGenders();
-                this.setState({
-                    successMessage: "Gender Deleted Successfully!!",
-                })
+                toast.success("Gender has been Deleted Successfully!!")
+
             })
             .catch(error => {
                 console.log("error in deleting gender");
                 console.log(error);
-                this.setState({
-                    errorMessage: "Error while Deleting Gender, Try again later!!"
-                })
+                toast.error("Error Occured while trying to Delete Gender.")
+                toast.info("You're not allowed to delete")
             })
     }
 
 
     render() {
-        const errorMessage = this.props.errorMessage ? (
-            <Alert variant="danger">{this.props.errorMessage}</Alert>
-        ) : null;
-
-        const successMessage = this.props.successMessage ? (
-            <Alert variant="success">{this.props.successMessage}</Alert>
-        ) : null;
-
+       
         return (
             <div className="genderBg pt-5 bg-cover">
-                {errorMessage}
-                {successMessage}
+                
                 <div className="h-full w-full  ">
                     <h3 className=" mb-12  text-center text-gray-900 text-3xl opacity-75 ">Movie-Drama Genders</h3>
                 </div>

@@ -5,6 +5,7 @@ import axios from 'axios';
 import MDRowCard from './MDRowCard'
 import EditMD from './EditMD'
 import MDDetails from './MDDetails'
+import {toast } from 'react-toastify';
 
 export default class MDIndex extends Component {
     constructor(props) {
@@ -15,9 +16,7 @@ export default class MDIndex extends Component {
             isEdit: false,
             isDetail:false,
             mdDetail: [],
-            clickedMDId: '',
-            errorMessage: null,
-            successMessage: null,
+            clickedMDId: ''
         }
     }
     editView = (id) => {
@@ -72,16 +71,16 @@ export default class MDIndex extends Component {
                 this.props.loadMoviesDramas();
                 this.props.loadActors();
                 this.setState({
-                    successMessage: "movie-Drama Edited Successfully!!",
                     isEdit: false
                 })
+                toast.success("Movie/Drama has been Edited Successfully!!")
+
             })
             .catch(error => {
                 console.log("error in editing movie-Drama");
                 console.log(error);
-                this.setState({
-                    errorMessage: "Error while Editing movie-Drama, Try again later!!"
-                })
+                toast.error("Error Occured while trying to Edit Movie/Drama. Please try again later")
+
             })
     }
 
@@ -97,33 +96,25 @@ export default class MDIndex extends Component {
                 console.log("delete movie-Drama");
                 console.log(response);
                 this.props.loadMoviesDramas();
-                this.setState({
-                    successMessage: "movie-Drama Deleted Successfully!!",
-                })
+                toast.success("Movie/Drama has been Deleted Successfully!!")
+
             })
             .catch(error => {
                 console.log("error in deleting movie-Drama");
                 console.log(error);
-                this.setState({
-                    errorMessage: "Error while Deleting movie-Drama, Try again later!!"
-                })
+                toast.error("Error Occured while trying to Delete Movie/Drama.")
+                toast.info("You're not allowed to delete")
+               
             })
     }
 
 
     
     render() {
-        const errorMessage = this.props.errorMessage ? (
-            <Alert variant="danger">{this.props.errorMessage}</Alert>
-        ) : null;
-
-        const successMessage = this.props.successMessage ? (
-            <Alert variant="success">{this.props.successMessage}</Alert>
-        ) : null;
+      
         return (
             <div className="mainBg bg-cover">
-                {errorMessage}
-                {successMessage}
+               
                 <div className="   mb-10 w-full  flex flex-col  justify-evenly ">
 
 
@@ -137,7 +128,7 @@ export default class MDIndex extends Component {
                             <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
                                 {this.state.moviesDramas.map((md, index) =>
                                     <div key={index}>
-                                        <MDRowCard email={this.props.emailAddress} {...md} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteMD={this.deleteMD} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></MDRowCard>
+                                        <MDRowCard email={this.props.emailAddress} {...md} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteMD={this.deleteMD} ></MDRowCard>
                                     </div>
                                 )
                                 }

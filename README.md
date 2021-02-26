@@ -16,6 +16,7 @@ From Day-1 start choosing the idea and decide the name, design the ERD, wirefram
 - React
 - React Router DOM
 - ReactPlayer
+- React-Toastify
 - Bootstrap
 - AJAX (Axios)
 - javaScript

@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { Component } from 'react'
-import { Alert } from "react-bootstrap";
 import Footer from '../Footer';
 import EditEpisode from './EditEpisode';
 import EpisodeRowCard from './EpisodeRowCard';
 import EpisodeDetails from './EpisodeDetails'
+import {toast } from 'react-toastify';
+
 export default class EpisodeIndex extends Component {
     constructor(props) {
         super(props)
@@ -14,9 +15,7 @@ export default class EpisodeIndex extends Component {
             isEdit: false,
             isDetail:false,
             episodeDetail: [],
-            clickedEpisodeId: '',
-            errorMessage: null,
-            successMessage: null,
+            clickedEpisodeId: ''
         }
     }
 
@@ -73,16 +72,16 @@ export default class EpisodeIndex extends Component {
                 this.props.loadEpisodes();
                 this.props.loadMoviesDramas();
                 this.setState({
-                    successMessage: "Episode Edited Successfully!!",
-                    isEdit: false
+                  isEdit: false
                 })
+                toast.success("Episode has been Edited Successfully!!")
+
             })
             .catch(error => {
                 console.log("error in editing Episode");
                 console.log(error);
-                this.setState({
-                    errorMessage: "Error while Editing Episode, Try again later!!"
-                })
+                toast.error("Error Occured while trying to Edit Episode. Please try again later")
+
             })
     }
 
@@ -98,30 +97,21 @@ export default class EpisodeIndex extends Component {
                 console.log("delete episode");
                 console.log(response);
                 this.props.loadEpisodes();
-                this.setState({
-                    successMessage: "Episode Deleted Successfully!!",
-                })
+                toast.success("Episode has been Deleted Successfully!!")
+
             })
             .catch(error => {
                 console.log("error in deleting Episode");
                 console.log(error);
-                this.setState({
-                    errorMessage: "Error while Deleting Episode, Try again later!!"
-                })
+                toast.error("Error Occured while trying to Delete Episode.")
+                toast.info("You're not allowed to delete")
             })
     }
     render() {
-        const errorMessage = this.props.errorMessage ? (
-            <Alert variant="danger">{this.props.errorMessage}</Alert>
-        ) : null;
-
-        const successMessage = this.props.successMessage ? (
-            <Alert variant="success">{this.props.successMessage}</Alert>
-        ) : null;
+ 
         return (
             <div className=" mainBg bg-cover ">
-                {errorMessage}
-                {successMessage}
+              
                 <div className="   mb-10 w-full  flex flex-col  justify-evenly ">
 
 
@@ -135,7 +125,7 @@ export default class EpisodeIndex extends Component {
                             <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
                                 {this.state.episodes.map((episode, index) =>
                                     <div key={index}>
-                                    <EpisodeRowCard {...episode} moviesDramas={this.props.moviesDramas} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteEpisode={this.deleteEpisode} errorMessage={this.state.errorMessage} successMessage={this.state.successMessage} ></EpisodeRowCard>
+                                    <EpisodeRowCard {...episode} moviesDramas={this.props.moviesDramas} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteEpisode={this.deleteEpisode} ></EpisodeRowCard>
                                     </div>
                                 )
                                 }
