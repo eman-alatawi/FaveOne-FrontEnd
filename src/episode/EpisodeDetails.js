@@ -10,15 +10,16 @@ export default function EpisodeDetails(props) {
         <div>
             <div className=" flex flex-row  bg-gray-50  rounded-lg shadow p-10 ">
                 {/* <button onClick={redirectFun}>Back</button> */}
-                <div className="h-96 w-80  mr-10 flex flex-col rounded-lg bg-pink-900 text-gray-300">
+                <div className="h-96 w-80  mr-10 flex flex-col rounded-lg bg-purple-900 text-gray-300">
                     <img className=" h-80 w-80 mr-10 shadow  border-4 border-pink-100 object-cover" src={props.episode.thumbnail} />
                     <div className="w-64 mt-3  text-center flex flex-col">
-                        Episode # {props.episode.episodNum}
+                        
                         {props.moviesDramas.map((md, index) =>
 
                             md.episodes.findIndex(x => x.id == props.episode.id) !== -1 ? <div className="group-hover:text-gray-800">{md.title} </div> : null
 
                         )}
+                        <div className="mb-5">Episode # {props.episode.episodNum}</div>
                     </div>
 
                 </div>

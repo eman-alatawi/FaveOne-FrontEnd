@@ -81,9 +81,9 @@ export default class NewMD extends Component {
     }
 
 
-    addUserToMD =()=>{
+    addUserToMD = () => {
         const updatedMD = this.state.movieDrama
-        updatedMD['user']=this.state.user
+        updatedMD['user'] = this.state.user
         this.setState({
             movieDrama: updatedMD
         })
@@ -107,21 +107,21 @@ export default class NewMD extends Component {
         var contentRating = document.getElementById("contentRating").value;
         var score = document.getElementById("score").value;
 
-        if(numOfEpisods <1){
+        if (numOfEpisods < 1) {
             swal("Undefiend!!", "Number of Episodes should be 1 or more", "error")
             return false;
         }
 
-        if (title === '' || releaseYear === '' || type === '' || description === '' || poster === '' || duration === '' || numOfEpisods === '' || contentRating === '' || score === '' ) {
+        if (title === '' || releaseYear === '' || type === '' || description === '' || poster === '' || duration === '' || numOfEpisods === '' || contentRating === '' || score === '') {
             swal("Empty!!", "Some Feilds are empty!", "error")
             return false;
 
         }
-         else {
+        else {
             return true;
         }
 
-        
+
 
     }
 
@@ -129,28 +129,26 @@ export default class NewMD extends Component {
 
         return (
             <div className="formBG bg-cover pt-4">
-                <div class="container-md flex flex-col   w-full justify-center  bg-gray-100  rounded-2xl shadow p-10 mb-12 ">
-                    {/* <Container> */}
+                <div class="container-md flex flex-col   w-full justify-center  bg-gray-200  rounded-2xl shadow p-10 mb-12 ">
                     <h2 className="text-center opacity-75 mb-5">Add Movie - Drama </h2>
                     <div className=" flex flex-row w-full mb-3">
-                        <div className="w-3/4 flex flex-col">
-
-                            <Form.Group as={Row} >
-                                <Form.Label column sm={2}>Title</Form.Label>
+                        <div className="w-2/4 flex flex-col">
+                            <Form.Group >
+                                <Form.Label className="ml-3">Title</Form.Label>
                                 <Col sm={10}>
                                     <Form.Control required id="title" type="text" name="title" onChange={this.changeHandler} placeholder="Voice"></Form.Control>
                                 </Col>
                             </Form.Group>
 
-                            <Form.Group as={Row}>
-                                <Form.Label column sm={2}>Release Date </Form.Label>
+                            <Form.Group>
+                                <Form.Label className="ml-3">Release Date </Form.Label>
                                 <Col sm={10}>
                                     <Form.Control required id="releaseYear" type="date" name="releaseYear" onChange={this.changeHandler} placeholder="2017-01-20"></Form.Control>
                                 </Col>
                             </Form.Group>
 
-                            <Form.Group as={Row}>
-                                <Form.Label column sm={2}>Type</Form.Label>
+                            <Form.Group>
+                                <Form.Label className="ml-3">Type</Form.Label>
                                 <Col sm={10}>
                                     <Form.Control required id="type" as="select" name="type" onChange={this.changeHandler}>
                                         <option value="">Select Type</option>
@@ -160,33 +158,33 @@ export default class NewMD extends Component {
                                 </Col>
                             </Form.Group>
 
-                            <Form.Group as={Row}>
-                                <Form.Label column sm={2}>Description</Form.Label>
+                            <Form.Group>
+                                <Form.Label className="ml-3">Description</Form.Label>
                                 <Col sm={10}>
-                                    <Form.Control as="textarea" id="description" required type="text" name="description" onChange={this.changeHandler} placeholder="About the crimes ..."></Form.Control>
+                                    <Form.Control as="textarea" id="description" required type="text" name="description" onChange={this.changeHandler} placeholder="About the crimes ..." className="resize-none"></Form.Control>
                                 </Col>
 
                             </Form.Group>
-                            <Form.Group as={Row}>
-                                <Form.Label column sm={2}>Poster URL</Form.Label>
+                            <Form.Group>
+                                <Form.Label className="ml-3">Poster URL</Form.Label>
                                 <Col sm={10}>
                                     <Form.Control required id="poster" type="text" name="poster" onChange={this.changeHandler} placeholder="https://Drama-Movie-Poster.com/"></Form.Control>
                                 </Col>
                             </Form.Group>
-                            <Form.Group as={Row}>
-                                <Form.Label column sm={2}> Duration</Form.Label>
+                            <Form.Group>
+                                <Form.Label className="ml-3"> Duration</Form.Label>
                                 <Col sm={10}>
                                     <Form.Control required id="duration" type="text" name="duration" onChange={this.changeHandler} placeholder="1 hour 30 min"></Form.Control>
                                 </Col>
                             </Form.Group>
-                            <Form.Group as={Row}>
-                                <Form.Label column sm={2}>  # Of Episods</Form.Label>
+                            <Form.Group>
+                                <Form.Label className="ml-3">  # Of Episods</Form.Label>
                                 <Col sm={10}>
                                     <Form.Control required id="numOfEpisods" type="number" name="numOfEpisods" onChange={this.changeHandler} placeholder="16"></Form.Control>
                                 </Col>
                             </Form.Group>
-                            <Form.Group as={Row}>
-                                <Form.Label column sm={2}>Content Rating</Form.Label>
+                            <Form.Group>
+                                <Form.Label className="ml-3">Content Rating</Form.Label>
                                 <Col sm={10}>
                                     <Form.Control required id="contentRating" as="select" name="contentRating" onChange={this.changeHandler}>
                                         <option value="">Select Content Rate</option>
@@ -199,63 +197,58 @@ export default class NewMD extends Component {
                                 </Col>
                             </Form.Group>
 
-                            <Form.Group as={Row}>
-                                <Form.Label column sm={2}> Score</Form.Label>
+                            <Form.Group>
+                                <Form.Label className="ml-3"> Score</Form.Label>
                                 <Col sm={10}>
                                     <Form.Control required id="score" type="text" name="score" onChange={this.changeHandler} placeholder="9.0"></Form.Control>
                                 </Col>
                             </Form.Group>
 
-                            <Form.Text muted>
+                        </div>
+                        <div className="w-2/4 flex flex-row  justify-evenly px-2 py-2">
+
+                            <div className="w-2/4  flex flex-col" >
+                                <p className="text-center opacity-80">Actors - Cast</p>
+                                <Form.Group className="border-2  border-gray-300 rounded-lg pl-5 h-72 overflow-y-scroll shadow-sm">
+                                    {this.props.actors.map((actor, index) =>
+                                        <div>
+                                            <input className="mr-3" type="checkbox" name="actors" value={index} onChange={this.changeHandler} />
+                                            {actor.fullName}
+                                        </div>
+                                    )}
+                                </Form.Group>
+
+                                <p className="text-center opacity-80">Genders</p>
+                                <Form.Group className="border-2  border-gray-300 rounded-lg pl-5 h-72 overflow-y-scroll shadow-sm">
+                                    {this.props.genders.map((gender, index) =>
+                                        <div>
+                                            <input className="mr-3" type="checkbox" name="genders" value={index} onChange={this.changeHandler} />
+                                            {gender.name}
+                                        </div>
+                                    )}
+                                </Form.Group>
+                            </div>
+                            <div className="w-2/4 mr-2 flex flex-col" >
+                                <p className="text-center opacity-40">Poster preview</p>
+
+                                {/* show poster */}
+                                <div className="   ml-3 flex-row flex justify-center   h-72  ">
+                                    <img src={this.state.movieDrama.poster} className=" bg-contain shadow-md rounded"></img>
+                                </div>
+
+                                <Form.Text muted className="text-xs  px-10 mt-3 text-justify">
                                 * If you can't see the Actors/Genders in the list, you should add them first and then come back here.
                             </Form.Text>
-                            <Form.Text muted>
-                            * All the Feilds are required .
+                            <Form.Text muted className="text-xs   px-10 mt-3 text-justify">
+                                * All the Feilds are required .
                             </Form.Text>
-
-
-
-                        </div>
-                        <div className="w-1/4 flex flex-col  pl-5">
-
-                            {/* show poster */}
-                            <div className="   mb-3 flex-row flex justify-center   h-72  ">
-                                <img src={this.state.movieDrama.poster} className="w-full bg-contain shadow-md "></img>
                             </div>
-
-                            <Form.Group className="border-2  border-gray-200 rounded-lg pl-5 h-64 overflow-y-scroll shadow-sm">
-                                <Form.Label className="text-lg underline"> Actors - Cast </Form.Label>
-
-                                {this.props.actors.map((actor, index) =>
-                                    <div>
-                                        <input className="mr-3" type="checkbox" name="actors" value={index} onChange={this.changeHandler} />
-                                        {actor.fullName}
-                                    </div>
-                                )}
-                            </Form.Group>
-
-                            <Form.Group className="border-2  border-gray-200 rounded-lg pl-5 h-64 overflow-y-scroll shadow-sm">
-                                <Form.Label className="text-lg underline"> Gender </Form.Label>
-
-                                {this.props.genders.map((gender, index) =>
-                                    <div>
-                                        <input className="mr-3" type="checkbox" name="genders" value={index} onChange={this.changeHandler} />
-                                        {gender.name}
-                                    </div>
-                                )}
-                            </Form.Group>
-
-
-
                         </div>
 
                     </div>
-
-                    <div className="w-full flex flex-row justify-center">
+                    <div className="w-full flex flex-row mt-2 justify-center">
                         <Button onClick={this.handleSubmit} className="btn w-64">Add Movie - Drama</Button>
                     </div>
-
-                    {/* </Container> */}
                 </div>
                 <Footer></Footer>
             </div>
