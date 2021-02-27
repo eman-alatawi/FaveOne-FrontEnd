@@ -30,7 +30,7 @@ export default function ActorDetails(props) {
                     <div className="flex flex-row " > {
                         props.actor.movieDramas.map((md, index) =>
                             <div key={index}>
-                                <MDRowCard {...md} ></MDRowCard>
+                                <MDRowCard {...md} hide={props.hide}></MDRowCard>
                             </div>
                         )
                     }
