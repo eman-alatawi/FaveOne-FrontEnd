@@ -18,7 +18,7 @@ import { withRouter } from 'react-router-dom';
 
     loginHandler = () => {
         this.props.login(this.state)
-        this.props.show();
+        this.props.show(); //show the sections in the root/home
         this.props.history.push('/');
     }
 

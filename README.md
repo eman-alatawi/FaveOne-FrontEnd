@@ -1,5 +1,5 @@
-# FavOne
-Your place of your favorite Movie/Drama/Episode/Actor. The users can add their favorite movies, dramas, episodes, and actors and share them with the world. (FavOne) is the shortcut of Favorite One, nice name right? :)
+# FaveOne
+Your place of your favorite Movie/Drama/Episode/Actor. The users can add their favorite movies, dramas, episodes, and actors and share them with the world. (FaveOne) is the shortcut of Favorite One, nice name right? :)
 
 ## Important Links
 
@@ -9,7 +9,7 @@ Your place of your favorite Movie/Drama/Episode/Actor. The users can add their f
 
 
 ## Planning Story
-From Day-1 start choosing the idea and decide the name, design the ERD, Wireframes and create the Apps, Repos. Continue by creating one Model/Controller in the back-end and check it with the Postman then go and design the related components in the front-end. For each 2 days there is a complete feature in the front-end with design and styles and the back-end functionality.
+From Day-1 start choosing the idea and decide the name, design the ERD, user stories, wireframes and create the Apps, Repos. Continue by creating one Model/Controller in the back-end and check it with the Postman then go and design the related components in the front-end. For each 2 days there is a complete feature in the front-end with design and styles and the back-end functionality.
 
 ## Technologies Used
 
@@ -30,11 +30,40 @@ From Day-1 start choosing the idea and decide the name, design the ERD, Wirefram
 - GitHub
 - GitHub Pages
 
+
 ## User Stories
+- As a visitor, I prefer not asked to register, so that I can view the Movies/Dramas/Episodes/Actors/Image Galleries/Genders(Catagories)without having an account.
+- As a visitor, I want to be able to do registration, so that I can have further features related to my account type.
+- As a user, I want to be able to Register/Login to my account.
+- As a registered-user(Admin/User), I want to have an edit option for the password, so that I can change the account's password when I want.
+- As a registered-user(Admin/User), I want to able to receive notifications/messages for my actions, so that I can be aware of the situations.
+- As a registered-user(Admin/User), I want to be able to view the details of all Movies/Dramas/Episodes/Actors.
+- As a registered-user(Admin/User), I want to have an add Movie/Drama option, so that I can add my favorite Movies/Dramas.
+- As a registered-user(Admin/User), I want to have an edit Movie/Drama option, so that I can edit the Movies/Dramas that I added.
+- As a registered-user(Admin), I want to have a delete Movie/Drama option, so that I can delete the Movies/Dramas that I added.
+- As a registered-user(Admin/User), I want to have an add Episode option, so that I can add Episodes to the Dramas.
+- As a registered-user(Admin/User), I want to have an edit Episode option, so that I can edit the Episodes that are added by me and by others.
+- As a registered-user(Admin), I want to have a delete Episode option, so that I can delete the Episodes that are added by me and by others.
+- As a registered-user(Admin/User), I want to have an add Gender/Catagory option, so that I can add Genders of the  Movies/Dramas.
+- As a registered-user(Admin/User), I want to have an edit Gender/Catagory option, so that I can edit Genders of the  Movies/Dramas that are added by me and by others.
+- As a registered-user(Admin), I want to have a delete Gender option, so that I can delete the Genders that are added by me and by others.
+- As a registered-user(Admin/User), I want to have an add Image Gallery option, so that I can add Image Galleries to the  Movies/Dramas.
+- As a registered-user(Admin/User), I want to have an edit Image Gallery option, so that I can edit Image Galleries to the  Movies/Dramas that are added by me and by others.
+- As a registered-user(Admin), I want to have a delete Image Gallery option, so that I can delete the Image Galleries that are added by me and by others.
+- As a registered-user(Admin/User), I want to have an add Actor option, so that I can add my favorite Actors.
+- As a registered-user(Admin/User), I want to have an edit Actor option, so that I can edit the Actors who are added by me and by others.
+- As a registered-user(Admin), I want to have a delete Actor option, so that I can delete the Actors who are added by me and by others.
 
+## Important Notes About FaveOne
+ 
 
+-  Sharing the resources with the world means that you are agreeing to let other users contribute with you (reading, editing, adding, and for Admins they can delete the whole resource or some parts of it).
 
+- The base idea of FavOne website is to let the people share the resources that they're like, and give the permissions to any registered user/admin to edit other registered user's resources.
 
+- We allow the registered users only to own the Movies/Dramas so that they're be able to add/edit what they added,  and for deletion process is allowed only for users with Admin Role
+
+- The resources(Actors/Genders/Episodes/ImageGalleries) ownership is for all registered users.
 
 ## Images
 
@@ -65,7 +94,7 @@ From Day-1 start choosing the idea and decide the name, design the ERD, Wirefram
 
 
 
-## Installtion:
+## Installtion
 
 ### 1- React Router DOM:
 DOM bindings for React Router
