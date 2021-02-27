@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {  Form, Button, Col } from 'react-bootstrap'
+import { Form, Button, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
 
 export default class EditActor extends Component {
@@ -103,9 +103,7 @@ export default class EditActor extends Component {
                             </Form.Group>
 
 
-                            <div className="w-full flex flex-row justify-center">
-                                <Button onClick={this.handleSubmit} className="btn w-64">Edit Actor</Button>
-                            </div>
+
                         </div>
                         <div className="w-1/4 mr-4 flex flex-col pt-10  ">
                             <p className="text-center opacity-40">picture preview</p>
@@ -117,6 +115,9 @@ export default class EditActor extends Component {
 
                         </div>
 
+                    </div>
+                    <div className="w-full flex flex-row justify-center">
+                        <Button onClick={this.handleSubmit} className="btn w-64">Edit Actor</Button>
                     </div>
                 </div>
             </div>

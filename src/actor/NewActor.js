@@ -102,9 +102,7 @@ class NewActor extends Component {
                             </Form.Group>
 
 
-                            <div className="w-full flex flex-row justify-center">
-                                <Button onClick={this.handleSubmit} className="btn w-64">Add Actor</Button>
-                            </div>
+
                         </div>
                         <div className="w-1/4 mr-4 flex flex-col pt-10  ">
                             <p className="text-center opacity-40">picture preview</p>
@@ -116,6 +114,9 @@ class NewActor extends Component {
 
                         </div>
 
+                    </div>
+                    <div className="w-full flex flex-row justify-center">
+                        <Button onClick={this.handleSubmit} className="btn w-64">Add Actor</Button>
                     </div>
                 </div>
                 <Footer></Footer>

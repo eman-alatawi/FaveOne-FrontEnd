@@ -101,7 +101,6 @@ export default class MDIndex extends Component {
                 this.props.loadEpisodes();
                 //this.props.loadImageGallries()
                 toast.success("Movie/Drama has been Deleted with it's related Episodes & Images Successfully!!")
-                toast.info("If the Updated Drama has episodes related to it, you should update/link them to the Drama")
 
             })
             .catch(error => {
