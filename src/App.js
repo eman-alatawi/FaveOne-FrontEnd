@@ -1,9 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import { decode } from "jsonwebtoken";
-import { Alert } from "react-bootstrap";
 import {toast } from 'react-toastify';
 import React, { Component } from 'react'
 import Join from './user/Join';
@@ -12,16 +10,14 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
-import HomeBanner from './HomeBanner';
+import HomeBanner from './Shared/HomeBanner';
 import ActorSection from './actor/ActorSection';
 import EpisodeSection from './episode/EpisodeSection'
-import Footer from './Footer';
+import Footer from './Shared/Footer';
 import NewActor from './actor/NewActor'
 import ActorIndex from './actor/ActorIndex'
 import GenderIndex from './gender/GenderIndex';
-import NewGender from './gender/NewGender'
 import MDIndex from './movieDrama/MDIndex';
-import EditMD from './movieDrama/EditMD';
 import NewMD from './movieDrama/NewMD'
 import MovieDramaSection from './movieDrama/MovieDramaSection'
 import EpisodeIndex from './episode/EpisodeIndex';
@@ -113,6 +109,7 @@ export default class App extends Component {
             user: user,
           })
           toast.success("Successfully logged in!!");
+          toast("Welcome Back :) ")
           console.log(this.state.user.sub)
         } else {
           this.setState({
@@ -341,7 +338,7 @@ export default class App extends Component {
 
           {isAuth ? (
             <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-gray-800 shadow">
-              <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler} className="text-gray-200 ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
+              <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler} className="text-gray-200 ml-5 mr-11 text-2xl hover:text-pink-600"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
@@ -368,7 +365,7 @@ export default class App extends Component {
                   </NavDropdown>
                 </Nav>
                 <Nav className="mr-5">
-                  {this.state.user ? <Navbar.Text className="mr-5" > Signed in as:  {this.state.user.sub}</Navbar.Text> : null}
+                  {this.state.user ? <Navbar.Text className="mr-5" > <span className="text-blue-500">Signed in as: </span> {this.state.user.sub}</Navbar.Text> : null}
 
                   <Nav.Link > <Link to="/logout" onClick={this.onLogoutHandeler} className="mr-5 text-gray-200 hover:text-pink-600 text-xl">Say Bye</Link></Nav.Link>
                 </Nav>
@@ -376,7 +373,7 @@ export default class App extends Component {
             </Navbar>
           ) : (
               <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-gray-800 shadow">
-                <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler} className="text-gray-200 ml-5 mr-11 text-2xl"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
+                <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler} className="text-gray-200 ml-5 mr-11 text-2xl hover:text-pink-600"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                   <Nav className="mr-auto">
@@ -415,7 +412,7 @@ export default class App extends Component {
 
         <div>
           <Route path="/register" component={() => <Join register={this.registerHandler}  ></Join>}></Route>
-          <Route path="/login" component={() => <Login login={this.loginHandler} />}></Route>
+          <Route path="/login" component={() => <Login login={this.loginHandler} show={this.showSectionsHandler} />}></Route>
 
           <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors} hide={this.hideSectionsHandler}></ActorIndex>}></Route>
           <Route path="/genderIndex" component={() => <GenderIndex genders={this.state.genders} isAuth={this.state.isAuth} loadGenders={this.loadGenders} addGender={this.addGenderHandler}></GenderIndex>}></Route>

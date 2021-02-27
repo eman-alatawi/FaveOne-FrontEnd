@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Button, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
-import Footer from '../Footer';
+import Footer from '../Shared/Footer';
 import { withRouter } from 'react-router-dom';
 
 class NewEpisode extends Component {

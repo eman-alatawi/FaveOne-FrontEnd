@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Form, Button, Row, Col } from 'react-bootstrap'
-import Footer from '../Footer';
+import Footer from '../Shared/Footer';
 import { withRouter } from 'react-router-dom';
  class Login extends Component {
 
@@ -18,7 +18,8 @@ import { withRouter } from 'react-router-dom';
 
     loginHandler = () => {
         this.props.login(this.state)
-        this.props.history.push('/movieDramaIndex');
+        this.props.show();
+        this.props.history.push('/');
     }
 
     render() {

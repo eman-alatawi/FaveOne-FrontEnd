@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Footer from '../Footer'
+import Footer from '../Shared/Footer'
 import EditGender from './EditGender'
 import GenderRowCard from './GenderRowCard'
 import {toast } from 'react-toastify';

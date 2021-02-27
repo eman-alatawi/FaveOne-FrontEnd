@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react'
-import Footer from '../Footer';
+import Footer from '../Shared/Footer';
 import EditEpisode from './EditEpisode';
 import EpisodeRowCard from './EpisodeRowCard';
 import EpisodeDetails from './EpisodeDetails'
@@ -116,7 +116,7 @@ export default class EpisodeIndex extends Component {
 
 
 
-                    {/* show all actors if the user didn't click the Edit icon - by default show the ActorRowCard */}
+                    {/* show all Episodes if the user didn't click the Edit icon - by default show the EpisodeRowCard */}
                     {!this.state.isEdit && !this.state.isDetail ?
                         <div>
                             <div className="h-full w-full  ">
@@ -135,14 +135,14 @@ export default class EpisodeIndex extends Component {
                     }
 
 
-                    {/* if the user click the edit icon - show the EditActor [we need to loop again using map to know the clickedActorId by user and the actor.id in actors ] */}
+                    {/* if the user click the edit icon - show the EditEpisode [we need to loop again using map to know the clickedEpisodeId by user and the episode.id in episodes ] */}
                     {this.state.episodes.map((episode, index) =>
                         <div key={index}> 
                         {(this.state.isEdit && this.state.clickedEpisodeId === episode.id) ? <EditEpisode episode={episode} moviesDramas={this.props.moviesDramas} editEpisode={this.editEpisode} ></EditEpisode> : null} 
                         </div>
                     )}
 
-                    {/* if the user click the card  - show the ActorDetail [we need to loop again using map to know the clickedActorId by user and the actor.id in actors ] */}
+                    {/* if the user click the card  - show the EpisodeDetail [we need to loop again using map to know the clickedEpisodeId by user and the episode.id in episodes ] */}
                     {this.state.episodes.map((episode, index) =>
                         <div key={index}> 
                             {(this.state.isDetail && this.state.clickedEpisodeId === episode.id) ? <EpisodeDetails episode={this.state.episodeDetail} allEpisodes={this.state.episodes} moviesDramas={this.props.moviesDramas} isAuth={this.props.isAuth}></EpisodeDetails> : null} 
