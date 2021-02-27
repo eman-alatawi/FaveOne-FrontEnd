@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Container, Form, Button, Row, Col } from 'react-bootstrap'
+import {Form, Button, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
 import Footer from '../Footer';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
-export default class NewMD extends Component {
+ class NewMD extends Component {
     constructor(props) {
         super(props)
 
@@ -92,6 +93,7 @@ export default class NewMD extends Component {
     handleSubmit = () => {
         if (this.validate()) {
             this.props.addMD(this.state.movieDrama)
+            this.props.history.push('/movieDramaIndex');
         }
     }
 
@@ -255,3 +257,4 @@ export default class NewMD extends Component {
         )
     }
 }
+export default withRouter(NewMD); 

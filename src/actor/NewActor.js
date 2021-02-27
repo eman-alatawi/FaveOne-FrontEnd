@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { Container, Form, Button, Row, Col } from 'react-bootstrap'
+import { Form, Button, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
 import { Alert } from "react-bootstrap";
 import Footer from '../Footer';
+import { withRouter } from 'react-router-dom';
 
-export default class NewActor extends Component {
+
+class NewActor extends Component {
     state = {}
     changeHandler = (e) => {
         let temp = { ... this.state }
@@ -16,6 +18,8 @@ export default class NewActor extends Component {
     handleSubmit = () => {
         if (this.validate()) {
             this.props.addActor(this.state)
+            this.props.history.push('/actorIndex');
+
         }
     }
 
@@ -119,3 +123,4 @@ export default class NewActor extends Component {
         )
     }
 }
+export default withRouter(NewActor); 

@@ -380,7 +380,7 @@ export default class App extends Component {
                   </Nav>
                   <Nav className="mr-5">
                     <Nav.Link > <Link to="/register" onClick={this.hideSectionsHandler} className="text-gray-200 hover:text-pink-600 text-xl">Join</Link></Nav.Link>
-                    <Nav.Link >  <Link to="/login" onClick={this.hideSectionsHandler} className=" text-gray-200 hover:text-pink-600 text-xl">Login</Link></Nav.Link>
+                    <Nav.Link >  <Link to="/login" onClick={this.hideSectionsHandler}  className=" text-gray-200 hover:text-pink-600 text-xl">Login</Link></Nav.Link>
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>

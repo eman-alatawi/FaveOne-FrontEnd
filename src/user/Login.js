@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Container, Form, Button, Row, Col } from 'react-bootstrap'
-import { Alert } from "react-bootstrap";
 import Footer from '../Footer';
-
-export default class Login extends Component {
+import { withRouter } from 'react-router-dom';
+ class Login extends Component {
 
     //craete empty state - new version
     state = {}
@@ -19,23 +18,14 @@ export default class Login extends Component {
 
     loginHandler = () => {
         this.props.login(this.state)
+        this.props.history.push('/movieDramaIndex');
     }
 
     render() {
 
-        const errorMessage = this.props.errorMessage ? (
-            <Alert variant="danger">{this.props.errorMessage}</Alert>
-        ) : null;
-
-        const successMessage = this.props.successMessage ? (
-            <Alert variant="success">{this.props.successMessage}</Alert>
-        ) : null;
-
         return (
             <div className="formBG bg-cover bg-center  pt-4">
                 <div class="container-sm flex flex-col justify-center my-5 bg-gray-100  rounded-2xl shadow p-10">
-                    {errorMessage}
-                    {successMessage}
                     <h2 className="text-center opacity-75 mb-2">Login for your account</h2>
                     <h4 className="text-xs text-center opacity-50 mb-5">In order to use FavOne wesite with full featues, you will need to login to your account. Is this your first time? you can Join Now</h4>
                     <Container>
@@ -65,4 +55,5 @@ export default class Login extends Component {
         )
     }
 }
+export default withRouter(Login); 
 

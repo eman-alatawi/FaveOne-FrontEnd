@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Form, Button, Row, Col } from 'react-bootstrap'
+import {  Form, Button, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
 
 export default class EditActor extends Component {

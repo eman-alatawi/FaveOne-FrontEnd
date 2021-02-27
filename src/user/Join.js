@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Container, Form, Button, Row, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
-import { Alert } from "react-bootstrap";
 import Footer from '../Footer';
+import { withRouter } from 'react-router-dom';
 
-export default class join extends Component {
+ class join extends Component {
     state = {}
 
     changeHandler = (e) => {
@@ -18,6 +18,7 @@ export default class join extends Component {
 
         if (this.validate()) {
             this.props.register(this.state)
+            this.props.history.push('/login');
         }
 
     }
@@ -43,15 +44,11 @@ export default class join extends Component {
         }
     }
     render() {
-        const message = this.props.message ? (
-            <Alert variant="info">{this.props.message}</Alert>
-        ) : null;
 
         return (
 
             <div className=" formBG bg-cover bg-center  pt-4" >
             <div class="container-sm flex flex-col justify-center my-5 bg-gray-100  rounded-2xl shadow p-10">
-                {message}
                 <h2 className="text-center opacity-75 mb-5">Sign up for an account</h2>
                 <Container>
                     <Form.Group as={Row} >
@@ -117,3 +114,4 @@ export default class join extends Component {
         )
     }
 }
+export default withRouter(join); 

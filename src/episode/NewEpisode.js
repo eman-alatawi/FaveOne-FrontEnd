@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Container, Form, Button, Row, Col } from 'react-bootstrap'
+import { Form, Button, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
 import Footer from '../Footer';
+import { withRouter } from 'react-router-dom';
 
-export default class NewEpisode extends Component {
+class NewEpisode extends Component {
     constructor(props) {
         super(props)
 
@@ -45,6 +46,8 @@ export default class NewEpisode extends Component {
     handleSubmit = () => {
         if (this.validate()) {
             this.props.addEpisode(this.state.episode)
+            this.props.history.push('/episodeIndex');
+
         }
     }
 
@@ -150,3 +153,4 @@ export default class NewEpisode extends Component {
         )
     }
 }
+export default withRouter(NewEpisode); 
