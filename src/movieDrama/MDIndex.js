@@ -96,7 +96,9 @@ export default class MDIndex extends Component {
                 console.log("delete movie-Drama");
                 console.log(response);
                 this.props.loadMoviesDramas();
-                toast.success("Movie/Drama has been Deleted Successfully!!")
+                this.props.loadEpisodes();
+                //this.props.loadImageGallries()
+                toast.success("Movie/Drama has been Deleted with it's related Episodes & Images Successfully!!")
 
             })
             .catch(error => {

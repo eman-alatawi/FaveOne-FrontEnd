@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Form, Button, Row, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
-import Footer from '../Footer';
 
 export default class EditEpisode extends Component {
     constructor(props) {
@@ -38,7 +37,25 @@ export default class EditEpisode extends Component {
             episode: updatedEpisode
         })
     }
+    componentDidMount() {
+        this.addMDToEpisode()
+    }
 
+
+    addMDToEpisode = () => {
+
+        const thisEpisodeMovieDrama = this.props.moviesDramas.filter((md) => {
+            const index = md.episodes.findIndex(x => x.id === this.props.episode.id)
+            console.log(index)
+            return index != -1
+        })
+
+        const updatedEpisode = this.state.episode
+        updatedEpisode['movieDrama'] = thisEpisodeMovieDrama[0]
+        this.setState({
+            movieDrama: updatedEpisode
+        })
+    }
 
     handleSubmit = () => {
         if (this.validate()) {
@@ -97,7 +114,7 @@ export default class EditEpisode extends Component {
                             <Form.Group >
                                 <Form.Label className="ml-3" >  Episod Number</Form.Label>
                                 <Col sm={10}>
-                                    <Form.Control required id="episodNum" type="number" name="episodNum"  value={this.state.episode.episodNum}  onChange={this.changeHandler} placeholder="16"></Form.Control>
+                                    <Form.Control required id="episodNum" type="number" name="episodNum" value={this.state.episode.episodNum} onChange={this.changeHandler} placeholder="16"></Form.Control>
                                 </Col>
                             </Form.Group>
 
@@ -127,16 +144,16 @@ export default class EditEpisode extends Component {
 
                                 {this.props.moviesDramas.map((md, index) =>
 
-                                 <div>{md.episodes.findIndex(x => x.id == this.state.episode.id) == -1 ?
-                                                <div>
-                                                    <input className="mr-3" type="radio" name="movieDrama" value={index} onChange={this.changeHandler} />
-                                                    {md.title}</div>
-                                                :
-                                                <div>
-                                                    <input className="mr-3" type="radio" checked name="movieDrama" value={index} onChange={this.changeHandler} />
-                                                    {md.title}</div>}
+                                    <div>{md.episodes.findIndex(x => x.id == this.state.episode.id) == -1 ?
+                                        <div>
+                                            <input className="mr-3" type="radio" name="movieDrama" value={index} onChange={this.changeHandler} />
+                                            {md.title}</div>
+                                        :
+                                        <div>
+                                            <input className="mr-3" type="radio" checked name="movieDrama" value={index} onChange={this.changeHandler} />
+                                            {md.title}</div>}
 
-                                </div>
+                                    </div>
                                 )}
                             </Form.Group>
 
@@ -150,7 +167,7 @@ export default class EditEpisode extends Component {
 
 
                 </div>
-                <Footer></Footer>
+                
             </div>
         )
     }

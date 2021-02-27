@@ -31,6 +31,23 @@ export default class EditMD extends Component {
             movieDrama: updatedMovie
         })
     }
+
+    // loadEpisodes = () => {
+
+    //     const thisMovieDramaEpisodes = this.props.actors.filter((actor) => {
+    //         const index = actor.movieDramas.findIndex(x => x.id === this.props.movieDrama.id)
+    //         console.log(index)
+    //         return index != -1
+    //     })
+
+    //     const updatedMovie = this.state.movieDrama
+    //     updatedMovie['actors'] = []
+    //     updatedMovie['actors'] = thisMovieDramaEpisodes
+    //     this.setState({
+    //         movieDrama: updatedMovie
+    //     })
+    // }
+
     changeHandler = (event) => {
         const attributeToChange = event.target.name;
 
