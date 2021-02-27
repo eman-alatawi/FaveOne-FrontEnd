@@ -15,6 +15,7 @@ export default class EditMD extends Component {
 
     componentDidMount() {
         this.loadActors();
+        this.loadEpisodes();
     }
     loadActors = () => {
 
@@ -32,21 +33,24 @@ export default class EditMD extends Component {
         })
     }
 
-    // loadEpisodes = () => {
+    loadEpisodes = () => {
 
-    //     const thisMovieDramaEpisodes = this.props.actors.filter((actor) => {
-    //         const index = actor.movieDramas.findIndex(x => x.id === this.props.movieDrama.id)
-    //         console.log(index)
-    //         return index != -1
-    //     })
+        // const thisDramaEpisodes = this.props.episodes.filter((episode) => {
+        //     const index = episode.movieDrama.findIndex(x => x.id === this.props.movieDrama.id)
+        //     console.log(index)
+        //     return index != -1
+        // })
 
-    //     const updatedMovie = this.state.movieDrama
-    //     updatedMovie['actors'] = []
-    //     updatedMovie['actors'] = thisMovieDramaEpisodes
-    //     this.setState({
-    //         movieDrama: updatedMovie
-    //     })
-    // }
+        const thisDramaEpisodes = this.state.movieDrama
+        console.log(thisDramaEpisodes)
+        // thisDramaEpisodes['episodes'] = []
+        thisDramaEpisodes['episodes'] = this.props.movieDrama.episodes
+        console.log(thisDramaEpisodes)
+
+        this.setState({
+            movieDrama: thisDramaEpisodes
+        })
+    }
 
     changeHandler = (event) => {
         const attributeToChange = event.target.name;

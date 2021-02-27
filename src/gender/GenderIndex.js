@@ -89,7 +89,7 @@ export default class GenderIndex extends Component {
             <div className="genderBg pt-5 bg-cover">
                 
                 <div className="h-full w-full  ">
-                    <h3 className=" mb-12  text-center text-gray-900 text-3xl opacity-75 ">Movie-Drama Genders</h3>
+                    <h3 className=" mb-12  text-center text-gray-900 text-3xl opacity-75 ">All Movie-Drama Genders</h3>
                 </div>
                 <div className=" h-ful flex flex-col mx-5 my-10  ">
 

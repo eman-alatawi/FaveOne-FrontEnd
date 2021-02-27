@@ -10,9 +10,9 @@ export default class MovieDramaSection extends Component {
                 <h3 className=" mb-12 text-xl text-center">Dramas</h3>
                 </div>
                 <div className="flex flex-row " >
-
+                    
                     {this.props.moviesDramas.map((md, index)=>
-                      <MDRowCard {...md}></MDRowCard>
+                      <MDRowCard {...md} hide={this.props.hide}></MDRowCard>
                     )}
 
                    

@@ -406,9 +406,9 @@ export default class App extends Component {
         <HomeBanner></HomeBanner>
         {isSectionsShow ? (
           <div>
-            <MovieDramaSection moviesDramas={this.state.moviesDramas}></MovieDramaSection>
-            <ActorSection actors={this.state.actors} loadActors={this.loadActors} ></ActorSection>
-            <EpisodeSection episodes={this.state.episodes} moviesDramas={this.state.moviesDramas}></EpisodeSection>
+            <MovieDramaSection moviesDramas={this.state.moviesDramas} hide={this.hideSectionsHandler}></MovieDramaSection>
+            <ActorSection actors={this.state.actors} loadActors={this.loadActors} hide={this.hideSectionsHandler} ></ActorSection>
+            <EpisodeSection episodes={this.state.episodes} moviesDramas={this.state.moviesDramas} hide={this.hideSectionsHandler}></EpisodeSection>
             <Footer></Footer>
           </div>
         ) : null}
@@ -422,7 +422,7 @@ export default class App extends Component {
           {this.state.user !== null? 
           <Route path="/movieDramaIndex" component={() => <MDIndex  emailAddress={this.state.user.sub} moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} loadEpisodes={this.loadEpisodes} loadImageGallries={this.loadImageGallries}></MDIndex>}></Route>
           : 
-          <Route path="/movieDramaIndex" component={() => <MDIndex  moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} loadEpisodes={this.loadEpisodes} loadImageGallries={this.loadImageGallries}></MDIndex>}></Route>
+          <Route path="/movieDramaIndex" component={() => <MDIndex   moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} loadEpisodes={this.loadEpisodes} loadImageGallries={this.loadImageGallries}></MDIndex>}></Route>
  
           }
           <Route path="/episodeIndex" component={() => <EpisodeIndex  episodes={this.state.episodes} moviesDramas={this.state.moviesDramas} isAuth={this.state.isAuth} loadEpisodes={this.loadEpisodes} loadMoviesDramas={this.loadMoviesDramas}></EpisodeIndex>}></Route>

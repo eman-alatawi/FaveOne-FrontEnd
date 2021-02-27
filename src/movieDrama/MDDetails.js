@@ -52,7 +52,7 @@ export default function MDDetails(props) {
             </div>
 
             {props.movieDrama.episodes ?
-                <div className=" flex flex-col  bg-gray-800  rounded-lg shadow p-10 ">
+                <div className=" flex flex-col  bg-gray-800  rounded-lg shadow p-10   w-full overflow-x-scroll">
                     <h4 className="text-gray-300 mb-3 text-xl">Related Episodes:</h4>
                     <div className="flex flex-row " > {
                         props.movieDrama.episodes.map((episode, index) =>

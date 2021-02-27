@@ -70,6 +70,8 @@ export default class MDIndex extends Component {
                 console.log(response);
                 this.props.loadMoviesDramas();
                 this.props.loadActors();
+                this.props.loadEpisodes();
+
                 this.setState({
                     isEdit: false
                 })
@@ -125,7 +127,7 @@ export default class MDIndex extends Component {
                     {!this.state.isEdit && !this.state.isDetail ?
                         <div>
                             <div className="h-full w-full  ">
-                                <h3 className=" my-12  text-center text-gray-900 text-3xl opacity-75">Movies - Dramas</h3>
+                                <h3 className=" my-12  text-center text-gray-900 text-3xl opacity-75">All Movies - Dramas</h3>
                             </div>
                             <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
                                 {this.state.moviesDramas.map((md, index) =>
@@ -143,7 +145,7 @@ export default class MDIndex extends Component {
                     {/* if the user click the edit icon - show the editMD [we need to loop again using map to know the clickedMDId by user and the md.id in moviesDramas ] */}
                     {this.state.moviesDramas.map((md, index) =>
                         <div key={index}>
-                            {(this.state.isEdit && this.state.clickedMDId === md.id) ? <EditMD movieDrama={md} editMD={this.editMD} actors={this.props.actors} genders={this.props.genders} ></EditMD> : null}
+                            {(this.state.isEdit && this.state.clickedMDId === md.id) ? <EditMD movieDrama={md} editMD={this.editMD} actors={this.props.actors} genders={this.props.genders} episodes={this.props.episodes}></EditMD> : null}
                         </div>
                     )}
 

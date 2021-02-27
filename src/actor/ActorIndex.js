@@ -118,7 +118,7 @@ export default class ActorIndex extends Component {
                     {!this.state.isEdit && !this.state.isDetail ?
                         <div>
                             <div className="h-full w-full  ">
-                                <h3 className=" my-12  text-center text-gray-900 text-3xl opacity-75">Actors</h3>
+                                <h3 className=" my-12  text-center text-gray-900 text-3xl opacity-75">All Actors</h3>
                             </div>
                             <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
                                 {this.state.actors.map((actor, index) =>

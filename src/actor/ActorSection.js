@@ -1,13 +1,7 @@
 import React, { Component } from 'react'
 import ActorRowCard from './ActorRowCard';
 export default class ActorSection extends Component {
-    // constructor(props) {
-    //     super(props)
-    
-    //     this.state = {
-    //         actors: props.actors
-    //     }
-    // }
+  
     
     render() {
         return (
@@ -19,7 +13,7 @@ export default class ActorSection extends Component {
                 <div className="flex flex-row " >
                    
                     {this.props.actors.map((actor, index) =>
-                    <ActorRowCard {...actor}></ActorRowCard>
+                    <ActorRowCard {...actor} hide={this.props.hide}></ActorRowCard>
                 )}
                    
                 </div>
