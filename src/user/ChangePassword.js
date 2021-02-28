@@ -93,22 +93,22 @@ class ChangePassword extends Component {
 
 
                         <Form.Group as={Row}>
-                            <Form.Label column sm={2}>Current Password</Form.Label>
-                            <Col sm={10}>
+                            <Form.Label column sm={3}>Current Password</Form.Label>
+                            <Col sm={9}>
                                 <Form.Control required id="oldPassword" type="password" name="oldPassword" onChange={this.changeHandler} placeholder="********"></Form.Control>
                             </Col>
                         </Form.Group>
 
                         <Form.Group as={Row}>
-                            <Form.Label column sm={2}>New Password</Form.Label>
-                            <Col sm={10}>
+                            <Form.Label column sm={3}>New Password</Form.Label>
+                            <Col sm={9}>
                                 <Form.Control required id="password" type="password" name="password" onChange={this.changeHandler} placeholder="********"></Form.Control>
                             </Col>
                         </Form.Group>
 
                         <Form.Group as={Row}>
-                            <Form.Label column sm={2}>Confirm New Password</Form.Label>
-                            <Col sm={10}>
+                            <Form.Label column sm={3}>Confirm New Password</Form.Label>
+                            <Col sm={9}>
                                 <Form.Control required id="confirmPassword" type="password" name="confirmPassword" onChange={this.changeHandler} placeholder="********"></Form.Control>
                             </Col>
                         </Form.Group>

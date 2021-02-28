@@ -75,7 +75,7 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
 
 ### Wireframe:
 
-### - Un Login view
+### - Visitor View:
 ![Home](https://i.ibb.co/56tKY2N/Home-Un-Loggedin.png)
 
 
@@ -97,14 +97,20 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
 
 ![Actor](https://i.ibb.co/ww7HkSx/Actor-Index-Unlogged-In-User.png)
 
-### - Login view
+![Join](https://i.ibb.co/F8kSSpB/Home-Join.png)
+
+### Login/Change password:
+![login](https://i.ibb.co/NFQ6P1N/Home-Login.png
+)
+
+![change password](https://i.ibb.co/H25B8qw/change-Password.png)
+
+### - Login-user view:
+
 
 ![Home](https://i.ibb.co/r58c0CN/Home-logged-In.png
 )
 ![Home](https://i.ibb.co/w7bxDkY/Home-logged-In-Drop-Down.png)
-
-![Join](https://i.ibb.co/F8kSSpB/Home-Join.png)
-![Login](https://i.ibb.co/NFQ6P1N/Home-Login.png)
 
 
 ![Movie-Drama](https://i.ibb.co/pjr7sz1/Movie-Drama-Index-logged-In-User.png)
