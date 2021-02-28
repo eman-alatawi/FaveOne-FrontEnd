@@ -29,7 +29,7 @@ function EpisodeRowCard(props) {
           <div>
             {props.moviesDramas.map((md, index) =>
 
-              md.episodes.findIndex(x => x.id == props.id) !== -1 ? <Card.Text className="group-hover:text-gray-800">{md.title} </Card.Text> : null
+              md.episodes.findIndex(x => x.id == props.id) !== -1 ? <Card.Text className="group-hover:text-gray-800 mb-2">{md.title} </Card.Text> : null
 
             )}
           </div> : null}

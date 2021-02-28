@@ -47,8 +47,8 @@ export default function MDDetails(props) {
             </div>
 
             {props.movieDrama.episodes ?
-                <div className=" flex flex-col  bg-gray-800  rounded-lg shadow p-10   w-full overflow-x-scroll">
-                    <h4 className="text-gray-300 mb-3 text-xl">Related Episodes:</h4>
+                <div className=" flex flex-col  bg-gray-800 shadow p-10   w-full overflow-x-scroll">
+                    <h4 className="text-gray-300 mb-3 text-xl ml-3">Related Episodes:</h4>
                     <div className="flex flex-row " > {
                         props.movieDrama.episodes.map((episode, index) =>
                             <div key={index}>
@@ -62,8 +62,8 @@ export default function MDDetails(props) {
                 : null}
 
             {props.movieDrama.imageGalleries ?
-                <div className=" flex flex-col  bg-gray-800  rounded-lg shadow p-10   w-full overflow-x-scroll">
-                    <h4 className="text-gray-300 mb-3 text-xl">Related Image Galleries:</h4>
+                <div className=" flex flex-col  bg-blue-900 mt-5 shadow p-10   w-full overflow-x-scroll">
+                    <h4 className="text-gray-300 mb-3 text-xl ml-3">Related Image Galleries:</h4>
                     <div className="flex flex-row " > {
                         props.movieDrama.imageGalleries.map((imageGallery, index) =>
                             <div key={index}>
