@@ -239,7 +239,7 @@ export default class EditMD extends Component {
 
                                 {/* show poster */}
                                 <div className="   ml-3 flex-row flex justify-center   h-72  ">
-                                    <img src={this.state.movieDrama.poster} className=" bg-contain shadow-md rounded"></img>
+                                    <img src={this.state.movieDrama.poster} className=" bg-contain  w-full shadow-md rounded"></img>
                                 </div>
                             </div>
                         </div>

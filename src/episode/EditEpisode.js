@@ -71,7 +71,7 @@ export default class EditEpisode extends Component {
 
 
         if (episodNum < 1) {
-            swal("Undefiend!!", "Number of Episodes should be 1 or more", "error")
+            swal("Wrong!!", "The Episode number should be 1 or more", "error")
             return false;
         }
 
@@ -84,15 +84,13 @@ export default class EditEpisode extends Component {
             return true;
         }
 
-
-
     }
 
     render() {
 
         return (
             <div className="formBG bg-cover pt-4">
-                <div class="container-md flex flex-col   w-full justify-center  bg-gray-100  rounded-2xl shadow p-10 mb-12 ">
+                <div class="container-md flex flex-col   w-full justify-center  bg-gray-200  rounded-2xl shadow p-10 mb-12 ">
                     <h2 className="text-center opacity-75 mb-5">Edit Episode </h2>
                     <div className=" flex flex-row w-full mb-3">
                         <div className="w-2/4 flex flex-col">
@@ -167,7 +165,7 @@ export default class EditEpisode extends Component {
 
 
                 </div>
-                
+
             </div>
         )
     }

@@ -13,6 +13,7 @@ function EpisodeRowCard(props) {
     </div>
     : null);
 
+    //when user click on the image from the main page in the EpisodeSection or from the MDDetails send hide() to hide the sections in the App and redirect to the episodeIndex
   const cardImage = (props.hide ? <Card.Img variant="top" className="h-64 w-full object-cover" onClick={() => { props.hide(); props.history.push('/episodeIndex'); }} src={props.thumbnail} />
     : <Card.Img variant="top" className="h-64 w-full object-cover" src={props.thumbnail} />
   );

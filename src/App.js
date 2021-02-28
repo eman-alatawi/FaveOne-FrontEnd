@@ -22,6 +22,8 @@ import NewMD from './movieDrama/NewMD'
 import MovieDramaSection from './movieDrama/MovieDramaSection'
 import EpisodeIndex from './episode/EpisodeIndex';
 import NewEpisode from './episode/NewEpisode';
+import ImageGalleryIndex from './ImageGallery/ImageGalleryIndex'
+import NewImageGallery from './ImageGallery/NewImageGallery';
 
 export default class App extends Component {
 
@@ -35,7 +37,7 @@ export default class App extends Component {
     genders: [],
     moviesDramas: [],
     episodes: [],
-    imageGallries: []
+    imageGalleries: []
 
   }
   componentDidMount() {
@@ -44,6 +46,7 @@ export default class App extends Component {
     this.loadGenders();
     this.loadMoviesDramas();
     this.loadEpisodes();
+    this.loadImageGalleries();
     
   }
 
@@ -248,6 +251,29 @@ export default class App extends Component {
       })
   }
 
+  // 10- addImageGalleryHandler
+  addImageGalleryHandler = (imageGallery) => {
+    axios.post("/favone/imagegallery/add", imageGallery,
+      {
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+      })
+      .then(response => {
+        console.log("Image Gallery Added");
+        console.log(response);
+        this.loadMoviesDramas();
+        this.loadImageGalleries();
+        toast.success("The Image Gallery has been Added Successfully")
+        toast.info("Added in Image Galleries Section")
+      })
+      .catch(error => {
+        console.log("Error while Adding Image Gallery  !!");
+        console.log(error);
+        toast.error("Error while trying to Add Image Gallery, Try again later!!")
+      })
+  }
+
 
   //Loaders
   //1- loadActors
@@ -311,13 +337,13 @@ export default class App extends Component {
   }
   
   //5- loadImageGallries
-  loadImageGallries = ()=>{
+  loadImageGalleries = ()=>{
     axios.get("/favone/imagegallery/index")
     .then(response => {
       console.log(response);
-      // this.setState({
-      //   imageGallries: response.data
-      // })
+      this.setState({
+        imageGalleries: response.data
+      })
     })
     .catch(error => {
       console.log("Error while reteriving imageGallries!!");
@@ -344,7 +370,7 @@ export default class App extends Component {
                 <Nav className="mr-auto">
                   <NavDropdown title="Movies - Dramas" id="collasible-nav-dropdown" className="mr-11 text-xl">
                     <NavDropdown.Item ><Link to="/movieDramaIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Movies - Dramas</Link></NavDropdown.Item>
-                    <NavDropdown.Item ><Link to="/imageGalleryIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Images Gallery</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/imageGalleryIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Image Galleries</Link></NavDropdown.Item>
                     <NavDropdown.Item ><Link to="/genderIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Genders</Link></NavDropdown.Item>
 
                     <NavDropdown.Divider />
@@ -379,7 +405,7 @@ export default class App extends Component {
                   <Nav className="mr-auto">
                     <NavDropdown title="Movies - Dramas" id="collasible-nav-dropdown" className="mr-11 text-xl">
                       <NavDropdown.Item ><Link to="/movieDramaIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Movies - Dramas</Link></NavDropdown.Item>
-                      <NavDropdown.Item ><Link to="/imageGalleryIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Images Gallery</Link></NavDropdown.Item>
+                      <NavDropdown.Item ><Link to="/imageGalleryIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Image Galleries</Link></NavDropdown.Item>
                       <NavDropdown.Item ><Link to="/genderIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Genders</Link></NavDropdown.Item>
                     </NavDropdown>
                     <NavDropdown title="Episodes" id="collasible-nav-dropdown" className="mr-11 text-xl">
@@ -417,18 +443,21 @@ export default class App extends Component {
           <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors} hide={this.hideSectionsHandler}></ActorIndex>}></Route>
           <Route path="/genderIndex" component={() => <GenderIndex genders={this.state.genders} isAuth={this.state.isAuth} loadGenders={this.loadGenders} addGender={this.addGenderHandler}></GenderIndex>}></Route>
           {this.state.user !== null? 
-          <Route path="/movieDramaIndex" component={() => <MDIndex  emailAddress={this.state.user.sub} moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} loadEpisodes={this.loadEpisodes} loadImageGallries={this.loadImageGallries} hide={this.hideSectionsHandler}></MDIndex>}></Route>
+          <Route path="/movieDramaIndex" component={() => <MDIndex  emailAddress={this.state.user.sub} moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} imageGalleries={this.state.imageGalleries} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} loadEpisodes={this.loadEpisodes} loadImageGalleries={this.loadImageGalleries} hide={this.hideSectionsHandler}></MDIndex>}></Route>
           : 
-          <Route path="/movieDramaIndex" component={() => <MDIndex   moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} loadEpisodes={this.loadEpisodes} loadImageGallries={this.loadImageGallries} hide={this.hideSectionsHandler}></MDIndex>}></Route>
+          <Route path="/movieDramaIndex" component={() => <MDIndex   moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} imageGalleries={this.state.imageGalleries} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} loadEpisodes={this.loadEpisodes} loadImageGalleries={this.loadImageGalleries} hide={this.hideSectionsHandler}></MDIndex>}></Route>
  
           }
           <Route path="/episodeIndex" component={() => <EpisodeIndex  episodes={this.state.episodes} moviesDramas={this.state.moviesDramas} isAuth={this.state.isAuth} loadEpisodes={this.loadEpisodes} loadMoviesDramas={this.loadMoviesDramas}></EpisodeIndex>}></Route>
+          <Route path="/imageGalleryIndex" component={() => <ImageGalleryIndex imageGalleries={this.state.imageGalleries} moviesDramas={this.state.moviesDramas} isAuth={this.state.isAuth} loadImageGalleries={this.loadImageGalleries} loadMoviesDramas={this.loadMoviesDramas}></ImageGalleryIndex>}></Route>
 
 
 
           <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} ></NewActor>}></Route>
           <Route path="/addMovieDrama" component={() => <NewMD  user={this.state.user} addMD={this.addMovieDramaHandler} actors={this.state.actors} genders={this.state.genders} ></NewMD>}></Route>
           <Route path="/addEpisode" component={() => <NewEpisode  addEpisode={this.addEpisodeHandler} moviesDramas={this.state.moviesDramas}></NewEpisode>}></Route>
+          <Route path="/addImageGallery" component={() => <NewImageGallery  addImageGallery={this.addImageGalleryHandler} moviesDramas={this.state.moviesDramas}></NewImageGallery>}></Route>
+
 
         </div>
       </Router>

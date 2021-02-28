@@ -1,15 +1,10 @@
 import React from 'react'
 import MDRowCard from './MDRowCard'
-import  { Redirect } from 'react-router-dom'
 import EpisodeRowCard from '../episode/EpisodeRowCard';
+import ImageGalleryRowCard from '../ImageGallery/ImageGalleryRowCard'
 
-// const redirectFun =()=>{
-//     console.log("inside func")
-     
-// }
 export default function MDDetails(props) {
     const year = new Date(props.movieDrama.releaseYear);
-    // console.log(props.history);
     return (
         <div>
             <div className=" flex flex-row  bg-gray-50  rounded-lg shadow p-10 ">
@@ -19,7 +14,7 @@ export default function MDDetails(props) {
                     <div className="w-64 mt-3  text-center flex flex-col">
                         <h4>{props.movieDrama.type}</h4>
                     </div>
-                   
+
                 </div>
                 <div className=" w-4/5 flex flex-col pt-2 ">
                     <div className=" flex flex-row justify-start w-full pl-1 mb-4  rounded-l-lg bg-gray-700 shadow-xl text-gray-300">
@@ -41,13 +36,13 @@ export default function MDDetails(props) {
                 </div>
                 <div className="w-1/12  text-center pt-10 mt-2 mb-4 flex flex-col bg-gray-700 shadow-xl text-gray-300">
                     <h5 className="text-left pl-1">Genders: </h5>
-                        {props.movieDrama.genders ?
+                    {props.movieDrama.genders ?
                         <ul className="text-left  h-64 overflow-y-scroll">
-                        {props.movieDrama.genders.map((gender, index) =>
-                            <li key={index} className="bg-pink-900 my-2 pl-1" >{gender.name} </li>
-                        )}
+                            {props.movieDrama.genders.map((gender, index) =>
+                                <li key={index} className="bg-pink-900 my-2 pl-1" >{gender.name} </li>
+                            )}
                         </ul>
-                        : null }
+                        : null}
                 </div>
             </div>
 
@@ -58,6 +53,21 @@ export default function MDDetails(props) {
                         props.movieDrama.episodes.map((episode, index) =>
                             <div key={index}>
                                 <EpisodeRowCard {...episode} movieDrama={props.movieDrama} hide={props.hide}></EpisodeRowCard>
+                            </div>
+                        )
+                    }
+                    </div>
+                </div>
+
+                : null}
+
+            {props.movieDrama.imageGalleries ?
+                <div className=" flex flex-col  bg-gray-800  rounded-lg shadow p-10   w-full overflow-x-scroll">
+                    <h4 className="text-gray-300 mb-3 text-xl">Related Image Galleries:</h4>
+                    <div className="flex flex-row " > {
+                        props.movieDrama.imageGalleries.map((imageGallery, index) =>
+                            <div key={index}>
+                                <ImageGalleryRowCard {...imageGallery} movieDrama={props.movieDrama} hide={props.hide}></ImageGalleryRowCard>
                             </div>
                         )
                     }

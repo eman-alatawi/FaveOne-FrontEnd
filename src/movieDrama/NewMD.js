@@ -240,7 +240,7 @@ import { withRouter } from 'react-router-dom';
 
                                 {/* show poster */}
                                 <div className="   ml-3 flex-row flex justify-center   h-72  ">
-                                    <img src={this.state.movieDrama.poster} className=" bg-contain shadow-md rounded"></img>
+                                    <img src={this.state.movieDrama.poster} className=" bg-contain w-full shadow-md rounded"></img>
                                 </div>
 
                                 <Form.Text muted className="text-xs  px-10 mt-3 text-justify">

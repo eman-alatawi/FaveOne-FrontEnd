@@ -70,7 +70,6 @@ export default class MDIndex extends Component {
                 console.log(response);
                 this.props.loadMoviesDramas();
                 this.props.loadActors();
-                this.props.loadEpisodes();
 
                 this.setState({
                     isEdit: false
@@ -99,7 +98,7 @@ export default class MDIndex extends Component {
                 console.log(response);
                 this.props.loadMoviesDramas();
                 this.props.loadEpisodes();
-                //this.props.loadImageGallries()
+                //this.props.loadImageGalleries()
                 toast.success("Movie/Drama has been Deleted with it's related Episodes & Images Successfully!!")
 
             })
@@ -152,7 +151,7 @@ export default class MDIndex extends Component {
                     {/* if the user click the card  - show the movie-Drama Details [we need to loop again using map to know the clickedMDId by user and the md.id in moviesDramas ] */}
                     {this.state.moviesDramas.map((md, index) =>
                         <div key={index}>
-                            {(this.state.isDetail && this.state.clickedMDId === md.id) ? <MDDetails movieDrama={this.state.mdDetail} episodes={this.props.episodes} hide={this.props.hide}></MDDetails> : null}
+                            {(this.state.isDetail && this.state.clickedMDId === md.id) ? <MDDetails movieDrama={this.state.mdDetail} episodes={this.props.episodes} imageGalleries={this.props.imageGalleries} hide={this.props.hide}></MDDetails> : null}
                         </div>
                     )}
 

@@ -109,7 +109,7 @@ class NewActor extends Component {
 
                             {/* show poster */}
                             <div className="   mb-3 flex-row flex justify-center h-72 ">
-                                <img src={this.state.picture} className=" bg-contain shadow-md "></img>
+                                <img src={this.state.picture} className=" bg-contain w-full shadow-md "></img>
                             </div>
 
                         </div>
