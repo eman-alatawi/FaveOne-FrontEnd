@@ -67,30 +67,87 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
 
 ## Images
 
+
+
+
+
+
+
 ### Wireframe:
-##### Home-UnLogged user
-![Home](https://i.ibb.co/TYdrbjq/Screen-Shot-2021-02-19-at-2-06-53-PM.png)
 
-##### Home-LoggedIn user
-![Home](https://i.ibb.co/K7mLsrL/Screen-Shot-2021-02-19-at-2-06-59-PM.png)
-
-##### Join
-![Join](https://i.ibb.co/QmTpgKX/Screen-Shot-2021-02-19-at-2-07-08-PM.png)
-
-##### LogIn
-![LogIn](https://i.ibb.co/sFR4Xgw/Screen-Shot-2021-02-19-at-2-07-13-PM.png)
-
-##### Drama-Detail
-![Drama-Detail](https://i.ibb.co/7Vvfh0c/Screen-Shot-2021-02-19-at-2-07-38-PM.png)
+### - Un Login view
+![Home](https://i.ibb.co/56tKY2N/Home-Un-Loggedin.png)
 
 
-##### Movie-Detail
-![Movie-Detail](https://i.ibb.co/KmFfY1W/Screen-Shot-2021-02-19-at-2-08-13-PM.png)
+![Home](https://i.ibb.co/r2gjc24/Home-Unlogged-In-Drop-Down.png)
+
+
+![Movie-Drama](https://i.ibb.co/VjqjRhL/Movie-Drama-Index-Unlogged-In-User.png)
+
+
+![ImageGalley](https://i.ibb.co/WG2xfVW/Image-Gallery-Index-Unlogged-In-User.png)
+
+
+![Gender](https://i.ibb.co/YT4csbF/Gender-Index-Unlogged-In-User.png)
+
+
+
+![Episode](https://i.ibb.co/19Wt4Vd/Episode-Index-Unlogged-In-User.png
+)
+
+![Actor](https://i.ibb.co/ww7HkSx/Actor-Index-Unlogged-In-User.png)
+
+### - Login view
+
+![Home](https://i.ibb.co/r58c0CN/Home-logged-In.png
+)
+![Home](https://i.ibb.co/w7bxDkY/Home-logged-In-Drop-Down.png)
+
+![Join](https://i.ibb.co/F8kSSpB/Home-Join.png)
+![Login](https://i.ibb.co/NFQ6P1N/Home-Login.png)
+
+
+![Movie-Drama](https://i.ibb.co/pjr7sz1/Movie-Drama-Index-logged-In-User.png)
+
+![Movie-Drama-Detail](https://i.ibb.co/LvjZYnV/Movie-Drama-Detail.png)
+
+![New-Movie-Drama](https://i.ibb.co/jyXkQrY/New-Movie-Drama.png)
+
+![Edit-Movie-Drama](https://i.ibb.co/k5x6R2R/Edit-Movie-Drama.png)
+
+![Actor](https://i.ibb.co/CQkNcgp/Actor-Index-logged-In-User.png)
+
+![Actor-Detail](https://i.ibb.co/cQh5DBB/Actor-Detail.png)
+
+![New-Actor](https://i.ibb.co/fXNCXHZ/NewActor.png)
+
+![Edit-Actor](https://i.ibb.co/QM0f3jf/Edit-Actor.png)
+
+![Episode](https://i.ibb.co/34Wy7zL/Episodee-Index-logged-In-User.png
+)
+
+![Episode-Detail](https://i.ibb.co/VYkNxkm/Episode-Detail.png)
+
+![New-Episode](https://i.ibb.co/W5yRGj4/New-Episode.png)
+
+![Edit-Episode](https://i.ibb.co/0cxdBX5/Edit-Episode.png)
+
+![ImageGallery](https://i.ibb.co/YbpkRRX/Image-Gallery-Index-logged-In-User.png)
+
+![New-ImageGallery](https://i.ibb.co/gWmCdgj/New-Image-Gallery.png)
+
+![Edit-ImageGallery](https://i.ibb.co/dWmDWy1/Edit-Image-Gallery.png)
+
+
+![Gender](https://i.ibb.co/TLtjYDN/Gender-Index-logged-In-User.png)
+
+![New-Gender](https://i.ibb.co/yScScMj/New-Gender.png)
+
+![Edit-Gender](https://i.ibb.co/T099F0L/Edit-Gender.png)
+
 
 
 ### App Screenshot:
-
-
 
 
 
