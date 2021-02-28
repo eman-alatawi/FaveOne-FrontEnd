@@ -107,15 +107,15 @@ class NewEpisode extends Component {
                             </Form.Group>
 
 
-                            {/* <Form.Text muted>
+                            <Form.Text muted className="pl-4 w-72 text-justify">
                                 * If you can't see the Movie/Drama in the list, you should add them first and then come back here.
-                            </Form.Text> */}
-                            <Form.Text muted>
+                            </Form.Text>
+                            <Form.Text muted className="pl-4 ">
                                 * All the Feilds are required .
                             </Form.Text>
 
                             <div className="w-full flex flex-row justify-center">
-                                <Button onClick={this.handleSubmit} className="btn w-64">Add Episode</Button>
+                                <Button onClick={this.handleSubmit} className="btn w-64 mt-4">Add Episode</Button>
                             </div>
 
 

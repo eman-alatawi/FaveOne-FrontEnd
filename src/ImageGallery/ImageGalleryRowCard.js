@@ -15,7 +15,7 @@ function ImageGalleryRowCard(props) {
 
   //when user click on the image from the MDDetails send hide() to hide the sections in the App and redirect to the ImageGalleryIndex
 
-  const cardImage = (props.hide ? <Card.Img variant="top" className="h-64 w-full object-cover" onClick={() => { props.hide(); props.history.push('/imageGalleryIndex"'); }} src={props.imageUrl} />
+  const cardImage = (props.hide ? <Card.Img variant="top" className="h-64 w-full object-cover" onClick={() => { props.hide(); props.history.push('/imageGalleryIndex'); }} src={props.imageUrl} />
     : <Card.Img variant="top" className="h-64 w-full object-cover" src={props.imageUrl} />
   );
 

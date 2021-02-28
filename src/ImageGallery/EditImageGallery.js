@@ -37,6 +37,26 @@ export default class EditImageGallery extends Component {
         })
     }
 
+    componentDidMount() {
+        this.addMDToImageGallery()
+    }
+
+
+    addMDToImageGallery = () => {
+
+        const thisImageGalleryMovieDrama = this.props.moviesDramas.filter((md) => {
+            const index = md.imageGalleries.findIndex(x => x.id === this.props.imageGallery.id)
+            console.log(index)
+            return index != -1
+        })
+
+        const updatedImageGalley = this.state.imageGallery
+        updatedImageGalley['movieDrama'] = thisImageGalleryMovieDrama[0]
+        this.setState({
+            movieDrama: updatedImageGalley
+        })
+    }
+
     handleSubmit = () => {
         if (this.validate()) {
             this.props.editImageGallery(this.state.imageGallery)

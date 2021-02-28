@@ -12,8 +12,6 @@ export default class ImageGalleryIndex extends Component {
         this.state = {
             imageGalleries: props.imageGalleries,
             isEdit: false,
-            isDetail:false,
-            imageGalleryDetail: [],
             clickedImageGalleryId: ''
         }
     }
@@ -26,37 +24,6 @@ export default class ImageGalleryIndex extends Component {
         })
     }
 
-    detailView = (id) => {
-        this.setState({
-            isDetail: !this.state.isDetail,
-            clickedImageGalleryId: id
-        })
-
-       this.imageGalleryDetail(id);
-    }
-
-    imageGalleryDetail = (id) =>{
-        axios.get("/favone/imagegallery/detail",
-        {
-            params: { id: id },
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem("token")
-            }
-        })
-            .then(response => {
-                console.log("get Image Gallery details");
-                console.log(response);
-                this.setState({
-                    imageGalleryDetail: response.data
-                })
-                
-                console.log(this.state.imageGalleryDetail)
-            })
-            .catch(error => {
-                console.log("error in retriving Image Gallery details");
-                console.log(error);
-            })
-    }
 
     editImageGallery = (imageGallery) => {
         axios.put("/favone/imagegallery/edit", imageGallery,
@@ -140,13 +107,6 @@ export default class ImageGalleryIndex extends Component {
                         {(this.state.isEdit && this.state.clickedImageGalleryId === imageGallery.id) ? <EditImageGallery imageGallery={imageGallery} moviesDramas={this.props.moviesDramas} editImageGallery={this.editImageGallery} ></EditImageGallery> : null} 
                         </div>
                     )}
-
-                    {/* if the user click the card  - show the ImageGalleryDetail [we need to loop again using map to know the clickedImageGalleryId by user and the imageGallery.id in imageGalleries ] */}
-                    {/* {this.state.imageGalleries.map((imageGallery, index) =>
-                        <div key={index}> 
-                            {(this.state.isDetail && this.state.clickedImageGalleryId === imageGallery.id) ? <EpisodeDetails imageGallery={this.state.imageGalleryDetail} allimageGalleries={this.state.imageGalleries} moviesDramas={this.props.moviesDramas} isAuth={this.props.isAuth}></EpisodeDetails> : null} 
-                         </div>
-                    )} */}
 
                 </div>
                 <Footer></Footer>
