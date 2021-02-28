@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import { decode } from "jsonwebtoken";
-import {toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import React, { Component } from 'react'
 import Join from './user/Join';
 import Login from './user/Login'
@@ -24,6 +24,7 @@ import EpisodeIndex from './episode/EpisodeIndex';
 import NewEpisode from './episode/NewEpisode';
 import ImageGalleryIndex from './ImageGallery/ImageGalleryIndex'
 import NewImageGallery from './ImageGallery/NewImageGallery';
+import ChangePassword from './user/ChangePassword';
 
 export default class App extends Component {
 
@@ -47,7 +48,7 @@ export default class App extends Component {
     this.loadMoviesDramas();
     this.loadEpisodes();
     this.loadImageGalleries();
-    
+
   }
 
 
@@ -274,6 +275,28 @@ export default class App extends Component {
       })
   }
 
+  // 11- changePasswordHandler
+  changePasswordHandler = (user) => {
+    axios.put("/favone/user/changePassword", user,
+      {
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+      })
+      .then(response => {
+        console.log("edit password");
+        console.log(response);
+        this.setState({
+          message: response.data.message
+        })
+        toast.info(this.state.message)
+      })
+      .catch(error => {
+        console.log("error in editing password");
+        console.log(error);
+        toast.error("Error Occured while trying to change password. Please try again later")
+      })
+  }
 
   //Loaders
   //1- loadActors
@@ -335,20 +358,20 @@ export default class App extends Component {
         console.log(error);
       })
   }
-  
+
   //5- loadImageGallries
-  loadImageGalleries = ()=>{
+  loadImageGalleries = () => {
     axios.get("/favone/imagegallery/index")
-    .then(response => {
-      console.log(response);
-      this.setState({
-        imageGalleries: response.data
+      .then(response => {
+        console.log(response);
+        this.setState({
+          imageGalleries: response.data
+        })
       })
-    })
-    .catch(error => {
-      console.log("Error while reteriving imageGallries!!");
-      console.log(error);
-    })
+      .catch(error => {
+        console.log("Error while reteriving imageGallries!!");
+        console.log(error);
+      })
   }
 
   render() {
@@ -391,7 +414,7 @@ export default class App extends Component {
                   </NavDropdown>
                 </Nav>
                 <Nav className="mr-5">
-                  {this.state.user ? <Navbar.Text className="mr-5" > <span className="text-blue-500">Signed in as: </span> {this.state.user.sub}</Navbar.Text> : null}
+                  {this.state.user ? <Navbar.Text className="mr-5" > <span className="text-blue-500">Signed in as: </span><Link to="/changePassword" onClick={this.hideSectionsHandler}> <span>{this.state.user.sub}</span></Link></Navbar.Text> : null}
 
                   <Nav.Link > <Link to="/logout" onClick={this.onLogoutHandeler} className="mr-5 text-gray-200 hover:text-pink-600 text-xl">Say Bye</Link></Nav.Link>
                 </Nav>
@@ -419,7 +442,7 @@ export default class App extends Component {
                   </Nav>
                   <Nav className="mr-5">
                     <Nav.Link > <Link to="/register" onClick={this.hideSectionsHandler} className="text-gray-200 hover:text-pink-600 text-xl">Join</Link></Nav.Link>
-                    <Nav.Link >  <Link to="/login" onClick={this.hideSectionsHandler}  className=" text-gray-200 hover:text-pink-600 text-xl">Login</Link></Nav.Link>
+                    <Nav.Link >  <Link to="/login" onClick={this.hideSectionsHandler} className=" text-gray-200 hover:text-pink-600 text-xl">Login</Link></Nav.Link>
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>
@@ -439,24 +462,26 @@ export default class App extends Component {
         <div>
           <Route path="/register" component={() => <Join register={this.registerHandler}  ></Join>}></Route>
           <Route path="/login" component={() => <Login login={this.loginHandler} show={this.showSectionsHandler} />}></Route>
+          <Route path="/changePassword" component={() => <ChangePassword  user={this.state.user} changePassword={this.changePasswordHandler} show={this.showSectionsHandler} />}></Route>
+
 
           <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors} hide={this.hideSectionsHandler}></ActorIndex>}></Route>
           <Route path="/genderIndex" component={() => <GenderIndex genders={this.state.genders} isAuth={this.state.isAuth} loadGenders={this.loadGenders} addGender={this.addGenderHandler}></GenderIndex>}></Route>
-          {this.state.user !== null? 
-          <Route path="/movieDramaIndex" component={() => <MDIndex  emailAddress={this.state.user.sub} moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} imageGalleries={this.state.imageGalleries} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} loadEpisodes={this.loadEpisodes} loadImageGalleries={this.loadImageGalleries} hide={this.hideSectionsHandler}></MDIndex>}></Route>
-          : 
-          <Route path="/movieDramaIndex" component={() => <MDIndex   moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} imageGalleries={this.state.imageGalleries} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} loadEpisodes={this.loadEpisodes} loadImageGalleries={this.loadImageGalleries} hide={this.hideSectionsHandler}></MDIndex>}></Route>
- 
+          {this.state.user !== null ?
+            <Route path="/movieDramaIndex" component={() => <MDIndex emailAddress={this.state.user.sub} moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} imageGalleries={this.state.imageGalleries} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} loadEpisodes={this.loadEpisodes} loadImageGalleries={this.loadImageGalleries} hide={this.hideSectionsHandler}></MDIndex>}></Route>
+            :
+            <Route path="/movieDramaIndex" component={() => <MDIndex moviesDramas={this.state.moviesDramas} episodes={this.state.episodes} actors={this.state.actors} genders={this.state.genders} imageGalleries={this.state.imageGalleries} isAuth={this.state.isAuth} loadMoviesDramas={this.loadMoviesDramas} loadActors={this.loadActors} loadEpisodes={this.loadEpisodes} loadImageGalleries={this.loadImageGalleries} hide={this.hideSectionsHandler}></MDIndex>}></Route>
+
           }
-          <Route path="/episodeIndex" component={() => <EpisodeIndex  episodes={this.state.episodes} moviesDramas={this.state.moviesDramas} isAuth={this.state.isAuth} loadEpisodes={this.loadEpisodes} loadMoviesDramas={this.loadMoviesDramas}></EpisodeIndex>}></Route>
+          <Route path="/episodeIndex" component={() => <EpisodeIndex episodes={this.state.episodes} moviesDramas={this.state.moviesDramas} isAuth={this.state.isAuth} loadEpisodes={this.loadEpisodes} loadMoviesDramas={this.loadMoviesDramas}></EpisodeIndex>}></Route>
           <Route path="/imageGalleryIndex" component={() => <ImageGalleryIndex imageGalleries={this.state.imageGalleries} moviesDramas={this.state.moviesDramas} isAuth={this.state.isAuth} loadImageGalleries={this.loadImageGalleries} loadMoviesDramas={this.loadMoviesDramas}></ImageGalleryIndex>}></Route>
 
 
 
           <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} ></NewActor>}></Route>
-          <Route path="/addMovieDrama" component={() => <NewMD  user={this.state.user} addMD={this.addMovieDramaHandler} actors={this.state.actors} genders={this.state.genders} ></NewMD>}></Route>
-          <Route path="/addEpisode" component={() => <NewEpisode  addEpisode={this.addEpisodeHandler} moviesDramas={this.state.moviesDramas}></NewEpisode>}></Route>
-          <Route path="/addImageGallery" component={() => <NewImageGallery  addImageGallery={this.addImageGalleryHandler} moviesDramas={this.state.moviesDramas}></NewImageGallery>}></Route>
+          <Route path="/addMovieDrama" component={() => <NewMD user={this.state.user} addMD={this.addMovieDramaHandler} actors={this.state.actors} genders={this.state.genders} ></NewMD>}></Route>
+          <Route path="/addEpisode" component={() => <NewEpisode addEpisode={this.addEpisodeHandler} moviesDramas={this.state.moviesDramas}></NewEpisode>}></Route>
+          <Route path="/addImageGallery" component={() => <NewImageGallery addImageGallery={this.addImageGalleryHandler} moviesDramas={this.state.moviesDramas}></NewImageGallery>}></Route>
 
 
         </div>
