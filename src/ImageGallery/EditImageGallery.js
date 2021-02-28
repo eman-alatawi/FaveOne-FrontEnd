@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Form, Button, Row, Col } from 'react-bootstrap'
+import { Form, Button, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
 
 export default class EditImageGallery extends Component {
@@ -21,16 +21,15 @@ export default class EditImageGallery extends Component {
         //for adding the  movie-drama to the image Galley that it's related to 
         if (attributeToChange === 'movieDrama') {
             if (event.target.checked) {
-                console.log([parseInt(newValue)]);
+                // console.log([parseInt(newValue)]);
                 updatedImageGalley[attributeToChange] = this.props.moviesDramas[parseInt(newValue)]
-
             }
         }
         else {
             updatedImageGalley[attributeToChange] = (newValue);
         }
 
-        console.log(updatedImageGalley);
+        // console.log(updatedImageGalley);
 
         this.setState({
             imageGallery: updatedImageGalley
@@ -46,7 +45,7 @@ export default class EditImageGallery extends Component {
 
         const thisImageGalleryMovieDrama = this.props.moviesDramas.filter((md) => {
             const index = md.imageGalleries.findIndex(x => x.id === this.props.imageGallery.id)
-            console.log(index)
+            // console.log(index)
             return index != -1
         })
 
@@ -70,12 +69,9 @@ export default class EditImageGallery extends Component {
         if (imageUrl === '') {
             swal("Empty!!", "The Image Gallery URL Feild is empty!", "error")
             return false;
-
-        }
-        else {
+        } else {
             return true;
         }
-
     }
 
     render() {
@@ -94,7 +90,6 @@ export default class EditImageGallery extends Component {
                                 </Col>
                             </Form.Group>
 
-
                             <Form.Text muted className="pl-4 w-72 text-justify">
                                 * If you can't see the Movie/Drama in the list, you should add them first and then come back here.
                             </Form.Text>
@@ -105,7 +100,6 @@ export default class EditImageGallery extends Component {
                             <div className="w-full flex flex-row justify-center">
                                 <Button onClick={this.handleSubmit} className="btn w-64 mt-4">Edit Image Gallery</Button>
                             </div>
-
 
                         </div>
                         <div className="w-full flex flex-row ">

@@ -31,8 +31,8 @@ import { withRouter } from 'react-router-dom';
         //for actors
         if (attributeToChange === 'actors') {
             if (event.target.checked) {
-                console.log(newValue);
-                console.log(this.props.actors[parseInt(newValue)]);
+                // console.log(newValue);
+                // console.log(this.props.actors[parseInt(newValue)]);
                 updatedMD[attributeToChange].push(this.props.actors[parseInt(newValue)]);
             } else {
                 updatedMD[attributeToChange].splice(updatedMD[attributeToChange].findIndex((x) => x.id == this.props.actors[parseInt(newValue)].id), 1);
@@ -40,8 +40,8 @@ import { withRouter } from 'react-router-dom';
 
         } else if (attributeToChange === 'genders') {
             if (event.target.checked) {
-                console.log(newValue);
-                console.log(this.props.genders[parseInt(newValue)]);
+                // console.log(newValue);
+                // console.log(this.props.genders[parseInt(newValue)]);
                 updatedMD[attributeToChange].push(this.props.genders[parseInt(newValue)]);
             } else {
                 updatedMD[attributeToChange].splice(updatedMD[attributeToChange].findIndex((x) => x.id == this.props.genders[parseInt(newValue)].id), 1);
@@ -51,7 +51,7 @@ import { withRouter } from 'react-router-dom';
             updatedMD[attributeToChange] = (newValue);
         }
 
-        console.log(updatedMD);
+        // console.log(updatedMD);
 
         this.setState({
             movieDrama: updatedMD
@@ -127,9 +127,6 @@ import { withRouter } from 'react-router-dom';
         else {
             return true;
         }
-
-
-
     }
 
     render() {

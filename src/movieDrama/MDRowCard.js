@@ -35,9 +35,7 @@ import { withRouter } from 'react-router-dom';
            </Card.Text>
            {showTool}
         </Card.Body>
-      </Card>
-
-      
+      </Card> 
     )
 } 
 export default withRouter(MDRowCard); 

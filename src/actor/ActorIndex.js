@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { Component } from 'react'
 import ActorRowCard from './ActorRowCard';
 import EditActor from './EditActor';
-// import { Alert } from "react-bootstrap";
 import Footer from '../Shared/Footer';
 import ActorDetails from './ActorDetails'
 import {toast } from 'react-toastify';

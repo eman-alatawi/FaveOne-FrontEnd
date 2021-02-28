@@ -14,9 +14,7 @@ export default class GenderIndex extends Component {
             genders: props.genders,
             isEdit: false,
             isAdd: false,
-            clickedGenderId: '',
-            errorMessage: null,
-            successMessage: null,
+            clickedGenderId: ''
         }
     }
 

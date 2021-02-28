@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Form, Button, Row, Col } from 'react-bootstrap'
+import { Form, Button, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
 
 export default class EditEpisode extends Component {
@@ -21,17 +21,15 @@ export default class EditEpisode extends Component {
         //for adding the  movie-drama to the episode that it's related to 
         if (attributeToChange === 'movieDrama') {
             if (event.target.checked) {
-                console.log([parseInt(newValue)]);
+                // console.log([parseInt(newValue)]);
                 updatedEpisode[attributeToChange] = this.props.moviesDramas[parseInt(newValue)]
-
             }
-
         }
         else {
             updatedEpisode[attributeToChange] = (newValue);
         }
 
-        console.log(updatedEpisode);
+        // console.log(updatedEpisode);
 
         this.setState({
             episode: updatedEpisode
@@ -46,7 +44,7 @@ export default class EditEpisode extends Component {
 
         const thisEpisodeMovieDrama = this.props.moviesDramas.filter((md) => {
             const index = md.episodes.findIndex(x => x.id === this.props.episode.id)
-            console.log(index)
+            // console.log(index)
             return index != -1
         })
 
@@ -69,7 +67,6 @@ export default class EditEpisode extends Component {
         var episodeVideoUrl = document.getElementById("episodeVideoUrl").value;
         var episodNum = document.getElementById("episodNum").value;
 
-
         if (episodNum < 1) {
             swal("Wrong!!", "The Episode number should be 1 or more", "error")
             return false;
@@ -79,8 +76,7 @@ export default class EditEpisode extends Component {
             swal("Empty!!", "Some Feilds are empty!", "error")
             return false;
 
-        }
-        else {
+        } else {
             return true;
         }
 
@@ -116,23 +112,20 @@ export default class EditEpisode extends Component {
                                 </Col>
                             </Form.Group>
 
-
-                            {/* <Form.Text muted>
+                            <Form.Text muted className="pl-4 w-72 text-justify">
                                 * If you can't see the Movie/Drama in the list, you should add them first and then come back here.
-                            </Form.Text> */}
-                            <Form.Text muted>
+                            </Form.Text>
+                            <Form.Text muted className="pl-4 ">
                                 * All the Feilds are required .
                             </Form.Text>
 
                             <div className="w-full flex flex-row justify-center">
                                 <Button onClick={this.handleSubmit} className="btn w-64">Edit Episode</Button>
                             </div>
-
-
                         </div>
-                        <div className="w-2/4 flex flex-row   ">
+                        <div className="w-2/4 flex flex-row  ">
 
-                            {/* show poster */}
+                            {/* show thumbnail */}
                             <div className="   mr-3 flex-row flex justify-center w-2/4  h-96  ">
                                 <img src={this.state.episode.thumbnail} className="w-full bg-contain shadow-md "></img>
                             </div>
@@ -145,27 +138,20 @@ export default class EditEpisode extends Component {
                                     <div>{md.episodes.findIndex(x => x.id == this.state.episode.id) == -1 ?
                                         <div>
                                             <input className="mr-3" type="radio" name="movieDrama" value={index} onChange={this.changeHandler} />
-                                            {md.title}</div>
+                                            {md.title}
+                                        </div>
                                         :
                                         <div>
                                             <input className="mr-3" type="radio" checked name="movieDrama" value={index} onChange={this.changeHandler} />
-                                            {md.title}</div>}
+                                            {md.title}
+                                        </div>}
 
                                     </div>
                                 )}
                             </Form.Group>
-
-
-
-
                         </div>
-
                     </div>
-
-
-
                 </div>
-
             </div>
         )
     }

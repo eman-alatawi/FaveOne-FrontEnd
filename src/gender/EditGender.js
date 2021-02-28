@@ -17,7 +17,7 @@ export default class EditGender extends Component {
 
         const updatedGender = { ...this.state.gender }
         updatedGender[attributeToChange] = newValue;
-        console.log(updatedGender);
+        // console.log(updatedGender);
 
         this.setState({
             gender: updatedGender
@@ -28,7 +28,6 @@ export default class EditGender extends Component {
         if (this.validate()) {
             this.props.editGender(this.state.gender)
         }
-
     }
 
     validate = () => {
@@ -46,7 +45,7 @@ export default class EditGender extends Component {
 
         return (
             <div>
-                <div class="container-sm flex flex-col justify-center my-5 bg-gray-100  rounded-2xl shadow p-10">
+                <div class="container-sm flex flex-col justify-center my-5 bg-gray-200  rounded-2xl shadow p-10">
 
                     <h2 className="text-center opacity-75 mb-5">Edit Gender</h2>
                     <Container>

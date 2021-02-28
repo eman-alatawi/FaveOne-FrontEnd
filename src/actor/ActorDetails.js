@@ -38,11 +38,6 @@ export default function ActorDetails(props) {
                 </div>
 
                 : null}
-
-
-
-
-
         </div>
     )
 }

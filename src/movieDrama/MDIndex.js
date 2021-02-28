@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Footer from '../Shared/Footer';
-import { Alert } from "react-bootstrap";
 import axios from 'axios';
 import MDRowCard from './MDRowCard'
 import EditMD from './EditMD'
@@ -98,8 +97,8 @@ export default class MDIndex extends Component {
                 console.log(response);
                 this.props.loadMoviesDramas();
                 this.props.loadEpisodes();
-                //this.props.loadImageGalleries()
-                toast.success("Movie/Drama has been Deleted with it's related Episodes & Images Successfully!!")
+                this.props.loadImageGalleries()
+                toast.success("Movie/Drama has been Deleted with it's related Episodes & Image Galleries Successfully!!")
 
             })
             .catch(error => {
@@ -119,8 +118,6 @@ export default class MDIndex extends Component {
             <div className="mainBg bg-cover">
                
                 <div className="   mb-10 w-full  flex flex-col  justify-evenly ">
-
-
 
                     {/* show all Movies-Dramas if the user didn't click the Edit icon - by default show the MDRowCard */}
                     {!this.state.isEdit && !this.state.isDetail ?

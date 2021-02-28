@@ -106,7 +106,6 @@ class NewEpisode extends Component {
                                 </Col>
                             </Form.Group>
 
-
                             <Form.Text muted className="pl-4 w-72 text-justify">
                                 * If you can't see the Movie/Drama in the list, you should add them first and then come back here.
                             </Form.Text>
@@ -137,16 +136,8 @@ class NewEpisode extends Component {
                                     </div>
                                 )}
                             </Form.Group>
-
-
-
-
                         </div>
-
                     </div>
-
-
-
                 </div>
                 <Footer></Footer>
             </div>

@@ -80,8 +80,6 @@ export default class ImageGalleryIndex extends Component {
               
                 <div className="   mb-10 w-full  flex flex-col  justify-evenly ">
 
-
-
                     {/* show all image Galleries if the user didn't click the Edit icon - by default show the ImageGalleryRowCard */}
                     {!this.state.isEdit && !this.state.isDetail ?
                         <div>

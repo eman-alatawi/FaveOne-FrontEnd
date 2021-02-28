@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Button, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
-import { Alert } from "react-bootstrap";
 import Footer from '../Shared/Footer';
 import { withRouter } from 'react-router-dom';
 
@@ -12,14 +11,13 @@ class NewActor extends Component {
         let temp = { ... this.state }
         temp[e.target.name] = e.target.value;
         this.setState(temp)
-        console.log(temp);
+        // console.log(temp);
     }
 
     handleSubmit = () => {
         if (this.validate()) {
             this.props.addActor(this.state)
             this.props.history.push('/actorIndex');
-
         }
     }
 
@@ -39,19 +37,9 @@ class NewActor extends Component {
         }
     }
     render() {
-        const errorMessage = this.props.errorMessage ? (
-            <Alert variant="danger">{this.props.errorMessage}</Alert>
-        ) : null;
-
-        const successMessage = this.props.successMessage ? (
-            <Alert variant="success">{this.props.successMessage}</Alert>
-        ) : null;
-
         return (
             <div className="formBG bg-cover pt-4">
                 <div class="container-md flex flex-col w-full  justify-center  bg-gray-200  rounded-2xl shadow p-10 mb-12 ">
-                    {errorMessage}
-                    {successMessage}
                     <h2 className="text-center opacity-75 mb-5">Add New Actor</h2>
                     <div className=" flex flex-row w-full mb-3">
                         <div className="w-3/4 flex flex-col">
@@ -101,13 +89,11 @@ class NewActor extends Component {
                                 </Col>
                             </Form.Group>
 
-
-
                         </div>
                         <div className="w-1/4 mr-4 flex flex-col pt-10  ">
                             <p className="text-center opacity-40">picture preview</p>
 
-                            {/* show poster */}
+                            {/* show picture */}
                             <div className="   mb-3 flex-row flex justify-center h-72 ">
                                 <img src={this.state.picture} className=" bg-contain w-full shadow-md "></img>
                             </div>

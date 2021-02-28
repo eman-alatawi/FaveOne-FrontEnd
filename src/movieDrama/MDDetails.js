@@ -1,5 +1,4 @@
 import React from 'react'
-import MDRowCard from './MDRowCard'
 import EpisodeRowCard from '../episode/EpisodeRowCard';
 import ImageGalleryRowCard from '../ImageGallery/ImageGalleryRowCard'
 
@@ -21,7 +20,6 @@ export default function MDDetails(props) {
                         <h4 className="mr-20">{props.movieDrama.title}</h4>
                         <h5 className="mr-20">{year.getFullYear()}</h5>
                         <h5 className="mr-2">Score: </h5><div className="mr-20">{props.movieDrama.score}</div>
-
                     </div>
 
                     <p className="text-justify w-full px-5 h-64 overflow-y-scroll">{props.movieDrama.description}</p>
@@ -31,7 +29,6 @@ export default function MDDetails(props) {
                         <h5 className="mr-2">Duration: </h5><div className="mr-20">{props.movieDrama.duration}</div>
                         <h5 className="mr-2">Content Rating: </h5><div className="mr-20">{props.movieDrama.contentRating}</div>
                         <h5 className="mr-2"># Of Episodes: </h5><div className="mr-20">{props.movieDrama.numOfEpisods}</div>
-
                     </div>
                 </div>
                 <div className="w-1/12  text-center pt-10 mt-2 mb-4 flex flex-col bg-gray-700 shadow-xl text-gray-300">
@@ -75,11 +72,6 @@ export default function MDDetails(props) {
                 </div>
 
                 : null}
-
-
-
-
-
         </div>
     )
 }

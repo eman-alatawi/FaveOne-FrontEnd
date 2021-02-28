@@ -13,7 +13,7 @@ function EpisodeRowCard(props) {
     </div>
     : null);
 
-    //when user click on the image from the main page in the EpisodeSection or from the MDDetails send hide() to hide the sections in the App and redirect to the episodeIndex
+  //when user click on the image from the main page in the EpisodeSection or from the MDDetails send hide() to hide the sections in the App and redirect to the episodeIndex
   const cardImage = (props.hide ? <Card.Img variant="top" className="h-64 w-full object-cover" onClick={() => { props.hide(); props.history.push('/episodeIndex'); }} src={props.thumbnail} />
     : <Card.Img variant="top" className="h-64 w-full object-cover" src={props.thumbnail} />
   );
@@ -28,9 +28,9 @@ function EpisodeRowCard(props) {
         {props.moviesDramas ?
           <div>
             {props.moviesDramas.map((md, index) =>
-
-              md.episodes.findIndex(x => x.id == props.id) !== -1 ? <Card.Text className="group-hover:text-gray-800 mb-2">{md.title} </Card.Text> : null
-
+              <div key={index}>
+                {md.episodes.findIndex(x => x.id == props.id) !== -1 ? <Card.Text className="group-hover:text-gray-800 mb-2">{md.title} </Card.Text> : null}
+              </div>
             )}
           </div> : null}
 

@@ -17,7 +17,7 @@ export default class EditActor extends Component {
 
         const updatedActor = { ...this.state.actor }
         updatedActor[attributeToChange] = newValue;
-        console.log(updatedActor);
+        // console.log(updatedActor);
 
         this.setState({
             actor: updatedActor
@@ -101,18 +101,14 @@ export default class EditActor extends Component {
                                     <Form.Control required id="socialAccount" type="text" name="socialAccount" value={this.state.actor.socialAccount} onChange={this.changeHandler} placeholder="instagram: @yesung1106"></Form.Control>
                                 </Col>
                             </Form.Group>
-
-
-
                         </div>
                         <div className="w-1/4 mr-4 flex flex-col pt-10  ">
                             <p className="text-center opacity-40">picture preview</p>
 
-                            {/* show poster */}
+                            {/* show picture */}
                             <div className="   mb-3 flex-row flex justify-center h-72 ">
                                 <img src={this.state.actor.picture} className=" bg-contain  w-full shadow-md "></img>
                             </div>
-
                         </div>
 
                     </div>

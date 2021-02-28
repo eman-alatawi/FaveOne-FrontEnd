@@ -25,7 +25,7 @@ class NewImageGallery extends Component {
         //for adding the  movie-drama to the image Galley that it's related to 
         if (attributeToChange === 'movieDrama') {
             if (event.target.checked) {
-                console.log([parseInt(newValue)]);
+                // console.log([parseInt(newValue)]);
                 updatedImageGalley[attributeToChange] = this.props.moviesDramas[parseInt(newValue)]
 
             }
@@ -34,7 +34,7 @@ class NewImageGallery extends Component {
             updatedImageGalley[attributeToChange] = (newValue);
         }
 
-        console.log(updatedImageGalley);
+        // console.log(updatedImageGalley);
 
         this.setState({
             imageGallery: updatedImageGalley
@@ -46,7 +46,6 @@ class NewImageGallery extends Component {
         if (this.validate()) {
             this.props.addImageGallery(this.state.imageGallery)
             this.props.history.push('/imageGalleryIndex');
-
         }
     }
 
@@ -57,7 +56,6 @@ class NewImageGallery extends Component {
         if (imageUrl === '') {
             swal("Empty!!", "The Image Gallery URL Feild is empty!", "error")
             return false;
-
         }
         else {
             return true;
@@ -81,7 +79,6 @@ class NewImageGallery extends Component {
                                 </Col>
                             </Form.Group>
 
-
                             <Form.Text muted className="pl-4 w-72 text-justify">
                                 * If you can't see the Movie/Drama in the list, you should add them first and then come back here.
                             </Form.Text>
@@ -92,7 +89,6 @@ class NewImageGallery extends Component {
                             <div className="w-full flex flex-row justify-center">
                                 <Button onClick={this.handleSubmit} className="btn w-64 mt-4">Add Image Gallery</Button>
                             </div>
-
 
                         </div>
                         <div className="w-full flex flex-row ">
