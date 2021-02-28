@@ -110,7 +110,12 @@ import { withRouter } from 'react-router-dom';
         var score = document.getElementById("score").value;
 
         if (numOfEpisods < 1) {
-            swal("Undefiend!!", "Number of Episodes should be 1 or more", "error")
+            swal("Wrong!!", "Number of Episodes should be 1 or more", "error")
+            return false;
+        }
+
+        if(score <0 ||  score >10){
+            swal("Wrong!!", "The score should be from 0 to 10", "error")
             return false;
         }
 

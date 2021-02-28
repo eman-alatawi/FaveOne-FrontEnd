@@ -15,7 +15,6 @@ export default class EditMD extends Component {
 
     componentDidMount() {
         this.loadActors();
-        this.loadEpisodes();
     }
     loadActors = () => {
 
@@ -33,24 +32,6 @@ export default class EditMD extends Component {
         })
     }
 
-    loadEpisodes = () => {
-
-        // const thisDramaEpisodes = this.props.episodes.filter((episode) => {
-        //     const index = episode.movieDrama.findIndex(x => x.id === this.props.movieDrama.id)
-        //     console.log(index)
-        //     return index != -1
-        // })
-
-        const thisDramaEpisodes = this.state.movieDrama
-        console.log(thisDramaEpisodes)
-        // thisDramaEpisodes['episodes'] = []
-        thisDramaEpisodes['episodes'] = this.props.movieDrama.episodes
-        console.log(thisDramaEpisodes)
-
-        this.setState({
-            movieDrama: thisDramaEpisodes
-        })
-    }
 
     changeHandler = (event) => {
         const attributeToChange = event.target.name;
@@ -108,6 +89,16 @@ export default class EditMD extends Component {
         var numOfEpisods = document.getElementById("numOfEpisods").value;
         var contentRating = document.getElementById("contentRating").value;
         var score = document.getElementById("score").value;
+
+        if (numOfEpisods < 1) {
+            swal("Wrong!!", "Number of Episodes should be 1 or more", "error")
+            return false;
+        }
+
+        if(score <0 ||  score >10){
+            swal("Wrong!!", "The score should be from 0 to 10", "error")
+            return false;
+        }
 
         if (title === '' || releaseYear === '' || type === '' || description === '' || poster === '' || duration === '' || numOfEpisods === '' || contentRating === '' || score === '') {
             swal("Empty!!", "Some Feilds are empty!", "error")
