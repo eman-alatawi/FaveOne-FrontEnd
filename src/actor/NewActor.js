@@ -94,7 +94,7 @@ class NewActor extends Component {
                             <p className="text-center opacity-40">picture preview</p>
 
                             {/* show picture */}
-                            <div className="   mb-3 flex-row flex justify-center h-72 ">
+                            <div className="   mb-3 flex-row flex justify-center h-96 ">
                                 <img src={this.state.picture} className=" bg-contain w-full shadow-md "></img>
                             </div>
 
