@@ -29,7 +29,7 @@ function EpisodeRowCard(props) {
           <div>
             {props.moviesDramas.map((md, index) =>
               <div key={index}>
-                {md.episodes.findIndex(x => x.id == props.id) !== -1 ? <Card.Text className="group-hover:text-gray-800 mb-2">{md.title} - {md.type} </Card.Text> : null}
+                {md.episodes.findIndex(x => x.id == props.id) !== -1 ? <Card.Text className="group-hover:text-gray-800 mb-2 whitespace-nowrap overflow-x-scroll">{md.title} - {md.type} </Card.Text> : null}
               </div>
             )}
           </div> : null}
@@ -37,7 +37,7 @@ function EpisodeRowCard(props) {
 
         {/* called from MDDetails  - Dispay Movie-Drama Title*/}
         {props.movieDrama ?
-          <Card.Text className="group-hover:text-gray-800">
+          <Card.Text className="group-hover:text-gray-800 whitespace-nowrap overflow-x-scroll">
             {props.movieDrama.title} - {props.movieDrama.type}
           </Card.Text> : null}
 

@@ -9,7 +9,7 @@ import Login from './user/Login'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
-
+import MDFilter from './Shared/MDFilter'
 import HomeBanner from './Shared/HomeBanner';
 import ActorSection from './actor/ActorSection';
 import EpisodeSection from './episode/EpisodeSection'
@@ -38,7 +38,8 @@ export default class App extends Component {
     genders: [],
     moviesDramas: [],
     episodes: [],
-    imageGalleries: []
+    imageGalleries: [],
+    // filterValue: ''
 
   }
   componentDidMount() {
@@ -298,6 +299,28 @@ export default class App extends Component {
       })
   }
 
+  // 12- handleFilterChange
+//   handleFilterChange = (event) =>{
+//     event.preventDefault();
+//     const filterValue = event.target.value;
+
+//     this.setState((prev, props) => {
+//         //list of moviesDramas that match the filter
+//         //new array containes the filtered items
+//         //filter() return new array 
+//         const filteredList = this.state.moviesDramas.filter((md) =>{
+//             return md.title.toLowerCase().includes(filterValue.toLowerCase())
+//         });
+
+//         //here is the reurn object from the setState
+//         return{
+//             moviesDramas: filteredList,
+//             filterValue: filterValue,
+           
+//         }
+//     })
+// }
+
   //Loaders
   //1- loadActors
   loadActors = () => {
@@ -412,6 +435,8 @@ export default class App extends Component {
                     <NavDropdown.Divider />
                     <NavDropdown.Item ><Link to="/addActor" onClick={this.hideSectionsHandler} className="dropDownLink">Add Actor</Link></NavDropdown.Item>
                   </NavDropdown>
+                  {/* <MDFilter value={this.state.filterValue} onChange={this.handleFilterChange}></MDFilter> */}
+
                 </Nav>
                 <Nav className="mr-5">
                   {this.state.user ? <Navbar.Text className="mr-5" > <span className="text-blue-500">Signed in as: </span><Link to="/changePassword" onClick={this.hideSectionsHandler}> <span>{this.state.user.sub}</span></Link></Navbar.Text> : null}

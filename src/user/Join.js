@@ -95,7 +95,7 @@ import { withRouter } from 'react-router-dom';
                         <Form.Label column sm={2}>Are You?</Form.Label>
                         <Col sm={10}>
                             <Form.Control required id="userRole" as="select" name="userRole" onChange={this.changeHandler}>
-                                <option value="">Select Gender</option>
+                                <option value="">Select Your Role</option>
                                 <option value="ROLE_USER"> User</option>
                                 <option value="ROLE_ADMIN"> Admin</option>
 
