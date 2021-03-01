@@ -157,6 +157,56 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
 
 
 ### App Screenshot:
+![main - page](https://i.ibb.co/2tCJKbV/main-page.png)
+![all movies-dramas ](https://i.ibb.co/fFZ3qdW/all-movies-dramas.png)
+
+![all actors](https://i.ibb.co/sRTJWxT/all-actors.png)
+![all episodes](https://i.ibb.co/C5D1rxZ/all-episodes.png)
+![all-image-galleries](https://i.ibb.co/FWSsZbW/all-image-galleries.png)
+
+![all-movies-drames-genders](https://i.ibb.co/tCdXS0r/all-movies-drames-genders.png)
+
+![single-drama-details](https://i.ibb.co/7VFHJyw/single-drama-details.png)
+
+![single-movie-details](https://i.ibb.co/wQXVgz2/single-movie-details.png)
+
+![actor-details](https://i.ibb.co/wpty6rS/actor-details.png)
+
+![single-episode-details](https://i.ibb.co/XLX2HkF/single-episode-details.png)
+
+![join](https://i.ibb.co/grSD8dm/join.png)
+
+![login](https://i.ibb.co/MPRTdj0/login.png)
+
+![change password](https://i.ibb.co/Pmrt2ZK/change-password.png)
+
+![add-new-movie-drama](https://i.ibb.co/DLmYGrB/add-new-movie-drama.png)
+
+![edit-movie-drama](https://i.ibb.co/JHRW0rX/edit-movie-drama.png)
+
+![add-new-actor](https://i.ibb.co/zsH3nrx/add-new-actor.png)
+
+![edit-actor](https://i.ibb.co/ZBhfCV2/edit-actor.png)
+
+![add-new-episode](https://i.ibb.co/XbqB16h/add-new-episode.png)
+![edit-episode](https://i.ibb.co/c2gxn6L/edit-episode.png)
+
+![add-new-image-gallery](https://i.ibb.co/yXDkrs8/add-new-image-gallery.png
+)
+
+![edit-image-gallery](https://i.ibb.co/HhDPFTV/edit-image-gallery.png
+)
+![add-new-gender](https://i.ibb.co/fQJVzJ9/add-new-gender.png
+)
+![edit-gender](https://i.ibb.co/yPxtkry/edit-gender.png
+)
+
+![welcome-notification](https://i.ibb.co/jzyz9pn/welcome-notification.png
+)
+![sayBye-notification](https://i.ibb.co/kS8Yx25/sayBye.png
+)
+
+
 
 
 
