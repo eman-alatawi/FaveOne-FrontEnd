@@ -152,6 +152,9 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
 ![Edit-Gender](https://i.ibb.co/T099F0L/Edit-Gender.png)
 
 
+###  Component Hierarchy:
+![Component Hierarchy](https://i.ibb.co/ygPMffq/Fave-One-React-App-Component-Hierarchy.jpg)
+
 
 ### App Screenshot:
 
