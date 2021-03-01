@@ -1,9 +1,16 @@
 import React from 'react'
+import ActorRowCard from '../actor/ActorRowCard';
 import EpisodeRowCard from '../episode/EpisodeRowCard';
 import ImageGalleryRowCard from '../ImageGallery/ImageGalleryRowCard'
 
 export default function MDDetails(props) {
     const year = new Date(props.movieDrama.releaseYear);
+
+    const thisMovieActors = props.actors.filter((actor) => {
+        const index = actor.movieDramas.findIndex(x => x.id === props.movieDrama.id)
+        // console.log(index)
+        return index != -1
+    })
     return (
         <div>
             <div className=" flex flex-row  bg-gray-50  rounded-lg shadow p-10 ">
@@ -59,8 +66,8 @@ export default function MDDetails(props) {
                 : null}
 
             {props.movieDrama.imageGalleries ?
-                <div className=" flex flex-col  bg-blue-900 mt-5 shadow p-10   w-full overflow-x-scroll">
-                    <h4 className="text-gray-300 mb-3 text-xl ml-3">Related Image Galleries:</h4>
+                <div className=" flex flex-col   shadow p-10   w-full overflow-x-scroll">
+                    <h4 className="text-gray-800 mb-3 text-xl ml-3">Related Image Galleries:</h4>
                     <div className="flex flex-row " > {
                         props.movieDrama.imageGalleries.map((imageGallery, index) =>
                             <div key={index}>
@@ -72,6 +79,22 @@ export default function MDDetails(props) {
                 </div>
 
                 : null}
+
+
+            
+                <div className=" flex flex-col  bg-pink-900  shadow p-10   w-full overflow-x-scroll">
+                    <h4 className="text-gray-300 mb-3 text-xl ml-3"> Actors - Cast:</h4>
+                    <div className="flex flex-row " > {
+                        thisMovieActors.map((actor, index) =>
+                            <div key={index}>
+                                <ActorRowCard {...actor} hide={props.hide}></ActorRowCard>
+                            </div>
+                        )
+                    }
+                    </div>
+                </div>
+
+                
         </div>
     )
 }

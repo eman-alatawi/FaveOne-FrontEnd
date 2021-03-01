@@ -20,6 +20,7 @@ import { withRouter } from 'react-router-dom';
       </div>)
      : null );
 
+       //when user click on the image from the ActorDetails or from the main page in the ActorSection  send hide() to hide the sections in the App and redirect to the movieDramaIndex
      const cardImage = (props.hide ?<Card.Img variant="top" className="h-64  w-full object-cover" onClick={() =>{ props.hide(); props.history.push('/movieDramaIndex');}} src={props.poster} />
       : <Card.Img variant="top" className="h-64  w-full object-cover"  src={props.poster} />
       );
