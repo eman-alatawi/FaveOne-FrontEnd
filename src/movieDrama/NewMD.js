@@ -59,7 +59,7 @@ import { withRouter } from 'react-router-dom';
     }
 
     loadUser = (emailAddress) => {
-        axios.get("/favone/user/userProfile",
+        axios.get(`${process.env.REACT_APP_BACK_END_URL}user/userProfile`,
             {
                 params: { emailAddress: emailAddress },
                 headers: {

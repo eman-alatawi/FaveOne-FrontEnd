@@ -82,7 +82,7 @@ export default class App extends Component {
   // 1- registerHandler
   registerHandler = (user) => {
     axios
-      .post("/favone/user/registration", user)
+      .post(`${process.env.REACT_APP_BACK_END_URL}user/registration`, user)
       .then((response) => {
         console.log(response);
         this.setState({
@@ -100,7 +100,7 @@ export default class App extends Component {
   // 2- loginHandler
   loginHandler = (user) => {
     axios
-      .post("/favone/user/authenticate", user)
+      .post(`${process.env.REACT_APP_BACK_END_URL}user/authenticate`, user)
       .then((response) => {
         console.log(response);
         console.log(response.data.token);
@@ -150,7 +150,7 @@ export default class App extends Component {
 
   // 4- addActorHandler
   addActorHandler = (actor) => {
-    axios.post("/favone/actor/add", actor,
+    axios.post(`${process.env.REACT_APP_BACK_END_URL}/actor/add`, actor,
       {
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("token")
@@ -188,7 +188,7 @@ export default class App extends Component {
 
   //7- addGenderHandler
   addGenderHandler = (gender) => {
-    axios.post("/favone/mdgender/add", gender,
+    axios.post(`${process.env.REACT_APP_BACK_END_URL}mdgender/add`, gender,
       {
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("token")
@@ -209,7 +209,7 @@ export default class App extends Component {
 
   // 8- addMovieDramaHandler
   addMovieDramaHandler = (movieDrama) => {
-    axios.post("/favone/md/add", movieDrama,
+    axios.post(`${process.env.REACT_APP_BACK_END_URL}md/add`, movieDrama,
       {
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("token")
@@ -232,7 +232,7 @@ export default class App extends Component {
 
   // 9- addEpisodeHandler
   addEpisodeHandler = (episode) => {
-    axios.post("/favone/episode/add", episode,
+    axios.post(`${process.env.REACT_APP_BACK_END_URL}episode/add`, episode,
       {
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("token")
@@ -255,7 +255,7 @@ export default class App extends Component {
 
   // 10- addImageGalleryHandler
   addImageGalleryHandler = (imageGallery) => {
-    axios.post("/favone/imagegallery/add", imageGallery,
+    axios.post(`${process.env.REACT_APP_BACK_END_URL}imagegallery/add`, imageGallery,
       {
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("token")
@@ -278,7 +278,7 @@ export default class App extends Component {
 
   // 11- changePasswordHandler
   changePasswordHandler = (user) => {
-    axios.put("/favone/user/changePassword", user,
+    axios.put(`${process.env.REACT_APP_BACK_END_URL}user/changePassword`, user,
       {
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("token")
@@ -357,7 +357,7 @@ export default class App extends Component {
   //Loaders
   //1- loadActors
   loadActors = () => {
-    axios.get("/favone/actor/index")
+    axios.get(`${process.env.REACT_APP_BACK_END_URL}actor/index`)
       .then(response => {
         console.log(response);
         this.setState({
@@ -372,7 +372,7 @@ export default class App extends Component {
 
   //2- loadGenders
   loadGenders = () => {
-    axios.get("/favone/mdgender/index")
+    axios.get(`${process.env.REACT_APP_BACK_END_URL}mdgender/index`)
       .then(response => {
         console.log(response);
         this.setState({
@@ -387,7 +387,7 @@ export default class App extends Component {
 
   //3- loadMoviesDramas
   loadMoviesDramas = () => {
-    axios.get("/favone/md/index")
+    axios.get(`${process.env.REACT_APP_BACK_END_URL}md/index`)
       .then(response => {
         console.log(response);
         this.setState({
@@ -402,7 +402,7 @@ export default class App extends Component {
 
   //4- loadEpisodes
   loadEpisodes = () => {
-    axios.get("/favone/episode/index")
+    axios.get(`${process.env.REACT_APP_BACK_END_URL}episode/index`)
       .then(response => {
         console.log(response);
         this.setState({
@@ -417,7 +417,7 @@ export default class App extends Component {
 
   //5- loadImageGallries
   loadImageGalleries = () => {
-    axios.get("/favone/imagegallery/index")
+    axios.get(`${process.env.REACT_APP_BACK_END_URL}imagegallery/index`)
       .then(response => {
         console.log(response);
         this.setState({

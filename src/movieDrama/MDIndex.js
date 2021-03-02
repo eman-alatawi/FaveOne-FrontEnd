@@ -35,7 +35,7 @@ export default class MDIndex extends Component {
     }
 
     mdDetails = (id) =>{
-        axios.get("/favone/md/detail",
+        axios.get(`${process.env.REACT_APP_BACK_END_URL}/md/detail`,
         {
             params: { id: id },
             headers: {
@@ -58,7 +58,7 @@ export default class MDIndex extends Component {
     }
 
     editMD = (movieDrama) => {
-        axios.put("/favone/md/edit", movieDrama,
+        axios.put(`${process.env.REACT_APP_BACK_END_URL}md/edit`, movieDrama,
             {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem("token")
@@ -85,7 +85,7 @@ export default class MDIndex extends Component {
     }
 
     deleteMD = (id) => {
-        axios.delete("/favone/md/delete",
+        axios.delete(`${process.env.REACT_APP_BACK_END_URL}md/delete`,
             {
                 params: { id: id },
                 headers: {

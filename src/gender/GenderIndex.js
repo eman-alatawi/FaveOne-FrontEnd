@@ -32,7 +32,7 @@ export default class GenderIndex extends Component {
     }
 
     editGender = (gender) => {
-        axios.put("/favone/mdgender/edit", gender,
+        axios.put(`${process.env.REACT_APP_BACK_END_URL}mdgender/edit`, gender,
             {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem("token")
@@ -58,7 +58,7 @@ export default class GenderIndex extends Component {
 
 
     deleteGender = (id) => {
-        axios.delete("/favone/mdgender/delete",
+        axios.delete(`${process.env.REACT_APP_BACK_END_URL}mdgender/delete`,
             {
                 params: { id: id },
                 headers: {
