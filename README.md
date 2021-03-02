@@ -65,6 +65,8 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
 
 - The resources(Actors/Genders/Episodes/ImageGalleries) ownership is for all registered users.
 
+- The users/Visitors can search for Movies or Dramas by Title, and search for Actors or Movies-Dramas Gender by Name.
+
 ## Images
 
 
