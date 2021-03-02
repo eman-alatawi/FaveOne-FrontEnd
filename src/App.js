@@ -25,6 +25,8 @@ import NewEpisode from './episode/NewEpisode';
 import ImageGalleryIndex from './ImageGallery/ImageGalleryIndex'
 import NewImageGallery from './ImageGallery/NewImageGallery';
 import ChangePassword from './user/ChangePassword';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export default class App extends Component {
 
