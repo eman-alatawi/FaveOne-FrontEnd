@@ -29,7 +29,7 @@ export default function MDDetails(props) {
                         <h5 className="mr-2">Score: </h5><div className="mr-20">{props.movieDrama.score}</div>
                     </div>
 
-                    <p className="text-justify w-full px-5 h-64 overflow-y-scroll">{props.movieDrama.description}</p>
+                    <p className="text-justify w-full px-5 h-64 overflow-y-scroll mb-4">{props.movieDrama.description}</p>
 
 
                     <div className=" flex flex-row justify-start w-full pl-1 rounded-l-lg bg-gray-700 shadow-xl text-gray-300">
