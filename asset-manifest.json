@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/eman-e-alatawi/FaveOne-FrontEnd/static/css/main.6a52fed6.chunk.css",
-    "main.js": "/eman-e-alatawi/FaveOne-FrontEnd/static/js/main.2ce9a40b.chunk.js",
-    "main.js.map": "/eman-e-alatawi/FaveOne-FrontEnd/static/js/main.2ce9a40b.chunk.js.map",
+    "main.css": "/eman-e-alatawi/FaveOne-FrontEnd/static/css/main.fc30f572.chunk.css",
+    "main.js": "/eman-e-alatawi/FaveOne-FrontEnd/static/js/main.52f35a3d.chunk.js",
+    "main.js.map": "/eman-e-alatawi/FaveOne-FrontEnd/static/js/main.52f35a3d.chunk.js.map",
     "runtime-main.js": "/eman-e-alatawi/FaveOne-FrontEnd/static/js/runtime-main.4fffad6c.js",
     "runtime-main.js.map": "/eman-e-alatawi/FaveOne-FrontEnd/static/js/runtime-main.4fffad6c.js.map",
     "static/css/2.5ec62c56.chunk.css": "/eman-e-alatawi/FaveOne-FrontEnd/static/css/2.5ec62c56.chunk.css",
@@ -12,14 +12,14 @@
     "static/js/3.082c9159.chunk.js.map": "/eman-e-alatawi/FaveOne-FrontEnd/static/js/3.082c9159.chunk.js.map",
     "index.html": "/eman-e-alatawi/FaveOne-FrontEnd/index.html",
     "static/css/2.5ec62c56.chunk.css.map": "/eman-e-alatawi/FaveOne-FrontEnd/static/css/2.5ec62c56.chunk.css.map",
-    "static/css/main.6a52fed6.chunk.css.map": "/eman-e-alatawi/FaveOne-FrontEnd/static/css/main.6a52fed6.chunk.css.map",
+    "static/css/main.fc30f572.chunk.css.map": "/eman-e-alatawi/FaveOne-FrontEnd/static/css/main.fc30f572.chunk.css.map",
     "static/js/2.41d0969e.chunk.js.LICENSE.txt": "/eman-e-alatawi/FaveOne-FrontEnd/static/js/2.41d0969e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.4fffad6c.js",
     "static/css/2.5ec62c56.chunk.css",
     "static/js/2.41d0969e.chunk.js",
-    "static/css/main.6a52fed6.chunk.css",
-    "static/js/main.2ce9a40b.chunk.js"
+    "static/css/main.fc30f572.chunk.css",
+    "static/js/main.52f35a3d.chunk.js"
   ]
 }
