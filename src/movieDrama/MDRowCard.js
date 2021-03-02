@@ -32,6 +32,9 @@ import { withRouter } from 'react-router-dom';
         <Card.Body className="text-center bg-pink-900 text-gray-300 hover:bg-gray-50 hover:border-transparent hover:shadow-xl group">
           <Card.Title className="group-hover:text-gray-800  whitespace-nowrap overflow-x-scroll text-center">{props.title}</Card.Title>
           <Card.Text className="group-hover:text-gray-800">
+          {props.type}
+           </Card.Text>
+          <Card.Text className="group-hover:text-gray-800">
           {year.getFullYear()}
            </Card.Text>
            {showTool}

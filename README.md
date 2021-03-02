@@ -65,150 +65,55 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
 
 - The resources(Actors/Genders/Episodes/ImageGalleries) ownership is for all registered users.
 
-- The users/Visitors can search for Movies or Dramas by Title, and search for Actors or Movies-Dramas Gender by Name.
+- The users/Visitors can search for Movies or Dramas by Title, and search for Actors or Movie-Drama's Gender by Name.
+
+- In order to see the details of the Dramas/Movies/Actors and watch the episodes you should join first.
 
 ## Images
 
-
-
-
+###  Component Hierarchy:
+![Component Hierarchy](https://i.ibb.co/d5HNKMQ/Fave-One-React-App-Component-Hierarchy-FINAL.jpg)
 
 
 
 ### Wireframe:
 
 ### - Visitor View:
-![Home](https://i.ibb.co/56tKY2N/Home-Un-Loggedin.png)
+![V](https://i.ibb.co/CpL1Yr9/Visual-Table.jpg)
 
-
-![Home](https://i.ibb.co/r2gjc24/Home-Unlogged-In-Drop-Down.png)
-
-
-![Movie-Drama](https://i.ibb.co/VjqjRhL/Movie-Drama-Index-Unlogged-In-User.png)
-
-
-![ImageGalley](https://i.ibb.co/WG2xfVW/Image-Gallery-Index-Unlogged-In-User.png)
-
-
-![Gender](https://i.ibb.co/YT4csbF/Gender-Index-Unlogged-In-User.png)
-
-
-
-![Episode](https://i.ibb.co/19Wt4Vd/Episode-Index-Unlogged-In-User.png
-)
-
-![Actor](https://i.ibb.co/ww7HkSx/Actor-Index-Unlogged-In-User.png)
-
-![Join](https://i.ibb.co/F8kSSpB/Home-Join.png)
-
-### Login/Change password:
-![login](https://i.ibb.co/NFQ6P1N/Home-Login.png
-)
-
-![change password](https://i.ibb.co/H25B8qw/change-Password.png)
 
 ### - Login-user view:
 
+![L-1](https://i.ibb.co/ZYvL6sR/Visual-Table-5.jpg)
 
-![Home](https://i.ibb.co/r58c0CN/Home-logged-In.png
-)
-![Home](https://i.ibb.co/w7bxDkY/Home-logged-In-Drop-Down.png)
-
-
-![Movie-Drama](https://i.ibb.co/pjr7sz1/Movie-Drama-Index-logged-In-User.png)
-
-![Movie-Drama-Detail](https://i.ibb.co/LvjZYnV/Movie-Drama-Detail.png)
-
-![New-Movie-Drama](https://i.ibb.co/jyXkQrY/New-Movie-Drama.png)
-
-![Edit-Movie-Drama](https://i.ibb.co/k5x6R2R/Edit-Movie-Drama.png)
-
-![Actor](https://i.ibb.co/CQkNcgp/Actor-Index-logged-In-User.png)
-
-![Actor-Detail](https://i.ibb.co/cQh5DBB/Actor-Detail.png)
-
-![New-Actor](https://i.ibb.co/fXNCXHZ/NewActor.png)
-
-![Edit-Actor](https://i.ibb.co/QM0f3jf/Edit-Actor.png)
-
-![Episode](https://i.ibb.co/34Wy7zL/Episodee-Index-logged-In-User.png
-)
-
-![Episode-Detail](https://i.ibb.co/VYkNxkm/Episode-Detail.png)
-
-![New-Episode](https://i.ibb.co/W5yRGj4/New-Episode.png)
-
-![Edit-Episode](https://i.ibb.co/0cxdBX5/Edit-Episode.png)
-
-![ImageGallery](https://i.ibb.co/YbpkRRX/Image-Gallery-Index-logged-In-User.png)
-
-![New-ImageGallery](https://i.ibb.co/gWmCdgj/New-Image-Gallery.png)
-
-![Edit-ImageGallery](https://i.ibb.co/dWmDWy1/Edit-Image-Gallery.png)
-
-
-![Gender](https://i.ibb.co/TLtjYDN/Gender-Index-logged-In-User.png)
-
-![New-Gender](https://i.ibb.co/yScScMj/New-Gender.png)
-
-![Edit-Gender](https://i.ibb.co/T099F0L/Edit-Gender.png)
-
-
-###  Component Hierarchy:
-![Component Hierarchy](https://i.ibb.co/3cMZzSt/Fave-One-React-App-Component-Hierarchy-2.jpg)
+[see more](https://drive.google.com/drive/folders/1bj0nVEEfU45E9XO26lYjEi_wrczwbyy8?usp=sharing)
 
 
 ### App Screenshot:
-![main - page](https://i.ibb.co/2tCJKbV/main-page.png)
-![all movies-dramas ](https://i.ibb.co/fFZ3qdW/all-movies-dramas.png)
+![main - page](https://i.ibb.co/3rTkxg3/main-page-1.png)
+![all movies-dramas ](https://i.ibb.co/1Gx1JFg/all-movies-dramas-1.png)
 
-![all actors](https://i.ibb.co/sRTJWxT/all-actors.png)
-![all episodes](https://i.ibb.co/C5D1rxZ/all-episodes.png)
-![all-image-galleries](https://i.ibb.co/FWSsZbW/all-image-galleries.png)
+![all actors](https://i.ibb.co/KqfsSLB/all-actors-1.png)
+![all episodes](https://i.ibb.co/jGkxqrV/all-episodes-1.png)
+![all-image-galleries](https://i.ibb.co/nbqfdJH/all-image-galleries-1.png)
 
-![all-movies-drames-genders](https://i.ibb.co/tCdXS0r/all-movies-drames-genders.png)
+![all-movies-drames-genders](https://i.ibb.co/GCGRY77/all-movies-drames-genders-1.png)
 
-![single-drama-details](https://i.ibb.co/7VFHJyw/single-drama-details.png)
+![single-drama-details](https://i.ibb.co/DVDrRdj/single-drama-details-1.png)
 
-![single-movie-details](https://i.ibb.co/wQXVgz2/single-movie-details.png)
+![search-actor](https://i.ibb.co/yhdNNV6/search-actor.png)
 
-![actor-details](https://i.ibb.co/wpty6rS/actor-details.png)
 
-![single-episode-details](https://i.ibb.co/XLX2HkF/single-episode-details.png)
+![single-episode-details](https://i.ibb.co/P4N6ZRc/single-episode-details-1.png)
 
-![join](https://i.ibb.co/grSD8dm/join.png)
 
-![login](https://i.ibb.co/MPRTdj0/login.png)
-
-![change password](https://i.ibb.co/Pmrt2ZK/change-password.png)
-
-![add-new-movie-drama](https://i.ibb.co/DLmYGrB/add-new-movie-drama.png)
-
-![edit-movie-drama](https://i.ibb.co/JHRW0rX/edit-movie-drama.png)
-
-![add-new-actor](https://i.ibb.co/zsH3nrx/add-new-actor.png)
-
-![edit-actor](https://i.ibb.co/ZBhfCV2/edit-actor.png)
-
-![add-new-episode](https://i.ibb.co/XbqB16h/add-new-episode.png)
-![edit-episode](https://i.ibb.co/c2gxn6L/edit-episode.png)
-
-![add-new-image-gallery](https://i.ibb.co/yXDkrs8/add-new-image-gallery.png
-)
-
-![edit-image-gallery](https://i.ibb.co/HhDPFTV/edit-image-gallery.png
-)
-![add-new-gender](https://i.ibb.co/fQJVzJ9/add-new-gender.png
-)
-![edit-gender](https://i.ibb.co/yPxtkry/edit-gender.png
-)
 
 ![welcome-notification](https://i.ibb.co/jzyz9pn/welcome-notification.png
 )
 ![sayBye-notification](https://i.ibb.co/kS8Yx25/sayBye.png
 )
 
-
+[see more](https://drive.google.com/drive/folders/1u2zI58i6tzyUuG1dgOKLyEKZSuRghyf3?usp=sharing)
 
 
 

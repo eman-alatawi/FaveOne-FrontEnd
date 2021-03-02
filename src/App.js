@@ -9,7 +9,7 @@ import Login from './user/Login'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
-import MDFilter from './Shared/MDFilter'
+import SearchBar from './Shared/SearchBar'
 import HomeBanner from './Shared/HomeBanner';
 import ActorSection from './actor/ActorSection';
 import EpisodeSection from './episode/EpisodeSection'
@@ -469,7 +469,7 @@ export default class App extends Component {
                     <NavDropdown.Item ><Link to="/addActor" onClick={this.hideSectionsHandler} className="dropDownLink">Add Actor</Link></NavDropdown.Item>
                   </NavDropdown>
 
-                  <MDFilter value={this.state.filterValue} onChange={this.handleFilterChange}></MDFilter>
+                  <SearchBar value={this.state.filterValue} onChange={this.handleFilterChange}></SearchBar>
 
                 </Nav>
                 <Nav className="mr-5">
@@ -498,7 +498,7 @@ export default class App extends Component {
                       <NavDropdown.Item ><Link to="/actorIndex" onClick={this.hideSectionsHandler} onClick={this.hideSectionsHandler} className="dropDownLink"> Actors</Link></NavDropdown.Item>
                     </NavDropdown>
 
-                    <MDFilter value={this.state.filterValue} onChange={this.handleFilterChange}></MDFilter>
+                    <SearchBar value={this.state.filterValue} onChange={this.handleFilterChange}></SearchBar>
 
                   </Nav>
                   <Nav className="mr-5">
