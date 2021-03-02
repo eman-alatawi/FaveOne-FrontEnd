@@ -39,7 +39,7 @@ export default class App extends Component {
     moviesDramas: [],
     episodes: [],
     imageGalleries: [],
-    // filterValue: ''
+    filterValue: ''
 
   }
   componentDidMount() {
@@ -300,26 +300,59 @@ export default class App extends Component {
   }
 
   // 12- handleFilterChange
-//   handleFilterChange = (event) =>{
-//     event.preventDefault();
-//     const filterValue = event.target.value;
+  handleFilterChange = (event, temp) => {
+    event.preventDefault();
+    const filterValue = event.target.value;
+    if (filterValue != '') {
+      console.log("when the there is value in input " + filterValue)
+      this.setState((prev, props) => {
+        //list of moviesDramas that match the filter
+        //new array containes the filtered items
+        //filter() return new array 
+        const filteredMDByName = this.state.moviesDramas.filter((md) => {
+          return md.title.toLowerCase().includes(filterValue.toLowerCase())
+        });
 
-//     this.setState((prev, props) => {
-//         //list of moviesDramas that match the filter
-//         //new array containes the filtered items
-//         //filter() return new array 
-//         const filteredList = this.state.moviesDramas.filter((md) =>{
-//             return md.title.toLowerCase().includes(filterValue.toLowerCase())
-//         });
+        //list of Actors that match the filter
+        //new array containes the filtered items
+        //filter() return new array 
+        const filteredActorsList = this.state.actors.filter((actor) => {
+          return actor.fullName.toLowerCase().includes(filterValue.toLowerCase())
+        });
 
-//         //here is the reurn object from the setState
-//         return{
-//             moviesDramas: filteredList,
-//             filterValue: filterValue,
-           
-//         }
-//     })
-// }
+        // const filteredEpisodesList = this.state.episodes.filter((ep) => {
+        //   console.log(ep.episodNum)
+        //   console.log(filterValue)
+        //   return ep.episodNum.includes(filterValue)
+
+        // });
+
+
+         const filteredGendersList = this.state.genders.filter((gender) => {
+          return gender.name.toLowerCase().includes(filterValue.toLowerCase())
+        });
+
+        //here is the reurn object from the setState
+        return {
+          moviesDramas: filteredMDByName,
+          actors: filteredActorsList,
+          filterValue: filterValue,
+          // episodes: filteredEpisodesList,
+          genders: filteredGendersList
+        }
+      })
+    }
+    else {
+      console.log("when the there is no value in input")
+      this.setState({
+        filterValue: filterValue,
+      })
+      this.loadMoviesDramas();
+      this.loadActors();
+      this.loadEpisodes();
+      this.loadGenders();
+    }
+  }
 
   //Loaders
   //1- loadActors
@@ -435,7 +468,8 @@ export default class App extends Component {
                     <NavDropdown.Divider />
                     <NavDropdown.Item ><Link to="/addActor" onClick={this.hideSectionsHandler} className="dropDownLink">Add Actor</Link></NavDropdown.Item>
                   </NavDropdown>
-                  {/* <MDFilter value={this.state.filterValue} onChange={this.handleFilterChange}></MDFilter> */}
+
+                  <MDFilter value={this.state.filterValue} onChange={this.handleFilterChange}></MDFilter>
 
                 </Nav>
                 <Nav className="mr-5">
@@ -462,8 +496,10 @@ export default class App extends Component {
                     </NavDropdown>
                     <NavDropdown title="Actors" id="collasible-nav-dropdown" className="mr-11 text-xl">
                       <NavDropdown.Item ><Link to="/actorIndex" onClick={this.hideSectionsHandler} onClick={this.hideSectionsHandler} className="dropDownLink"> Actors</Link></NavDropdown.Item>
-
                     </NavDropdown>
+
+                    <MDFilter value={this.state.filterValue} onChange={this.handleFilterChange}></MDFilter>
+
                   </Nav>
                   <Nav className="mr-5">
                     <Nav.Link > <Link to="/register" onClick={this.hideSectionsHandler} className="text-gray-200 hover:text-pink-600 text-xl">Join</Link></Nav.Link>
@@ -487,7 +523,7 @@ export default class App extends Component {
         <div>
           <Route path="/register" component={() => <Join register={this.registerHandler}  ></Join>}></Route>
           <Route path="/login" component={() => <Login login={this.loginHandler} show={this.showSectionsHandler} />}></Route>
-          <Route path="/changePassword" component={() => <ChangePassword  user={this.state.user} changePassword={this.changePasswordHandler} show={this.showSectionsHandler} />}></Route>
+          <Route path="/changePassword" component={() => <ChangePassword user={this.state.user} changePassword={this.changePasswordHandler} show={this.showSectionsHandler} />}></Route>
 
 
           <Route path="/actorIndex" component={() => <ActorIndex actors={this.state.actors} isAuth={this.state.isAuth} loadActors={this.loadActors} hide={this.hideSectionsHandler}></ActorIndex>}></Route>
