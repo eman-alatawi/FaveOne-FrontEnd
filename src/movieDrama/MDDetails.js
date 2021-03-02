@@ -16,7 +16,7 @@ export default function MDDetails(props) {
             <div className=" flex flex-row  bg-gray-50  rounded-lg shadow p-10 ">
                 {/* <button onClick={redirectFun}>Back</button> */}
                 <div className="h-96 w-80  mr-10 flex flex-col rounded-lg bg-pink-900 text-gray-300">
-                    <img className=" h-80 w-80 mr-10 shadow  border-4 border-pink-100 object-cover" src={props.movieDrama.poster} />
+                    <img className=" h-80 w-80 mr-10 shadow object-cover" src={props.movieDrama.poster} />
                     <div className="w-64 mt-3  text-center flex flex-col">
                         <h4>{props.movieDrama.type}</h4>
                     </div>

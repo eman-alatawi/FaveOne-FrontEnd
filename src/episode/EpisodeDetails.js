@@ -24,7 +24,7 @@ export default function EpisodeDetails(props) {
             <div className=" flex flex-row  bg-gray-50  rounded-lg shadow p-10 ">
 
                 <div className="h-96 w-80  mr-10 flex flex-col rounded-lg bg-pink-900 text-gray-300">
-                    <img className=" h-80 w-80 mr-10 shadow  border-4 border-pink-100 object-cover" src={props.episode.thumbnail} />
+                    <img className=" h-80 w-80 mr-10 shadow  object-cover" src={props.episode.thumbnail} />
                     <div className="w-64  text-center flex flex-col">
 
                         {props.moviesDramas.map((md, index) =>
