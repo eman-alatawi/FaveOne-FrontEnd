@@ -32,7 +32,7 @@ export default function MDDetails(props) {
                     <p className="text-justify w-full px-5 h-64 overflow-y-scroll">{props.movieDrama.description}</p>
 
 
-                    <div className=" flex flex-row justify-start w-full pl-1 mb-4  rounded-l-lg bg-gray-700 shadow-xl text-gray-300">
+                    <div className=" flex flex-row justify-start w-full pl-1 rounded-l-lg bg-gray-700 shadow-xl text-gray-300">
                         <h5 className="mr-2">Duration: </h5><div className="mr-20">{props.movieDrama.duration}</div>
                         <h5 className="mr-2">Content Rating: </h5><div className="mr-20">{props.movieDrama.contentRating}</div>
                         <h5 className="mr-2"># Of Episodes: </h5><div className="mr-20">{props.movieDrama.numOfEpisods}</div>
