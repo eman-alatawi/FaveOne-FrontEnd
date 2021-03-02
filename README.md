@@ -4,8 +4,8 @@ Your place of your favorite Movie/Drama/Episode/Actor. The users can add their f
 ## Important Links
 
 - [FaveOne Back-End Repo](https://git.generalassemb.ly/eman-e-alatawi/FavOne-BackEnd)
-- [Deployed FaveOne API](www.link.com)
-- [Deployed FaveOne React App](www.link.com)
+- [Deployed FaveOne API](http://faveone-env.eba-3dzduni8.us-east-2.elasticbeanstalk.com/)
+- [Deployed FaveOne React App](https://pages.git.generalassemb.ly/eman-e-alatawi/FaveOne-FrontEnd/)
 
 
 ## Planning Story
