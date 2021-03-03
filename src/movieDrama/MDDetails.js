@@ -26,16 +26,16 @@ export default function MDDetails(props) {
                     <div className=" flex flex-row justify-start w-full pl-1 mb-4  rounded-l-lg bg-gray-700 shadow-xl text-gray-300">
                         <h4 className="mr-20 text-xl">{props.movieDrama.title}</h4>
                         <h5 className="mr-20 text-xl">{year.getFullYear()}</h5>
-                        <h5 className="mr-2 ">Score: </h5><div className="mr-20 text-xl">{props.movieDrama.score}</div>
+                        <h5 className="mr-2 text-xl">Score: </h5><div className="mr-20 text-xl">{props.movieDrama.score}</div>
                     </div>
 
                     <p className="text-justify w-full px-5 h-64 overflow-y-scroll mb-4">{props.movieDrama.description}</p>
 
 
                     <div className=" flex flex-row justify-start w-full pl-1 rounded-l-lg bg-gray-700 shadow-xl text-gray-300">
-                        <h5 className="mr-2 ">Duration: </h5><div className="mr-20 text-xl">{props.movieDrama.duration}</div>
-                        <h5 className="mr-2">Content Rating: </h5><div className="mr-20 text-xl">{props.movieDrama.contentRating}</div>
-                        <h5 className="mr-2"># Of Episodes: </h5><div className="mr-20 text-xl">{props.movieDrama.numOfEpisods}</div>
+                        <h5 className="mr-2 ">Duration: </h5><div className="mr-20 ">{props.movieDrama.duration}</div>
+                        <h5 className="mr-2">Content Rating: </h5><div className="mr-20 ">{props.movieDrama.contentRating}</div>
+                        <h5 className="mr-2"># Of Episodes: </h5><div className="mr-20 ">{props.movieDrama.numOfEpisods}</div>
                     </div>
                 </div>
                 <div className="w-1/12  text-center pt-10 mt-2 mb-4 flex flex-col bg-gray-700 shadow-xl text-gray-300">
