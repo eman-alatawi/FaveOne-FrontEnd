@@ -27,7 +27,7 @@ import { withRouter } from 'react-router-dom';
         return (
             <div className="formBG bg-cover bg-center  pt-4">
                 <div class="container-sm flex flex-col justify-center my-5 bg-gray-100  rounded-2xl shadow p-10">
-                    <h2 className="text-center opacity-75 mb-2">Login for your account</h2>
+                    <h2 className="text-center opacity-75 text-3xl mb-2">Login for your account</h2>
                     <h4 className="text-xs text-center opacity-50 mb-5">In order to use FavOne wesite with full featues, you will need to login to your account. Is this your first time? you can Join Now</h4>
                     <Container>
 

@@ -87,7 +87,7 @@ class ChangePassword extends Component {
         return (
             <div className="formBG bg-cover bg-center  pt-4">
                 <div class="container-sm flex flex-col justify-center my-5 bg-gray-100  rounded-2xl shadow p-10">
-                    <h2 className="text-center opacity-75 mb-2">Change Your Account's Password</h2>
+                    <h2 className="text-center opacity-75 text-3xl mb-2">Change Your Account's Password</h2>
                     <h4 className="text-xs text-center opacity-50 mb-5">In order to change your account's password, you should enter the Current password and the new password and confirm the new password</h4>
                     <Container>
 

@@ -8,7 +8,7 @@ export default function ActorDetails(props) {
                 <div className="h-96 w-72  mr-10 flex flex-col bg-gray-800 text-gray-300">
                     <img className=" h-72 w-72 mr-10 shadow   object-cover" src={props.actor.picture} />
                     <div className="w-64 mt-3  text-center flex flex-col">
-                        <h1>Social Account:</h1>
+                        <h1 className="text-xl">Social Account:</h1>
                         {props.actor.socialAccount}
                     </div>
                 </div>
@@ -16,10 +16,10 @@ export default function ActorDetails(props) {
                     <div className=" flex flex-row justify-start w-full mb-4">
                         <h1 className="mr-20 text-xl">{props.actor.fullName}</h1>
                         <h1 className="mr-20 text-xl">{props.actor.dateOfBirth}</h1>
-                        <h1>{props.actor.gender}</h1>
+                        <h1 className="text-xl">{props.actor.gender}</h1>
                     </div>
 
-                    <h1 className="text-xl">Biography:</h1>
+                    <h1 className="text-xl mb-3">Biography:</h1>
                     <p className="text-justify w-5/5 pr-5 h-72 overflow-y-scroll">{props.actor.biography}</p>
                 </div>
             </div>

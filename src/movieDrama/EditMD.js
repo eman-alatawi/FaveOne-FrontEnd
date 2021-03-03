@@ -117,7 +117,7 @@ export default class EditMD extends Component {
         return (
             <div className="formBG bg-cover pt-4">
                 <div class="container-md flex flex-col   w-full justify-center  bg-gray-100  rounded-2xl shadow p-10  ">
-                    <h2 className="text-center opacity-75 mb-5">Edit Movie - Drama </h2>
+                    <h2 className="text-center opacity-75 text-3xl mb-5">Edit Movie - Drama </h2>
                     <div className=" flex flex-row w-full mb-3">
                         <div className="w-2/4 flex flex-col">
 

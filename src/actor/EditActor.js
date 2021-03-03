@@ -53,7 +53,7 @@ export default class EditActor extends Component {
             <div className="formBG bg-cover pt-4">
                 <div class="container-md w-full  flex flex-col justify-center my-5 bg-gray-200  rounded-2xl shadow p-10  ">
 
-                    <h2 className="text-center opacity-75 mb-5">Edit Actor</h2>
+                    <h2 className="text-center opacity-75 text-3xl mb-5">Edit Actor</h2>
                     <div className=" flex flex-row w-full mb-3">
                         <div className="w-3/4 flex flex-col">
                             <Form.Group>

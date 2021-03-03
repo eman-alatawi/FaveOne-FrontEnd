@@ -47,7 +47,7 @@ export default class NewGender extends Component {
             <div>
                 <div class="container-sm flex flex-col justify-center my-5 bg-gray-200  rounded-2xl shadow p-10">
 
-                    <h2 className="text-center opacity-75 mb-5">Add New Gender</h2>
+                    <h2 className="text-center opacity-75 text-3xl mb-5">Add New Gender</h2>
                     <Container>
                         <Form.Group as={Row} >
                             <Form.Label column sm={2}> Gender Name</Form.Label>

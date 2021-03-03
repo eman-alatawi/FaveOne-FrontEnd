@@ -115,7 +115,8 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
 
 [see more](https://drive.google.com/drive/folders/1u2zI58i6tzyUuG1dgOKLyEKZSuRghyf3?usp=sharing)
 
-
+## Video Demo
+[FaveOne Demo](https://drive.google.com/file/d/1P7U2Ogis_r_ITH6336-fuqU-DhcmQeH-/view?usp=sharing)
 
 ## Installtion
 
