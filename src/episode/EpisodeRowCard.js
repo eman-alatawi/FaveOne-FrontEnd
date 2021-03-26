@@ -23,7 +23,7 @@ function EpisodeRowCard(props) {
     <Card style={{ width: '14rem' }} className="ml-3 mr-4  shadow " >
       {cardImage}
       <Card.Body className="text-center bg-pink-900 text-gray-300 hover:bg-gray-50 hover:border-transparent hover:shadow-xl group">
-        <Card.Title className="group-hover:text-gray-800  whitespace-nowrap overflow-x-scroll text-center"> Episode #{props.episodNum}</Card.Title>
+        <Card.Title className="group-hover:text-gray-800  whitespace-nowrap overflow-x-scroll text-center"> Episode {props.episodNum}</Card.Title>
         {/* called from EpisodeIndex/EpisodeSection  - Dispay Movie-Drama Title*/}
         {props.moviesDramas ?
           <div>

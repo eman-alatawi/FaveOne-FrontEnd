@@ -31,7 +31,7 @@ export default function EpisodeDetails(props) {
                             md.episodes.findIndex(x => x.id == props.episode.id) !== -1 ? <div className="group-hover:text-gray-800">{md.title} </div> : null
 
                         )}
-                        <div className="">Episode # {props.episode.episodNum}</div>
+                        <div className="">Episode  {props.episode.episodNum}</div>
                     </div>
 
                 </div>
