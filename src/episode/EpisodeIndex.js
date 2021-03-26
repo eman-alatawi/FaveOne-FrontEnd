@@ -37,7 +37,8 @@ export default class EpisodeIndex extends Component {
     }
 
     episodeDetails = (id) =>{
-        axios.get(`${process.env.REACT_APP_BACK_END_URL}episode/detail`,
+        // axios.get(`${process.env.REACT_APP_BACK_END_URL}episode/detail`,
+        axios.get("/favone/episode/detail",
         {
             params: { id: id },
             headers: {
@@ -60,7 +61,8 @@ export default class EpisodeIndex extends Component {
     }
 
     editEpisode = (episode) => {
-        axios.put(`${process.env.REACT_APP_BACK_END_URL}episode/edit`, episode,
+        // axios.put(`${process.env.REACT_APP_BACK_END_URL}episode/edit`, episode,
+        axios.put("/favone/episode/edit", episode,
             {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem("token")
@@ -86,7 +88,8 @@ export default class EpisodeIndex extends Component {
     }
 
     deleteEpisode = (id) => {
-        axios.delete(`${process.env.REACT_APP_BACK_END_URL}episode/delete`,
+        // axios.delete(`${process.env.REACT_APP_BACK_END_URL}episode/delete`,
+        axios.delete("/favone/episode/delete",
             {
                 params: { id: id },
                 headers: {

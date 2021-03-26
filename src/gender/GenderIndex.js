@@ -32,7 +32,8 @@ export default class GenderIndex extends Component {
     }
 
     editGender = (gender) => {
-        axios.put(`${process.env.REACT_APP_BACK_END_URL}mdgender/edit`, gender,
+        // axios.put(`${process.env.REACT_APP_BACK_END_URL}mdgender/edit`, gender,
+        axios.put("/favone/mdgender/edit", gender,
             {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem("token")
@@ -58,7 +59,8 @@ export default class GenderIndex extends Component {
 
 
     deleteGender = (id) => {
-        axios.delete(`${process.env.REACT_APP_BACK_END_URL}mdgender/delete`,
+        // axios.delete(`${process.env.REACT_APP_BACK_END_URL}mdgender/delete`,
+        axios.delete("/favone/mdgender/delete",
             {
                 params: { id: id },
                 headers: {
@@ -95,7 +97,7 @@ export default class GenderIndex extends Component {
                     <div className=" w-full inline-grid grid-cols-5 gap-x-2  gap-y-3 justify-around px-5 overflow-x-scroll h-3/4">
                         {this.props.isAuth ? 
                         <div>
-                        <Card style={{ width: '12rem' }} className="mb-3 shadow h-24" >
+                        <Card style={{ width: '14rem' }} className="mb-3 shadow h-24" >
                             <Card.Body className="text-center hover:bg-pink-700 hover:border-transparent hover:shadow-lg group border-2  border-dashed   border-gray-300">
                                 <Card.Title className="group-hover:text-white">New Gender</Card.Title>
                                 <span  onClick={this.addView} className="material-icons transform hover:scale-110 motion-reduce:transform-none cursor-pointer text-xl group-hover:text-white">add</span>

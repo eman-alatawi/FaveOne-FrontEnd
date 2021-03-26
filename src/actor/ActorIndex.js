@@ -37,7 +37,8 @@ export default class ActorIndex extends Component {
     }
 
     actorDetails = (id) =>{
-        axios.get(`${process.env.REACT_APP_BACK_END_URL}actor/detail`,
+        // axios.get(`${process.env.REACT_APP_BACK_END_URL}actor/detail`,
+        axios.get("/favone/actor/detail",
         {
             params: { id: id },
             headers: {
@@ -61,7 +62,8 @@ export default class ActorIndex extends Component {
     }
 
     editActor = (actor) => {
-        axios.put(`${process.env.REACT_APP_BACK_END_URL}actor/edit`, actor,
+        // axios.put(`${process.env.REACT_APP_BACK_END_URL}actor/edit`, actor,
+        axios.put("/favone/actor/edit", actor,
             {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem("token")
@@ -84,7 +86,8 @@ export default class ActorIndex extends Component {
     }
 
     deleteActor = (id) => {
-        axios.delete(`${process.env.REACT_APP_BACK_END_URL}actor/delete`,
+        // axios.delete(`${process.env.REACT_APP_BACK_END_URL}actor/delete`,
+        axios.delete("/favone/actor/delete",
             {
                 params: { id: id },
                 headers: {

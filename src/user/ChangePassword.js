@@ -17,7 +17,8 @@ class ChangePassword extends Component {
     }
 
     loadUser = (emailAddress) => {
-        axios.get(`${process.env.REACT_APP_BACK_END_URL}user/userProfile`,
+        // axios.get(`${process.env.REACT_APP_BACK_END_URL}user/userProfile`,
+        axios.get("/favone/user/userProfile",
             {
                 params: { emailAddress: emailAddress },
                 headers: {

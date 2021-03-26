@@ -26,7 +26,8 @@ export default class ImageGalleryIndex extends Component {
 
 
     editImageGallery = (imageGallery) => {
-        axios.put(`${process.env.REACT_APP_BACK_END_URL}imagegallery/edit`, imageGallery,
+        // axios.put(`${process.env.REACT_APP_BACK_END_URL}imagegallery/edit`, imageGallery,
+        axios.put("/favone/imagegallery/edit", imageGallery,
             {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem("token")
@@ -52,7 +53,8 @@ export default class ImageGalleryIndex extends Component {
     }
 
     deleteImageGallery  = (id) => {
-        axios.delete(`${process.env.REACT_APP_BACK_END_URL}imagegallery/delete`,
+        // axios.delete(`${process.env.REACT_APP_BACK_END_URL}imagegallery/delete`,
+        axios.delete("/favone/imagegallery/delete",
             {
                 params: { id: id },
                 headers: {

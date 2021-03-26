@@ -23,13 +23,13 @@ export default function MDDetails(props) {
 
                 </div>
                 <div className=" w-4/5 flex flex-col pt-2 ">
-                    <div className=" flex flex-row justify-start w-full pl-1 mb-4  rounded-l-lg bg-gray-700 shadow-xl text-gray-300">
+                    <div className=" flex flex-row justify-start w-full pl-1 mb-1  rounded-l-lg bg-gray-700 shadow-xl text-gray-300">
                         <h4 className="mr-20 text-xl">{props.movieDrama.title}</h4>
                         <h5 className="mr-20 text-xl">{year.getFullYear()}</h5>
                         <h5 className="mr-2 text-xl">Score: </h5><div className="mr-20 text-xl">{props.movieDrama.score}</div>
                     </div>
 
-                    <p className="text-justify w-full px-5 h-64 overflow-y-scroll mb-3">{props.movieDrama.description}</p>
+                    <p className="text-justify w-full px-5 h-64 overflow-y-scroll mb-4 ">{props.movieDrama.description}</p>
 
 
                     <div className=" flex flex-row justify-start w-full pl-1 rounded-l-lg bg-gray-700 shadow-xl text-gray-300">

@@ -83,8 +83,9 @@ export default class App extends Component {
   // Handlers
   // 1- registerHandler
   registerHandler = (user) => {
-    axios
-      .post(`${process.env.REACT_APP_BACK_END_URL}user/registration`, user)
+    // axios
+    //   .post(`${process.env.REACT_APP_BACK_END_URL}user/registration`, user)
+    axios.post("/favone/user/registration", user)
       .then((response) => {
         console.log(response);
         this.setState({
@@ -101,8 +102,9 @@ export default class App extends Component {
 
   // 2- loginHandler
   loginHandler = (user) => {
-    axios
-      .post(`${process.env.REACT_APP_BACK_END_URL}user/authenticate`, user)
+    // axios
+    //   .post(`${process.env.REACT_APP_BACK_END_URL}user/authenticate`, user)
+    axios.post("/favone/user/authenticate", user)
       .then((response) => {
         console.log(response);
         console.log(response.data.token);
@@ -152,7 +154,8 @@ export default class App extends Component {
 
   // 4- addActorHandler
   addActorHandler = (actor) => {
-    axios.post(`${process.env.REACT_APP_BACK_END_URL}/actor/add`, actor,
+    // axios.post(`${process.env.REACT_APP_BACK_END_URL}/actor/add`, actor,
+    axios.post("/favone/actor/add", actor,
       {
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("token")
@@ -190,7 +193,8 @@ export default class App extends Component {
 
   //7- addGenderHandler
   addGenderHandler = (gender) => {
-    axios.post(`${process.env.REACT_APP_BACK_END_URL}mdgender/add`, gender,
+    // axios.post(`${process.env.REACT_APP_BACK_END_URL}mdgender/add`, gender,
+    axios.post("/favone/mdgender/add", gender,
       {
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("token")
@@ -211,7 +215,8 @@ export default class App extends Component {
 
   // 8- addMovieDramaHandler
   addMovieDramaHandler = (movieDrama) => {
-    axios.post(`${process.env.REACT_APP_BACK_END_URL}md/add`, movieDrama,
+    // axios.post(`${process.env.REACT_APP_BACK_END_URL}md/add`, movieDrama,
+    axios.post("/favone/md/add", movieDrama,
       {
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("token")
@@ -234,7 +239,8 @@ export default class App extends Component {
 
   // 9- addEpisodeHandler
   addEpisodeHandler = (episode) => {
-    axios.post(`${process.env.REACT_APP_BACK_END_URL}episode/add`, episode,
+    // axios.post(`${process.env.REACT_APP_BACK_END_URL}episode/add`, episode,
+    axios.post("/favone/episode/add", episode,
       {
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("token")
@@ -257,7 +263,8 @@ export default class App extends Component {
 
   // 10- addImageGalleryHandler
   addImageGalleryHandler = (imageGallery) => {
-    axios.post(`${process.env.REACT_APP_BACK_END_URL}imagegallery/add`, imageGallery,
+    // axios.post(`${process.env.REACT_APP_BACK_END_URL}imagegallery/add`, imageGallery,
+    axios.post("/favone/imagegallery/add", imageGallery,
       {
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("token")
@@ -280,7 +287,8 @@ export default class App extends Component {
 
   // 11- changePasswordHandler
   changePasswordHandler = (user) => {
-    axios.put(`${process.env.REACT_APP_BACK_END_URL}user/changePassword`, user,
+    // axios.put(`${process.env.REACT_APP_BACK_END_URL}user/changePassword`, user,
+    axios.put("/favone/user/changePassword", user,
       {
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("token")
@@ -359,7 +367,8 @@ export default class App extends Component {
   //Loaders
   //1- loadActors
   loadActors = () => {
-    axios.get(`${process.env.REACT_APP_BACK_END_URL}actor/index`)
+    // axios.get(`${process.env.REACT_APP_BACK_END_URL}actor/index`)
+    axios.get("/favone/actor/index")
       .then(response => {
         console.log(response);
         this.setState({
@@ -374,7 +383,8 @@ export default class App extends Component {
 
   //2- loadGenders
   loadGenders = () => {
-    axios.get(`${process.env.REACT_APP_BACK_END_URL}mdgender/index`)
+    // axios.get(`${process.env.REACT_APP_BACK_END_URL}mdgender/index`)
+    axios.get("/favone/mdgender/index")
       .then(response => {
         console.log(response);
         this.setState({
@@ -389,7 +399,8 @@ export default class App extends Component {
 
   //3- loadMoviesDramas
   loadMoviesDramas = () => {
-    axios.get(`${process.env.REACT_APP_BACK_END_URL}md/index`)
+    // axios.get(`${process.env.REACT_APP_BACK_END_URL}md/index`)
+    axios.get("/favone/md/index")
       .then(response => {
         console.log(response);
         this.setState({
@@ -404,7 +415,8 @@ export default class App extends Component {
 
   //4- loadEpisodes
   loadEpisodes = () => {
-    axios.get(`${process.env.REACT_APP_BACK_END_URL}episode/index`)
+    // axios.get(`${process.env.REACT_APP_BACK_END_URL}episode/index`)
+    axios.get("/favone/episode/index")
       .then(response => {
         console.log(response);
         this.setState({
@@ -419,7 +431,8 @@ export default class App extends Component {
 
   //5- loadImageGallries
   loadImageGalleries = () => {
-    axios.get(`${process.env.REACT_APP_BACK_END_URL}imagegallery/index`)
+    // axios.get(`${process.env.REACT_APP_BACK_END_URL}imagegallery/index`)
+    axios.get("/favone/imagegallery/index")
       .then(response => {
         console.log(response);
         this.setState({
