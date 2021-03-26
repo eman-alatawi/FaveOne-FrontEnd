@@ -29,7 +29,7 @@ export default class EpisodeIndex extends Component {
 
     detailView = (id) => {
         this.setState({
-            isDetail: !this.state.isDetail,
+            isDetail: true,
             clickedEpisodeId: id
         })
 
@@ -146,7 +146,7 @@ export default class EpisodeIndex extends Component {
                     {/* if the user click the card  - show the EpisodeDetail [we need to loop again using map to know the clickedEpisodeId by user and the episode.id in episodes ] */}
                     {this.state.episodes.map((episode, index) =>
                         <div key={index}> 
-                            {(this.state.isDetail && this.state.clickedEpisodeId === episode.id) ? <EpisodeDetails episode={this.state.episodeDetail} allEpisodes={this.state.episodes} moviesDramas={this.props.moviesDramas} isAuth={this.props.isAuth}></EpisodeDetails> : null} 
+                            {(this.state.isDetail && this.state.clickedEpisodeId === episode.id) ? <EpisodeDetails episode={this.state.episodeDetail} allEpisodes={this.state.episodes} moviesDramas={this.props.moviesDramas} isAuth={this.props.isAuth} detailView={this.detailView}></EpisodeDetails> : null} 
                          </div>
                     )}
 
