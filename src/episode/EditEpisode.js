@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { Form, Button, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
+import ReactPlayer from 'react-player'
 
 export default class EditEpisode extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            episode: props.episode
+            episode: props.episode,
+            isViewVideo: false
         }
     }
 
@@ -81,6 +83,11 @@ export default class EditEpisode extends Component {
         }
 
     }
+    onClickHandler = () => {
+        this.setState({
+            isViewVideo: !this.state.isViewVideo
+        })
+    }
 
     render() {
 
@@ -88,6 +95,15 @@ export default class EditEpisode extends Component {
             <div className="formBG bg-cover pt-4">
                 <div class="container-md flex flex-col   w-full justify-center  bg-gray-200  rounded-2xl shadow p-10 mb-12 ">
                     <h2 className="text-center opacity-75 text-3xl mb-5">Edit Episode </h2>
+                    {this.state.isViewVideo ?
+                        <div className=" flex flex-row w-full justify-center mb-3">
+                            <div className="   mr-3 flex-col flex   h-96  ">
+                                <ReactPlayer url={this.state.episode.episodeVideoUrl} controls={true} width="800px" height="375px" />
+                                <Button onClick={this.onClickHandler} className="btn  h-10 mt-2 mb-4">Hide the video</Button>
+
+                            </div>
+                        </div>
+                        :
                     <div className=" flex flex-row w-full mb-3">
                         <div className="w-2/4 flex flex-col">
 
@@ -120,7 +136,8 @@ export default class EditEpisode extends Component {
                             </Form.Text>
 
                             <div className="w-full flex flex-row justify-center">
-                                <Button onClick={this.handleSubmit} className="btn w-64">Edit Episode</Button>
+                                <Button onClick={this.handleSubmit} className="btn w-64 mt-4 mr-3">Edit Episode</Button>
+                                <Button onClick={this.onClickHandler} className="btn w-64 mt-4">View the Video</Button>
                             </div>
                         </div>
                         <div className="w-2/4 flex flex-row  ">
@@ -150,7 +167,8 @@ export default class EditEpisode extends Component {
                                 )}
                             </Form.Group>
                         </div>
-                    </div>
+                        </div>
+                    }
                 </div>
             </div>
         )
