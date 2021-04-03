@@ -39,7 +39,8 @@ export default class MDIndex extends Component {
     }
     searchView = (id) => {
         this.setState({
-            isSearchByGender: true
+            isSearchByGender: true,
+            clickedGenderId: id
 
         })
         // console.log(this.state.clickedGenderId)
@@ -47,7 +48,8 @@ export default class MDIndex extends Component {
     }
     allBtnClicked = () => {
         this.setState({
-            isSearchByGender: false
+            isSearchByGender: false,
+            clickedGenderId: ''
         })
     }
 
@@ -153,8 +155,8 @@ export default class MDIndex extends Component {
 
                 <div className="   mb-10 w-full  flex flex-col  justify-evenly ">
 
-                    <div className=" h-48 px-5 ">
-                        <GendersList genders={this.props.genders} searchView={this.searchView} allBtnClicked={this.allBtnClicked}></GendersList>
+                    <div className=" h-48 py-3 px-5  overflow-y-scroll mb-5">
+                        <GendersList genders={this.props.genders} searchView={this.searchView} allBtnClicked={this.allBtnClicked} clickedGenderId={this.state.clickedGenderId} isSearchByGender={this.state.isSearchByGender}></GendersList>
                     </div>
                     {/* show all Movies-Dramas if the user didn't click the Edit icon - by default show the MDRowCard */}
                     {!this.state.isEdit && !this.state.isDetail && !this.state.isSearchByGender ?
@@ -194,7 +196,7 @@ export default class MDIndex extends Component {
                         <div>
                             {this.state.searchedMDs == '' ?
                             <div className="w-full h-full"> 
-                             <h3 className="   text-center text-gray-900 text-3xl opacity-75">Sorry, Threre is no such Movie / Drama</h3>
+                             <h3 className="   text-center text-gray-900 text-xl opacity-75">Sorry, there is no such movie or drama</h3>
                              </div>
                               :
                             <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
