@@ -120,7 +120,7 @@ export default class GenderIndex extends Component {
                             </div>
                         )}
 
-                        {this.state.isAdd ? <NewGender addGender={this.props.addGender}></NewGender> : null }
+                        {this.state.isAdd  ? <NewGender addGender={this.props.addGender}></NewGender> : null }
                     </div>
                 </div>
                 <Footer></Footer>

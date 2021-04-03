@@ -69,6 +69,10 @@ export default class EditEpisode extends Component {
         var episodeVideoUrl = document.getElementById("episodeVideoUrl").value;
         var episodNum = document.getElementById("episodNum").value;
 
+        var dmTilte = this.state.episode.movieDrama.title
+        var mdTotalNumOfEp = this.state.episode.movieDrama.numOfEpisods
+        var dmType = this.state.episode.movieDrama.type
+
         if (episodNum < 1) {
             swal("Wrong!!", "The Episode number should be 1 or more", "error")
             return false;
@@ -78,7 +82,11 @@ export default class EditEpisode extends Component {
             swal("Empty!!", "Some Feilds are empty!", "error")
             return false;
 
-        } else {
+        }else if(episodNum > mdTotalNumOfEp){
+            swal("Invalid Episod Number!!", `The ${dmTilte} ${dmType} have ${mdTotalNumOfEp} episodes!`, "error")
+            return false;
+        }
+         else {
             return true;
         }
 
