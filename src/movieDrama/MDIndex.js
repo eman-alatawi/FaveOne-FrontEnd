@@ -4,7 +4,8 @@ import axios from 'axios';
 import MDRowCard from './MDRowCard'
 import EditMD from './EditMD'
 import MDDetails from './MDDetails'
-import {toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import GendersList from './GedersList'
 
 export default class MDIndex extends Component {
     constructor(props) {
@@ -13,9 +14,12 @@ export default class MDIndex extends Component {
         this.state = {
             moviesDramas: props.moviesDramas,
             isEdit: false,
-            isDetail:false,
+            isDetail: false,
+            isSearchByGender: false,
             mdDetail: [],
-            clickedMDId: ''
+            clickedMDId: '',
+            clickedGenderId: '',
+            searchedMDs: []
         }
     }
     editView = (id) => {
@@ -31,25 +35,52 @@ export default class MDIndex extends Component {
             clickedMDId: id
         })
 
-       this.mdDetails(id);
+        this.mdDetails(id);
+    }
+    searchView = (id) => {
+        this.setState({
+            isSearchByGender: true
+
+        })
+        // console.log(this.state.clickedGenderId)
+        this.searchMoviesDramasByGenderHandler(id);
+    }
+    allBtnClicked = () => {
+        this.setState({
+            isSearchByGender: false
+        })
     }
 
-    mdDetails = (id) =>{
+    searchMoviesDramasByGenderHandler = (id) => {
+        console.log("in 2nd method" + id)
+        const thisGenderMoviesDramas = this.state.moviesDramas.filter((movieDrama) => {
+            const index = movieDrama.genders.findIndex(x => x.id === id)
+            return index != -1
+        })
+        this.setState({
+            searchedMDs: thisGenderMoviesDramas
+        })
+        console.log(thisGenderMoviesDramas)
+        // console.log(this.state.searchedMDs)
+
+    }
+
+    mdDetails = (id) => {
         // axios.get(`${process.env.REACT_APP_BACK_END_URL}/md/detail`,
         axios.get("/favone//md/detail",
-        {
-            params: { id: id },
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem("token")
-            }
-        })
+            {
+                params: { id: id },
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                }
+            })
             .then(response => {
                 console.log("get Movie - Drama details");
                 console.log(response);
                 this.setState({
                     mdDetail: response.data
                 })
-                
+
                 console.log(this.state.mdDetail)
             })
             .catch(error => {
@@ -109,25 +140,29 @@ export default class MDIndex extends Component {
                 console.log(error);
                 toast.error("Error Occured while trying to Delete Movie/Drama.")
                 toast.info("You're not allowed to delete")
-               
+
             })
     }
 
 
-    
+
     render() {
-      
+
         return (
             <div className="mainBg bg-cover">
-               
+
                 <div className="   mb-10 w-full  flex flex-col  justify-evenly ">
 
+                    <div className=" h-48 px-5 ">
+                        <GendersList genders={this.props.genders} searchView={this.searchView} allBtnClicked={this.allBtnClicked}></GendersList>
+                    </div>
                     {/* show all Movies-Dramas if the user didn't click the Edit icon - by default show the MDRowCard */}
-                    {!this.state.isEdit && !this.state.isDetail ?
+                    {!this.state.isEdit && !this.state.isDetail && !this.state.isSearchByGender ?
                         <div>
-                            <div className="h-full w-full  ">
+                            {/* <div className="h-full w-full  ">
                                 <h3 className=" my-12  text-center text-gray-900 text-3xl opacity-75">All Movies - Dramas</h3>
-                            </div>
+                            </div> */}
+
                             <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
                                 {this.state.moviesDramas.map((md, index) =>
                                     <div key={index}>
@@ -137,7 +172,7 @@ export default class MDIndex extends Component {
                                 }
                             </div>
                         </div>
-                    : null
+                        : null
                     }
 
 
@@ -154,6 +189,28 @@ export default class MDIndex extends Component {
                             {(this.state.isDetail && this.state.clickedMDId === md.id) ? <MDDetails movieDrama={this.state.mdDetail} episodes={this.props.episodes} imageGalleries={this.props.imageGalleries} actors={this.props.actors} hide={this.props.hide}></MDDetails> : null}
                         </div>
                     )}
+
+                    {this.state.isSearchByGender ?
+                        <div>
+                            {this.state.searchedMDs == '' ?
+                            <div className="w-full h-full"> 
+                             <h3 className="   text-center text-gray-900 text-3xl opacity-75">Sorry, Threre is no such Movie / Drama</h3>
+                             </div>
+                              :
+                            <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
+                            
+                            {this.state.searchedMDs.map((md, index) =>
+                                <div key={index}>
+                                    <MDRowCard email={this.props.emailAddress} {...md} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteMD={this.deleteMD} ></MDRowCard>
+                                </div>
+                            )
+                            }
+                            </div>
+                             
+                            }
+                       </div>
+
+                    : null}
 
                 </div>
                 <Footer></Footer>
