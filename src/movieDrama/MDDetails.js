@@ -41,7 +41,7 @@ export default function MDDetails(props) {
                 <div className="w-1/12  text-center pt-10 mt-2 mb-4 flex flex-col bg-gray-700 shadow-xl text-gray-300">
                     <h5 className="text-left pl-1 text-xl">Genders: </h5>
                     {props.movieDrama.genders ?
-                        <ul className="text-left  h-64 overflow-y-scroll">
+                        <ul className="text-left  h-56 overflow-y-scroll">
                             {props.movieDrama.genders.map((gender, index) =>
                                 <li key={index} className="bg-pink-900 my-2 pl-1" >{gender.name} </li>
                             )}
