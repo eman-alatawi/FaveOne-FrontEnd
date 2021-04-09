@@ -14,7 +14,8 @@ import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
-
+import { Animated } from "react-animated-css";
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 class NewActor extends Component {
     state = {
@@ -63,7 +64,7 @@ class NewActor extends Component {
         return (
             <div className="formBG bg-cover pt-4">
 
-                <div className="w-2/4 ml-8 mb-5" >
+                <div className="w-2/4 mb-5" >
                     <h2 className="text-center opacity-75 text-2xl mb-3">Add New Actor</h2>
                     <div className="flex flex-col  items-center">
 
@@ -81,22 +82,21 @@ class NewActor extends Component {
                                 id="gender"
                                 onChange={this.changeHandler}
                             >
-                                <MenuItem value="">None</MenuItem>
                                 <MenuItem value="Female">Female</MenuItem>
                                 <MenuItem value="Male">Male</MenuItem>
                             </Select>
                         </FormControl>
 
                         <Tooltip title="Maximum 5000 charactor">
-                        <TextField
-                            className="w-96 mb-4"
-                            id="biography"
-                            label="Biography - about the actor"
-                            rowsMax={4}
-                            multiline
-                            name="biography"
-                            onChange={this.changeHandler}
-                        />
+                            <TextField
+                                className="w-96 mb-4"
+                                id="biography"
+                                label="Biography - about the actor"
+                                rowsMax={4}
+                                multiline
+                                name="biography"
+                                onChange={this.changeHandler}
+                            />
                         </Tooltip>
 
 
@@ -105,27 +105,37 @@ class NewActor extends Component {
                                 startAdornment: (
                                     <InputAdornment position="start">
                                         <Tooltip title="Click this icon to view the picture">
-                                            <ImageOutlinedIcon onClick={this.handleClickOpen} />
+                                            <Animated animationIn="tada" animationInDuration={8000} isVisible={true}>
+                                                <div className=" cursor-pointer transform hover:scale-110 motion-reduce:transform-none">
+                                                    <ImageOutlinedIcon onClick={this.handleClickOpen} />
+                                                </div>
+                                            </Animated>
                                         </Tooltip>
                                     </InputAdornment>
                                 ),
                             }} />
 
-                          {/* if click on the picture icon show a dialog of the actor picture  */}
+                        {/* if click on the picture icon show a dialog of the actor picture  */}
                         <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={this.state.open}>
-                            <div id="customized-dialog-title" onClose={this.handleClose}>
-                                <span className="text-xl ml-3 mr-64">Actor Picture</span>
+                            <div id="customized-dialog-title" onClose={this.handleClose} className="flex flex-row w-full justify-between">
+                                <span className="text-xl self-center pl-2">Actor Picture</span>
                                 {this.state.open ? (
                                     <IconButton aria-label="close" onClick={this.handleClose}>
                                         <CloseIcon />
                                     </IconButton>
                                 ) : null}
                             </div>
-                            <img src={this.state.picture} />
+                            {this.state.picture ?
+                                <img src={this.state.picture} />
+                                :
+                                <div className="flex flex-col items-center ">
+                                    <InfoOutlinedIcon color="primary" /> <p className="m-4 text-blue-400">Add the URL of the actor picture first</p></div>
+                            }
                         </Dialog>
 
 
                         <TextField id="socialAccount" label="Social Account" type="text" name="socialAccount" onChange={this.changeHandler} className="w-96 mb-4" color="primary" />
+
                         <Button className="w-64" onClick={this.handleSubmit}>Add Actor</Button>
 
                     </div>

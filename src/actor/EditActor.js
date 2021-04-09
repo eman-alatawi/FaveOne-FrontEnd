@@ -1,13 +1,28 @@
 import React, { Component } from 'react'
-import { Form, Button, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField';
+import Tooltip from '@material-ui/core/Tooltip';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import Dialog from '@material-ui/core/Dialog';
+import { Animated } from "react-animated-css";
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+
 
 export default class EditActor extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            actor: props.actor
+            actor: props.actor,
+            open: false
         }
     }
     changeHandler = (e) => {
@@ -30,6 +45,16 @@ export default class EditActor extends Component {
         }
     }
 
+    handleClickOpen = () => {
+        this.setState({
+            open: true
+        })
+    };
+    handleClose = () => {
+        this.setState({
+            open: false
+        })
+    };
 
     validate = () => {
         var fullName = document.getElementById("fullName").value;
@@ -51,69 +76,88 @@ export default class EditActor extends Component {
 
         return (
             <div className="formBG bg-cover pt-4">
-                <div class="container-md w-full  flex flex-col justify-center my-5 bg-gray-200  rounded-2xl shadow p-10  ">
 
-                    <h2 className="text-center opacity-75 text-3xl mb-5">Edit Actor</h2>
-                    <div className=" flex flex-row w-full mb-3">
-                        <div className="w-3/4 flex flex-col">
-                            <Form.Group>
-                                <Form.Label className="ml-3">Full Name</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="fullName" type="text" name="fullName" value={this.state.actor.fullName} onChange={this.changeHandler} placeholder="Kim Jong woon"></Form.Control>
-                                </Col>
-                            </Form.Group>
+                <div className="w-2/4 " >
+                    <h2 className="text-center opacity-75 text-2xl mb-3">Edit Actor</h2>
+                    <div className="flex flex-col  items-center">
 
-                            <Form.Group>
-                                <Form.Label className="ml-3">Date Of Birth </Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="dateOfBirth" type="date" name="dateOfBirth" value={this.state.actor.dateOfBirth} onChange={this.changeHandler} placeholder="1984-08-24"></Form.Control>
-                                </Col>
-                            </Form.Group>
+                        <TextField id="fullName" label="Full Name" type="text" name="fullName" value={this.state.actor.fullName} onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
 
-                            <Form.Group>
-                                <Form.Label className="ml-3">Gender</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="gender" as="select" name="gender" onChange={this.changeHandler}>
 
-                                        <option value="">Select Gender</option>
-                                        {this.state.actor.gender === 'Female' ? <option selected value="Female"> Female</option> : <option value="Female"> Female</option>}
-                                        {this.state.actor.gender === 'Male' ? <option selected value="Male"> Male</option> : <option value="Male"> Male</option>}
-                                    </Form.Control>
-                                </Col>
-                            </Form.Group>
+                        <Tooltip title="Date Of Birth">
+                            <TextField id="dateOfBirth" type="date" name="dateOfBirth" value={this.state.actor.dateOfBirth} onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
+                        </Tooltip>
 
-                            <Form.Group >
-                                <Form.Label className="ml-3">biography</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control as="textarea" id="biography" required type="text" name="biography" value={this.state.actor.biography} onChange={this.changeHandler} placeholder="About the Actor ..." className="resize-none"></Form.Control>
-                                </Col>
 
-                            </Form.Group>
-                            <Form.Group >
-                                <Form.Label className="ml-3">Actor Picture URL</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="picture" type="text" name="picture" value={this.state.actor.picture} onChange={this.changeHandler} placeholder="https://YesungActorImage.com/"></Form.Control>
-                                </Col>
-                            </Form.Group>
-                            <Form.Group >
-                                <Form.Label className="ml-3"> Social Account</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="socialAccount" type="text" name="socialAccount" value={this.state.actor.socialAccount} onChange={this.changeHandler} placeholder="instagram: @yesung1106"></Form.Control>
-                                </Col>
-                            </Form.Group>
-                        </div>
-                        <div className="w-1/4 mr-4 flex flex-col pt-10  ">
-                            <p className="text-center opacity-40">picture preview</p>
+                        <FormControl className="w-96 mb-3">
+                            <InputLabel shrink id="label-of-gender">Gender</InputLabel>
+                            <Select
+                                labelId="label-of-gender"
+                                name="gender"
+                                id="gender"
+                                value={this.state.actor.gender}
+                                onChange={this.changeHandler}
+                            >
+                                <MenuItem value="Female">Female</MenuItem>
+                                <MenuItem value="Male">Male</MenuItem>
+                            </Select>
+                        </FormControl>
 
-                            {/* show picture */}
-                            <div className="   mb-3 flex-row flex justify-center h-96 ">
-                                <img src={this.state.actor.picture} className=" bg-contain  w-full shadow-md "></img>
+
+                        <Tooltip title="Maximum 5000 charactor">
+                            <TextField
+                                className="w-96 mb-4"
+                                id="biography"
+                                label="Biography - about the actor"
+                                rowsMax={4}
+                                multiline
+                                name="biography"
+                                value={this.state.actor.biography}
+                                onChange={this.changeHandler}
+                            />
+                        </Tooltip>
+
+
+                        <TextField id="picture" label="Actor Picture URL" type="text" name="picture" value={this.state.actor.picture} onChange={this.changeHandler} className="w-96 mb-3" color="primary"
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <Tooltip title="Click this icon to view the picture">
+                                            <Animated animationIn="tada" animationInDuration={8000} isVisible={true}>
+                                                <div className=" cursor-pointer transform hover:scale-110 motion-reduce:transform-none">
+                                                    <ImageOutlinedIcon onClick={this.handleClickOpen} />
+                                                </div>
+                                            </Animated>
+                                        </Tooltip>
+                                    </InputAdornment>
+                                ),
+                            }} />
+
+                        {/* if click on the picture icon show a dialog of the actor picture  */}
+                        <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={this.state.open}>
+                            <div id="customized-dialog-title" onClose={this.handleClose} className="flex flex-row w-full justify-between">
+                                <span className="text-xl self-center pl-2">Actor Picture</span>
+                                {this.state.open ? (
+                                    <IconButton aria-label="close" onClick={this.handleClose}>
+                                        <CloseIcon />
+                                    </IconButton>
+                                ) : null}
                             </div>
-                        </div>
+                            {this.state.actor.picture ?
+                                <img src={this.state.actor.picture} />
+                                :
+                                <div className="flex flex-col items-center ">
+                                    <InfoOutlinedIcon color="primary" /> <p className="m-4 text-blue-400">Add the URL of the actor picture first</p></div>
+                            }
+                        </Dialog>
 
-                    </div>
-                    <div className="w-full flex flex-row justify-center">
-                        <Button onClick={this.handleSubmit} className="btn w-64">Edit Actor</Button>
+
+                        <TextField id="socialAccount" label="Social Account" type="text" name="socialAccount" value={this.state.actor.socialAccount} onChange={this.changeHandler} className="w-96 mb-4" color="primary" />
+
+
+                        <Button onClick={this.handleSubmit} className="w-64">Edit Actor</Button>
+
+
                     </div>
                 </div>
             </div>
