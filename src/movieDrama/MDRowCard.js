@@ -9,7 +9,7 @@ import { withRouter } from 'react-router-dom';
       (props.email == props.user.emailAddress ?
       <div className="flex flex-row justify-evenly w-full ">
         <span onClick={()=>{props.deleteMD(props.id)}} className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black" >clear</span>
-        <span onClick={() => props.detailView(props.id)} className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black" >expand_more</span>
+        <span onClick={() => {props.detailView(props.id)}} className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black" >expand_more</span>
         <span onClick={()=>{props.editView(props.id)}} className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black" >create</span>
 
       </div>
