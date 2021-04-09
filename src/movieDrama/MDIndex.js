@@ -52,7 +52,7 @@ export default class MDIndex extends Component {
             clickedGenderId: ''
         })
     }
-    
+
 
     searchMoviesDramasByGenderHandler = (id) => {
         console.log("in 2nd method" + id)
@@ -155,26 +155,45 @@ export default class MDIndex extends Component {
             <div className="mainBg bg-cover">
 
                 <div className="   mb-10 w-full  flex flex-col  justify-evenly ">
-                    {!this.state.isEdit && !this.state.isDetail ? 
-                    <div className=" h-48 py-3 px-5  overflow-y-scroll mb-5">
-                        <GendersList genders={this.props.genders} searchView={this.searchView} allBtnClicked={this.allBtnClicked} clickedGenderId={this.state.clickedGenderId} isSearchByGender={this.state.isSearchByGender}></GendersList>
-                    </div>
-                    :null}
-                    {/* show all Movies-Dramas if the user didn't click the Edit icon - by default show the MDRowCard */}
-                    {!this.state.isEdit && !this.state.isDetail && !this.state.isSearchByGender ?
+                    {!this.state.isEdit && !this.state.isDetail ?
+                        <div className=" h-48 py-3 px-5  overflow-y-scroll mb-5">
+                            <GendersList genders={this.props.genders} searchView={this.searchView} allBtnClicked={this.allBtnClicked} clickedGenderId={this.state.clickedGenderId} isSearchByGender={this.state.isSearchByGender}></GendersList>
+                        </div>
+                        : null}
+                    {/* show all Movies-Dramas if the user didn't click the Edit icon or more detail icon - then check if 
+                     isSearchByGender is true if so, check if there is any drama/movie during the selected gender if not show a sorry massage
+                    if isSearchByGender is false then show the MDRowCard */}
+                    {!this.state.isEdit && !this.state.isDetail ?
                         <div>
-                            {/* <div className="h-full w-full  ">
-                                <h3 className=" my-12  text-center text-gray-900 text-3xl opacity-75">All Movies - Dramas</h3>
-                            </div> */}
+                            {this.state.isSearchByGender ?
+                                <div>
+                                    {this.state.searchedMDs == '' ?
+                                        <div className="w-full h-full">
+                                            <h3 className="   text-center text-gray-900 text-xl opacity-75">Sorry, there is no such movie or drama</h3>
+                                        </div>
+                                        :
+                                        <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
 
-                            <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
-                                {this.state.moviesDramas.map((md, index) =>
-                                    <div key={index}>
-                                        <MDRowCard email={this.props.emailAddress} {...md} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteMD={this.deleteMD} ></MDRowCard>
-                                    </div>
-                                )
-                                }
-                            </div>
+                                            {this.state.searchedMDs.map((md, index) =>
+                                                <div key={index}>
+                                                    <MDRowCard email={this.props.emailAddress} {...md} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteMD={this.deleteMD} ></MDRowCard>
+                                                </div>
+                                            )
+                                            }
+                                        </div>
+
+                                    }
+                                </div>
+
+                                : <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
+                                    {this.state.moviesDramas.map((md, index) =>
+                                        <div key={index}>
+                                            <MDRowCard email={this.props.emailAddress} {...md} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteMD={this.deleteMD} ></MDRowCard>
+                                        </div>
+                                    )
+                                    }
+                                 </div>
+                            }
                         </div>
                         : null
                     }
@@ -183,38 +202,18 @@ export default class MDIndex extends Component {
                     {/* if the user click the edit icon - show the editMD [we need to loop again using map to know the clickedMDId by user and the md.id in moviesDramas ] */}
                     {this.state.moviesDramas.map((md, index) =>
                         <div key={index}>
-                            {(this.state.isEdit && !this.state.isSearchByGender && this.state.clickedMDId === md.id) ? <EditMD movieDrama={md} editMD={this.editMD} actors={this.props.actors} genders={this.props.genders} episodes={this.props.episodes}></EditMD> : null}
+                            {(this.state.isEdit && this.state.clickedMDId === md.id) ? <EditMD movieDrama={md} editMD={this.editMD} actors={this.props.actors} genders={this.props.genders} episodes={this.props.episodes}></EditMD> : null}
                         </div>
                     )}
 
                     {/* if the user click the card  - show the movie-Drama Details [we need to loop again using map to know the clickedMDId by user and the md.id in moviesDramas ] */}
                     {this.state.moviesDramas.map((md, index) =>
                         <div key={index}>
-                            {(this.state.isDetail && !this.state.isSearchByGender && this.state.clickedMDId === md.id) ? <MDDetails movieDrama={this.state.mdDetail} episodes={this.props.episodes} imageGalleries={this.props.imageGalleries} actors={this.props.actors} hide={this.props.hide}></MDDetails> : null}
+                            {(this.state.isDetail && this.state.clickedMDId === md.id) ? <MDDetails movieDrama={this.state.mdDetail} episodes={this.props.episodes} imageGalleries={this.props.imageGalleries} actors={this.props.actors} hide={this.props.hide}></MDDetails> : null}
                         </div>
                     )}
 
-                    {this.state.isSearchByGender ?
-                        <div>
-                            {this.state.searchedMDs == '' ?
-                            <div className="w-full h-full"> 
-                             <h3 className="   text-center text-gray-900 text-xl opacity-75">Sorry, there is no such movie or drama</h3>
-                             </div>
-                              :
-                            <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
-                            
-                            {this.state.searchedMDs.map((md, index) =>
-                                <div key={index}>
-                                    <MDRowCard email={this.props.emailAddress} {...md} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteMD={this.deleteMD} ></MDRowCard>
-                                </div>
-                            )
-                            }
-                            </div>
-                             
-                            }
-                       </div>
 
-                    : null}
 
                 </div>
                 <Footer></Footer>
