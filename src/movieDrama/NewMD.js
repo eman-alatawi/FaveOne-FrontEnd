@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Form, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
 import Footer from '../Shared/Footer';
 import axios from 'axios';
@@ -20,7 +19,6 @@ import { Animated } from "react-animated-css";
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormGroup from '@material-ui/core/FormGroup';
-import Divider from '@material-ui/core/Divider';
 
 
 class NewMD extends Component {
