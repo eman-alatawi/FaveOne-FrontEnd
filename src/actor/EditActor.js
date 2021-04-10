@@ -117,21 +117,21 @@ export default class EditActor extends Component {
                             />
                         </Tooltip>
 
-
-                        <TextField id="picture" label="Actor Picture URL" type="text" name="picture" value={this.state.actor.picture} onChange={this.changeHandler} className="w-96 mb-3" color="primary"
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <Tooltip title="Click this icon to view the picture">
+                        <Tooltip title="Click this icon to view the actor picture">
+                            <TextField id="picture" label="Actor Picture URL" type="text" name="picture" value={this.state.actor.picture} onChange={this.changeHandler} className="w-96 mb-3" color="primary"
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
                                             <Animated animationIn="tada" animationInDuration={8000} isVisible={true}>
                                                 <div className=" cursor-pointer transform hover:scale-110 motion-reduce:transform-none">
                                                     <ImageOutlinedIcon onClick={this.handleClickOpen} />
                                                 </div>
                                             </Animated>
-                                        </Tooltip>
-                                    </InputAdornment>
-                                ),
-                            }} />
+                                        </InputAdornment>
+                                    ),
+                                }} />
+                        </Tooltip>
+
 
                         {/* if click on the picture icon show a dialog of the actor picture  */}
                         <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={this.state.open}>

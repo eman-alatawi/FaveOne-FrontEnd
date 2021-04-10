@@ -148,19 +148,6 @@ export default class EditMD extends Component {
 
                             <TextField id="title" label="Title" type="text" name="title" value={this.state.movieDrama.title} onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
 
-                            {/* <Form.Group>
-                                <Form.Label className="ml-3">Title</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="title" type="text" name="title" value={this.state.movieDrama.title} onChange={this.changeHandler} placeholder="Voice"></Form.Control>
-                                </Col>
-                            </Form.Group> */}
-
-                            {/* <Form.Group>
-                                <Form.Label className="ml-3">Release Date </Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="releaseYear" type="date" name="releaseYear" value={this.state.movieDrama.releaseYear} onChange={this.changeHandler} placeholder="2017-01-20"></Form.Control>
-                                </Col>
-                            </Form.Group> */}
 
                             <Tooltip title="Release Date">
                                 <TextField id="releaseYear" type="date" name="releaseYear" value={this.state.movieDrama.releaseYear} onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
@@ -180,26 +167,6 @@ export default class EditMD extends Component {
                                 </Select>
                             </FormControl>
 
-                            {/* <Form.Group>
-                                <Form.Label className="ml-3">Type</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="type" as="select" name="type" onChange={this.changeHandler}>
-
-                                        <option value="">Select Type</option>
-                                        {this.state.movieDrama.type === 'Movie' ? <option selected value="Movie"> Movie</option> : <option value="Movie"> Movie</option>}
-                                        {this.state.movieDrama.type === 'Drama' ? <option selected value="Drama"> Drama</option> : <option value="Drama"> Drama</option>}
-
-                                    </Form.Control>
-                                </Col>
-                            </Form.Group> */}
-
-                            {/* <Form.Group>
-                                <Form.Label className="ml-3">Description</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control as="textarea" id="description" required type="text" name="description" value={this.state.movieDrama.description} onChange={this.changeHandler} placeholder="About the crimes ..." className="resize-none"></Form.Control>
-                                </Col>
-                            </Form.Group> */}
-
                             <Tooltip title="Maximum 5000 charactor">
                                 <TextField
                                     className="w-96 mb-4"
@@ -213,21 +180,21 @@ export default class EditMD extends Component {
                                 />
                             </Tooltip>
 
-
-                            <TextField id="poster" label="Poster URL" type="text" name="poster" value={this.state.movieDrama.poster} onChange={this.changeHandler} className="w-96 mb-3" color="primary"
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <Tooltip title="Click this icon to view the poster">
+                            <Tooltip title="Click this icon to view the poster">
+                                <TextField id="poster" label="Poster URL" type="text" name="poster" value={this.state.movieDrama.poster} onChange={this.changeHandler} className="w-96 mb-3" color="primary"
+                                    InputProps={{
+                                        startAdornment: (
+                                            <InputAdornment position="start">
                                                 <Animated animationIn="tada" animationInDuration={8000} isVisible={true}>
                                                     <div className=" cursor-pointer transform hover:scale-110 motion-reduce:transform-none">
                                                         <ImageOutlinedIcon onClick={this.handleClickOpen} />
                                                     </div>
                                                 </Animated>
-                                            </Tooltip>
-                                        </InputAdornment>
-                                    ),
-                                }} />
+                                            </InputAdornment>
+                                        ),
+                                    }} />
+                            </Tooltip>
+
 
                             {/* if click on the picture icon show a dialog of the actor picture  */}
                             <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={this.state.open}>
@@ -247,33 +214,11 @@ export default class EditMD extends Component {
                                 }
                             </Dialog>
 
-                            {/* <Form.Group>
-                                <Form.Label className="ml-3">Poster URL</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="poster" type="text" name="poster" value={this.state.movieDrama.poster} onChange={this.changeHandler} placeholder="https://Drama-Movie-Poster.com/"></Form.Control>
-                                </Col>
-                            </Form.Group> */}
-
                             <Tooltip title="ex: 1 hour 30 min">
                                 <TextField id="duration" label="Duration" type="text" name="duration" value={this.state.movieDrama.duration} onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
                             </Tooltip>
 
-                            {/* <Form.Group>
-                                <Form.Label className="ml-3"> Duration</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="duration" type="text" name="duration" value={this.state.movieDrama.duration} onChange={this.changeHandler} placeholder="1 hour 30 min"></Form.Control>
-                                </Col>
-                            </Form.Group> */}
-
                             <TextField id="numOfEpisods" label="Total number of Episods" type="number" name="numOfEpisods" value={this.state.movieDrama.numOfEpisods} onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
-
-
-                            {/* <Form.Group>
-                                <Form.Label className="ml-3">  # Of Episods</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="numOfEpisods" type="number" name="numOfEpisods" value={this.state.movieDrama.numOfEpisods} onChange={this.changeHandler} placeholder="16"></Form.Control>
-                                </Col>
-                            </Form.Group> */}
 
                             <FormControl className="w-96 mb-3">
                                 <InputLabel id="label-of-rate">Content Rating</InputLabel>
@@ -292,32 +237,9 @@ export default class EditMD extends Component {
                                 </Select>
                             </FormControl>
 
-
-                            {/* <Form.Group>
-                                <Form.Label className="ml-3">Content Rating</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="contentRating" as="select" name="contentRating" onChange={this.changeHandler}>
-                                        <option value="">Select Content Rate</option>
-                                        {this.state.movieDrama.contentRating === '+13' ? <option selected value="+13"> +13</option> : <option value="+13"> +13</option>}
-                                        {this.state.movieDrama.contentRating === '+15' ? <option selected value="+15"> +15</option> : <option value="+15"> +15</option>}
-                                        {this.state.movieDrama.contentRating === '+17' ? <option selected value="+17"> +17</option> : <option value="+17"> +17</option>}
-                                        {this.state.movieDrama.contentRating === 'All Ages' ? <option selected value="All Ages"> All Ages</option> : <option value="All Ages"> All Ages</option>}
-                                        {this.state.movieDrama.contentRating === 'Not Yet Rated' ? <option selected value="Not Yet Rated"> Not Yet Rated</option> : <option value="Not Yet Rated"> Not Yet Rated</option>}
-
-                                    </Form.Control>
-                                </Col>
-                            </Form.Group> */}
-
                             <Tooltip title="ex: 9.6">
                                 <TextField id="score" label="Score" type="text" name="score" value={this.state.movieDrama.score} onChange={this.changeHandler} className="w-96 mb-5" color="primary" />
                             </Tooltip>
-
-                            {/* <Form.Group>
-                                <Form.Label className="ml-3"> Score</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="score" type="text" name="score" value={this.state.movieDrama.score} onChange={this.changeHandler} placeholder="9.0"></Form.Control>
-                                </Col>
-                            </Form.Group> */}
 
                             <Button onClick={this.handleSubmit} className="w-64">Edit Movie - Drama</Button>
 
@@ -336,13 +258,13 @@ export default class EditMD extends Component {
                                             {this.props.actors.map((actor, index) =>
                                                 <div >
                                                     {this.state.movieDrama.actors.findIndex(x => x.id == actor.id) == -1 ?
-                                                    <div>
-                                                        <input className="mr-3 " type="checkbox" name="actors" value={index} onChange={this.changeHandler} />
-                                                        {actor.fullName}</div>
-                                                    :
-                                                    <div>
-                                                        <input className="mr-3" type="checkbox" checked name="actors" value={index} onChange={this.changeHandler} />
-                                                        {actor.fullName}</div>}
+                                                        <div>
+                                                            <input className="mr-3 " type="checkbox" name="actors" value={index} onChange={this.changeHandler} />
+                                                            {actor.fullName}</div>
+                                                        :
+                                                        <div>
+                                                            <input className="mr-3" type="checkbox" checked name="actors" value={index} onChange={this.changeHandler} />
+                                                            {actor.fullName}</div>}
                                                 </div>
                                             )}
                                         </div>
@@ -351,24 +273,23 @@ export default class EditMD extends Component {
                                 </FormGroup>
                             </FormControl>
 
-
                             <FormControl component="fieldset"  >
                                 <Tooltip title="Scroll horizontally for more">
                                     <FormLabel component="legend">Genders - Catagory</FormLabel>
                                 </Tooltip>
                                 <FormGroup className="grid  gap-x-5  gap-y-2 h-64 overflow-y-scroll ">
-                                {this.props.genders.map((gender, index) =>
-                                
-                                    <div>{this.state.movieDrama.genders.findIndex(x => x.id == gender.id) == -1 ?
-                                        <div>
-                                            <input className="mr-3" type="checkbox" name="genders" value={index} onChange={this.changeHandler} />
-                                            {gender.name}</div>
-                                        :
-                                        <div>
-                                            <input className="mr-3" type="checkbox" checked name="genders" value={index} onChange={this.changeHandler} />
-                                            {gender.name}</div>}
-                                    </div>
-                                )}
+                                    {this.props.genders.map((gender, index) =>
+
+                                        <div>{this.state.movieDrama.genders.findIndex(x => x.id == gender.id) == -1 ?
+                                            <div>
+                                                <input className="mr-3" type="checkbox" name="genders" value={index} onChange={this.changeHandler} />
+                                                {gender.name}</div>
+                                            :
+                                            <div>
+                                                <input className="mr-3" type="checkbox" checked name="genders" value={index} onChange={this.changeHandler} />
+                                                {gender.name}</div>}
+                                        </div>
+                                    )}
                                 </FormGroup>
                             </FormControl>
 
