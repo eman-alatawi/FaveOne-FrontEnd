@@ -139,24 +139,32 @@ class NewMD extends Component {
         var contentRating = document.getElementById("contentRating").value;
         var score = document.getElementById("score").value;
 
-        if (numOfEpisods < 1) {
-            swal("Wrong!!", "Number of Episodes should be 1 or more", "error")
-            return false;
-        }
-
-        if (score < 0 || score > 10) {
-            swal("Wrong!!", "The score should be from 0 to 10", "error")
-            return false;
-        }
 
         if (title === '' || releaseYear === '' || type === '' || description === '' || poster === '' || duration === '' || numOfEpisods === '' || contentRating === '' || score === '') {
             swal("Empty!!", "Some Feilds are empty!", "error")
             return false;
 
+        }else if(JSON.stringify(this.state.movieDrama.actors) === '[]'){
+            swal("Empty!!", "You should select actors of the drama or movie ", "error")
+            return false;
+        }else  if (numOfEpisods < 1) {
+            swal("Wrong!!", "Number of Episodes should be 1 or more", "error")
+            return false;
+        } else if (score < 0 || score > 10) {
+            swal("Wrong!!", "The score should be from 0 to 10", "error")
+            return false;
+        }
+        else if(JSON.stringify(this.state.movieDrama.genders) === '[]'){
+            swal("Empty!!", "You should select catagory of the drama or movie ", "error")
+            return false;
         }
         else {
             return true;
         }
+
+       
+
+        
     }
 
     render() {
@@ -187,7 +195,6 @@ class NewMD extends Component {
                                     id="type"
                                     onChange={this.changeHandler}
                                 >
-                                    <MenuItem value="">None</MenuItem>
                                     <MenuItem value="Movie">Movie</MenuItem>
                                     <MenuItem value="Drama">Drama</MenuItem>
                                 </Select>
@@ -221,7 +228,7 @@ class NewMD extends Component {
                                         ),
                                     }} />
                             </Tooltip>
-                            
+
                             {/* if click on the picture icon show a dialog of the actor picture  */}
                             <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={this.state.open}>
                                 <div id="customized-dialog-title" onClose={this.handleClose} className="flex flex-row w-full justify-between">
