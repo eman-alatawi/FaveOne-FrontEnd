@@ -79,9 +79,9 @@ export default class EditImageGallery extends Component {
         return (
             <div className="formBG bg-cover pt-4">
                 <div class="w-full">
-                    <h2 className="text-center opacity-75  text-3xl mb-5">Edit Image Gallery </h2>
-                    <div className=" flex flex-row w-full mb-3">
-                        <div className="w-2/4 flex flex-col">
+                    <h2 className="text-left ml-28 opacity-75  text-2xl mb-5">Edit Image Gallery </h2>
+                    <div className=" flex flex-row  justify-between w-3/4 px-16 pb-5">
+                        <div className="flex flex-col w-2/4 items-center">
 
                             <Form.Group  >
                                 <Form.Label className="ml-3" > Image Gallery URL</Form.Label>
@@ -102,7 +102,7 @@ export default class EditImageGallery extends Component {
                             </div>
 
                         </div>
-                        <div className="w-full flex flex-row ">
+                        <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-4">
 
                             <div className="flex flex-col w-2/4">
                                 <p className="text-center opacity-40">Image preview</p>
