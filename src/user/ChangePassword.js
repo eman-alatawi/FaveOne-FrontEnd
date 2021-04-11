@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
-import { Container, Form, Button, Row, Col } from 'react-bootstrap'
 import Footer from '../Shared/Footer';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import swal from 'sweetalert';
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField';
+import Tooltip from '@material-ui/core/Tooltip';
+
 class ChangePassword extends Component {
 
     //craete empty state - new version
     state = {
         user: {}
     }
-    
+
 
     componentDidMount() {
         this.loadUser(this.props.user.sub);
@@ -43,11 +46,11 @@ class ChangePassword extends Component {
     //shortest way 
     changeHandler = (e) => {
         let temp = { ... this.state.user }
-        if(e.target.name === 'oldPassword'){
+        if (e.target.name === 'oldPassword') {
             temp[e.target.name] = e.target.value;
-        }else if (e.target.name === 'password'){
+        } else if (e.target.name === 'password') {
             temp[e.target.name] = e.target.value;
-        }else{
+        } else {
             temp[e.target.name] = e.target.value;
         }
         this.setState({
@@ -83,41 +86,58 @@ class ChangePassword extends Component {
         }
     }
 
+    handleClickCancel = () =>{
+        this.props.show(); //show the sections in the root/home
+        this.props.history.push('/');
+
+    }
+
     render() {
 
         return (
-            <div className="formBG bg-cover bg-center  pt-4">
-                <div class="container-sm flex flex-col justify-center my-5 bg-gray-100  rounded-2xl shadow p-10">
-                    <h2 className="text-center opacity-75 text-3xl mb-2">Change Your Account's Password</h2>
+            <div className="pt-4">
+                <div class="w-full mb-5">
+                    <h2 className="text-center opacity-75 text-2xl mb-2">Change Your Account's Password</h2>
                     <h4 className="text-xs text-center opacity-50 mb-5">In order to change your account's password, you should enter the Current password and the new password and confirm the new password</h4>
-                    <Container>
+                    <div className="flex flex-col w-4/4 items-center">
 
 
-                        <Form.Group as={Row}>
+                        <TextField id="oldPassword" label="Current Password" type="password" name="oldPassword" onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
+
+                        {/* <Form.Group as={Row}>
                             <Form.Label column sm={3}>Current Password</Form.Label>
                             <Col sm={9}>
                                 <Form.Control required id="oldPassword" type="password" name="oldPassword" onChange={this.changeHandler} placeholder="********"></Form.Control>
                             </Col>
-                        </Form.Group>
+                        </Form.Group> */}
 
-                        <Form.Group as={Row}>
+                        <Tooltip title="Your password must be 8-20 characters long, contain letters and numbers, and
+                                    must not contain spaces, special characters, or emoji.">
+                            <TextField id="password" label="New Password" type="password" name="password" onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
+                        </Tooltip>
+
+                        {/* <Form.Group as={Row}>
                             <Form.Label column sm={3}>New Password</Form.Label>
                             <Col sm={9}>
                                 <Form.Control required id="password" type="password" name="password" onChange={this.changeHandler} placeholder="********"></Form.Control>
                             </Col>
-                        </Form.Group>
+                        </Form.Group> */}
 
-                        <Form.Group as={Row}>
+                        <Tooltip title="Confirm the password, they should be matched">
+                            <TextField id="confirmPassword" label="Confirm New Password" type="password" name="confirmPassword" onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
+                        </Tooltip>
+
+                        {/* <Form.Group as={Row}>
                             <Form.Label column sm={3}>Confirm New Password</Form.Label>
                             <Col sm={9}>
                                 <Form.Control required id="confirmPassword" type="password" name="confirmPassword" onChange={this.changeHandler} placeholder="********"></Form.Control>
                             </Col>
-                        </Form.Group>
+                        </Form.Group> */}
 
-                        <div className="w-full flex flex-row justify-center">
-                            <Button onClick={this.submitHandler} className="btn w-64">Change Password</Button>
-                        </div>
-                    </Container>
+                        <Button onClick={this.submitHandler} className="w-64">Change Password</Button>
+                        <Button className="w-64" onClick={this.handleClickCancel}>Cancel</Button>
+
+                    </div>
                 </div>
                 <Footer></Footer>
             </div>

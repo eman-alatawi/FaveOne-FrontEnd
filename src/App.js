@@ -25,6 +25,7 @@ import NewEpisode from './episode/NewEpisode';
 import ImageGalleryIndex from './ImageGallery/ImageGalleryIndex'
 import NewImageGallery from './ImageGallery/NewImageGallery';
 import ChangePassword from './user/ChangePassword';
+import PersonIcon from '@material-ui/icons/Person';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -488,7 +489,7 @@ export default class App extends Component {
 
                 </Nav>
                 <Nav className="mr-5">
-                  {this.state.user ? <Navbar.Text className="mr-5" > <span className="text-blue-500">Signed in as: </span><Link to="/changePassword" onClick={this.hideSectionsHandler}> <span>{this.state.user.sub}</span></Link></Navbar.Text> : null}
+                  {this.state.user ? <Navbar.Text className="mr-5" > <span className="text-gray-400">{this.state.user.sub}</span> <Link to="/changePassword" onClick={this.hideSectionsHandler}>  <PersonIcon color="primary"  /></Link></Navbar.Text> : null}
 
                   <Nav.Link > <Link to="/logout" onClick={this.onLogoutHandeler} className="mr-5 text-gray-200 hover:text-pink-600 text-xl">Say Bye</Link></Nav.Link>
                 </Nav>
