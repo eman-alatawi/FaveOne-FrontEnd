@@ -1,13 +1,26 @@
 import React, { Component } from 'react'
-import { Form, Button, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField';
+import Tooltip from '@material-ui/core/Tooltip';
+import FormControl from '@material-ui/core/FormControl';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import Dialog from '@material-ui/core/Dialog';
+import { Animated } from "react-animated-css";
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormGroup from '@material-ui/core/FormGroup';
 
 export default class EditImageGallery extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            imageGallery: props.imageGallery
+            imageGallery: props.imageGallery,
+            open: false
         }
     }
 
@@ -62,6 +75,17 @@ export default class EditImageGallery extends Component {
         }
     }
 
+    handleClickOpen = () => {
+        this.setState({
+            open: true
+        })
+    };
+    handleClose = () => {
+        this.setState({
+            open: false
+        })
+    };
+
 
     validate = () => {
         var imageUrl = document.getElementById("imageUrl").value;
@@ -69,7 +93,11 @@ export default class EditImageGallery extends Component {
         if (imageUrl === '') {
             swal("Empty!!", "The Image Gallery URL Feild is empty!", "error")
             return false;
-        } else {
+        } else if (JSON.stringify(this.state.imageGallery.movieDrama) === '{}') {
+            swal("Empty!!", "You should select the drama or movie title", "error")
+            return false;
+        }
+        else {
             return true;
         }
     }
@@ -83,42 +111,50 @@ export default class EditImageGallery extends Component {
                     <div className=" flex flex-row  justify-between w-3/4 px-16 pb-5">
                         <div className="flex flex-col w-2/4 items-center">
 
-                            <Form.Group  >
-                                <Form.Label className="ml-3" > Image Gallery URL</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="imageUrl" type="text" name="imageUrl" onChange={this.changeHandler} value={this.state.imageGallery.imageUrl} placeholder="https://Drama-Movie-Image-Gallery.com/"></Form.Control>
-                                </Col>
-                            </Form.Group>
 
-                            <Form.Text muted className="pl-4 w-72 text-justify">
-                                * If you can't see the Movie/Drama in the list, you should add them first and then come back here.
-                            </Form.Text>
-                            <Form.Text muted className="pl-4 ">
-                                * All the Feilds are required .
-                            </Form.Text>
+                            <Tooltip title="Click this icon to view the image">
+                                <TextField id="imageUrl" label="Image Gallery URL" type="text" name="imageUrl" value={this.state.imageGallery.imageUrl} onChange={this.changeHandler} className="w-96 mb-5" color="primary"
+                                    InputProps={{
+                                        startAdornment: (
+                                            <InputAdornment position="start">
+                                                <Animated animationIn="tada" animationInDuration={8000} isVisible={true}>
+                                                    <div className=" cursor-pointer transform hover:scale-110 motion-reduce:transform-none">
+                                                        <ImageOutlinedIcon onClick={this.handleClickOpen} />
+                                                    </div>
+                                                </Animated>
+                                            </InputAdornment>
+                                        ),
+                                    }} />
+                            </Tooltip>
 
-                            <div className="w-full flex flex-row justify-center">
-                                <Button onClick={this.handleSubmit} className="btn w-64 mt-4">Edit Image Gallery</Button>
-                            </div>
+                            {/* if click on the picture icon show a dialog of the actor picture  */}
+                            <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={this.state.open}>
+                                <div id="customized-dialog-title" onClose={this.handleClose} className="flex flex-row w-full justify-between">
+                                    <span className="text-xl self-center pl-2">Image Gallery URL</span>
+                                    {this.state.open ? (
+                                        <IconButton aria-label="close" onClick={this.handleClose}>
+                                            <CloseIcon />
+                                        </IconButton>
+                                    ) : null}
+                                </div>
+                                {this.state.imageGallery.imageUrl ?
+                                    <img src={this.state.imageGallery.imageUrl} />
+                                    :
+                                    <div className="flex flex-col items-center ">
+                                        <InfoOutlinedIcon color="primary" /> <p className="m-4 text-blue-400">Add the URL of the image gallery first</p></div>
+                                }
+                            </Dialog>
+
+                            <Button onClick={this.handleSubmit} className="w-64">Edit Image Gallery</Button>
 
                         </div>
                         <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-4">
 
-                            <div className="flex flex-col w-2/4">
-                                <p className="text-center opacity-40">Image preview</p>
-
-                                {/* show Image Gallery */}
-                                <div className="   mr-3 flex-row flex justify-center h-56  ">
-                                    <img src={this.state.imageGallery.imageUrl} className="w-full bg-contain shadow-md "></img>
-                                </div>
-
-                            </div>
-
-                            <div className="flex flex-col w-2/4">
-                                <p className="text-center opacity-40">Movie - Drama</p>
-
-                                <Form.Group className="border-2  border-gray-200 rounded-lg pl-5  h-96 overflow-y-scroll shadow-sm">
-
+                            <FormControl component="fieldset"  >
+                                <Tooltip title="Scroll horizontally for more">
+                                    <FormLabel component="legend">Movie or Drama Title</FormLabel>
+                                </Tooltip>
+                                <FormGroup className="grid  gap-x-5  gap-y-2 h-48 overflow-y-scroll ">
                                     {this.props.moviesDramas.map((md, index) =>
 
                                         <div>{md.imageGalleries.findIndex(x => x.id == this.state.imageGallery.id) == -1 ?
@@ -132,8 +168,8 @@ export default class EditImageGallery extends Component {
 
                                         </div>
                                     )}
-                                </Form.Group>
-                            </div>
+                                </FormGroup>
+                            </FormControl>
 
                         </div>
 
