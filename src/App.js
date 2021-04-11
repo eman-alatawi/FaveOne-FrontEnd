@@ -514,6 +514,7 @@ export default class App extends Component {
                       <NavDropdown.Item ><Link to="/actorIndex" onClick={this.hideSectionsHandler} onClick={this.hideSectionsHandler} className="dropDownLink"> Actors</Link></NavDropdown.Item>
                     </NavDropdown>
 
+
                     <SearchBar value={this.state.filterValue} onChange={this.handleFilterChange}></SearchBar>
 
                   </Nav>

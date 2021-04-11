@@ -156,7 +156,7 @@ export default class MDIndex extends Component {
 
                 <div className="w-full">
                     {!this.state.isEdit && !this.state.isDetail ?
-                        <div className=" h-48 py-3 px-5  overflow-y-scroll mb-5">
+                        <div className=" h-48 pb-3 px-5  overflow-y-scroll ">
                             <GendersList genders={this.props.genders} searchView={this.searchView} allBtnClicked={this.allBtnClicked} clickedGenderId={this.state.clickedGenderId} isSearchByGender={this.state.isSearchByGender}></GendersList>
                         </div>
                         : null}

@@ -10,7 +10,7 @@ export default function GedersList(props) {
                 <GenderButton gender={gender} searchView={props.searchView} clickedGenderId={props.clickedGenderId } ></GenderButton>
                 </div>
             )}
-             <button onClick={() => props.allBtnClicked()} className={` p-3  border-gray-700  shadow-sm hover:bg-blue-300 hover:text-blue-900  ${btn_class}`}> All </button>
+             <button onClick={() => props.allBtnClicked()} className={` p-3 rounded-b-lg border-gray-700  shadow-sm hover:bg-blue-300 hover:text-blue-900  ${btn_class}`}> All </button>
  
         </div>
     )
