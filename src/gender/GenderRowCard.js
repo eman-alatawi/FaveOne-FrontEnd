@@ -1,14 +1,20 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
+import Tooltip from '@material-ui/core/Tooltip';
 
 export default function GenderRowCard(props) {
 
 
   const showTool = (props.isAuth ?
     <div className="flex flex-col justify-evenly w-full ">
-      <span onClick={() => { props.deleteGender(props.id) }} className=" mb-1 group-hover:text-white material-icons  cursor-pointer transform hover:scale-110 motion-reduce:transform-none" width="20" height="20">clear</span>
+      <Tooltip title="Delete Catagory">
+        <span onClick={() => { props.deleteGender(props.id) }} className=" mb-1 group-hover:text-white material-icons  cursor-pointer transform hover:scale-110 motion-reduce:transform-none" width="20" height="20">clear</span>
+      </Tooltip>
 
+      <Tooltip title="Edit Catagory">
       <span onClick={() => { props.editView(props.id) }} className=" group-hover:text-white material-icons  cursor-pointer transform hover:scale-110 motion-reduce:transform-none" width="20" height="20" >create</span>
+      </Tooltip>
+
     </div>
     : null);
 

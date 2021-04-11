@@ -1,15 +1,20 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
 import { withRouter } from 'react-router-dom';
+import Tooltip from '@material-ui/core/Tooltip';
 
 function ImageGalleryRowCard(props) {
 
 
   const showTool = (props.isAuth ?
     <div className="flex flex-row justify-evenly w-full ml-3 ">
-      <span onClick={() => { props.deleteImageGallery(props.id) }} className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black" >clear</span>
-      {/* <span onClick={() => props.detailView(props.id)} className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black" >expand_more</span> */}
+      <Tooltip title="Delete Image Gallery">
+        <span onClick={() => { props.deleteImageGallery(props.id) }} className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black" >clear</span>
+      </Tooltip>
+
+      <Tooltip title="Edit Image Gallery">
       <span onClick={() => { props.editView(props.id) }} className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black" >create</span>
+      </Tooltip>
     </div>
     : null
   );
@@ -34,7 +39,7 @@ function ImageGalleryRowCard(props) {
           <div className="mr-4">
             {props.moviesDramas.map((md, index) =>
               <div key={index}>
-              {md.imageGalleries.findIndex(x => x.id == props.id) !== -1 ? <Card.Text className="group-hover:text-gray-800">{md.title} </Card.Text> : null}
+                {md.imageGalleries.findIndex(x => x.id == props.id) !== -1 ? <Card.Text className="group-hover:text-gray-800">{md.title} </Card.Text> : null}
               </div>
             )}
           </div> : null}

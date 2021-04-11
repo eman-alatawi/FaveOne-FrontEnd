@@ -1,15 +1,25 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
 import { withRouter } from 'react-router-dom';
+import Tooltip from '@material-ui/core/Tooltip';
 
 function EpisodeRowCard(props) {
 
 
   const showTool = (props.isAuth ?
     <div className="flex flex-row justify-evenly w-full ">
-      <span onClick={() => { props.deleteEpisode(props.id) }} className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black" >clear</span>
+      <Tooltip title="Delete Episode">
+        <span onClick={() => { props.deleteEpisode(props.id) }} className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black" >clear</span>
+      </Tooltip>
+
+      <Tooltip title="More Details">
       <span onClick={() => props.detailView(props.id)} className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black" >expand_more</span>
+      </Tooltip>
+
+      <Tooltip title="Edit Episode">
       <span onClick={() => { props.editView(props.id) }} className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black" >create</span>
+      </Tooltip>
+
     </div>
     : null);
 

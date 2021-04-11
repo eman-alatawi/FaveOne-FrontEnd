@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
 import { withRouter } from 'react-router-dom';
+import Tooltip from '@material-ui/core/Tooltip';
 
 function ActorRowCard(props) {
   const year = new Date(props.dateOfBirth);
@@ -8,14 +9,22 @@ function ActorRowCard(props) {
 
   const showTool = (props.isAuth ?
     <div className="flex flex-row justify-evenly w-full ">
-      <span onClick={() => { props.deleteActor(props.id) }} className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black" >clear</span>
+      <Tooltip title="Delete Actor">
+        <span onClick={() => { props.deleteActor(props.id) }} className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black" >clear</span>
+      </Tooltip>
+
+      <Tooltip title="More Details">
       <span onClick={() => props.detailView(props.id)} className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black" >expand_more</span>
+      </Tooltip>
+
+      <Tooltip title="Edit Actor">
       <span onClick={() => { props.editView(props.id) }} className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black" >create</span>
+      </Tooltip>
     </div>
-    : null);        
+    : null);
 
 
-  const cardImage = (props.hide ? <Card.Img variant="top" className="h-64 w-full object-cover"  onClick={() => { props.hide(); props.history.push('/actorIndex'); }}src={props.picture} />
+  const cardImage = (props.hide ? <Card.Img variant="top" className="h-64 w-full object-cover" onClick={() => { props.hide(); props.history.push('/actorIndex'); }} src={props.picture} />
     : <Card.Img variant="top" className="h-64 w-full object-cover" src={props.picture} />
 
   );
