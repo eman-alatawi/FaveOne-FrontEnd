@@ -169,7 +169,7 @@ export default class MDIndex extends Component {
                                 <div>
                                     {this.state.searchedMDs == '' ?
                                         <div className="w-full h-full">
-                                            <h3 className="   text-center text-gray-900 text-xl opacity-75">Sorry, there is no such movie or drama</h3>
+                                            <h3 className="   text-center text-gray-900 text-xl opacity-75 mb-10">Sorry, there is no such movie or drama</h3>
                                         </div>
                                         :
                                         <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10  mb-4 " >

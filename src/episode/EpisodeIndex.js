@@ -139,7 +139,7 @@ export default class EpisodeIndex extends Component {
                     {/* if the user click the edit icon - show the EditEpisode [we need to loop again using map to know the clickedEpisodeId by user and the episode.id in episodes ] */}
                     {this.state.episodes.map((episode, index) =>
                         <div key={index} className="h-full"> 
-                        {(this.state.isEdit && this.state.clickedEpisodeId === episode.id) ? <EditEpisode episode={episode} editView={this.editView} moviesDramas={this.props.moviesDramas} editEpisode={this.editEpisode} ></EditEpisode> : null} 
+                        {(this.state.isEdit && this.state.clickedEpisodeId === episode.id) ? <EditEpisode episode={episode} editView={this.editView} loadEpisodes={this.props.loadEpisodes} moviesDramas={this.props.moviesDramas} editEpisode={this.editEpisode} ></EditEpisode> : null} 
                         </div>
                     )}
 

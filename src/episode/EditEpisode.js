@@ -133,7 +133,8 @@ export default class EditEpisode extends Component {
     };
 
     handleClickCancel = () =>{
-        this.props.editView(0); 
+        this.props.editView(0);
+        this.props.loadEpisodes(); 
     }
 
     render() {

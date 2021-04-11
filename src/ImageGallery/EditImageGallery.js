@@ -88,6 +88,7 @@ export default class EditImageGallery extends Component {
 
     handleClickCancel = () =>{
         this.props.editView(0); 
+        this.props.loadImageGalleries();
     }
 
 
