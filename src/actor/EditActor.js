@@ -79,7 +79,7 @@ export default class EditActor extends Component {
 
                 <div className="w-2/4 " >
                     <h2 className="text-center opacity-75 text-2xl mb-3">Edit Actor</h2>
-                    <div className="flex flex-col  items-center">
+                    <div className="flex flex-col  items-center pb-5">
 
                         <TextField id="fullName" label="Full Name" type="text" name="fullName" value={this.state.actor.fullName} onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
 

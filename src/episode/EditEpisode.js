@@ -1,7 +1,21 @@
 import React, { Component } from 'react'
-import { Form, Button, Col } from 'react-bootstrap'
+import { Form, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
 import ReactPlayer from 'react-player'
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField';
+import Tooltip from '@material-ui/core/Tooltip';
+import FormControl from '@material-ui/core/FormControl';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
+import MovieIcon from '@material-ui/icons/Movie';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import Dialog from '@material-ui/core/Dialog';
+import { Animated } from "react-animated-css";
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormGroup from '@material-ui/core/FormGroup';
 
 export default class EditEpisode extends Component {
     constructor(props) {
@@ -9,7 +23,8 @@ export default class EditEpisode extends Component {
 
         this.state = {
             episode: props.episode,
-            isViewVideo: false
+            openPoster: false,
+            openVideo: false
         }
     }
 
@@ -82,103 +97,156 @@ export default class EditEpisode extends Component {
             swal("Empty!!", "Some Feilds are empty!", "error")
             return false;
 
-        }else if(episodNum > mdTotalNumOfEp){
+        } else if (episodNum > mdTotalNumOfEp) {
             swal("Invalid Episod Number!!", `The ${dmTilte} ${dmType} have ${mdTotalNumOfEp} episodes!`, "error")
             return false;
+        } else if (JSON.stringify(this.state.episode.movieDrama) === '{}') {
+            swal("Empty!!", "You should select the drama or movie title", "error")
+            return false;
         }
-         else {
+        else {
             return true;
         }
 
     }
-    onClickHandler = () => {
+
+    handleClickOpenPoster = () => {
         this.setState({
-            isViewVideo: !this.state.isViewVideo
+            openPoster: true
         })
-    }
+    };
+    handleClosePoster = () => {
+        this.setState({
+            openPoster: false
+        })
+    };
+
+    handleClickOpenVideo = () => {
+        this.setState({
+            openVideo: true
+        })
+    };
+    handleCloseVideo = () => {
+        this.setState({
+            openVideo: false
+        })
+    };
 
     render() {
 
         return (
             <div className="formBG bg-cover pt-4">
-                <div class="container-md flex flex-col   w-full justify-center  bg-gray-200  rounded-2xl shadow p-10 mb-12 ">
-                    <h2 className="text-center opacity-75 text-3xl mb-5">Edit Episode </h2>
-                    {this.state.isViewVideo ?
-                        <div className=" flex flex-row w-full justify-center mb-3">
-                            <div className="   mr-3 flex-col flex   h-96  ">
-                                <ReactPlayer url={this.state.episode.episodeVideoUrl} controls={true} width="800px" height="375px" />
-                                <Button onClick={this.onClickHandler} className="btn  h-10 mt-2 mb-4">Hide the video</Button>
+                <div class="w-full ">
+                    <h2 className="text-left ml-28 opacity-75 text-2xl mb-5">Edit Episode </h2>
 
-                            </div>
-                        </div>
-                        :
-                    <div className=" flex flex-row w-full mb-3">
-                        <div className="w-2/4 flex flex-col">
+                    <div className=" flex flex-row  justify-between w-3/4 px-16 pb-5">
+                        <div className="flex flex-col w-2/4 items-center">
 
-                            <Form.Group  >
-                                <Form.Label className="ml-3" > Drama-Movie Thumbnail URL</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="thumbnail" type="text" name="thumbnail" value={this.state.episode.thumbnail} onChange={this.changeHandler} placeholder="https://Drama-Movie-Poster.com/"></Form.Control>
-                                </Col>
-                            </Form.Group>
+                            <Tooltip title="Click this icon to view the poster">
+                                <TextField id="thumbnail" label="Drama or Movie Thumbnail URL" type="text" name="thumbnail" value={this.state.episode.thumbnail} onChange={this.changeHandler} className="w-96 mb-3" color="primary"
+                                    InputProps={{
+                                        startAdornment: (
+                                            <InputAdornment position="start">
+                                                <Animated animationIn="tada" animationInDuration={8000} isVisible={true}>
+                                                    <div className=" cursor-pointer transform hover:scale-110 motion-reduce:transform-none">
+                                                        <ImageOutlinedIcon onClick={this.handleClickOpenPoster} />
+                                                    </div>
+                                                </Animated>
+                                            </InputAdornment>
+                                        ),
+                                    }} />
+                            </Tooltip>
 
-                            <Form.Group >
-                                <Form.Label className="ml-3" >Episode Video URL </Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="episodeVideoUrl" type="text" name="episodeVideoUrl" value={this.state.episode.episodeVideoUrl} onChange={this.changeHandler} placeholder="https://Watch-Drama-Movie-Episode.com/"></Form.Control>
-                                </Col>
-                            </Form.Group>
+                            {/* if click on the picture icon show a dialog of the Drama or Movie Thumbnail  */}
+                            <Dialog onClose={this.handleClosePoster} aria-labelledby="customized-dialog-title" open={this.state.openPoster}>
+                                <div id="customized-dialog-title" onClose={this.handleClosePoster} className="flex flex-row w-full justify-between">
+                                    <span className="text-xl self-center pl-2"> Drama or Movie poster thumbnail </span>
+                                    {this.state.openPoster ? (
+                                        <IconButton aria-label="close" onClick={this.handleClosePoster}>
+                                            <CloseIcon />
+                                        </IconButton>
+                                    ) : null}
+                                </div>
+                                {this.state.episode.thumbnail ?
+                                    <img src={this.state.episode.thumbnail} />
+                                    :
+                                    <div className="flex flex-col items-center ">
+                                        <InfoOutlinedIcon color="primary" /> <p className="m-4 text-blue-400">Add the URL of the drama or the movie poster first</p></div>
+                                }
+                            </Dialog>
 
-                            <Form.Group >
-                                <Form.Label className="ml-3" >  Episod Number</Form.Label>
-                                <Col sm={10}>
-                                    <Form.Control required id="episodNum" type="number" name="episodNum" value={this.state.episode.episodNum} onChange={this.changeHandler} placeholder="16"></Form.Control>
-                                </Col>
-                            </Form.Group>
+                            <Tooltip title="Click this icon to view the video of the episode">
+                                <TextField id="episodeVideoUrl" label="Episode Video URL" type="text" name="episodeVideoUrl" value={this.state.episode.episodeVideoUrl} onChange={this.changeHandler} className="w-96 mb-3" color="primary"
+                                    InputProps={{
+                                        startAdornment: (
+                                            <InputAdornment position="start">
+                                                <Animated animationIn="tada" animationInDuration={8000} isVisible={true}>
+                                                    <div className=" cursor-pointer transform hover:scale-110 motion-reduce:transform-none">
+                                                        <MovieIcon onClick={this.handleClickOpenVideo} />
+                                                    </div>
+                                                </Animated>
+                                            </InputAdornment>
+                                        ),
+                                    }} />
+                            </Tooltip>
 
-                            <Form.Text muted className="pl-4 w-72 text-justify">
-                                * If you can't see the Movie/Drama in the list, you should add them first and then come back here.
-                            </Form.Text>
-                            <Form.Text muted className="pl-4 ">
-                                * All the Feilds are required .
-                            </Form.Text>
-
-                            <div className="w-full flex flex-row justify-center">
-                                <Button onClick={this.handleSubmit} className="btn w-64 mt-4 mr-3">Edit Episode</Button>
-                                <Button onClick={this.onClickHandler} className="btn w-64 mt-4">View the Video</Button>
-                            </div>
-                        </div>
-                        <div className="w-2/4 flex flex-row  ">
-
-                            {/* show thumbnail */}
-                            <div className="   mr-3 flex-row flex justify-center w-2/4  h-96  ">
-                                <img src={this.state.episode.thumbnail} className="w-full bg-contain shadow-md "></img>
-                            </div>
-
-                            <Form.Group className="border-2  border-gray-200 rounded-lg pl-5 w-2/4 h-96 overflow-y-scroll shadow-sm">
-                                <Form.Label className="text-lg underline"> Movie - Drama </Form.Label>
-
-                                {this.props.moviesDramas.map((md, index) =>
-
-                                    <div>{md.episodes.findIndex(x => x.id == this.state.episode.id) == -1 ?
-                                        <div>
-                                            <input className="mr-3" type="radio" name="movieDrama" value={index} onChange={this.changeHandler} />
-                                            {md.title}
+                            {/* if click on the picture icon show a dialog of the Drama or Movie  episode video  */}
+                            <Dialog onClose={this.handleCloseVideo} aria-labelledby="customized-dialog-title" open={this.state.openVideo}>
+                                <div id="customized-dialog-title" onClose={this.handleCloseVideo} className="flex flex-row w-full justify-between">
+                                    <span className="text-xl self-center pl-2"> Episode Video </span>
+                                    {this.state.openVideo ? (
+                                        <IconButton aria-label="close" onClick={this.handleCloseVideo}>
+                                            <CloseIcon />
+                                        </IconButton>
+                                    ) : null}
+                                </div>
+                                {this.state.openVideo && this.state.episode.episodeVideoUrl ?
+                                    <ReactPlayer url={this.state.episode.episodeVideoUrl} controls={true} width="500px" height="375px" />
+                                    :
+                                    <Tooltip title="You can Include the URL of any video in these platforms: YouTube, Facebook, Twitch, SoundCloud, Streamable, Vimeo, Wistia, Mixcloud, and DailyMotion.">
+                                        <div className="flex flex-col items-center ">
+                                            <InfoOutlinedIcon color="primary" /> <p className="m-4 text-blue-400">Add the URL of the episode video first</p>
                                         </div>
-                                        :
-                                        <div>
-                                            <input className="mr-3" type="radio" checked name="movieDrama" value={index} onChange={this.changeHandler} />
-                                            {md.title}
-                                        </div>}
+                                    </Tooltip>
+                                }
+                            </Dialog>
 
-                                    </div>
-                                )}
-                            </Form.Group>
+                            <TextField id="episodNum" label="Episod Number" type="number" name="episodNum" value={this.state.episode.episodNum} onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
+
+                            <Button onClick={this.handleSubmit} className=" w-64 mt-4 mr-3">Edit Episode</Button>
+
                         </div>
+                        <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-4">
+
+                            <FormControl component="fieldset"  >
+                                <Tooltip title="Scroll horizontally for more">
+                                    <FormLabel component="legend">Movie or Drama Title</FormLabel>
+                                </Tooltip>
+                                <FormGroup className="grid  gap-x-5  gap-y-2 h-48 overflow-y-scroll ">
+                                    {this.props.moviesDramas.map((md, index) =>
+
+                                        <div>{md.episodes.findIndex(x => x.id == this.state.episode.id) == -1 ?
+                                            <div>
+                                                <input className="mr-3" type="radio" name="movieDrama" value={index} onChange={this.changeHandler} />
+                                                {md.title}
+                                            </div>
+                                            :
+                                            <div>
+                                                <input className="mr-3" type="radio" checked name="movieDrama" value={index} onChange={this.changeHandler} />
+                                                {md.title}
+                                            </div>}
+
+                                        </div>
+                                    )}
+                                </FormGroup>
+                            </FormControl>
+
                         </div>
-                    }
+
+                    </div>
                 </div>
             </div>
+            
         )
     }
 }

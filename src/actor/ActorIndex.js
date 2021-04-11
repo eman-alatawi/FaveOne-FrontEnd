@@ -112,7 +112,7 @@ export default class ActorIndex extends Component {
         return (
             <div className=" mainBg bg-cover ">
               
-                <div className="   mb-10 w-full  flex flex-col  justify-evenly ">
+                <div className=" w-full ">
 
 
 
@@ -122,7 +122,7 @@ export default class ActorIndex extends Component {
                             <div className="h-full w-full  ">
                                 <h3 className=" my-12  text-center text-gray-900 text-3xl opacity-75">All Actors</h3>
                             </div>
-                            <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
+                            <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 mb-5" >
                                 {this.state.actors.map((actor, index) =>
                                     <div key={index}>
                                         <ActorRowCard {...actor} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteActor={this.deleteActor}></ActorRowCard>

@@ -115,7 +115,7 @@ export default class EpisodeIndex extends Component {
         return (
             <div className=" mainBg bg-cover ">
               
-                <div className="   mb-10 w-full  flex flex-col  justify-evenly ">
+                <div className="w-full ">
 
                     {/* show all Episodes if the user didn't click the Edit icon - by default show the EpisodeRowCard */}
                     {!this.state.isEdit && !this.state.isDetail ?
@@ -123,7 +123,7 @@ export default class EpisodeIndex extends Component {
                             <div className="h-full w-full  ">
                                 <h3 className=" my-12  text-center text-gray-900 text-3xl opacity-75">All Episodes</h3>
                             </div>
-                            <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
+                            <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 mb-4 " >
                                 {this.state.episodes.map((episode, index) =>
                                     <div key={index}>
                                     <EpisodeRowCard {...episode} moviesDramas={this.props.moviesDramas} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteEpisode={this.deleteEpisode} ></EpisodeRowCard>
@@ -138,7 +138,7 @@ export default class EpisodeIndex extends Component {
 
                     {/* if the user click the edit icon - show the EditEpisode [we need to loop again using map to know the clickedEpisodeId by user and the episode.id in episodes ] */}
                     {this.state.episodes.map((episode, index) =>
-                        <div key={index}> 
+                        <div key={index} className="h-full"> 
                         {(this.state.isEdit && this.state.clickedEpisodeId === episode.id) ? <EditEpisode episode={episode} moviesDramas={this.props.moviesDramas} editEpisode={this.editEpisode} ></EditEpisode> : null} 
                         </div>
                     )}

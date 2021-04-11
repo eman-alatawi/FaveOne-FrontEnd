@@ -26,7 +26,6 @@ class NewEpisode extends Component {
             episode: {
                 movieDrama: {}
             },
-            isViewVideo: false,
             openPoster: false,
             openVideo: false
         }
@@ -87,14 +86,14 @@ class NewEpisode extends Component {
             return false;
         }
 
-        if (thumbnail === '' || episodeVideoUrl === '' || episodNum === ''  ) {
+        if (thumbnail === '' || episodeVideoUrl === '' || episodNum === '') {
             swal("Empty!!", "Some Feilds are empty!", "error")
             return false;
 
         } else if (episodNum > mdTotalNumOfEp) {
             swal("Invalid Episod Number!!", `The ${dmTilte} ${dmType} have ${mdTotalNumOfEp} episodes!`, "error")
             return false;
-        }else if( JSON.stringify(this.state.episode.movieDrama) === '{}' ){
+        } else if (JSON.stringify(this.state.episode.movieDrama) === '{}') {
             swal("Empty!!", "You should select the drama or movie title", "error")
             return false;
         }
@@ -125,11 +124,7 @@ class NewEpisode extends Component {
         })
     };
 
-    onClickHandler = () => {
-        this.setState({
-            isViewVideo: !this.state.isViewVideo
-        })
-    }
+
 
     render() {
 
@@ -235,7 +230,7 @@ class NewEpisode extends Component {
 
                         </div>
                     </div>
-                   
+
 
                 </div>
                 <Footer></Footer>

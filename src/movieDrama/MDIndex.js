@@ -154,7 +154,7 @@ export default class MDIndex extends Component {
         return (
             <div className="mainBg bg-cover">
 
-                <div className="   mb-10 w-full  flex flex-col  justify-evenly ">
+                <div className="w-full">
                     {!this.state.isEdit && !this.state.isDetail ?
                         <div className=" h-48 py-3 px-5  overflow-y-scroll mb-5">
                             <GendersList genders={this.props.genders} searchView={this.searchView} allBtnClicked={this.allBtnClicked} clickedGenderId={this.state.clickedGenderId} isSearchByGender={this.state.isSearchByGender}></GendersList>
@@ -172,7 +172,7 @@ export default class MDIndex extends Component {
                                             <h3 className="   text-center text-gray-900 text-xl opacity-75">Sorry, there is no such movie or drama</h3>
                                         </div>
                                         :
-                                        <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
+                                        <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10  mb-4 " >
 
                                             {this.state.searchedMDs.map((md, index) =>
                                                 <div key={index}>
@@ -185,7 +185,7 @@ export default class MDIndex extends Component {
                                     }
                                 </div>
 
-                                : <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 " >
+                                : <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 mb-4  " >
                                     {this.state.moviesDramas.map((md, index) =>
                                         <div key={index}>
                                             <MDRowCard email={this.props.emailAddress} {...md} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteMD={this.deleteMD} ></MDRowCard>
