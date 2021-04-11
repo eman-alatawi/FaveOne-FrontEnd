@@ -339,7 +339,7 @@ export default class App extends Component {
         // });
 
 
-         const filteredGendersList = this.state.genders.filter((gender) => {
+        const filteredGendersList = this.state.genders.filter((gender) => {
           return gender.name.toLowerCase().includes(filterValue.toLowerCase())
         });
 
@@ -489,42 +489,43 @@ export default class App extends Component {
 
                 </Nav>
                 <Nav className="mr-5">
-                  {this.state.user ? <Navbar.Text className="mr-5" > <span className="text-gray-400">{this.state.user.sub}</span> <Link to="/changePassword" onClick={this.hideSectionsHandler}>  <PersonIcon color="primary"  /></Link></Navbar.Text> : null}
+                  {this.state.user ? <Navbar.Text className="mr-5" > <span className="text-gray-400">{this.state.user.sub}</span> <Link to="/changePassword" onClick={this.hideSectionsHandler}>  <span className="text-pink-800">
+                    <PersonIcon /> </span></Link></Navbar.Text> : null}
 
                   <Nav.Link > <Link to="/logout" onClick={this.onLogoutHandeler} className="mr-5 text-gray-200 hover:text-pink-600 text-xl">Say Bye</Link></Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
           ) : (
-              <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-gray-800 shadow">
-                <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler} className="text-gray-200 ml-5 mr-11 text-2xl hover:text-pink-600"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                  <Nav className="mr-auto">
-                    <NavDropdown title="Movies - Dramas" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                      <NavDropdown.Item ><Link to="/movieDramaIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Movies - Dramas</Link></NavDropdown.Item>
-                      <NavDropdown.Item ><Link to="/imageGalleryIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Image Galleries</Link></NavDropdown.Item>
-                      <NavDropdown.Item ><Link to="/genderIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Catagories</Link></NavDropdown.Item>
-                    </NavDropdown>
-                    <NavDropdown title="Episodes" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                      <NavDropdown.Item ><Link to="/episodeIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Episodes</Link></NavDropdown.Item>
+            <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-gray-800 shadow">
+              <Navbar.Brand ><Link to="/" onClick={this.showSectionsHandler} className="text-gray-200 ml-5 mr-11 text-2xl hover:text-pink-600"><span className="material-icons">star</span>FaveOne</Link></Navbar.Brand>
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <Navbar.Collapse id="responsive-navbar-nav">
+                <Nav className="mr-auto">
+                  <NavDropdown title="Movies - Dramas" id="collasible-nav-dropdown" className="mr-11 text-xl">
+                    <NavDropdown.Item ><Link to="/movieDramaIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Movies - Dramas</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/imageGalleryIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Image Galleries</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/genderIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Catagories</Link></NavDropdown.Item>
+                  </NavDropdown>
+                  <NavDropdown title="Episodes" id="collasible-nav-dropdown" className="mr-11 text-xl">
+                    <NavDropdown.Item ><Link to="/episodeIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Episodes</Link></NavDropdown.Item>
 
-                    </NavDropdown>
-                    <NavDropdown title="Actors" id="collasible-nav-dropdown" className="mr-11 text-xl">
-                      <NavDropdown.Item ><Link to="/actorIndex" onClick={this.hideSectionsHandler} onClick={this.hideSectionsHandler} className="dropDownLink"> Actors</Link></NavDropdown.Item>
-                    </NavDropdown>
+                  </NavDropdown>
+                  <NavDropdown title="Actors" id="collasible-nav-dropdown" className="mr-11 text-xl">
+                    <NavDropdown.Item ><Link to="/actorIndex" onClick={this.hideSectionsHandler} onClick={this.hideSectionsHandler} className="dropDownLink"> Actors</Link></NavDropdown.Item>
+                  </NavDropdown>
 
 
-                    <SearchBar value={this.state.filterValue} onChange={this.handleFilterChange}></SearchBar>
+                  <SearchBar value={this.state.filterValue} onChange={this.handleFilterChange}></SearchBar>
 
-                  </Nav>
-                  <Nav className="mr-5">
-                    <Nav.Link > <Link to="/register" onClick={this.hideSectionsHandler} className="text-gray-200 hover:text-pink-600 text-xl">Join</Link></Nav.Link>
-                    <Nav.Link >  <Link to="/login" onClick={this.hideSectionsHandler} className=" text-gray-200 hover:text-pink-600 text-xl">Login</Link></Nav.Link>
-                  </Nav>
-                </Navbar.Collapse>
-              </Navbar>
-            )}
+                </Nav>
+                <Nav className="mr-5">
+                  <Nav.Link > <Link to="/register" onClick={this.hideSectionsHandler} className="text-gray-200 hover:text-pink-600 text-xl">Join</Link></Nav.Link>
+                  <Nav.Link >  <Link to="/login" onClick={this.hideSectionsHandler} className=" text-gray-200 hover:text-pink-600 text-xl">Login</Link></Nav.Link>
+                </Nav>
+              </Navbar.Collapse>
+            </Navbar>
+          )}
         </nav>
 
         <HomeBanner></HomeBanner>

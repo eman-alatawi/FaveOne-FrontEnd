@@ -104,35 +104,15 @@ class ChangePassword extends Component {
 
                         <TextField id="oldPassword" label="Current Password" type="password" name="oldPassword" onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
 
-                        {/* <Form.Group as={Row}>
-                            <Form.Label column sm={3}>Current Password</Form.Label>
-                            <Col sm={9}>
-                                <Form.Control required id="oldPassword" type="password" name="oldPassword" onChange={this.changeHandler} placeholder="********"></Form.Control>
-                            </Col>
-                        </Form.Group> */}
 
                         <Tooltip title="Your password must be 8-20 characters long, contain letters and numbers, and
                                     must not contain spaces, special characters, or emoji.">
                             <TextField id="password" label="New Password" type="password" name="password" onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
                         </Tooltip>
 
-                        {/* <Form.Group as={Row}>
-                            <Form.Label column sm={3}>New Password</Form.Label>
-                            <Col sm={9}>
-                                <Form.Control required id="password" type="password" name="password" onChange={this.changeHandler} placeholder="********"></Form.Control>
-                            </Col>
-                        </Form.Group> */}
-
                         <Tooltip title="Confirm the password, they should be matched">
-                            <TextField id="confirmPassword" label="Confirm New Password" type="password" name="confirmPassword" onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
+                            <TextField id="confirmPassword" label="Confirm New Password" type="password" name="confirmPassword" onChange={this.changeHandler} className="w-96 mb-4" color="primary" />
                         </Tooltip>
-
-                        {/* <Form.Group as={Row}>
-                            <Form.Label column sm={3}>Confirm New Password</Form.Label>
-                            <Col sm={9}>
-                                <Form.Control required id="confirmPassword" type="password" name="confirmPassword" onChange={this.changeHandler} placeholder="********"></Form.Control>
-                            </Col>
-                        </Form.Group> */}
 
                         <Button onClick={this.submitHandler} className="w-64">Change Password</Button>
                         <Button className="w-64" onClick={this.handleClickCancel}>Cancel</Button>
