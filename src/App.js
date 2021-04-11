@@ -465,7 +465,7 @@ export default class App extends Component {
                   <NavDropdown title="Movies - Dramas" id="collasible-nav-dropdown" className="mr-11 text-xl">
                     <NavDropdown.Item ><Link to="/movieDramaIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Movies - Dramas</Link></NavDropdown.Item>
                     <NavDropdown.Item ><Link to="/imageGalleryIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Image Galleries</Link></NavDropdown.Item>
-                    <NavDropdown.Item ><Link to="/genderIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Genders</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/genderIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Catagories</Link></NavDropdown.Item>
 
                     <NavDropdown.Divider />
                     <NavDropdown.Item ><Link to="/addMovieDrama" onClick={this.hideSectionsHandler} className="dropDownLink">Add Movie - Drama</Link></NavDropdown.Item>
@@ -503,7 +503,7 @@ export default class App extends Component {
                     <NavDropdown title="Movies - Dramas" id="collasible-nav-dropdown" className="mr-11 text-xl">
                       <NavDropdown.Item ><Link to="/movieDramaIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Movies - Dramas</Link></NavDropdown.Item>
                       <NavDropdown.Item ><Link to="/imageGalleryIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Image Galleries</Link></NavDropdown.Item>
-                      <NavDropdown.Item ><Link to="/genderIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Genders</Link></NavDropdown.Item>
+                      <NavDropdown.Item ><Link to="/genderIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Catagories</Link></NavDropdown.Item>
                     </NavDropdown>
                     <NavDropdown title="Episodes" id="collasible-nav-dropdown" className="mr-11 text-xl">
                       <NavDropdown.Item ><Link to="/episodeIndex" onClick={this.hideSectionsHandler} className="dropDownLink"> Episodes</Link></NavDropdown.Item>
