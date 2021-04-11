@@ -138,7 +138,7 @@ export default class ActorIndex extends Component {
                     {/* if the user click the edit icon - show the EditActor [we need to loop again using map to know the clickedActorId by user and the actor.id in actors ] */}
                     {this.state.actors.map((actor, index) =>
                         <div key={index}>
-                            {(this.state.isEdit && this.state.clickedActorId === actor.id) ? <EditActor actor={actor} editActor={this.editActor} ></EditActor> : null}
+                            {(this.state.isEdit && this.state.clickedActorId === actor.id) ? <EditActor actor={actor} editView={this.editView} editActor={this.editActor} ></EditActor> : null}
                         </div>
                     )}
 

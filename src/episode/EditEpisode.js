@@ -132,6 +132,10 @@ export default class EditEpisode extends Component {
         })
     };
 
+    handleClickCancel = () =>{
+        this.props.editView(0); 
+    }
+
     render() {
 
         return (
@@ -214,6 +218,7 @@ export default class EditEpisode extends Component {
                             <TextField id="episodNum" label="Episod Number" type="number" name="episodNum" value={this.state.episode.episodNum} onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
 
                             <Button onClick={this.handleSubmit} className=" w-64 mt-4 mr-3">Edit Episode</Button>
+                            <Button className="w-64" onClick={this.handleClickCancel}>Cancel</Button>
 
                         </div>
                         <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-4">

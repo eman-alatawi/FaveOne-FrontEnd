@@ -128,6 +128,12 @@ class NewMD extends Component {
         })
     };
 
+    handleClickCancel = () =>{
+        this.props.show(); //show the sections in the root/home
+        this.props.history.push('/');
+
+    }
+
     validate = () => {
         var title = document.getElementById("title").value;
         var releaseYear = document.getElementById("releaseYear").value;
@@ -279,6 +285,8 @@ class NewMD extends Component {
                             </Tooltip>
 
                             <Button onClick={this.handleSubmit} className=" w-64">Add Movie - Drama</Button>
+                            <Button className="w-64" onClick={this.handleClickCancel}>Cancel</Button>
+
 
                         </div>
 

@@ -44,6 +44,10 @@ export default class NewGender extends Component {
         }
     }
 
+    handleClickCancel = () =>{
+        this.props.addView(); 
+    }
+
     render() {
 
         return (
@@ -57,6 +61,7 @@ export default class NewGender extends Component {
                     </Tooltip>
 
                     <Button onClick={this.handleSubmit} className=" w-64">Add Catagory</Button>
+                    <Button className="w-64" onClick={this.handleClickCancel}>Cancel</Button>
 
                 </div>
             </div>

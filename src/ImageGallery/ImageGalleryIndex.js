@@ -104,7 +104,7 @@ export default class ImageGalleryIndex extends Component {
                     {/* if the user click the edit icon - show the EditImageGallery [we need to loop again using map to know the clickedImageGalleryId by user and the imageGallery.id in imageGalleries ] */}
                     {this.state.imageGalleries.map((imageGallery, index) =>
                         <div key={index}> 
-                        {(this.state.isEdit && this.state.clickedImageGalleryId === imageGallery.id) ? <EditImageGallery imageGallery={imageGallery} moviesDramas={this.props.moviesDramas} editImageGallery={this.editImageGallery} ></EditImageGallery> : null} 
+                        {(this.state.isEdit && this.state.clickedImageGalleryId === imageGallery.id) ? <EditImageGallery imageGallery={imageGallery} editView={this.editView} moviesDramas={this.props.moviesDramas} editImageGallery={this.editImageGallery} ></EditImageGallery> : null} 
                         </div>
                     )}
 

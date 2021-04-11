@@ -42,6 +42,9 @@ export default class EditGender extends Component {
             return true;
         }
     }
+    handleClickCancel = () =>{
+        this.props.editView(0); 
+    }
 
     render() {
 
@@ -56,6 +59,7 @@ export default class EditGender extends Component {
                     </Tooltip>
 
                     <Button onClick={this.handleSubmit} className=" w-64">Edit Catagory</Button>
+                    <Button className="w-64" onClick={this.handleClickCancel}>Cancel</Button>
 
                 </div>
             </div>

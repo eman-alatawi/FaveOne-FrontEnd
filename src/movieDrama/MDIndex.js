@@ -202,7 +202,7 @@ export default class MDIndex extends Component {
                     {/* if the user click the edit icon - show the editMD [we need to loop again using map to know the clickedMDId by user and the md.id in moviesDramas ] */}
                     {this.state.moviesDramas.map((md, index) =>
                         <div key={index}>
-                            {(this.state.isEdit && this.state.clickedMDId === md.id) ? <EditMD movieDrama={md} editMD={this.editMD} actors={this.props.actors} genders={this.props.genders} episodes={this.props.episodes}></EditMD> : null}
+                            {(this.state.isEdit && this.state.clickedMDId === md.id) ? <EditMD movieDrama={md} editView={this.editView} editMD={this.editMD} actors={this.props.actors} genders={this.props.genders} episodes={this.props.episodes}></EditMD> : null}
                         </div>
                     )}
 

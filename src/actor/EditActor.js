@@ -56,6 +56,10 @@ export default class EditActor extends Component {
         })
     };
 
+    handleClickCancel = () =>{
+        this.props.editView(0); 
+    }
+
     validate = () => {
         var fullName = document.getElementById("fullName").value;
         var dateOfBirth = document.getElementById("dateOfBirth").value;
@@ -156,6 +160,7 @@ export default class EditActor extends Component {
 
 
                         <Button onClick={this.handleSubmit} className="w-64">Edit Actor</Button>
+                        <Button className="w-64" onClick={this.handleClickCancel}>Cancel</Button>
 
 
                     </div>

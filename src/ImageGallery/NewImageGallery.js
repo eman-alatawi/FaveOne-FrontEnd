@@ -73,6 +73,12 @@ class NewImageGallery extends Component {
         })
     };
 
+    handleClickCancel = () =>{
+        this.props.show(); //show the sections in the root/home
+        this.props.history.push('/');
+
+    }
+
     validate = () => {
         var imageUrl = document.getElementById("imageUrl").value;
 
@@ -132,6 +138,7 @@ class NewImageGallery extends Component {
                             </Dialog>
 
                             <Button onClick={this.handleSubmit} className="w-64 ">Add Image Gallery</Button>
+                            <Button className="w-64" onClick={this.handleClickCancel}>Cancel</Button>
 
 
                         </div>

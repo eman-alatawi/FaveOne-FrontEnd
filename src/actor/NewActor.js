@@ -45,6 +45,13 @@ class NewActor extends Component {
             open: false
         })
     };
+
+    handleClickCancel = () =>{
+        this.props.show(); //show the sections in the root/home
+        this.props.history.push('/');
+
+    }
+
     validate = () => {
         var fullName = document.getElementById("fullName").value;
         var dateOfBirth = document.getElementById("dateOfBirth").value;
@@ -137,6 +144,8 @@ class NewActor extends Component {
                         <TextField id="socialAccount" label="Social Account" type="text" name="socialAccount" onChange={this.changeHandler} className="w-96 mb-4" color="primary" />
 
                         <Button className="w-64" onClick={this.handleSubmit}>Add Actor</Button>
+                        <Button className="w-64" onClick={this.handleClickCancel}>Cancel</Button>
+
 
                     </div>
 

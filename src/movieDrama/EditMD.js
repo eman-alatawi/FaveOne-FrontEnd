@@ -103,6 +103,10 @@ export default class EditMD extends Component {
         })
     };
 
+    handleClickCancel = () =>{
+        this.props.editView(0); 
+    }
+
     validate = () => {
         var title = document.getElementById("title").value;
         var releaseYear = document.getElementById("releaseYear").value;
@@ -248,6 +252,7 @@ export default class EditMD extends Component {
                             </Tooltip>
 
                             <Button onClick={this.handleSubmit} className="w-64">Edit Movie - Drama</Button>
+                            <Button className="w-64" onClick={this.handleClickCancel}>Cancel</Button>
 
                         </div>
 

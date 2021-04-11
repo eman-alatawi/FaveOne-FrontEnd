@@ -86,6 +86,10 @@ export default class EditImageGallery extends Component {
         })
     };
 
+    handleClickCancel = () =>{
+        this.props.editView(0); 
+    }
+
 
     validate = () => {
         var imageUrl = document.getElementById("imageUrl").value;
@@ -146,6 +150,7 @@ export default class EditImageGallery extends Component {
                             </Dialog>
 
                             <Button onClick={this.handleSubmit} className="w-64">Edit Image Gallery</Button>
+                            <Button className="w-64" onClick={this.handleClickCancel}>Cancel</Button>
 
                         </div>
                         <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-4">

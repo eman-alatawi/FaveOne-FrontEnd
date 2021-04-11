@@ -554,10 +554,10 @@ export default class App extends Component {
 
 
 
-          <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} ></NewActor>}></Route>
-          <Route path="/addMovieDrama" component={() => <NewMD user={this.state.user} addMD={this.addMovieDramaHandler} actors={this.state.actors} genders={this.state.genders} ></NewMD>}></Route>
-          <Route path="/addEpisode" component={() => <NewEpisode addEpisode={this.addEpisodeHandler} moviesDramas={this.state.moviesDramas}></NewEpisode>}></Route>
-          <Route path="/addImageGallery" component={() => <NewImageGallery addImageGallery={this.addImageGalleryHandler} moviesDramas={this.state.moviesDramas}></NewImageGallery>}></Route>
+          <Route path="/addActor" component={() => <NewActor addActor={this.addActorHandler} show={this.showSectionsHandler}></NewActor>}></Route>
+          <Route path="/addMovieDrama" component={() => <NewMD user={this.state.user} addMD={this.addMovieDramaHandler} actors={this.state.actors} genders={this.state.genders} show={this.showSectionsHandler} ></NewMD>}></Route>
+          <Route path="/addEpisode" component={() => <NewEpisode addEpisode={this.addEpisodeHandler} moviesDramas={this.state.moviesDramas} show={this.showSectionsHandler}></NewEpisode>}></Route>
+          <Route path="/addImageGallery" component={() => <NewImageGallery addImageGallery={this.addImageGalleryHandler} moviesDramas={this.state.moviesDramas} show={this.showSectionsHandler}></NewImageGallery>}></Route>
 
 
         </div>

@@ -122,11 +122,11 @@ export default class GenderIndex extends Component {
                     <div className=" w-full flex flex-col justify-center h-2/4 ">
                         {this.state.genders.map((gender, index) =>
                             <div key={index}>
-                                {(this.state.isEdit && this.state.clickedGenderId === gender.id) ? <EditGender gender={gender} editGender={this.editGender} ></EditGender> : null}
+                                {(this.state.isEdit && this.state.clickedGenderId === gender.id) ? <EditGender gender={gender} editView={this.editView} editGender={this.editGender} ></EditGender> : null}
                             </div>
                         )}
 
-                        {this.state.isAdd ? <NewGender addGender={this.props.addGender}></NewGender> : null}
+                        {this.state.isAdd ? <NewGender addGender={this.props.addGender} addView={this.addView}></NewGender> : null}
                     </div>
                 </div>
                 <Footer></Footer>

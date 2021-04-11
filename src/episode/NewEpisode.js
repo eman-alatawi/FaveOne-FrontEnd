@@ -124,7 +124,11 @@ class NewEpisode extends Component {
         })
     };
 
+    handleClickCancel = () =>{
+        this.props.show(); //show the sections in the root/home
+        this.props.history.push('/');
 
+    }
 
     render() {
 
@@ -208,6 +212,7 @@ class NewEpisode extends Component {
                             <TextField id="episodNum" label="Episod Number" type="number" name="episodNum" onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
 
                             <Button onClick={this.handleSubmit} className=" w-64 mt-4 mr-3">Add Episode</Button>
+                            <Button className="w-64" onClick={this.handleClickCancel}>Cancel</Button>
 
 
 
