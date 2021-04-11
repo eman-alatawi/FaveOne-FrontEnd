@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import { Container, Form, Button, Row, Col } from 'react-bootstrap'
 import swal from 'sweetalert';
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField';
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 export default class NewGender extends Component {
     constructor(props) {
@@ -45,21 +48,16 @@ export default class NewGender extends Component {
 
         return (
             <div>
-                <div class="container-sm flex flex-col justify-center my-5 bg-gray-200  rounded-2xl shadow p-10">
+                <div class="container-sm flex flex-col w-2/4 items-center bg-white rounded-r-lg px-6 py-4 border-2  border-dashed   border-gray-300">
 
-                    <h2 className="text-center opacity-75 text-3xl mb-5">Add New Gender</h2>
-                    <Container>
-                        <Form.Group as={Row} >
-                            <Form.Label column sm={2}> Gender Name</Form.Label>
-                            <Col sm={10}>
-                                <Form.Control required id="name" type="text" name="name"  onChange={this.changeHandler} placeholder="Action"></Form.Control>
-                            </Col>
-                        </Form.Group>
+                    <h2 className="text-center opacity-75 text-2xl mb-5">Add New Catagory</h2>
 
-                        <div className="w-full flex flex-row justify-center">
-                            <Button onClick={this.handleSubmit} className="btn w-64">Add Gender</Button>
-                        </div>
-                    </Container>
+                    <Tooltip title="catagories like: Action, History, ...etc ">
+                        <TextField id="name" label="Catagory Name" type="text" name="name" onChange={this.changeHandler} className="w-96 mb-5" color="primary" />
+                    </Tooltip>
+
+                    <Button onClick={this.handleSubmit} className=" w-64">Add Catagory</Button>
+
                 </div>
             </div>
         )
