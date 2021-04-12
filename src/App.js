@@ -539,7 +539,7 @@ export default class App extends Component {
         ) : null}
 
         <div>
-          <Route path="/register" component={() => <Join register={this.registerHandler}  ></Join>}></Route>
+          <Route path="/register" component={() => <Join register={this.registerHandler} show={this.showSectionsHandler} ></Join>}></Route>
           <Route path="/login" component={() => <Login login={this.loginHandler} show={this.showSectionsHandler} />}></Route>
           <Route path="/changePassword" component={() => <ChangePassword user={this.state.user} changePassword={this.changePasswordHandler} show={this.showSectionsHandler} />}></Route>
 

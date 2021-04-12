@@ -98,33 +98,47 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
 
 
 ### App Screenshot:
-![main - page](https://i.ibb.co/3rTkxg3/main-page-1.png)
-![all movies-dramas ](https://i.ibb.co/1Gx1JFg/all-movies-dramas-1.png)
+![main - page](https://drive.google.com/uc?export=view&id=1EGnuTfP3DWApDjflZeXIbV41LYb5Hcf6)
 
-![all actors](https://i.ibb.co/KqfsSLB/all-actors-1.png)
-![all episodes](https://i.ibb.co/jGkxqrV/all-episodes-1.png)
-![all-image-galleries](https://i.ibb.co/nbqfdJH/all-image-galleries-1.png)
+![all movies-dramas ](https://drive.google.com/uc?export=view&id=18yvW6H6X3-ySlYtfFlp5P-XXirQ7TGIN)
 
-![all-movies-drames-genders](https://i.ibb.co/GCGRY77/all-movies-drames-genders-1.png)
+![romance movies-dramas ](https://drive.google.com/uc?export=view&id=1lWHHmGKXI5SWou_NN1-4tbJxaX6mwtvJ)
 
-![single-drama-details](https://i.ibb.co/DVDrRdj/single-drama-details-1.png)
+![all actors](https://drive.google.com/uc?export=view&id=1b9TxMgWleFklOLJqdqkxc6Z6PkImp5cz)
 
-![search-actor](https://i.ibb.co/yhdNNV6/search-actor.png)
+![all episodes](https://drive.google.com/uc?export=view&id=1sVnHpp497-cKYoXJSfx8atgr0AZ69K4J)
+
+![all-image-galleries](https://drive.google.com/uc?export=view&id=1Wv64bFiaE_E4zh6cp5OwED1pHbvVVWLa)
+
+![all-movies-drames-genders](https://drive.google.com/uc?export=view&id=1yNNawJ6jd_Ya_Mf-gibjmYzSCxOjeRf_)
+
+![single-drama-details](https://drive.google.com/uc?export=view&id=1LF4SqrxnZh7iTUWJR2OTba6R-iArh965)
+
+![single-episode-details](https://drive.google.com/uc?export=view&id=1cnH7e9ysP9G2GLdZcZdqRXL_ng4VYYQ9)
+
+![search-actor](https://drive.google.com/uc?export=view&id=1MGJwQ_RqRHOCIp_pIEtVom3Aqjn1A6_1)
+
+![add new-episode](https://drive.google.com/uc?export=view&id=1uJXUxw898dko9rmUCiLmsf1JpNSf2xoe)
+
+![add new-episode-poster-dialog](https://drive.google.com/uc?export=view&id=1toi6nbkinCmfuz0tfUzGX-hrQbnBGvPn)
+
+![add new-episode-video-dialog](https://drive.google.com/uc?export=view&id=1ZtP9PSqNmwsM4aQjqJSEej4nKd6fmWMz)
+
+![edit-episode](https://drive.google.com/uc?export=view&id=1qNs1XF7GzDmsqPmQLNNpOYrEPO_fmpeT)
+
+![edit-episode-poster-dialog](https://drive.google.com/uc?export=view&id=1LGo9kIEoyVeLIOCzTsJrt7ck1OFyfoDV)
+
+![edit-episode-video-dialog](https://drive.google.com/uc?export=view&id=1-p6Fm6QY5B1ZFTjhCwz_MI0fdp6JH_89)
+
+![welcome-notification](https://drive.google.com/uc?export=view&id=1cAPVbY1DFy50jHDhnvYJQ5Cvr1H55gLN)
+
+![sayBye-notification](https://drive.google.com/uc?export=view&id=1zXuLNC_iE1de5eiDaJuvWTsRfXaaFk1g)
 
 
-![single-episode-details](https://i.ibb.co/P4N6ZRc/single-episode-details-1.png)
-
-
-
-![welcome-notification](https://i.ibb.co/jzyz9pn/welcome-notification.png
-)
-![sayBye-notification](https://i.ibb.co/kS8Yx25/sayBye.png
-)
-
-[see more](https://drive.google.com/drive/folders/1u2zI58i6tzyUuG1dgOKLyEKZSuRghyf3?usp=sharing)
+[see more](https://drive.google.com/drive/folders/18KkLFvYsGL00_7awntJs6SJ_kaKxH82b?usp=sharing)
 
 ## Video Demo
-[FaveOne Demo](https://drive.google.com/file/d/1P7U2Ogis_r_ITH6336-fuqU-DhcmQeH-/view?usp=sharing)
+[FaveOne v2 Demo](https://drive.google.com/drive/folders/11uK2LeErAlwMaxxMPqED6HKN2xmQYoe3?usp=sharing)
 
 ## Installtion
 

@@ -1,10 +1,10 @@
 import React from 'react'
 
 export default function GenderButton(props) {
-    let btn_class = props.clickedGenderId === props.gender.id? "bg-blue-300" : "bg-blue-200 ";
+    let btn_class = props.clickedGenderId === props.gender.id? "bg-pink-400 text-gray-800" : "bg-pink-800 ";
     return (
         <div>
-            <button onClick={() =>  props.searchView(props.gender.id)}  className={` p-3  bg-blue-200 rounded-b-lg border-gray-700  shadow-sm hover:bg-blue-300 hover:text-blue-900  ${btn_class}`}> {props.gender.name} </button>
+            <button onClick={() =>  props.searchView(props.gender.id)}  className={` p-3  rounded-b-lg text-gray-200  shadow-sm hover:bg-pink-400 hover:text-gray-100  ${btn_class}`}> {props.gender.name} </button>
         </div>
     )
 }

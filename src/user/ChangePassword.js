@@ -86,7 +86,7 @@ class ChangePassword extends Component {
         }
     }
 
-    handleClickCancel = () =>{
+    handleClickCancel = () => {
         this.props.show(); //show the sections in the root/home
         this.props.history.push('/');
 
@@ -114,9 +114,11 @@ class ChangePassword extends Component {
                             <TextField id="confirmPassword" label="Confirm New Password" type="password" name="confirmPassword" onChange={this.changeHandler} className="w-96 mb-4" color="primary" />
                         </Tooltip>
 
-                        <Button onClick={this.submitHandler} className="w-64">Change Password</Button>
-                        <Button className="w-64" onClick={this.handleClickCancel}>Cancel</Button>
+                        <div className="flex flex-row ">
+                            <Button className="w-64" onClick={this.handleClickCancel}>Cancel</Button>
 
+                            <Button onClick={this.submitHandler} className="w-64">Change Password</Button>
+                        </div>
                     </div>
                 </div>
                 <Footer></Footer>

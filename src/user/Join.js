@@ -50,6 +50,11 @@ class join extends Component {
         })
     };
 
+    handleClickCancel = () => {
+        this.props.show(); //show the sections in the root/home
+        this.props.history.push('/');
+
+    }
 
     validate = () => {
         var userName = document.getElementById("userName").value;
@@ -86,7 +91,8 @@ class join extends Component {
 
             <div className="  pt-4" >
                 <div class="w-full mb-5">
-                    <h2 className="text-center opacity-75 text-2xl mb-5">Sign up for an account</h2>
+                    <h2 className="text-center opacity-75 text-2xl mb-2">Sign up for an account</h2>
+                    <h4 className="text-xs text-center opacity-50 mb-5">In order to use FavOne wesite with full featues, you will need to login to your account. Is this your first time? you can Join Now</h4>
 
                     <div className="flex flex-col w-4/4 items-center">
 
@@ -153,7 +159,10 @@ class join extends Component {
                             </Select>
                         </FormControl>
 
-                        <Button type="submit" onClick={this.handleSubmit} className=" w-64">Sign Up</Button>
+                        <div className="flex flex-row ">
+                            <Button className="w-64" onClick={this.handleClickCancel}>Cancel</Button>
+                            <Button type="submit" onClick={this.handleSubmit} className=" w-64">Sign Up</Button>
+                        </div>
                     </div>
 
                 </div>

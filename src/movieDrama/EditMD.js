@@ -154,7 +154,7 @@ export default class EditMD extends Component {
                 <div className="w-full ">
                     <h2 className="text-left ml-28  opacity-75 text-2xl mb-5">Edit Movie - Drama </h2>
                     <div className=" flex flex-row justify-between w-3/4 px-16 pb-5">
-                        <div className="flex flex-col w-2/4 items-cente">
+                        <div className="flex flex-col w-2/4 items-center">
 
                             <TextField id="title" label="Title" type="text" name="title" value={this.state.movieDrama.title} onChange={this.changeHandler} className="w-96 mb-3" color="primary" />
 

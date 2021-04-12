@@ -135,7 +135,7 @@ export default class EditImageGallery extends Component {
                             {/* if click on the picture icon show a dialog of the actor picture  */}
                             <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={this.state.open}>
                                 <div id="customized-dialog-title" onClose={this.handleClose} className="flex flex-row w-full justify-between">
-                                    <span className="text-xl self-center pl-2">Image Gallery URL</span>
+                                    <span className="text-xl self-center pl-2">Image Gallery</span>
                                     {this.state.open ? (
                                         <IconButton aria-label="close" onClick={this.handleClose}>
                                             <CloseIcon />
