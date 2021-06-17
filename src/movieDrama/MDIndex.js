@@ -192,7 +192,7 @@ export default class MDIndex extends Component {
                                         </div>
                                     )
                                     }
-                                 </div>
+                                </div>
                             }
                         </div>
                         : null
