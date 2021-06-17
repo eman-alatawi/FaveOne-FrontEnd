@@ -81,13 +81,11 @@ class ChangePassword extends Component {
     submitHandler = () => {
         if (this.validate()) {
             this.props.changePassword(this.state.user)
-            // this.props.show(); //show the sections in the root/home
             this.props.history.push('/');
         }
     }
 
     handleClickCancel = () => {
-        // this.props.show(); //show the sections in the root/home
         this.props.history.push('/');
 
     }

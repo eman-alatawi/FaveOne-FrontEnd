@@ -18,7 +18,6 @@ class Login extends Component {
 
     loginHandler = () => {
         this.props.login(this.state)
-        // this.props.show(); //show the sections in the root/home
         this.props.history.push('/');
     }
     render() {

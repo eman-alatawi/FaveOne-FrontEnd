@@ -1,16 +1,12 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import axios from "axios";
 import { decode } from "jsonwebtoken";
 import { toast } from "react-toastify";
 import React, { Component } from "react";
 import Join from "./user/Join";
 import Login from "./user/Login";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import NavBar from "./Shared/NavBar";
-import SearchBar from "./Shared/SearchBar";
 import HomeBanner from "./Shared/HomeBanner";
 import ActorSection from "./actor/ActorSection";
 import EpisodeSection from "./episode/EpisodeSection";
@@ -26,14 +22,12 @@ import NewEpisode from "./episode/NewEpisode";
 import ImageGalleryIndex from "./ImageGallery/ImageGalleryIndex";
 import NewImageGallery from "./ImageGallery/NewImageGallery";
 import ChangePassword from "./user/ChangePassword";
-import PersonIcon from "@material-ui/icons/Person";
 import dotenv from "dotenv";
 dotenv.config();
 
 export default class App extends Component {
   state = {
     isAuth: false,
-    // isSectionsShow: true,
     user: null,
     emailAddress: "",
     message: null,
@@ -175,20 +169,6 @@ export default class App extends Component {
         );
       });
   };
-
-  // // 5- hideSectionsHandler
-  // hideSectionsHandler = () => {
-  //   this.setState({
-  //     isSectionsShow: false,
-  //   });
-  // };
-
-  // // 6- showSectionsHandler
-  // showSectionsHandler = () => {
-  //   this.setState({
-  //     isSectionsShow: true,
-  //   });
-  // };
 
   //7- addGenderHandler
   addGenderHandler = (gender) => {
@@ -461,7 +441,7 @@ export default class App extends Component {
     const { isAuth, user } = this.state;
 
     return (
-      <Router>
+      <>
         <NavBar
           isAuth={isAuth}
           user={user}
@@ -474,21 +454,11 @@ export default class App extends Component {
         <div>
           <Route
             path="/register"
-            component={() => (
-              <Join
-                register={this.registerHandler}
-                // show={this.showSectionsHandler}
-              ></Join>
-            )}
+            component={() => <Join register={this.registerHandler}></Join>}
           ></Route>
           <Route
             path="/login"
-            component={() => (
-              <Login
-                login={this.loginHandler}
-                // show={this.showSectionsHandler}
-              />
-            )}
+            component={() => <Login login={this.loginHandler} />}
           ></Route>
           <Route
             path="/changePassword"
@@ -496,7 +466,6 @@ export default class App extends Component {
               <ChangePassword
                 user={this.state.user}
                 changePassword={this.changePasswordHandler}
-                // show={this.showSectionsHandler}
               />
             )}
           ></Route>
@@ -508,7 +477,6 @@ export default class App extends Component {
                 actors={this.state.actors}
                 isAuth={isAuth}
                 loadActors={this.loadActors}
-                // hide={this.hideSectionsHandler}
               ></ActorIndex>
             )}
           ></Route>
@@ -539,7 +507,6 @@ export default class App extends Component {
                   loadActors={this.loadActors}
                   loadEpisodes={this.loadEpisodes}
                   loadImageGalleries={this.loadImageGalleries}
-                  // hide={this.hideSectionsHandler}
                 ></MDIndex>
               )}
             ></Route>
@@ -558,7 +525,6 @@ export default class App extends Component {
                   loadActors={this.loadActors}
                   loadEpisodes={this.loadEpisodes}
                   loadImageGalleries={this.loadImageGalleries}
-                  // hide={this.hideSectionsHandler}
                 ></MDIndex>
               )}
             ></Route>
@@ -591,10 +557,7 @@ export default class App extends Component {
           <Route
             path="/addActor"
             component={() => (
-              <NewActor
-                addActor={this.addActorHandler}
-                // show={this.showSectionsHandler}
-              ></NewActor>
+              <NewActor addActor={this.addActorHandler}></NewActor>
             )}
           ></Route>
           <Route
@@ -605,7 +568,6 @@ export default class App extends Component {
                 addMD={this.addMovieDramaHandler}
                 actors={this.state.actors}
                 genders={this.state.genders}
-                // show={this.showSectionsHandler}
               ></NewMD>
             )}
           ></Route>
@@ -615,7 +577,6 @@ export default class App extends Component {
               <NewEpisode
                 addEpisode={this.addEpisodeHandler}
                 moviesDramas={this.state.moviesDramas}
-                // show={this.showSectionsHandler}
               ></NewEpisode>
             )}
           ></Route>
@@ -625,7 +586,6 @@ export default class App extends Component {
               <NewImageGallery
                 addImageGallery={this.addImageGalleryHandler}
                 moviesDramas={this.state.moviesDramas}
-                // show={this.showSectionsHandler}
               ></NewImageGallery>
             )}
           ></Route>
@@ -638,7 +598,7 @@ export default class App extends Component {
             />
           </Route>
         </div>
-      </Router>
+      </>
     );
   }
 }

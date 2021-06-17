@@ -56,7 +56,7 @@ export default function MDDetails(props) {
                     <div className="flex flex-row " > {
                         props.movieDrama.episodes.map((episode, index) =>
                             <div key={index}>
-                                <EpisodeRowCard {...episode} movieDrama={props.movieDrama} hide={props.hide}></EpisodeRowCard>
+                                <EpisodeRowCard {...episode} movieDrama={props.movieDrama}></EpisodeRowCard>
                             </div>
                         )
                     }
@@ -71,7 +71,7 @@ export default function MDDetails(props) {
                     <div className="flex flex-row " > {
                         props.movieDrama.imageGalleries.map((imageGallery, index) =>
                             <div key={index}>
-                                <ImageGalleryRowCard {...imageGallery} movieDrama={props.movieDrama} hide={props.hide}></ImageGalleryRowCard>
+                                <ImageGalleryRowCard {...imageGallery} movieDrama={props.movieDrama}></ImageGalleryRowCard>
                             </div>
                         )
                     }
@@ -87,7 +87,7 @@ export default function MDDetails(props) {
                     <div className="flex flex-row " > {
                         thisMovieActors.map((actor, index) =>
                             <div key={index}>
-                                <ActorRowCard {...actor} hide={props.hide}></ActorRowCard>
+                                <ActorRowCard {...actor}></ActorRowCard>
                             </div>
                         )
                     }
