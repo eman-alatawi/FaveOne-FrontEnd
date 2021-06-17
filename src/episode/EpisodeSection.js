@@ -11,7 +11,7 @@ export default class EpisodeSection extends Component {
                 <div className="flex flex-row" >
                     {this.props.episodes.map((episode, index) =>
                         <div key={index}>
-                            <EpisodeRowCard {...episode} moviesDramas={this.props.moviesDramas} hide={this.props.hide}></EpisodeRowCard>
+                            <EpisodeRowCard {...episode} moviesDramas={this.props.moviesDramas}></EpisodeRowCard>
                         </div>
                     )}
                 </div>

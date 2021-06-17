@@ -753,7 +753,7 @@ export default class App extends Component {
         </nav>
 
         <HomeBanner></HomeBanner>
-        {isSectionsShow ? (
+        {/* {isSectionsShow ? (
           <div>
             <MovieDramaSection
               moviesDramas={this.state.moviesDramas}
@@ -771,7 +771,7 @@ export default class App extends Component {
             ></EpisodeSection>
             <Footer></Footer>
           </div>
-        ) : null}
+        ) : null} */}
 
         <div>
           <Route
@@ -931,8 +931,30 @@ export default class App extends Component {
               ></NewImageGallery>
             )}
           ></Route>
+          <Route exact path="/">
+            <HomeSections  moviesDramas={this.state.moviesDramas} actors={this.state.actors}
+        loadActors={this.loadActors}  episodes={this.state.episodes}/>
+          </Route>
         </div>
       </Router>
     );
   }
+}
+
+function HomeSections(props) {
+  return (
+    <div>
+      <MovieDramaSection
+        moviesDramas={props.moviesDramas}
+      ></MovieDramaSection>
+      <ActorSection
+        actors={props.actors}
+      ></ActorSection>
+      <EpisodeSection
+        episodes={props.episodes}
+        moviesDramas={props.moviesDramas}
+      ></EpisodeSection>
+      <Footer></Footer>
+    </div>
+  );
 }
