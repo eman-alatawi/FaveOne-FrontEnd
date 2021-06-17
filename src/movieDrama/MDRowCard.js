@@ -4,11 +4,12 @@ import { withRouter, useHistory } from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
 
 function MDRowCard(props) {
-  console.log("this is props" + {props})
-  const history = useHistory()
+  console.log("this is props" + { props });
+  const history = useHistory();
   const year = new Date(props.movieDrama.releaseYear);
-  const showTool = props.isAuth ? (
-    props.email == props.movieDrama.user.emailAddress ? (
+  const showTool =
+    props.isAuth &&
+    (props.email == props.movieDrama.user.emailAddress ? (
       <div className="flex flex-row justify-evenly w-full ">
         <Tooltip title="Delete Drama or Movie">
           <span
@@ -23,10 +24,10 @@ function MDRowCard(props) {
 
         <Tooltip title="More Details">
           <span
-            onClick={() => { 
+            onClick={() => {
               history.push({
                 pathname: `/movieDramaDetails/${props.movieDrama.title}`,
-                movieDrama: props.movieDrama
+                movieDrama: props.movieDrama,
               });
             }}
             className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
@@ -57,7 +58,7 @@ function MDRowCard(props) {
             onClick={() => {
               history.push({
                 pathname: `/movieDramaDetails/${props.movieDrama.title}`,
-                movieDrama: props.movieDrama
+                movieDrama: props.movieDrama,
               });
             }}
             className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
@@ -66,8 +67,7 @@ function MDRowCard(props) {
           </span>
         </Tooltip>
       </div>
-    )
-  ) : null;
+    ));
 
   //when user click on the image from the ActorDetails or from the main page in the ActorSection, redirect to the movieDramaIndex
   const cardImage = (
@@ -76,9 +76,10 @@ function MDRowCard(props) {
       className="h-64  w-full object-cover"
       onClick={() => {
         history.push({
-        pathname: `/movieDramaDetails/${props.movieDrama.title}`,
-        movieDrama: props.movieDrama
-      });}}
+          pathname: `/movieDramaDetails/${props.movieDrama.title}`,
+          movieDrama: props.movieDrama,
+        });
+      }}
       src={props.movieDrama.poster}
     />
   );

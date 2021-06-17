@@ -4,9 +4,9 @@ import { withRouter, useHistory } from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
 
 function EpisodeRowCard(props) {
-  const history = useHistory()
+  const history = useHistory();
 
-  const showTool = props.isAuth ? (
+  const showTool = props.isAuth && (
     <div className="flex flex-row justify-evenly w-full ">
       <Tooltip title="Delete Episode">
         <span
@@ -21,10 +21,10 @@ function EpisodeRowCard(props) {
 
       <Tooltip title="More Details">
         <span
-          onClick={() => { 
+          onClick={() => {
             history.push({
               pathname: `/episodeDetails/${props.episode.episodNum}`,
-              episode: props.episode
+              episode: props.episode,
             });
           }}
           className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
@@ -44,17 +44,17 @@ function EpisodeRowCard(props) {
         </span>
       </Tooltip>
     </div>
-  ) : null;
+  );
 
   //when user click on the image from the main page in the EpisodeSection or from the MDDetails, redirect to the episodeIndex
   const cardImage = (
     <Card.Img
       variant="top"
       className="h-64 w-full object-cover"
-      onClick={() => { 
+      onClick={() => {
         history.push({
           pathname: `/episodeDetails/${props.episode.episodNum}`,
-          episode: props.episode
+          episode: props.episode,
         });
       }}
       src={props.episode.thumbnail}
@@ -70,26 +70,27 @@ function EpisodeRowCard(props) {
           Episode {props.episode.episodNum}
         </Card.Title>
         {/* called from EpisodeIndex/EpisodeSection  - Dispay Movie-Drama Title*/}
-        {props.moviesDramas ? (
+        {props.moviesDramas && (
           <div>
             {props.moviesDramas.map((md, index) => (
               <div key={index}>
-                {md.episodes.findIndex((x) => x.id == props.episode.id) !== -1 ? (
+                {md.episodes.findIndex((x) => x.id == props.episode.id) !==
+                  -1 && (
                   <Card.Text className="group-hover:text-gray-800 mb-2 whitespace-nowrap overflow-x-scroll">
                     {md.title} - {md.type}{" "}
                   </Card.Text>
-                ) : null}
+                )}
               </div>
             ))}
           </div>
-        ) : null}
+        )}
 
         {/* called from MDDetails  - Dispay Movie-Drama Title*/}
-        {props.movieDrama ? (
+        {props.movieDrama && (
           <Card.Text className="group-hover:text-gray-800 whitespace-nowrap overflow-x-scroll">
             {props.movieDrama.title} - {props.movieDrama.type}
           </Card.Text>
-        ) : null}
+        )}
 
         {showTool}
       </Card.Body>

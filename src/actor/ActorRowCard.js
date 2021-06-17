@@ -5,9 +5,9 @@ import Tooltip from "@material-ui/core/Tooltip";
 
 function ActorRowCard(props) {
   const year = new Date(props.actor.dateOfBirth);
-  const history = useHistory()
+  const history = useHistory();
 
-  const showTool = props.isAuth ? (
+  const showTool = props.isAuth && (
     <div className="flex flex-row justify-evenly w-full ">
       <Tooltip title="Delete Actor">
         <span
@@ -25,9 +25,8 @@ function ActorRowCard(props) {
           onClick={() => {
             history.push({
               pathname: `/actorDetails/${props.actor.fullName}`,
-              actor: props.actor
+              actor: props.actor,
             });
-            // props.detailView(props.actor.id)
           }}
           className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
         >
@@ -46,7 +45,7 @@ function ActorRowCard(props) {
         </span>
       </Tooltip>
     </div>
-  ) : null;
+  );
 
   const cardImage = (
     <Card.Img
@@ -55,10 +54,10 @@ function ActorRowCard(props) {
       onClick={() => {
         history.push({
           pathname: `/actorDetails/${props.actor.fullName}`,
-          actor: props.actor
+          actor: props.actor,
         });
-        // props.detailView(props.actor.id)
-      }}      src={props.actor.picture}
+      }}
+      src={props.actor.picture}
     />
   );
   return (

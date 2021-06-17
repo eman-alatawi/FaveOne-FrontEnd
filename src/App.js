@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {Route } from "react-router-dom";
 import axios from "axios";
 import { decode } from "jsonwebtoken";
 import { toast } from "react-toastify";
@@ -13,15 +13,15 @@ import EpisodeSection from "./episode/EpisodeSection";
 import Footer from "./Shared/Footer";
 import NewActor from "./actor/NewActor";
 import ActorIndex from "./actor/ActorIndex";
-import ActorDetails from './actor/ActorDetails'
+import ActorDetails from "./actor/ActorDetails";
 import GenderIndex from "./gender/GenderIndex";
 import MDIndex from "./movieDrama/MDIndex";
-import MDDetails from './movieDrama/MDDetails'
-import EditMD from './movieDrama/EditMD'
+import MDDetails from "./movieDrama/MDDetails";
+// import EditMD from "./movieDrama/EditMD";
 import NewMD from "./movieDrama/NewMD";
 import MovieDramaSection from "./movieDrama/MovieDramaSection";
 import EpisodeIndex from "./episode/EpisodeIndex";
-import EpisodeDetails from'./episode/EpisodeDetails'
+import EpisodeDetails from "./episode/EpisodeDetails";
 import NewEpisode from "./episode/NewEpisode";
 import ImageGalleryIndex from "./ImageGallery/ImageGalleryIndex";
 import NewImageGallery from "./ImageGallery/NewImageGallery";
@@ -441,8 +441,6 @@ export default class App extends Component {
       });
   };
 
-  
-
   render() {
     const { isAuth, user } = this.state;
 
@@ -460,19 +458,11 @@ export default class App extends Component {
         <div>
           <Route
             path="/register"
-            component={() => (
-              <Join
-                register={this.registerHandler}
-              ></Join>
-            )}
+            component={() => <Join register={this.registerHandler}></Join>}
           ></Route>
           <Route
             path="/login"
-            component={() => (
-              <Login
-                login={this.loginHandler}
-              />
-            )}
+            component={() => <Login login={this.loginHandler} />}
           ></Route>
           <Route
             path="/changePassword"
@@ -571,9 +561,7 @@ export default class App extends Component {
           <Route
             path="/addActor"
             component={() => (
-              <NewActor
-                addActor={this.addActorHandler}
-              ></NewActor>
+              <NewActor addActor={this.addActorHandler}></NewActor>
             )}
           ></Route>
           <Route
@@ -606,17 +594,29 @@ export default class App extends Component {
             )}
           ></Route>
           <Route path="/movieDramaDetails/:movieSlug">
-          <MDDetails episodes={this.state.episodes} imageGalleries={this.state.imageGalleries} actors={this.state.actors} />
-        </Route>
-        <Route path="/movieDramaEdit/:movieSlug">
-          <EditMD episodes={this.state.episodes} genders={this.state.genders} actors={this.state.actors} />
-        </Route>
-        <Route path="/actorDetails/:actorSlug">
-          <ActorDetails actor={this.state.actorDetail} />
-        </Route>
-        <Route path="/episodeDetails/:actorSlug">
-          <EpisodeDetails allEpisodes={this.state.episodes} moviesDramas={this.state.moviesDramas} isAuth={isAuth} detailView={this.detailView} />
-        </Route>
+            <MDDetails
+              episodes={this.state.episodes}
+              imageGalleries={this.state.imageGalleries}
+              actors={this.state.actors}
+            />
+          </Route>
+          {/* <Route path="/movieDramaEdit/:movieSlug">
+            <EditMD
+              episodes={this.state.episodes}
+              genders={this.state.genders}
+              actors={this.state.actors}
+            />
+          </Route> */}
+          <Route path="/actorDetails/:actorSlug">
+            <ActorDetails actor={this.state.actorDetail} />
+          </Route>
+          <Route path="/episodeDetails/:episodeSlug">
+            <EpisodeDetails
+              allEpisodes={this.state.episodes}
+              moviesDramas={this.state.moviesDramas}
+              isAuth={isAuth}
+            />
+          </Route>
           <Route exact path="/">
             <HomeSections
               isAuth={isAuth}
