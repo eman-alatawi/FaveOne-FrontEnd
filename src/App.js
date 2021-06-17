@@ -454,11 +454,19 @@ export default class App extends Component {
         <div>
           <Route
             path="/register"
-            component={() => <Join register={this.registerHandler}></Join>}
+            component={() => (
+              <Join
+                register={this.registerHandler}
+              ></Join>
+            )}
           ></Route>
           <Route
             path="/login"
-            component={() => <Login login={this.loginHandler} />}
+            component={() => (
+              <Login
+                login={this.loginHandler}
+              />
+            )}
           ></Route>
           <Route
             path="/changePassword"
@@ -491,7 +499,7 @@ export default class App extends Component {
               ></GenderIndex>
             )}
           ></Route>
-          {this.state.user !== null ? (
+          {user !== null ? (
             <Route
               path="/movieDramaIndex"
               component={() => (
@@ -557,7 +565,9 @@ export default class App extends Component {
           <Route
             path="/addActor"
             component={() => (
-              <NewActor addActor={this.addActorHandler}></NewActor>
+              <NewActor
+                addActor={this.addActorHandler}
+              ></NewActor>
             )}
           ></Route>
           <Route
