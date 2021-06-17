@@ -74,7 +74,7 @@ class NewImageGallery extends Component {
     };
 
     handleClickCancel = () =>{
-        this.props.show(); //show the sections in the root/home
+        // this.props.show(); //show the sections in the root/home
         this.props.history.push('/');
 
     }

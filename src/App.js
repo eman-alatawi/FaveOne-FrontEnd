@@ -9,6 +9,7 @@ import Login from "./user/Login";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import NavBar from "./Shared/NavBar";
 import SearchBar from "./Shared/SearchBar";
 import HomeBanner from "./Shared/HomeBanner";
 import ActorSection from "./actor/ActorSection";
@@ -32,7 +33,7 @@ dotenv.config();
 export default class App extends Component {
   state = {
     isAuth: false,
-    isSectionsShow: true,
+    // isSectionsShow: true,
     user: null,
     emailAddress: "",
     message: null,
@@ -175,19 +176,19 @@ export default class App extends Component {
       });
   };
 
-  // 5- hideSectionsHandler
-  hideSectionsHandler = () => {
-    this.setState({
-      isSectionsShow: false,
-    });
-  };
+  // // 5- hideSectionsHandler
+  // hideSectionsHandler = () => {
+  //   this.setState({
+  //     isSectionsShow: false,
+  //   });
+  // };
 
-  // 6- showSectionsHandler
-  showSectionsHandler = () => {
-    this.setState({
-      isSectionsShow: true,
-    });
-  };
+  // // 6- showSectionsHandler
+  // showSectionsHandler = () => {
+  //   this.setState({
+  //     isSectionsShow: true,
+  //   });
+  // };
 
   //7- addGenderHandler
   addGenderHandler = (gender) => {
@@ -457,321 +458,18 @@ export default class App extends Component {
   };
 
   render() {
-    const { isAuth, isSectionsShow } = this.state;
+    const { isAuth, user } = this.state;
 
     return (
       <Router>
-        <nav>
-          <div></div>
-
-          {isAuth ? (
-            <Navbar
-              collapseOnSelect
-              expand="lg"
-              variant="dark"
-              className="bg-gray-800 shadow"
-            >
-              <Navbar.Brand>
-                <Link
-                  to="/"
-                  onClick={this.showSectionsHandler}
-                  className="text-gray-200 ml-5 mr-11 text-2xl hover:text-pink-600"
-                >
-                  <span className="material-icons">star</span>FaveOne
-                </Link>
-              </Navbar.Brand>
-              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-              <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="mr-auto">
-                  <NavDropdown
-                    title="Movies - Dramas"
-                    id="collasible-nav-dropdown"
-                    className="mr-11 text-xl"
-                  >
-                    <NavDropdown.Item>
-                      <Link
-                        to="/movieDramaIndex"
-                        onClick={this.hideSectionsHandler}
-                        className="dropDownLink"
-                      >
-                        {" "}
-                        Movies - Dramas
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link
-                        to="/imageGalleryIndex"
-                        onClick={this.hideSectionsHandler}
-                        className="dropDownLink"
-                      >
-                        {" "}
-                        Image Galleries
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link
-                        to="/genderIndex"
-                        onClick={this.hideSectionsHandler}
-                        className="dropDownLink"
-                      >
-                        {" "}
-                        Catagories
-                      </Link>
-                    </NavDropdown.Item>
-
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item>
-                      <Link
-                        to="/addMovieDrama"
-                        onClick={this.hideSectionsHandler}
-                        className="dropDownLink"
-                      >
-                        Add Movie - Drama
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link
-                        to="/addImageGallery"
-                        onClick={this.hideSectionsHandler}
-                        className="dropDownLink"
-                      >
-                        {" "}
-                        Add Image Gallery
-                      </Link>
-                    </NavDropdown.Item>
-                  </NavDropdown>
-
-                  <NavDropdown
-                    title="Episodes"
-                    id="collasible-nav-dropdown"
-                    className="mr-11 text-xl"
-                  >
-                    <NavDropdown.Item>
-                      <Link
-                        to="/episodeIndex"
-                        onClick={this.hideSectionsHandler}
-                        className="dropDownLink"
-                      >
-                        {" "}
-                        Episodes
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item>
-                      <Link
-                        to="/addEpisode"
-                        onClick={this.hideSectionsHandler}
-                        className="dropDownLink"
-                      >
-                        Add Episode
-                      </Link>
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                  <NavDropdown
-                    title="Actors"
-                    id="collasible-nav-dropdown"
-                    className="mr-11 text-xl"
-                  >
-                    <NavDropdown.Item>
-                      <Link
-                        to="/actorIndex"
-                        onClick={this.hideSectionsHandler}
-                        className="dropDownLink"
-                      >
-                        {" "}
-                        Actors
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item>
-                      <Link
-                        to="/addActor"
-                        onClick={this.hideSectionsHandler}
-                        className="dropDownLink"
-                      >
-                        Add Actor
-                      </Link>
-                    </NavDropdown.Item>
-                  </NavDropdown>
-
-                  <SearchBar
-                    value={this.state.filterValue}
-                    onChange={this.handleFilterChange}
-                  ></SearchBar>
-                </Nav>
-                <Nav className="mr-5">
-                  {this.state.user ? (
-                    <Navbar.Text className="mr-5">
-                      {" "}
-                      <span className="text-gray-400">
-                        {this.state.user.sub}
-                      </span>{" "}
-                      <Link
-                        to="/changePassword"
-                        onClick={this.hideSectionsHandler}
-                      >
-                        {" "}
-                        <span className="text-pink-800">
-                          <PersonIcon />{" "}
-                        </span>
-                      </Link>
-                    </Navbar.Text>
-                  ) : null}
-
-                  <Nav.Link>
-                    {" "}
-                    <Link
-                      to="/logout"
-                      onClick={this.onLogoutHandeler}
-                      className="mr-5 text-gray-200 hover:text-pink-600 text-xl"
-                    >
-                      Say Bye
-                    </Link>
-                  </Nav.Link>
-                </Nav>
-              </Navbar.Collapse>
-            </Navbar>
-          ) : (
-            <Navbar
-              collapseOnSelect
-              expand="lg"
-              variant="dark"
-              className="bg-gray-800 shadow"
-            >
-              <Navbar.Brand>
-                <Link
-                  to="/"
-                  onClick={this.showSectionsHandler}
-                  className="text-gray-200 ml-5 mr-11 text-2xl hover:text-pink-600"
-                >
-                  <span className="material-icons">star</span>FaveOne
-                </Link>
-              </Navbar.Brand>
-              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-              <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="mr-auto">
-                  <NavDropdown
-                    title="Movies - Dramas"
-                    id="collasible-nav-dropdown"
-                    className="mr-11 text-xl"
-                  >
-                    <NavDropdown.Item>
-                      <Link
-                        to="/movieDramaIndex"
-                        onClick={this.hideSectionsHandler}
-                        className="dropDownLink"
-                      >
-                        {" "}
-                        Movies - Dramas
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link
-                        to="/imageGalleryIndex"
-                        onClick={this.hideSectionsHandler}
-                        className="dropDownLink"
-                      >
-                        {" "}
-                        Image Galleries
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link
-                        to="/genderIndex"
-                        onClick={this.hideSectionsHandler}
-                        className="dropDownLink"
-                      >
-                        {" "}
-                        Catagories
-                      </Link>
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                  <NavDropdown
-                    title="Episodes"
-                    id="collasible-nav-dropdown"
-                    className="mr-11 text-xl"
-                  >
-                    <NavDropdown.Item>
-                      <Link
-                        to="/episodeIndex"
-                        onClick={this.hideSectionsHandler}
-                        className="dropDownLink"
-                      >
-                        {" "}
-                        Episodes
-                      </Link>
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                  <NavDropdown
-                    title="Actors"
-                    id="collasible-nav-dropdown"
-                    className="mr-11 text-xl"
-                  >
-                    <NavDropdown.Item>
-                      <Link
-                        to="/actorIndex"
-                        onClick={this.hideSectionsHandler}
-                        onClick={this.hideSectionsHandler}
-                        className="dropDownLink"
-                      >
-                        {" "}
-                        Actors
-                      </Link>
-                    </NavDropdown.Item>
-                  </NavDropdown>
-
-                  <SearchBar
-                    value={this.state.filterValue}
-                    onChange={this.handleFilterChange}
-                  ></SearchBar>
-                </Nav>
-                <Nav className="mr-5">
-                  <Nav.Link>
-                    {" "}
-                    <Link
-                      to="/register"
-                      onClick={this.hideSectionsHandler}
-                      className="text-gray-200 hover:text-pink-600 text-xl"
-                    >
-                      Join
-                    </Link>
-                  </Nav.Link>
-                  <Nav.Link>
-                    {" "}
-                    <Link
-                      to="/login"
-                      onClick={this.hideSectionsHandler}
-                      className=" text-gray-200 hover:text-pink-600 text-xl"
-                    >
-                      Login
-                    </Link>
-                  </Nav.Link>
-                </Nav>
-              </Navbar.Collapse>
-            </Navbar>
-          )}
-        </nav>
+        <NavBar
+          isAuth={isAuth}
+          user={user}
+          handleFilterChange={this.handleFilterChange}
+          onLogoutHandeler={this.onLogoutHandeler}
+        />
 
         <HomeBanner></HomeBanner>
-        {/* {isSectionsShow ? (
-          <div>
-            <MovieDramaSection
-              moviesDramas={this.state.moviesDramas}
-              hide={this.hideSectionsHandler}
-            ></MovieDramaSection>
-            <ActorSection
-              actors={this.state.actors}
-              loadActors={this.loadActors}
-              hide={this.hideSectionsHandler}
-            ></ActorSection>
-            <EpisodeSection
-              episodes={this.state.episodes}
-              moviesDramas={this.state.moviesDramas}
-              hide={this.hideSectionsHandler}
-            ></EpisodeSection>
-            <Footer></Footer>
-          </div>
-        ) : null} */}
 
         <div>
           <Route
@@ -779,7 +477,7 @@ export default class App extends Component {
             component={() => (
               <Join
                 register={this.registerHandler}
-                show={this.showSectionsHandler}
+                // show={this.showSectionsHandler}
               ></Join>
             )}
           ></Route>
@@ -788,7 +486,7 @@ export default class App extends Component {
             component={() => (
               <Login
                 login={this.loginHandler}
-                show={this.showSectionsHandler}
+                // show={this.showSectionsHandler}
               />
             )}
           ></Route>
@@ -798,7 +496,7 @@ export default class App extends Component {
               <ChangePassword
                 user={this.state.user}
                 changePassword={this.changePasswordHandler}
-                show={this.showSectionsHandler}
+                // show={this.showSectionsHandler}
               />
             )}
           ></Route>
@@ -808,9 +506,9 @@ export default class App extends Component {
             component={() => (
               <ActorIndex
                 actors={this.state.actors}
-                isAuth={this.state.isAuth}
+                isAuth={isAuth}
                 loadActors={this.loadActors}
-                hide={this.hideSectionsHandler}
+                // hide={this.hideSectionsHandler}
               ></ActorIndex>
             )}
           ></Route>
@@ -819,7 +517,7 @@ export default class App extends Component {
             component={() => (
               <GenderIndex
                 genders={this.state.genders}
-                isAuth={this.state.isAuth}
+                isAuth={isAuth}
                 loadGenders={this.loadGenders}
                 addGender={this.addGenderHandler}
               ></GenderIndex>
@@ -830,18 +528,18 @@ export default class App extends Component {
               path="/movieDramaIndex"
               component={() => (
                 <MDIndex
-                  emailAddress={this.state.user.sub}
+                  emailAddress={user.sub}
                   moviesDramas={this.state.moviesDramas}
                   episodes={this.state.episodes}
                   actors={this.state.actors}
                   genders={this.state.genders}
                   imageGalleries={this.state.imageGalleries}
-                  isAuth={this.state.isAuth}
+                  isAuth={isAuth}
                   loadMoviesDramas={this.loadMoviesDramas}
                   loadActors={this.loadActors}
                   loadEpisodes={this.loadEpisodes}
                   loadImageGalleries={this.loadImageGalleries}
-                  hide={this.hideSectionsHandler}
+                  // hide={this.hideSectionsHandler}
                 ></MDIndex>
               )}
             ></Route>
@@ -855,12 +553,12 @@ export default class App extends Component {
                   actors={this.state.actors}
                   genders={this.state.genders}
                   imageGalleries={this.state.imageGalleries}
-                  isAuth={this.state.isAuth}
+                  isAuth={isAuth}
                   loadMoviesDramas={this.loadMoviesDramas}
                   loadActors={this.loadActors}
                   loadEpisodes={this.loadEpisodes}
                   loadImageGalleries={this.loadImageGalleries}
-                  hide={this.hideSectionsHandler}
+                  // hide={this.hideSectionsHandler}
                 ></MDIndex>
               )}
             ></Route>
@@ -871,7 +569,7 @@ export default class App extends Component {
               <EpisodeIndex
                 episodes={this.state.episodes}
                 moviesDramas={this.state.moviesDramas}
-                isAuth={this.state.isAuth}
+                isAuth={isAuth}
                 loadEpisodes={this.loadEpisodes}
                 loadMoviesDramas={this.loadMoviesDramas}
               ></EpisodeIndex>
@@ -883,7 +581,7 @@ export default class App extends Component {
               <ImageGalleryIndex
                 imageGalleries={this.state.imageGalleries}
                 moviesDramas={this.state.moviesDramas}
-                isAuth={this.state.isAuth}
+                isAuth={isAuth}
                 loadImageGalleries={this.loadImageGalleries}
                 loadMoviesDramas={this.loadMoviesDramas}
               ></ImageGalleryIndex>
@@ -895,7 +593,7 @@ export default class App extends Component {
             component={() => (
               <NewActor
                 addActor={this.addActorHandler}
-                show={this.showSectionsHandler}
+                // show={this.showSectionsHandler}
               ></NewActor>
             )}
           ></Route>
@@ -903,11 +601,11 @@ export default class App extends Component {
             path="/addMovieDrama"
             component={() => (
               <NewMD
-                user={this.state.user}
+                user={user}
                 addMD={this.addMovieDramaHandler}
                 actors={this.state.actors}
                 genders={this.state.genders}
-                show={this.showSectionsHandler}
+                // show={this.showSectionsHandler}
               ></NewMD>
             )}
           ></Route>
@@ -917,7 +615,7 @@ export default class App extends Component {
               <NewEpisode
                 addEpisode={this.addEpisodeHandler}
                 moviesDramas={this.state.moviesDramas}
-                show={this.showSectionsHandler}
+                // show={this.showSectionsHandler}
               ></NewEpisode>
             )}
           ></Route>
@@ -927,13 +625,17 @@ export default class App extends Component {
               <NewImageGallery
                 addImageGallery={this.addImageGalleryHandler}
                 moviesDramas={this.state.moviesDramas}
-                show={this.showSectionsHandler}
+                // show={this.showSectionsHandler}
               ></NewImageGallery>
             )}
           ></Route>
           <Route exact path="/">
-            <HomeSections  moviesDramas={this.state.moviesDramas} actors={this.state.actors}
-        loadActors={this.loadActors}  episodes={this.state.episodes}/>
+            <HomeSections
+              moviesDramas={this.state.moviesDramas}
+              actors={this.state.actors}
+              loadActors={this.loadActors}
+              episodes={this.state.episodes}
+            />
           </Route>
         </div>
       </Router>
@@ -944,12 +646,8 @@ export default class App extends Component {
 function HomeSections(props) {
   return (
     <div>
-      <MovieDramaSection
-        moviesDramas={props.moviesDramas}
-      ></MovieDramaSection>
-      <ActorSection
-        actors={props.actors}
-      ></ActorSection>
+      <MovieDramaSection moviesDramas={props.moviesDramas}></MovieDramaSection>
+      <ActorSection actors={props.actors}></ActorSection>
       <EpisodeSection
         episodes={props.episodes}
         moviesDramas={props.moviesDramas}
