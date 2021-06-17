@@ -27,14 +27,14 @@ export default class EpisodeIndex extends Component {
         })
     }
 
-    detailView = (id) => {
-        this.setState({
-            isDetail: true,
-            clickedEpisodeId: id
-        })
+    // detailView = (id) => {
+    //     this.setState({
+    //         isDetail: true,
+    //         clickedEpisodeId: id
+    //     })
 
-       this.episodeDetails(id);
-    }
+    //    this.episodeDetails(id);
+    // }
 
     episodeDetails = (id) =>{
         // axios.get(`${process.env.REACT_APP_BACK_END_URL}episode/detail`,
@@ -126,7 +126,7 @@ export default class EpisodeIndex extends Component {
                             <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 mb-4 " >
                                 {this.state.episodes.map((episode, index) =>
                                     <div key={index}>
-                                    <EpisodeRowCard {...episode} moviesDramas={this.props.moviesDramas} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteEpisode={this.deleteEpisode} ></EpisodeRowCard>
+                                    <EpisodeRowCard episode={episode} moviesDramas={this.props.moviesDramas} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteEpisode={this.deleteEpisode} ></EpisodeRowCard>
                                     </div>
                                 )
                                 }
@@ -144,11 +144,11 @@ export default class EpisodeIndex extends Component {
                     )}
 
                     {/* if the user click the card  - show the EpisodeDetail [we need to loop again using map to know the clickedEpisodeId by user and the episode.id in episodes ] */}
-                    {this.state.episodes.map((episode, index) =>
+                    {/* {this.state.episodes.map((episode, index) =>
                         <div key={index}> 
                             {(this.state.isDetail && this.state.clickedEpisodeId === episode.id) ? <EpisodeDetails episode={this.state.episodeDetail} allEpisodes={this.state.episodes} moviesDramas={this.props.moviesDramas} isAuth={this.props.isAuth} detailView={this.detailView}></EpisodeDetails> : null} 
                          </div>
-                    )}
+                    )} */}
 
                 </div>
                 <Footer></Footer>

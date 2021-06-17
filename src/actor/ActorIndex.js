@@ -143,11 +143,11 @@ export default class ActorIndex extends Component {
                     )}
 
                     {/* if the user click the card  - show the ActorDetail [we need to loop again using map to know the clickedActorId by user and the actor.id in actors ] */}
-                    {this.state.actors.map((actor, index) =>
+                    {/* {this.state.actors.map((actor, index) =>
                         <div key={index}>
                             {(this.state.isDetail && this.state.clickedActorId === actor.id) ? <ActorDetails actor={this.state.actorDetail}></ActorDetails> : null}
                         </div>
-                    )}
+                    )} */}
 
                 </div>
                 <Footer></Footer>

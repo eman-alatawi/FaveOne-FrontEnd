@@ -1,15 +1,17 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import { withRouter } from "react-router-dom";
+import { withRouter, useHistory } from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
 
 function EpisodeRowCard(props) {
+  const history = useHistory()
+
   const showTool = props.isAuth ? (
     <div className="flex flex-row justify-evenly w-full ">
       <Tooltip title="Delete Episode">
         <span
           onClick={() => {
-            props.deleteEpisode(props.id);
+            props.deleteEpisode(props.episode.id);
           }}
           className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
         >
@@ -19,7 +21,12 @@ function EpisodeRowCard(props) {
 
       <Tooltip title="More Details">
         <span
-          onClick={() => props.detailView(props.id)}
+          onClick={() => { 
+            history.push({
+              pathname: `/episodeDetails/${props.episode.episodNum}`,
+              episode: props.episode
+            });
+          }}
           className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
         >
           expand_more
@@ -29,7 +36,7 @@ function EpisodeRowCard(props) {
       <Tooltip title="Edit Episode">
         <span
           onClick={() => {
-            props.editView(props.id);
+            props.editView(props.episode.id);
           }}
           className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
         >
@@ -44,10 +51,13 @@ function EpisodeRowCard(props) {
     <Card.Img
       variant="top"
       className="h-64 w-full object-cover"
-      onClick={() => {
-        props.history.push("/episodeIndex");
+      onClick={() => { 
+        history.push({
+          pathname: `/episodeDetails/${props.episode.episodNum}`,
+          episode: props.episode
+        });
       }}
-      src={props.thumbnail}
+      src={props.episode.thumbnail}
     />
   );
 
@@ -57,14 +67,14 @@ function EpisodeRowCard(props) {
       <Card.Body className="text-center bg-pink-900 text-gray-300 hover:bg-gray-50 hover:border-transparent hover:shadow-xl group rounded-b-lg">
         <Card.Title className="group-hover:text-gray-800  whitespace-nowrap overflow-x-scroll text-center">
           {" "}
-          Episode {props.episodNum}
+          Episode {props.episode.episodNum}
         </Card.Title>
         {/* called from EpisodeIndex/EpisodeSection  - Dispay Movie-Drama Title*/}
         {props.moviesDramas ? (
           <div>
             {props.moviesDramas.map((md, index) => (
               <div key={index}>
-                {md.episodes.findIndex((x) => x.id == props.id) !== -1 ? (
+                {md.episodes.findIndex((x) => x.id == props.episode.id) !== -1 ? (
                   <Card.Text className="group-hover:text-gray-800 mb-2 whitespace-nowrap overflow-x-scroll">
                     {md.title} - {md.type}{" "}
                   </Card.Text>

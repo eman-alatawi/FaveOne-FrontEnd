@@ -64,7 +64,7 @@ export default function MDDetails(props) {
                     <div className="flex flex-row " > {
                         movieDrama.episodes.map((episode, index) =>
                             <div key={index}>
-                                <EpisodeRowCard {...episode} movieDrama={movieDrama}></EpisodeRowCard>
+                                <EpisodeRowCard episode={episode} movieDrama={movieDrama}></EpisodeRowCard>
                             </div>
                         )
                     }

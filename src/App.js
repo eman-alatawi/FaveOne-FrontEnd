@@ -21,6 +21,7 @@ import EditMD from './movieDrama/EditMD'
 import NewMD from "./movieDrama/NewMD";
 import MovieDramaSection from "./movieDrama/MovieDramaSection";
 import EpisodeIndex from "./episode/EpisodeIndex";
+import EpisodeDetails from'./episode/EpisodeDetails'
 import NewEpisode from "./episode/NewEpisode";
 import ImageGalleryIndex from "./ImageGallery/ImageGalleryIndex";
 import NewImageGallery from "./ImageGallery/NewImageGallery";
@@ -440,6 +441,8 @@ export default class App extends Component {
       });
   };
 
+  
+
   render() {
     const { isAuth, user } = this.state;
 
@@ -610,6 +613,9 @@ export default class App extends Component {
         </Route>
         <Route path="/actorDetails/:actorSlug">
           <ActorDetails actor={this.state.actorDetail} />
+        </Route>
+        <Route path="/episodeDetails/:actorSlug">
+          <EpisodeDetails allEpisodes={this.state.episodes} moviesDramas={this.state.moviesDramas} isAuth={isAuth} detailView={this.detailView} />
         </Route>
           <Route exact path="/">
             <HomeSections
