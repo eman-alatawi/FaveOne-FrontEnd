@@ -176,7 +176,7 @@ export default class MDIndex extends Component {
 
                                             {this.state.searchedMDs.map((md, index) =>
                                                 <div key={index}>
-                                                    <MDRowCard email={this.props.emailAddress} {...md} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteMD={this.deleteMD} ></MDRowCard>
+                                                    <MDRowCard email={this.props.emailAddress} movieDrama={md} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteMD={this.deleteMD} ></MDRowCard>
                                                 </div>
                                             )
                                             }
@@ -188,7 +188,7 @@ export default class MDIndex extends Component {
                                 : <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 mb-4  " >
                                     {this.state.moviesDramas.map((md, index) =>
                                         <div key={index}>
-                                            <MDRowCard email={this.props.emailAddress} {...md} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteMD={this.deleteMD} ></MDRowCard>
+                                            <MDRowCard email={this.props.emailAddress} movieDrama={md} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteMD={this.deleteMD} ></MDRowCard>
                                         </div>
                                     )
                                     }
@@ -207,11 +207,11 @@ export default class MDIndex extends Component {
                     )}
 
                     {/* if the user click the card  - show the movie-Drama Details [we need to loop again using map to know the clickedMDId by user and the md.id in moviesDramas ] */}
-                    {this.state.moviesDramas.map((md, index) =>
+                    {/* {this.state.moviesDramas.map((md, index) =>
                         <div key={index}>
                             {(this.state.isDetail && this.state.clickedMDId === md.id) ? <MDDetails movieDrama={this.state.mdDetail} episodes={this.props.episodes} imageGalleries={this.props.imageGalleries} actors={this.props.actors}></MDDetails> : null}
                         </div>
-                    )}
+                    )} */}
 
 
 

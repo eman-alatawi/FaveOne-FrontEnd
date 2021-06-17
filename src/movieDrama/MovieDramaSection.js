@@ -13,7 +13,7 @@ export default class MovieDramaSection extends Component {
 
                     {this.props.moviesDramas.map((md, index) =>
                         <div key={index}>
-                            <MDRowCard {...md} hide={this.props.hide}></MDRowCard>
+                            <MDRowCard movieDrama={md}></MDRowCard>
                         </div>
                     )}
                 </div>

@@ -1,17 +1,18 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import { withRouter } from "react-router-dom";
+import { withRouter, useHistory } from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
 
 function ActorRowCard(props) {
-  const year = new Date(props.dateOfBirth);
+  const year = new Date(props.actor.dateOfBirth);
+  const history = useHistory()
 
   const showTool = props.isAuth ? (
     <div className="flex flex-row justify-evenly w-full ">
       <Tooltip title="Delete Actor">
         <span
           onClick={() => {
-            props.deleteActor(props.id);
+            props.deleteActor(props.actor.id);
           }}
           className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
         >
@@ -21,7 +22,13 @@ function ActorRowCard(props) {
 
       <Tooltip title="More Details">
         <span
-          onClick={() => props.detailView(props.id)}
+          onClick={() => {
+            history.push({
+              pathname: `/actorDetails/${props.actor.fullName}`,
+              actor: props.actor
+            });
+            // props.detailView(props.actor.id)
+          }}
           className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
         >
           expand_more
@@ -31,7 +38,7 @@ function ActorRowCard(props) {
       <Tooltip title="Edit Actor">
         <span
           onClick={() => {
-            props.editView(props.id);
+            props.editView(props.actor.id);
           }}
           className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
         >
@@ -45,8 +52,13 @@ function ActorRowCard(props) {
     <Card.Img
       variant="top"
       className="h-64 w-full object-cover"
-      onClick={() => props.history.push("/actorIndex")}
-      src={props.picture}
+      onClick={() => {
+        history.push({
+          pathname: `/actorDetails/${props.actor.fullName}`,
+          actor: props.actor
+        });
+        // props.detailView(props.actor.id)
+      }}      src={props.actor.picture}
     />
   );
   return (
@@ -54,7 +66,7 @@ function ActorRowCard(props) {
       {cardImage}
       <Card.Body className="text-center  bg-gray-800 text-gray-300 hover:bg-gray-50 hover:border-transparent hover:shadow-xl group rounded-b-lg">
         <Card.Title className="group-hover:text-gray-800  whitespace-nowrap overflow-x-scroll text-center">
-          {props.fullName}
+          {props.actor.fullName}
         </Card.Title>
         <Card.Text className="group-hover:text-gray-800">
           {year.getFullYear()}

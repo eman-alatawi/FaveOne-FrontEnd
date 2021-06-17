@@ -13,8 +13,11 @@ import EpisodeSection from "./episode/EpisodeSection";
 import Footer from "./Shared/Footer";
 import NewActor from "./actor/NewActor";
 import ActorIndex from "./actor/ActorIndex";
+import ActorDetails from './actor/ActorDetails'
 import GenderIndex from "./gender/GenderIndex";
 import MDIndex from "./movieDrama/MDIndex";
+import MDDetails from './movieDrama/MDDetails'
+import EditMD from './movieDrama/EditMD'
 import NewMD from "./movieDrama/NewMD";
 import MovieDramaSection from "./movieDrama/MovieDramaSection";
 import EpisodeIndex from "./episode/EpisodeIndex";
@@ -599,8 +602,18 @@ export default class App extends Component {
               ></NewImageGallery>
             )}
           ></Route>
+          <Route path="/movieDramaDetails/:movieSlug">
+          <MDDetails episodes={this.state.episodes} imageGalleries={this.state.imageGalleries} actors={this.state.actors} />
+        </Route>
+        <Route path="/movieDramaEdit/:movieSlug">
+          <EditMD episodes={this.state.episodes} genders={this.state.genders} actors={this.state.actors} />
+        </Route>
+        <Route path="/actorDetails/:actorSlug">
+          <ActorDetails actor={this.state.actorDetail} />
+        </Route>
           <Route exact path="/">
             <HomeSections
+              isAuth={isAuth}
               moviesDramas={this.state.moviesDramas}
               actors={this.state.actors}
               loadActors={this.loadActors}
@@ -617,7 +630,7 @@ function HomeSections(props) {
   return (
     <div>
       <MovieDramaSection moviesDramas={props.moviesDramas}></MovieDramaSection>
-      <ActorSection actors={props.actors}></ActorSection>
+      <ActorSection actors={props.actors} isAuth={props.isAuth}></ActorSection>
       <EpisodeSection
         episodes={props.episodes}
         moviesDramas={props.moviesDramas}

@@ -13,7 +13,7 @@ export default class ActorSection extends Component {
                    
                     {this.props.actors.map((actor, index) =>
                     <div key={index}>
-                    <ActorRowCard {...actor}></ActorRowCard>
+                    <ActorRowCard actor={actor} isAuth={this.props.isAuth}></ActorRowCard>
                     </div>
                 )}
                    

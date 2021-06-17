@@ -125,7 +125,7 @@ export default class ActorIndex extends Component {
                             <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 mb-5" >
                                 {this.state.actors.map((actor, index) =>
                                     <div key={index}>
-                                        <ActorRowCard {...actor} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteActor={this.deleteActor}></ActorRowCard>
+                                        <ActorRowCard actor={actor} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteActor={this.deleteActor}></ActorRowCard>
                                     </div>
                                 )
                                 }
@@ -145,7 +145,7 @@ export default class ActorIndex extends Component {
                     {/* if the user click the card  - show the ActorDetail [we need to loop again using map to know the clickedActorId by user and the actor.id in actors ] */}
                     {this.state.actors.map((actor, index) =>
                         <div key={index}>
-                            {(this.state.isDetail && this.state.clickedActorId === actor.id) ? <ActorDetails actor={this.state.actorDetail} isAuth={this.props.isAuth}></ActorDetails> : null}
+                            {(this.state.isDetail && this.state.clickedActorId === actor.id) ? <ActorDetails actor={this.state.actorDetail}></ActorDetails> : null}
                         </div>
                     )}
 
