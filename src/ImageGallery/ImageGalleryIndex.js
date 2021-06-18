@@ -83,7 +83,7 @@ export default class ImageGalleryIndex extends Component {
                 <div className="w-full">
 
                     {/* show all image Galleries if the user didn't click the Edit icon - by default show the ImageGalleryRowCard */}
-                    {!this.state.isEdit && !this.state.isDetail ?
+                    {!this.state.isEdit && 
                         <div>
                             <div className="h-full w-full  ">
                                 <h3 className=" my-12  text-center text-gray-900 text-3xl opacity-75">All Image Galleries </h3>
@@ -97,7 +97,7 @@ export default class ImageGalleryIndex extends Component {
                                 }
                             </div>
                         </div>
-                    : null
+                    
                     }
 
 

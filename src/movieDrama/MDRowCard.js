@@ -4,7 +4,7 @@ import { withRouter, useHistory } from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
 
 function MDRowCard(props) {
-  console.log("this is props" + { props });
+  // console.log("this is props" + { props });
   const history = useHistory();
   const year = new Date(props.movieDrama.releaseYear);
   const showTool =
@@ -73,7 +73,7 @@ function MDRowCard(props) {
   const cardImage = (
     <Card.Img
       variant="top"
-      className="h-64  w-full object-cover"
+      className="h-64  w-full object-cover cursor-pointer"
       onClick={() => {
         history.push({
           pathname: `/movieDramaDetails/${props.movieDrama.title}`,

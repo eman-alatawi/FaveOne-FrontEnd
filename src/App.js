@@ -17,7 +17,6 @@ import ActorDetails from "./actor/ActorDetails";
 import GenderIndex from "./gender/GenderIndex";
 import MDIndex from "./movieDrama/MDIndex";
 import MDDetails from "./movieDrama/MDDetails";
-// import EditMD from "./movieDrama/EditMD";
 import NewMD from "./movieDrama/NewMD";
 import MovieDramaSection from "./movieDrama/MovieDramaSection";
 import EpisodeIndex from "./episode/EpisodeIndex";
@@ -600,13 +599,6 @@ export default class App extends Component {
               actors={this.state.actors}
             />
           </Route>
-          {/* <Route path="/movieDramaEdit/:movieSlug">
-            <EditMD
-              episodes={this.state.episodes}
-              genders={this.state.genders}
-              actors={this.state.actors}
-            />
-          </Route> */}
           <Route path="/actorDetails/:actorSlug">
             <ActorDetails actor={this.state.actorDetail} />
           </Route>

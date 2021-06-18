@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { useLocation, useHistory } from "react-router-dom";
+import Tooltip from "@material-ui/core/Tooltip";
 
 export default function EpisodeDetails(props) {
   const history = useHistory();
@@ -11,7 +12,7 @@ export default function EpisodeDetails(props) {
   useEffect(() => {
     const episodeDetails = location.episode;
     setEpisode({ ...episodeDetails });
-  }, [location, episode]);
+  }, [location]);
 
   const getMovieDramaByTitle = props.moviesDramas.filter(
     (movieDrama, index) => {
@@ -19,11 +20,11 @@ export default function EpisodeDetails(props) {
         movieDrama.episodes.findIndex((x) => x.id == episode.id) !== -1
           ? movieDrama.title
           : "";
-      console.log(movieTitle);
+      // console.log(movieTitle);
       return movieTitle;
     }
   );
-  console.log(getMovieDramaByTitle);
+  // console.log(getMovieDramaByTitle);
 
   function detailView(id) {
     let filteredEpisode = props.allEpisodes.find((ep) => {
@@ -65,14 +66,26 @@ export default function EpisodeDetails(props) {
       <div className=" flex flex-row p-10 ">
         <div className="h-96 w-80  mr-10 flex flex-col rounded-lg bg-pink-900 text-gray-300">
           <img
-            className=" h-80 w-80 mr-10 shadow  object-cover"
+            className=" h-80 w-80 mr-10 shadow  object-cover "
             src={episode.thumbnail}
           />
           <div className="w-64  text-center flex flex-col">
             {props.moviesDramas.map(
               (md, index) =>
                 md.episodes.findIndex((x) => x.id == episode.id) !== -1 && (
-                  <div className="group-hover:text-gray-800">{md.title} </div>
+                  <Tooltip title={`Go to ${md.title} ${md.type} details page`}>
+                  <div
+                    className="group-hover:text-gray-800 cursor-pointer"
+                    onClick={() => {
+                      history.push({
+                        pathname: `/movieDramaDetails/${md.title}`,
+                        movieDrama: md,
+                      });
+                    }}
+                  >
+                    {md.title}{" "}
+                  </div>
+                  </Tooltip>
                 )
             )}
             <div className="">Episode {episode.episodNum}</div>

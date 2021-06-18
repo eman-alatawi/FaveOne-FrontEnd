@@ -50,7 +50,7 @@ function EpisodeRowCard(props) {
   const cardImage = (
     <Card.Img
       variant="top"
-      className="h-64 w-full object-cover"
+      className="h-64 w-full object-cover cursor-pointer"
       onClick={() => {
         history.push({
           pathname: `/episodeDetails/${props.episode.episodNum}`,
