@@ -36,26 +36,28 @@ export default function EpisodeDetails(props) {
 
   const relatedEpisodes =
     getMovieDramaByTitle != "" &&
-    getMovieDramaByTitle[0].episodes.map((episode, index) => (
-      <li
-        key={index}
-        className="bg-pink-900 hover:bg-white my-2 pl-1 text-center"
-      >
-        {" "}
-        <span
-          onClick={() => {
-            detailView(episode.id);
-            history.push({
-              pathname: `/episodeDetails/${episode.episodNum}`,
-              episode: episode,
-            });
-          }}
-          className=" cursor-pointer  hover:text-gray-800 "
+    getMovieDramaByTitle[0].episodes
+      .sort((a, b) => a.episodNum - b.episodNum)
+      .map((episode, index) => (
+        <li
+          key={index}
+          className="bg-pink-900 hover:bg-white my-2 pl-1 text-center"
         >
-          Episode {episode.episodNum}{" "}
-        </span>
-      </li>
-    ));
+          {" "}
+          <span
+            onClick={() => {
+              detailView(episode.id);
+              history.push({
+                pathname: `/episodeDetails/${episode.episodNum}`,
+                episode: episode,
+              });
+            }}
+            className=" cursor-pointer  hover:text-gray-800 "
+          >
+            Episode {episode.episodNum}{" "}
+          </span>
+        </li>
+      ));
 
   return (
     <div className=" bg-gray-50 rounded-lg shadow">
@@ -75,17 +77,17 @@ export default function EpisodeDetails(props) {
               (md, index) =>
                 md.episodes.findIndex((x) => x.id == episode.id) !== -1 && (
                   <Tooltip title={`Go to ${md.title} ${md.type} details page`}>
-                  <div
-                    className="group-hover:text-gray-800 cursor-pointer"
-                    onClick={() => {
-                      history.push({
-                        pathname: `/movieDramaDetails/${md.title}`,
-                        movieDrama: md,
-                      });
-                    }}
-                  >
-                    {md.title}{" "}
-                  </div>
+                    <div
+                      className="group-hover:text-gray-800 cursor-pointer"
+                      onClick={() => {
+                        history.push({
+                          pathname: `/movieDramaDetails/${md.title}`,
+                          movieDrama: md,
+                        });
+                      }}
+                    >
+                      {md.title}{" "}
+                    </div>
                   </Tooltip>
                 )
             )}
@@ -105,9 +107,7 @@ export default function EpisodeDetails(props) {
         <div className="w-2/12  text-center pt-10 mt-2 mb-4 flex flex-col bg-gray-700 shadow-xl text-gray-300">
           <h5 className="text-center">All Episodes: </h5>
 
-          <ul className="text-left  h-72 overflow-y-scroll">
-            {relatedEpisodes}
-          </ul>
+          <ul className="text-left  h-72 overflow-auto">{relatedEpisodes}</ul>
         </div>
       </div>
       <Footer></Footer>

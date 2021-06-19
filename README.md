@@ -1,11 +1,11 @@
-# FaveOne - V2
+# FaveOne - V2.1
 Your place of your favorite Movie/Drama/Episode/Actor. The users can add their favorite movies, dramas, episodes, and actors and share them with the world. (FaveOne) is the shortcut of Favorite One, nice name right? :)
 
 ## Important Links
 
 - [FaveOne Back-End Repo](https://github.com/eman-alatawi/FavOne-BackEnd)
-- [Deployed FaveOne API](http://faveone-env.eba-3dzduni8.us-east-2.elasticbeanstalk.com/)
-- [Deployed FaveOne React App](https://pages.git.generalassemb.ly/eman-e-alatawi/FaveOne-FrontEnd/)
+- [Deployed FaveOne API](#)
+- [Deployed FaveOne React App](#)
 
 
 ## Planning Story

@@ -65,10 +65,6 @@ function EpisodeRowCard(props) {
     <Card style={{ width: "14rem" }} className="ml-3 mr-4  shadow ">
       {cardImage}
       <Card.Body className="text-center bg-pink-900 text-gray-300 hover:bg-gray-50 hover:border-transparent hover:shadow-xl group rounded-b-lg">
-        <Card.Title className="group-hover:text-gray-800  whitespace-nowrap  text-center">
-          {" "}
-          Episode {props.episode.episodNum}
-        </Card.Title>
         {/* called from EpisodeIndex/EpisodeSection  - Dispay Movie-Drama Title*/}
         {props.moviesDramas && (
           <div>
@@ -76,12 +72,19 @@ function EpisodeRowCard(props) {
               <div key={index}>
                 {md.episodes.findIndex((x) => x.id == props.episode.id) !==
                   -1 && (
-                  <Card.Text className="group-hover:text-gray-800 mb-2 whitespace-normal h-16 overflow-auto cursor-pointer" onClick={() => {
-                    history.push({
-                      pathname: `/movieDramaDetails/${md.title}`,
-                      movieDrama: md,
-                    });
-                  }}>
+                  <Card.Text
+                    className="group-hover:text-gray-800 mb-2 whitespace-normal h-24 overflow-auto cursor-pointer"
+                    onClick={() => {
+                      history.push({
+                        pathname: `/movieDramaDetails/${md.title}`,
+                        movieDrama: md,
+                      });
+                    }}
+                  >
+                    <Card.Title className="group-hover:text-gray-800  whitespace-nowrap  text-center">
+                      {" "}
+                      Episode {props.episode.episodNum} / {md.numOfEpisods}
+                    </Card.Title>
                     {md.title} - {md.type}{" "}
                   </Card.Text>
                 )}
@@ -92,7 +95,11 @@ function EpisodeRowCard(props) {
 
         {/* called from MDDetails  - Dispay Movie-Drama Title*/}
         {props.movieDrama && (
-          <Card.Text className="group-hover:text-gray-800 whitespace-normal h-16  overflow-auto">
+          <Card.Text className="group-hover:text-gray-800 whitespace-normal h-24  overflow-auto">
+            <Card.Title className="group-hover:text-gray-800  whitespace-nowrap  text-center">
+              {" "}
+              Episode {props.episode.episodNum} / {props.movieDrama.numOfEpisods}
+            </Card.Title>
             {props.movieDrama.title} - {props.movieDrama.type}
           </Card.Text>
         )}

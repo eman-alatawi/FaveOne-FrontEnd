@@ -182,7 +182,8 @@ export default class MDIndex extends Component {
                 </div>
               ) : (
                 <div className="h-full w-full pl-11  inline-grid grid-cols-5 gap-x-2  gap-y-10 mb-4  ">
-                  {this.state.moviesDramas.map((md, index) => (
+                  {this.state.moviesDramas
+                  .map((md, index) => (
                     <div key={index}>
                       <MDRowCard
                         email={this.props.emailAddress}
