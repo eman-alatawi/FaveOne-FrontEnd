@@ -114,49 +114,49 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
 
 ### App Screenshot:
 
-<img src="https://drive.google.com/uc?export=view&id=1bHDbKNY3xKJHy2vrGJf9EI0huYKu5Xin" width="200">
+<img src="https://drive.google.com/uc?export=view&id=1bHDbKNY3xKJHy2vrGJf9EI0huYKu5Xin" width="400">
 
 
-<img src="https://drive.google.com/uc?export=view&id=1qvoaR5V_FNFN6Wl1QdBwTe3ZFE_3fS2y" width="200">
+<img src="https://drive.google.com/uc?export=view&id=1qvoaR5V_FNFN6Wl1QdBwTe3ZFE_3fS2y" width="400">
 
 
-<img src="https://drive.google.com/uc?export=view&id=1Uw9Z2fA2pBIrPUT-vgRh34iVxF6LQyix" width="200">
+<img src="https://drive.google.com/uc?export=view&id=1Uw9Z2fA2pBIrPUT-vgRh34iVxF6LQyix" width="400">
 
 
-<img src="https://drive.google.com/uc?export=view&id=1y2Kdy7AbfRFN4VVRQxG0l05GZLH1jF0o" width="200">
-
-
-
-<img src="https://drive.google.com/uc?export=view&id=1_up7pCVAMHL9M1w1SL6vlTiMLS4Vbr8_" width="200">
-
-<img src="https://drive.google.com/uc?export=view&id=1rifmzEsD5rBeR8ET6YLCsdsPFymEe-1w" width="200">
-
-<img src="https://drive.google.com/uc?export=view&id=1GNBhLLVyTFjrtpZmePOpvHcU6o1Hc6Ct" width="200">
-
-<img src="https://drive.google.com/uc?export=view&id=1xDECkCkx4BQOE-pqBKho_gcLxQss5_GJ" width="200">
+<img src="https://drive.google.com/uc?export=view&id=1y2Kdy7AbfRFN4VVRQxG0l05GZLH1jF0o" width="400">
 
 
 
-<img src="https://drive.google.com/uc?export=view&id=14f0-QiL-c0kaf9Ew_bsaSeXGfR8ze7VZ" width="200">
+<img src="https://drive.google.com/uc?export=view&id=1_up7pCVAMHL9M1w1SL6vlTiMLS4Vbr8_" width="400">
 
-<img src="https://drive.google.com/uc?export=view&id=1UfJtukD04URctd3PJUnG-yDnXITkN8uO" width="200">
+<img src="https://drive.google.com/uc?export=view&id=1rifmzEsD5rBeR8ET6YLCsdsPFymEe-1w" width="400">
 
-<img src="https://drive.google.com/uc?export=view&id=1fOT1QknAtgC6OZZa-hfu5fBqUBeIa7oB" width="200">
+<img src="https://drive.google.com/uc?export=view&id=1GNBhLLVyTFjrtpZmePOpvHcU6o1Hc6Ct" width="400">
 
-<img src="https://drive.google.com/uc?export=view&id=1waLV-9bnxT53EunxTw-i9tnYWU73oM-k" width="200">
-
-<img src="https://drive.google.com/uc?export=view&id=1S2wFTbKqJjKQE-13QY8srokZdW4BArXh" width="200">
-
-
-<img src="https://drive.google.com/uc?export=view&id=1cffgF-ZLsLdicv44pb7NPN1EPG3sKd4Z" width="200">
-
-<img src="https://drive.google.com/uc?export=view&id=1-0lJQD1bY0giTTid0Cl065C4S9VosUeb" width="200">
+<img src="https://drive.google.com/uc?export=view&id=1xDECkCkx4BQOE-pqBKho_gcLxQss5_GJ" width="400">
 
 
 
-<img src="https://drive.google.com/uc?export=view&id=1tYcEpdbiCZDKp1tqONumYW73K9NSVk3l" width="200">
+<img src="https://drive.google.com/uc?export=view&id=14f0-QiL-c0kaf9Ew_bsaSeXGfR8ze7VZ" width="400">
 
-<img src="https://drive.google.com/uc?export=view&id=17STM4Ho_V42J5thNtiLjwNnzQlHxqR1S" width="200">
+<img src="https://drive.google.com/uc?export=view&id=1UfJtukD04URctd3PJUnG-yDnXITkN8uO" width="400">
+
+<img src="https://drive.google.com/uc?export=view&id=1fOT1QknAtgC6OZZa-hfu5fBqUBeIa7oB" width="400">
+
+<img src="https://drive.google.com/uc?export=view&id=1waLV-9bnxT53EunxTw-i9tnYWU73oM-k" width="400">
+
+<img src="https://drive.google.com/uc?export=view&id=1S2wFTbKqJjKQE-13QY8srokZdW4BArXh" width="400">
+
+
+<img src="https://drive.google.com/uc?export=view&id=1cffgF-ZLsLdicv44pb7NPN1EPG3sKd4Z" width="400">
+
+<img src="https://drive.google.com/uc?export=view&id=1-0lJQD1bY0giTTid0Cl065C4S9VosUeb" width="400">
+
+
+
+<img src="https://drive.google.com/uc?export=view&id=1tYcEpdbiCZDKp1tqONumYW73K9NSVk3l" width="400">
+
+<img src="https://drive.google.com/uc?export=view&id=17STM4Ho_V42J5thNtiLjwNnzQlHxqR1S" width="400">
 
 
 [see more](https://drive.google.com/drive/folders/1NuVAhMvlw1wUsIhoEwBlNQyYOJJ8sa--?usp=sharing)
@@ -357,7 +357,7 @@ React component to show or hide elements with animations using Animated.css.
    ```js
     const lastUpdate = moment(props.movieDrama.updateAt);
 
-    <div className="bg-blue-400 text-gray-200 text-xs p-2 rounded-b-lg  border-fuchsia-400 absolute transform -translate-x-3.5 shadow-sm">
+    <div className="bg-blue-400 text-gray-400 text-xs p-2 rounded-b-lg  border-fuchsia-400 absolute transform -translate-x-3.5 shadow-sm">
         {lastUpdate.fromNow()}
     </div>
    ```
