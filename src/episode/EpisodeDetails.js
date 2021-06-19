@@ -41,7 +41,7 @@ export default function EpisodeDetails(props) {
       .map((episode, index) => (
         <li
           key={index}
-          className="bg-pink-900 hover:bg-white my-2 pl-1 text-center"
+          className="bg-pink-900 hover:bg-white  hover:text-gray-800  my-2 pl-1 text-center"
         >
           {" "}
           <span
@@ -52,7 +52,7 @@ export default function EpisodeDetails(props) {
                 episode: episode,
               });
             }}
-            className=" cursor-pointer  hover:text-gray-800 "
+            className=" cursor-pointer "
           >
             Episode {episode.episodNum}{" "}
           </span>

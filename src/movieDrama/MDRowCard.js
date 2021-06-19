@@ -91,8 +91,13 @@ function MDRowCard(props) {
         <Card.Title className="group-hover:text-gray-800  whitespace-normal h-16 overflow-auto text-center">
           {props.movieDrama.title}
         </Card.Title>
+        <hr></hr>
         <Card.Text className="group-hover:text-gray-800">
           {props.movieDrama.type}
+        </Card.Text>
+        
+        <Card.Text className="group-hover:text-gray-800 text-gray-400">
+        ({props.movieDrama.numOfEpisods}) Episode
         </Card.Text>
         <Card.Text className="group-hover:text-gray-800">
           {year.getFullYear()}
