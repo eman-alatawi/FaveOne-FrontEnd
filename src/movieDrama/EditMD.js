@@ -365,14 +365,14 @@ export default class EditMD extends Component {
               </div>
             </div>
 
-            <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-3">
+            <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-3 justify-around">
               <FormControl component="fieldset">
                 <Tooltip title="Scroll vertically for more">
                   <FormLabel component="legend">Actors - Cast</FormLabel>
                 </Tooltip>
-                <FormGroup className=" mb-3">
-                  {this.state.movieDrama.actors ? (
-                    <div className="grid  gap-x-5  gap-y-2 h-64 overflow-x-scroll ">
+                <FormGroup className="grid  gap-x-5  gap-y-2 h-64 overflow-y-scroll">
+                  {this.state.movieDrama.actors && (
+                    <>
                       {this.props.actors.map((actor, index) => (
                         <div>
                           {this.state.movieDrama.actors.findIndex(
@@ -403,8 +403,8 @@ export default class EditMD extends Component {
                           )}
                         </div>
                       ))}
-                    </div>
-                  ) : null}
+                    </>
+                  )}
                 </FormGroup>
               </FormControl>
 

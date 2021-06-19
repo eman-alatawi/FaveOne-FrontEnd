@@ -289,11 +289,11 @@ class NewMD extends Component {
                   <span className="text-xl self-center pl-2">
                     Movie or Drama Poster
                   </span>
-                  {this.state.open ? (
+                  {this.state.open && (
                     <IconButton aria-label="close" onClick={this.handleClose}>
                       <CloseIcon />
                     </IconButton>
-                  ) : null}
+                  )}
                 </div>
                 {this.state.movieDrama.poster ? (
                   <img src={this.state.movieDrama.poster} />
@@ -376,7 +376,7 @@ class NewMD extends Component {
               </div>
             </div>
 
-            <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-4">
+            <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-4 justify-around">
               <FormControl component="fieldset">
                 <Tooltip title="Scroll horizontally for more">
                   <FormLabel component="legend">Actors - Cast</FormLabel>
