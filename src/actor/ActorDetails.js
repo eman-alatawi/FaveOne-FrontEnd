@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MDRowCard from "../movieDrama/MDRowCard";
 import { useLocation } from "react-router-dom";
+import Footer from "../Shared/Footer";
 
 export default function ActorDetails(props) {
   const location = useLocation();
@@ -33,7 +34,7 @@ export default function ActorDetails(props) {
           </div>
 
           <h1 className="text-xl mb-3">Biography:</h1>
-          <p className="text-justify w-5/5 pr-5 h-72 overflow-y-scroll">
+          <p className="text-justify w-5/5 pr-5 h-72 leading-8 overflow-auto">
             {actor.biography}
           </p>
         </div>
@@ -54,6 +55,7 @@ export default function ActorDetails(props) {
           </div>
         </div>
       )}
+      <Footer></Footer>
     </div>
   );
 }

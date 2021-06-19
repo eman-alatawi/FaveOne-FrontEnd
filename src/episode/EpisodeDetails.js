@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { useLocation, useHistory } from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
+import Footer from "../Shared/Footer";
 
 export default function EpisodeDetails(props) {
   const history = useHistory();
@@ -109,6 +110,7 @@ export default function EpisodeDetails(props) {
           </ul>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 }

@@ -76,7 +76,12 @@ function EpisodeRowCard(props) {
               <div key={index}>
                 {md.episodes.findIndex((x) => x.id == props.episode.id) !==
                   -1 && (
-                  <Card.Text className="group-hover:text-gray-800 mb-2 whitespace-nowrap overflow-auto">
+                  <Card.Text className="group-hover:text-gray-800 mb-2 whitespace-normal h-16 overflow-auto cursor-pointer" onClick={() => {
+                    history.push({
+                      pathname: `/movieDramaDetails/${md.title}`,
+                      movieDrama: md,
+                    });
+                  }}>
                     {md.title} - {md.type}{" "}
                   </Card.Text>
                 )}
@@ -87,7 +92,7 @@ function EpisodeRowCard(props) {
 
         {/* called from MDDetails  - Dispay Movie-Drama Title*/}
         {props.movieDrama && (
-          <Card.Text className="group-hover:text-gray-800 whitespace-nowrap overflow-auto">
+          <Card.Text className="group-hover:text-gray-800 whitespace-normal h-16  overflow-auto">
             {props.movieDrama.title} - {props.movieDrama.type}
           </Card.Text>
         )}

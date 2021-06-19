@@ -41,7 +41,7 @@ export default function MDDetails(props) {
             <div className="mr-20 text-xl">{movieDrama.score}</div>
           </div>
 
-          <p className="text-justify w-full px-5 h-64 overflow-auto mb-4 ">
+          <p className="text-justify w-full px-5 h-64 leading-8 overflow-auto mb-4 ">
             {movieDrama.description}
           </p>
 

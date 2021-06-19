@@ -75,7 +75,6 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
 
 - The users/Visitors can search for Movies or Dramas by Title, and search for Actors or Movie-Drama's Catagory by Name.
 
-- In order to see the details of the Dramas/Movies/Actors and watch the episodes you should join first.
 
 ## Images
 
