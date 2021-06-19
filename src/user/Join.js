@@ -147,7 +147,7 @@ class join extends Component {
               <TextField
                 id="profileImage"
                 label="Profile Image"
-                type="text"
+                type="url"
                 name="profileImage"
                 onChange={this.changeHandler}
                 className="w-96 mb-3"
@@ -182,11 +182,11 @@ class join extends Component {
                 className="flex flex-row w-full justify-between"
               >
                 <span className="text-xl self-center pl-2">Profile Image</span>
-                {this.state.open ? (
+                {this.state.open && (
                   <IconButton aria-label="close" onClick={this.handleClose}>
                     <CloseIcon />
                   </IconButton>
-                ) : null}
+                )}
               </div>
               {this.state.profileImage ? (
                 <img src={this.state.profileImage} />

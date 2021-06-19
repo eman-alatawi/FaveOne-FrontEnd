@@ -1,5 +1,5 @@
 import "./App.css";
-import {Route } from "react-router-dom";
+import {Route, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
 import { decode } from "jsonwebtoken";
 import { toast } from "react-toastify";
@@ -454,7 +454,7 @@ export default class App extends Component {
 
         <HomeBanner></HomeBanner>
 
-        <div>
+        <Switch>
           <Route
             path="/register"
             component={() => <Join register={this.registerHandler}></Join>}
@@ -618,7 +618,8 @@ export default class App extends Component {
               episodes={this.state.episodes}
             />
           </Route>
-        </div>
+          <Route path="*" component={PageNotFound} />
+        </Switch>
       </>
     );
   }
@@ -636,4 +637,10 @@ function HomeSections(props) {
       <Footer></Footer>
     </div>
   );
+}
+
+function PageNotFound(){
+  return(
+    <div className="bg-pink-800 text-3xl p-10 text-center text-gray-300"> 404 Page NotFound </div>
+  )
 }

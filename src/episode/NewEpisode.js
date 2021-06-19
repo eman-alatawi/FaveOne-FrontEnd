@@ -138,7 +138,7 @@ class NewEpisode extends Component {
                 <TextField
                   id="thumbnail"
                   label="Drama or Movie Thumbnail URL"
-                  type="text"
+                  type="url"
                   name="thumbnail"
                   onChange={this.changeHandler}
                   className="w-96 mb-3"
@@ -178,14 +178,14 @@ class NewEpisode extends Component {
                     {" "}
                     Drama or Movie poster thumbnail{" "}
                   </span>
-                  {this.state.openPoster ? (
+                  {this.state.openPoster && (
                     <IconButton
                       aria-label="close"
                       onClick={this.handleClosePoster}
                     >
                       <CloseIcon />
                     </IconButton>
-                  ) : null}
+                  )}
                 </div>
                 {this.state.episode.thumbnail ? (
                   <img src={this.state.episode.thumbnail} />
@@ -203,7 +203,7 @@ class NewEpisode extends Component {
                 <TextField
                   id="episodeVideoUrl"
                   label="Episode Video URL"
-                  type="text"
+                  type="url"
                   name="episodeVideoUrl"
                   onChange={this.changeHandler}
                   className="w-96 mb-3"
@@ -241,14 +241,14 @@ class NewEpisode extends Component {
                     {" "}
                     Episode Video{" "}
                   </span>
-                  {this.state.openVideo ? (
+                  {this.state.openVideo && (
                     <IconButton
                       aria-label="close"
                       onClick={this.handleCloseVideo}
                     >
                       <CloseIcon />
                     </IconButton>
-                  ) : null}
+                  )}
                 </div>
                 {this.state.openVideo && this.state.episode.episodeVideoUrl ? (
                   <ReactPlayer

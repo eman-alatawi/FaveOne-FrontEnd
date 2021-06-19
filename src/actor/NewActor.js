@@ -134,7 +134,7 @@ class NewActor extends Component {
               <TextField
                 id="picture"
                 label="Actor Picture URL"
-                type="text"
+                type="url"
                 name="picture"
                 onChange={this.changeHandler}
                 className="w-96 mb-3"
@@ -169,11 +169,11 @@ class NewActor extends Component {
                 className="flex flex-row w-full justify-between"
               >
                 <span className="text-xl self-center pl-2">Actor Picture</span>
-                {this.state.open ? (
+                {this.state.open && (
                   <IconButton aria-label="close" onClick={this.handleClose}>
                     <CloseIcon />
                   </IconButton>
-                ) : null}
+                )}
               </div>
               {this.state.picture ? (
                 <img src={this.state.picture} />

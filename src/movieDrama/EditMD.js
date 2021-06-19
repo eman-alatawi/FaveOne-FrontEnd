@@ -237,7 +237,7 @@ export default class EditMD extends Component {
                 <TextField
                   id="poster"
                   label="Poster URL"
-                  type="text"
+                  type="url"
                   name="poster"
                   value={this.state.movieDrama.poster}
                   onChange={this.changeHandler}
@@ -275,11 +275,11 @@ export default class EditMD extends Component {
                   <span className="text-xl self-center pl-2">
                     Movie or Drama Poster
                   </span>
-                  {this.state.open ? (
+                  {this.state.open && (
                     <IconButton aria-label="close" onClick={this.handleClose}>
                       <CloseIcon />
                     </IconButton>
-                  ) : null}
+                  )}
                 </div>
                 {this.state.movieDrama.poster ? (
                   <img src={this.state.movieDrama.poster} />

@@ -87,9 +87,6 @@ export default class EditEpisode extends Component {
     var episodeVideoUrl = document.getElementById("episodeVideoUrl").value;
     var episodNum = document.getElementById("episodNum").value;
 
-    // var dmTilte = this.state.episode.movieDrama.title;
-    // var mdTotalNumOfEp = this.state.episode.movieDrama.numOfEpisods;
-    // var ;
 
     if (episodNum < 1) {
       swal("Wrong!!", "The Episode number should be 1 or more", "error");
@@ -155,7 +152,7 @@ export default class EditEpisode extends Component {
                 <TextField
                   id="thumbnail"
                   label="Drama or Movie Thumbnail URL"
-                  type="text"
+                  type="url"
                   name="thumbnail"
                   value={this.state.episode.thumbnail}
                   onChange={this.changeHandler}
@@ -221,7 +218,7 @@ export default class EditEpisode extends Component {
                 <TextField
                   id="episodeVideoUrl"
                   label="Episode Video URL"
-                  type="text"
+                  type="url"
                   name="episodeVideoUrl"
                   value={this.state.episode.episodeVideoUrl}
                   onChange={this.changeHandler}
@@ -260,14 +257,14 @@ export default class EditEpisode extends Component {
                     {" "}
                     Episode Video{" "}
                   </span>
-                  {this.state.openVideo ? (
+                  {this.state.openVideo && (
                     <IconButton
                       aria-label="close"
                       onClick={this.handleCloseVideo}
                     >
                       <CloseIcon />
                     </IconButton>
-                  ) : null}
+                  )}
                 </div>
                 {this.state.openVideo && this.state.episode.episodeVideoUrl ? (
                   <ReactPlayer
@@ -300,13 +297,6 @@ export default class EditEpisode extends Component {
                   color="primary"
                 />
               </Tooltip>
-
-              {/* {this.state.episode.movieDrama.title && this.state.episode.movieDrama.numOfEpisods  !== null ? 
-                <small>
-                  {this.state.episode.movieDrama.title} have{" "}
-                  {this.state.episode.movieDrama.numOfEpisods}
-                </small>
-               : null} */}
 
               <div className="flex flex-col h-24 items-center justify-between ">
                 <Button

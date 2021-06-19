@@ -252,7 +252,7 @@ class NewMD extends Component {
                 <TextField
                   id="poster"
                   label="Poster URL"
-                  type="text"
+                  type="url"
                   name="poster"
                   onChange={this.changeHandler}
                   className="w-96 mb-3"

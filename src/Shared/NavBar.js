@@ -139,7 +139,7 @@ export default function NavBar(props) {
                   <Link
                     to="/logout"
                     onClick={props.onLogoutHandeler}
-                    className="mr-5 text-gray-200 hover:text-pink-600 text-xl"
+                    className="mr-5 hover:text-gray-200 text-pink-600 text-sm"
                   >
                     Say Bye
                   </Link>

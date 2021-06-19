@@ -65,7 +65,7 @@ function EpisodeRowCard(props) {
     <Card style={{ width: "14rem" }} className="ml-3 mr-4  shadow ">
       {cardImage}
       <Card.Body className="text-center bg-pink-900 text-gray-300 hover:bg-gray-50 hover:border-transparent hover:shadow-xl group rounded-b-lg">
-        <Card.Title className="group-hover:text-gray-800  whitespace-nowrap overflow-x-scroll text-center">
+        <Card.Title className="group-hover:text-gray-800  whitespace-nowrap  text-center">
           {" "}
           Episode {props.episode.episodNum}
         </Card.Title>
@@ -76,7 +76,7 @@ function EpisodeRowCard(props) {
               <div key={index}>
                 {md.episodes.findIndex((x) => x.id == props.episode.id) !==
                   -1 && (
-                  <Card.Text className="group-hover:text-gray-800 mb-2 whitespace-nowrap overflow-x-scroll">
+                  <Card.Text className="group-hover:text-gray-800 mb-2 whitespace-nowrap overflow-auto">
                     {md.title} - {md.type}{" "}
                   </Card.Text>
                 )}
@@ -87,7 +87,7 @@ function EpisodeRowCard(props) {
 
         {/* called from MDDetails  - Dispay Movie-Drama Title*/}
         {props.movieDrama && (
-          <Card.Text className="group-hover:text-gray-800 whitespace-nowrap overflow-x-scroll">
+          <Card.Text className="group-hover:text-gray-800 whitespace-nowrap overflow-auto">
             {props.movieDrama.title} - {props.movieDrama.type}
           </Card.Text>
         )}

@@ -3,6 +3,7 @@ import ActorRowCard from "../actor/ActorRowCard";
 import EpisodeRowCard from "../episode/EpisodeRowCard";
 import ImageGalleryRowCard from "../ImageGallery/ImageGalleryRowCard";
 import { useLocation } from "react-router-dom";
+import Footer from "../Shared/Footer";
 
 export default function MDDetails(props) {
   const location = useLocation();
@@ -40,7 +41,7 @@ export default function MDDetails(props) {
             <div className="mr-20 text-xl">{movieDrama.score}</div>
           </div>
 
-          <p className="text-justify w-full px-5 h-64 overflow-y-scroll mb-4 ">
+          <p className="text-justify w-full px-5 h-64 overflow-auto mb-4 ">
             {movieDrama.description}
           </p>
 
@@ -56,7 +57,7 @@ export default function MDDetails(props) {
         <div className="w-1/12  text-center pt-10 mt-2 mb-4 flex flex-col bg-gray-700 shadow-xl text-gray-300">
           <h5 className="text-left pl-1 text-xl">Genders: </h5>
           {movieDrama.genders && (
-            <ul className="text-left  h-56 overflow-y-scroll">
+            <ul className="text-left  h-56 overflow-auto">
               {movieDrama.genders.map((gender, index) => (
                 <li key={index} className="bg-pink-900 my-2 pl-1">
                   {gender.name}{" "}
@@ -68,7 +69,7 @@ export default function MDDetails(props) {
       </div>
 
       {movieDrama.episodes && (
-        <div className=" flex flex-col  bg-gray-800 shadow p-10   w-full overflow-x-scroll">
+        <div className=" flex flex-col  bg-gray-800 shadow p-10   w-full overflow-auto">
           <h4 className="text-gray-300 mb-3 text-xl ml-3">Related Episodes:</h4>
           <div className="flex flex-row ">
             {" "}
@@ -85,7 +86,7 @@ export default function MDDetails(props) {
       )}
 
       {movieDrama.imageGalleries && (
-        <div className=" flex flex-col   shadow p-10   w-full overflow-x-scroll">
+        <div className=" flex flex-col   shadow p-10   w-full overflow-auto">
           <h4 className="text-gray-800 mb-3 text-xl ml-3">
             Related Image Galleries:
           </h4>
@@ -103,7 +104,7 @@ export default function MDDetails(props) {
         </div>
       )}
 
-      <div className=" flex flex-col  bg-pink-900  shadow p-10   w-full overflow-x-scroll">
+      <div className=" flex flex-col  bg-pink-900  shadow p-10   w-full overflow-auto">
         <h4 className="text-gray-300 mb-3 text-xl ml-3"> Actors - Cast:</h4>
         <div className="flex flex-row ">
           {" "}
@@ -114,6 +115,7 @@ export default function MDDetails(props) {
           ))}
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 }

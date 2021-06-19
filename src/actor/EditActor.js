@@ -148,7 +148,7 @@ export default class EditActor extends Component {
               <TextField
                 id="picture"
                 label="Actor Picture URL"
-                type="text"
+                type="url"
                 name="picture"
                 value={this.state.actor.picture}
                 onChange={this.changeHandler}
@@ -184,11 +184,11 @@ export default class EditActor extends Component {
                 className="flex flex-row w-full justify-between"
               >
                 <span className="text-xl self-center pl-2">Actor Picture</span>
-                {this.state.open ? (
+                {this.state.open && (
                   <IconButton aria-label="close" onClick={this.handleClose}>
                     <CloseIcon />
                   </IconButton>
-                ) : null}
+                )}
               </div>
               {this.state.actor.picture ? (
                 <img src={this.state.actor.picture} />
