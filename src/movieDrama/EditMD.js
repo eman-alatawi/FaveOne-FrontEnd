@@ -365,12 +365,12 @@ export default class EditMD extends Component {
               </div>
             </div>
 
-            <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-3 justify-around">
+            <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-3 justify-evenly ">
               <FormControl component="fieldset">
                 <Tooltip title="Scroll vertically for more">
                   <FormLabel component="legend">Actors - Cast</FormLabel>
                 </Tooltip>
-                <FormGroup className="grid  gap-x-5  gap-y-2 h-64 overflow-y-scroll">
+                <FormGroup className="grid  gap-x-16  gap-y-3 h-56 overflow-auto ">
                   {this.state.movieDrama.actors && (
                     <>
                       {this.props.actors.map((actor, index) => (
@@ -378,9 +378,9 @@ export default class EditMD extends Component {
                           {this.state.movieDrama.actors.findIndex(
                             (x) => x.id == actor.id
                           ) == -1 ? (
-                            <div>
+                            <div className="mr-4 mb-3"> 
                               <input
-                                className="mr-3 "
+                                className="mr-2 "
                                 type="checkbox"
                                 name="actors"
                                 value={index}
@@ -389,9 +389,9 @@ export default class EditMD extends Component {
                               {actor.fullName}
                             </div>
                           ) : (
-                            <div>
+                            <div className="mr-4 mb-3">
                               <input
-                                className="mr-3"
+                                className="mr-2"
                                 type="checkbox"
                                 checked
                                 name="actors"
@@ -412,15 +412,15 @@ export default class EditMD extends Component {
                 <Tooltip title="Scroll horizontally for more">
                   <FormLabel component="legend">Genders - Catagory</FormLabel>
                 </Tooltip>
-                <FormGroup className="grid  gap-x-5  gap-y-2 h-64 overflow-y-scroll ">
+                <FormGroup className="grid  gap-x-28  gap-y-3 h-56 overflow-auto ">
                   {this.props.genders.map((gender, index) => (
                     <div>
                       {this.state.movieDrama.genders.findIndex(
                         (x) => x.id == gender.id
                       ) == -1 ? (
-                        <div>
+                        <div className="mr-3 mb-3">
                           <input
-                            className="mr-3"
+                            className="mr-2"
                             type="checkbox"
                             name="genders"
                             value={index}
@@ -429,9 +429,9 @@ export default class EditMD extends Component {
                           {gender.name}
                         </div>
                       ) : (
-                        <div>
+                        <div className="mr-3 mb-3">
                           <input
-                            className="mr-3"
+                            className="mr-2"
                             type="checkbox"
                             checked
                             name="genders"

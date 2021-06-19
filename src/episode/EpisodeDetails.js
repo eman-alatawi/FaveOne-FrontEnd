@@ -54,7 +54,7 @@ export default function EpisodeDetails(props) {
             }}
             className=" cursor-pointer "
           >
-            Episode {episode.episodNum}{" "}
+            Episode {episode.episodNum} / {getMovieDramaByTitle[0].numOfEpisods}
           </span>
         </li>
       ));

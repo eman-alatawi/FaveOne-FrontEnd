@@ -14,6 +14,11 @@ export default function MDDetails(props) {
     setMovieDrama({ ...movieDetails });
   }, [location]);
 
+    // scroll to the top after render
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const year = new Date(movieDrama.releaseYear);
 
   const thisMovieActors = props.actors.filter((actor) => {

@@ -329,9 +329,9 @@ export default class App extends Component {
 
         // });
 
-        const filteredGendersList = this.state.genders.filter((gender) => {
-          return gender.name.toLowerCase().includes(filterValue.toLowerCase());
-        });
+        // const filteredGendersList = this.state.genders.filter((gender) => {
+        //   return gender.name.toLowerCase().includes(filterValue.toLowerCase());
+        // });
 
         //here is the reurn object from the setState
         return {
@@ -339,7 +339,7 @@ export default class App extends Component {
           actors: filteredActorsList,
           filterValue: filterValue,
           // episodes: filteredEpisodesList,
-          genders: filteredGendersList,
+          // genders: filteredGendersList,
         };
       });
     } else {
@@ -350,7 +350,7 @@ export default class App extends Component {
       this.loadMoviesDramas();
       this.loadActors();
       this.loadEpisodes();
-      this.loadGenders();
+      // this.loadGenders();
     }
   };
 

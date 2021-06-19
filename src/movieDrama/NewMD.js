@@ -376,12 +376,12 @@ class NewMD extends Component {
               </div>
             </div>
 
-            <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-4 justify-around">
+            <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-4 justify-evenly">
               <FormControl component="fieldset">
                 <Tooltip title="Scroll horizontally for more">
                   <FormLabel component="legend">Actors - Cast</FormLabel>
                 </Tooltip>
-                <FormGroup className="grid  gap-x-5  gap-y-2 h-64 overflow-y-scroll ">
+                <FormGroup className="grid  gap-x-16  gap-y-3 h-56 overflow-auto ">
                   {this.props.actors.map((actor, index) => (
                     <div className="mr-4 mb-3">
                       <input
@@ -401,7 +401,7 @@ class NewMD extends Component {
                 <Tooltip title="Scroll horizontally for more">
                   <FormLabel component="legend">Genders - Catagory</FormLabel>
                 </Tooltip>
-                <FormGroup className="grid  gap-x-5  gap-y-2 h-64 overflow-y-scroll ">
+                <FormGroup className="grid  gap-x-28  gap-y-3 h-56 overflow-auto ">
                   {this.props.genders.map((gender, index) => (
                     <div className="mr-3 mb-3">
                       <input

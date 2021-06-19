@@ -94,7 +94,7 @@ export default class GenderIndex extends Component {
                 <div className=" h-ful flex flex-col mx-5 my-10  ">
 
                     {/* partion 1 */}
-                    <div className=" w-full inline-grid grid-cols-5 gap-x-2  gap-y-3 justify-around px-5 overflow-x-scroll h-3/4">
+                    <div className=" w-full inline-grid grid-cols-5 gap-x-2  gap-y-3 justify-around px-5 overflow-auto h-3/4">
                         {this.props.isAuth && !this.state.isEdit ?
                             <div>
                                 <Card style={{ width: '14rem' }} className="mb-3 shadow h-24" >

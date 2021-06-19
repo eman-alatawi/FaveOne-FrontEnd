@@ -2,9 +2,10 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import { withRouter, useHistory } from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
-
+import moment from "moment";
 function EpisodeRowCard(props) {
   const history = useHistory();
+  const lastUpdate = moment(props.episode.updateAt);
 
   const showTool = props.isAuth && (
     <div className="flex flex-row justify-evenly w-full ">
@@ -48,17 +49,23 @@ function EpisodeRowCard(props) {
 
   //when user click on the image from the main page in the EpisodeSection or from the MDDetails, redirect to the episodeIndex
   const cardImage = (
-    <Card.Img
-      variant="top"
-      className="h-64 w-full object-cover cursor-pointer"
-      onClick={() => {
-        history.push({
-          pathname: `/episodeDetails/${props.episode.episodNum}`,
-          episode: props.episode,
-        });
-      }}
-      src={props.episode.thumbnail}
-    />
+    <>
+      <Card.Img
+        variant="top"
+        className="h-64 w-full object-cover cursor-pointer"
+        onClick={() => {
+          history.push({
+            pathname: `/episodeDetails/${props.episode.episodNum}`,
+            episode: props.episode,
+          });
+        }}
+        src={props.episode.thumbnail}
+      />
+      <div className="bg-blue-400 text-gray-200 text-xs p-2 rounded-b-lg  border-fuchsia-400 absolute transform -translate-x-3.5 shadow-sm">
+        {" "}
+        {lastUpdate.fromNow()}
+      </div>
+    </>
   );
 
   return (
@@ -98,7 +105,8 @@ function EpisodeRowCard(props) {
           <Card.Text className="group-hover:text-gray-800 whitespace-normal h-24  overflow-auto">
             <Card.Title className="group-hover:text-gray-800  whitespace-nowrap  text-center">
               {" "}
-              Episode {props.episode.episodNum} / {props.movieDrama.numOfEpisods}
+              Episode {props.episode.episodNum} /{" "}
+              {props.movieDrama.numOfEpisods}
             </Card.Title>
             {props.movieDrama.title} - {props.movieDrama.type}
           </Card.Text>

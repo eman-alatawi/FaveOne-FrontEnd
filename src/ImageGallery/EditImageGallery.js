@@ -191,7 +191,7 @@ export default class EditImageGallery extends Component {
                 <Tooltip title="Scroll horizontally for more">
                   <FormLabel component="legend">Movie or Drama Title</FormLabel>
                 </Tooltip>
-                <FormGroup className="grid  gap-x-5  gap-y-2 h-48 overflow-y-scroll ">
+                <FormGroup className="grid  gap-x-10  gap-y-2 h-48 overflow-auto ">
                   {this.props.moviesDramas.map((md, index) => (
                     <div>
                       {md.imageGalleries.findIndex(

@@ -269,7 +269,9 @@ class NewEpisode extends Component {
                 )}
               </Dialog>
 
-              <Tooltip title={`${this.state.episode.movieDrama.title} ${this.state.episode.movieDrama.type} has ${this.state.episode.movieDrama.numOfEpisods} total episodes `}>
+              <Tooltip
+                title={`${this.state.episode.movieDrama.title} ${this.state.episode.movieDrama.type} has ${this.state.episode.movieDrama.numOfEpisods} total episodes `}
+              >
                 <TextField
                   id="episodNum"
                   label="Episod Number"
@@ -299,7 +301,7 @@ class NewEpisode extends Component {
                 <Tooltip title="Scroll horizontally for more">
                   <FormLabel component="legend">Movie or Drama Title</FormLabel>
                 </Tooltip>
-                <FormGroup className="grid  gap-x-5  gap-y-2 h-48 overflow-y-scroll ">
+                <FormGroup className="grid  gap-x-10  gap-y-3 h-56 overflow-auto ">
                   {this.props.moviesDramas.map((md, index) => (
                     <div>
                       <input

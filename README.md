@@ -1,6 +1,20 @@
 # FaveOne - V2.1
 Your place of your favorite Movie/Drama/Episode/Actor. The users can add their favorite movies, dramas, episodes, and actors and share them with the world. (FaveOne) is the shortcut of Favorite One, nice name right? :)
 
+## New Features:
+- More Routes to easily navigate between different sections of the website.
+    - The user can click on the drama/movie card's image to view more details about it.
+    - The user can click on the episode card's image to view more details and enjoy watching it.
+    - almost every card's image is clickable.
+- Provide info about last updated movies, dramas, or episodes.
+- Enhance the UI.
+- Use ToolTips.
+- Add more components for specific functionality to make code DRY and clean.
+- Use React Hooks like useState, useEffect, useHistory, and useLocation.
+- provide extra information on Movie/Drama Cards, Episode Cards.
+
+
+
 ## Important Links
 
 - [FaveOne Back-End Repo](https://github.com/eman-alatawi/FavOne-BackEnd)
@@ -14,6 +28,7 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
 ## Technologies Used
 
 - React
+- React Hooks
 - React Router DOM
 - ReactPlayer
 - React-Toastify
@@ -33,6 +48,7 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
   - @material-ui/core
   - @material-ui/icons
 - react-animated-css
+- Moment.js
 
 
 ## User Stories
@@ -97,44 +113,53 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
 
 
 ### App Screenshot:
-![main - page](https://drive.google.com/uc?export=view&id=1EGnuTfP3DWApDjflZeXIbV41LYb5Hcf6)
 
-![all movies-dramas ](https://drive.google.com/uc?export=view&id=18yvW6H6X3-ySlYtfFlp5P-XXirQ7TGIN)
-
-![romance movies-dramas ](https://drive.google.com/uc?export=view&id=1lWHHmGKXI5SWou_NN1-4tbJxaX6mwtvJ)
-
-![all actors](https://drive.google.com/uc?export=view&id=1b9TxMgWleFklOLJqdqkxc6Z6PkImp5cz)
-
-![all episodes](https://drive.google.com/uc?export=view&id=1sVnHpp497-cKYoXJSfx8atgr0AZ69K4J)
-
-![all-image-galleries](https://drive.google.com/uc?export=view&id=1Wv64bFiaE_E4zh6cp5OwED1pHbvVVWLa)
-
-![all-movies-drames-genders](https://drive.google.com/uc?export=view&id=1yNNawJ6jd_Ya_Mf-gibjmYzSCxOjeRf_)
-
-![single-drama-details](https://drive.google.com/uc?export=view&id=1LF4SqrxnZh7iTUWJR2OTba6R-iArh965)
-
-![single-episode-details](https://drive.google.com/uc?export=view&id=1cnH7e9ysP9G2GLdZcZdqRXL_ng4VYYQ9)
-
-![search-actor](https://drive.google.com/uc?export=view&id=1MGJwQ_RqRHOCIp_pIEtVom3Aqjn1A6_1)
-
-![add new-episode](https://drive.google.com/uc?export=view&id=1uJXUxw898dko9rmUCiLmsf1JpNSf2xoe)
-
-![add new-episode-poster-dialog](https://drive.google.com/uc?export=view&id=1toi6nbkinCmfuz0tfUzGX-hrQbnBGvPn)
-
-![add new-episode-video-dialog](https://drive.google.com/uc?export=view&id=1ZtP9PSqNmwsM4aQjqJSEej4nKd6fmWMz)
-
-![edit-episode](https://drive.google.com/uc?export=view&id=1qNs1XF7GzDmsqPmQLNNpOYrEPO_fmpeT)
-
-![edit-episode-poster-dialog](https://drive.google.com/uc?export=view&id=1LGo9kIEoyVeLIOCzTsJrt7ck1OFyfoDV)
-
-![edit-episode-video-dialog](https://drive.google.com/uc?export=view&id=1-p6Fm6QY5B1ZFTjhCwz_MI0fdp6JH_89)
-
-![welcome-notification](https://drive.google.com/uc?export=view&id=1cAPVbY1DFy50jHDhnvYJQ5Cvr1H55gLN)
-
-![sayBye-notification](https://drive.google.com/uc?export=view&id=1zXuLNC_iE1de5eiDaJuvWTsRfXaaFk1g)
+<img src="https://drive.google.com/uc?export=view&id=1bHDbKNY3xKJHy2vrGJf9EI0huYKu5Xin" width="200">
 
 
-[see more](https://drive.google.com/drive/folders/18KkLFvYsGL00_7awntJs6SJ_kaKxH82b?usp=sharing)
+<img src="https://drive.google.com/uc?export=view&id=1qvoaR5V_FNFN6Wl1QdBwTe3ZFE_3fS2y" width="200">
+
+
+<img src="https://drive.google.com/uc?export=view&id=1Uw9Z2fA2pBIrPUT-vgRh34iVxF6LQyix" width="200">
+
+
+<img src="https://drive.google.com/uc?export=view&id=1y2Kdy7AbfRFN4VVRQxG0l05GZLH1jF0o" width="200">
+
+
+
+<img src="https://drive.google.com/uc?export=view&id=1_up7pCVAMHL9M1w1SL6vlTiMLS4Vbr8_" width="200">
+
+<img src="https://drive.google.com/uc?export=view&id=1rifmzEsD5rBeR8ET6YLCsdsPFymEe-1w" width="200">
+
+<img src="https://drive.google.com/uc?export=view&id=1GNBhLLVyTFjrtpZmePOpvHcU6o1Hc6Ct" width="200">
+
+<img src="https://drive.google.com/uc?export=view&id=1xDECkCkx4BQOE-pqBKho_gcLxQss5_GJ" width="200">
+
+
+
+<img src="https://drive.google.com/uc?export=view&id=14f0-QiL-c0kaf9Ew_bsaSeXGfR8ze7VZ" width="200">
+
+<img src="https://drive.google.com/uc?export=view&id=1UfJtukD04URctd3PJUnG-yDnXITkN8uO" width="200">
+
+<img src="https://drive.google.com/uc?export=view&id=1fOT1QknAtgC6OZZa-hfu5fBqUBeIa7oB" width="200">
+
+<img src="https://drive.google.com/uc?export=view&id=1waLV-9bnxT53EunxTw-i9tnYWU73oM-k" width="200">
+
+<img src="https://drive.google.com/uc?export=view&id=1S2wFTbKqJjKQE-13QY8srokZdW4BArXh" width="200">
+
+
+<img src="https://drive.google.com/uc?export=view&id=1cffgF-ZLsLdicv44pb7NPN1EPG3sKd4Z" width="200">
+
+<img src="https://drive.google.com/uc?export=view&id=1-0lJQD1bY0giTTid0Cl065C4S9VosUeb" width="200">
+
+
+
+<img src="https://drive.google.com/uc?export=view&id=1tYcEpdbiCZDKp1tqONumYW73K9NSVk3l" width="200">
+
+<img src="https://drive.google.com/uc?export=view&id=17STM4Ho_V42J5thNtiLjwNnzQlHxqR1S" width="200">
+
+
+[see more](https://drive.google.com/drive/folders/1NuVAhMvlw1wUsIhoEwBlNQyYOJJ8sa--?usp=sharing)
 
 ## Video Demo
 [FaveOne v2 Demo](https://drive.google.com/drive/folders/11uK2LeErAlwMaxxMPqED6HKN2xmQYoe3?usp=sharing)
@@ -316,3 +341,30 @@ React component to show or hide elements with animations using Animated.css.
    ```
 
  - [Documentation](https://www.npmjs.com/package/react-animated-css)
+
+ ### 13- Moment.js: 
+ A JavaScript date library for parsing, validating, manipulating, and formatting dates.
+   - In the terminal inside your react app, use the command below: 
+  ```
+ npm install moment
+  ```
+  - Add the import below in the js file you want to use moment:
+   ```js
+   import moment from 'moment';
+   ```
+
+  - here is an example of how to use fromNow() function to show the last Update that happened to the movie drama in the form " 2 hours ago" and so on:
+   ```js
+    const lastUpdate = moment(props.movieDrama.updateAt);
+
+    <div className="bg-blue-400 text-gray-200 text-xs p-2 rounded-b-lg  border-fuchsia-400 absolute transform -translate-x-3.5 shadow-sm">
+        {lastUpdate.fromNow()}
+    </div>
+   ```
+   - it will appear like the image below:
+   ![moment](https://drive.google.com/uc?export=view&id=1alESPYWCkNNTqMc_Ma9Wlf3tiIDu_otA)
+
+  - [Documentation](https://www.npmjs.com/package/moment)
+
+
+

@@ -12,6 +12,11 @@ export default function ActorDetails(props) {
     setActor({ ...actorDetails });
   }, [location]);
 
+  // scroll to the top after render
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   console.log(actor.fullName);
   return (
     <div>
