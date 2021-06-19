@@ -94,8 +94,9 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
 
 ## Images
 
+
 ###  Component Hierarchy:
-![Component Hierarchy](https://i.ibb.co/d5HNKMQ/Fave-One-React-App-Component-Hierarchy-FINAL.jpg)
+![Component Hierarchy](https://drive.google.com/uc?export=view&id=1an7LYFgHVwW_Z3kItTBg5UHGo7AnQzIh)
 
 
 
