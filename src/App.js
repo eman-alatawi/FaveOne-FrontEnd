@@ -26,6 +26,7 @@ import ImageGalleryIndex from "./ImageGallery/ImageGalleryIndex";
 import NewImageGallery from "./ImageGallery/NewImageGallery";
 import ChangePassword from "./user/ChangePassword";
 import dotenv from "dotenv";
+import Profile from "./user/Profile";
 dotenv.config();
 
 export default class App extends Component {
@@ -619,7 +620,7 @@ export default class App extends Component {
             />
           </Route>
           <Route path="/profile">
-          
+            <Profile  user={this.state.user} />
           </Route>
           <Route path="*" component={PageNotFound} />
         </Switch>
