@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import UserAvatar from "./UserAvatar";
 import UserInfoCard from "./UserInfoCard";
 import Footer from "../Shared/Footer";
+import userProfileImage from "../Assest/userProfile.png";
 
 export default function Profile({ user }) {
   const [userInfo, setUserInfo] = useState({});
@@ -30,9 +30,9 @@ export default function Profile({ user }) {
   return (
     <div className="mainBg bg-cover">
       <div className="container flex flex-row justify-between ">
-      <h1 className="text-gray-400 mt-48">Your Profile</h1>
+        <h1 className="text-gray-400 mt-48">Your Profile</h1>
 
-          <img src="https://cdni.iconscout.com/illustration/premium/thumb/concept-of-user-profile-1886533-1597944.png"/>
+        <img src={userProfileImage} />
         <UserInfoCard userInfo={userInfo} />
       </div>
       <Footer />

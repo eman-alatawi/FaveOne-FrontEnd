@@ -68,7 +68,7 @@ function MDRowCard(props) {
     <>
       <Card.Img
         variant="top"
-        className="h-64  w-full object-cover cursor-pointer "
+        className="h-64  w-full object-cover cursor-pointer shadow-lg"
         onClick={() => {
           history.push({
             pathname: `/movieDramaDetails/${props.movieDrama.title}`,
@@ -96,8 +96,8 @@ function MDRowCard(props) {
           {props.movieDrama.type}
         </Card.Text>
 
-        <Card.Text className="group-hover:text-gray-800 text-gray-400">
-          ({props.movieDrama.numOfEpisods}) Episode
+        <Card.Text className="group-hover:text-blue-700 text-blue-400">
+          <span className="text-lg "> ({props.movieDrama.numOfEpisods}) </span> Episode
         </Card.Text>
         <Card.Text className="group-hover:text-gray-800">
           {year.getFullYear()}

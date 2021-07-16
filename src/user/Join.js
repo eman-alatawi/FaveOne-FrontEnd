@@ -16,6 +16,7 @@ import Dialog from "@material-ui/core/Dialog";
 import { Animated } from "react-animated-css";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import { Button } from "@material-ui/core";
+import UserInfoCard from "./UserInfoCard";
 
 class join extends Component {
   state = {
@@ -85,151 +86,157 @@ class join extends Component {
 
   render() {
     return (
-      <div className="  pt-4">
-        <div class="w-full mb-5">
-          <h2 className="text-center opacity-75 text-2xl mb-2">
-            Sign up for an account
-          </h2>
-          <h4 className="text-xs text-center opacity-50 mb-5">
-            In order to use FavOne wesite with full featues, you will need to
-            login to your account. Is this your first time? you can Join Now
-          </h4>
+      <>
+      
+        <div className="container flex flex-row justify-between ">
 
-          <div className="flex flex-col w-4/4 items-center">
-            <TextField
-              id="userName"
-              label="User Name"
-              type="text"
-              name="userName"
-              onChange={this.changeHandler}
-              className="w-96 mb-3"
-              color="primary"
-            />
+          <div class="w-2/4 mb-5 pt-4">
+            <h2 className="text-center opacity-75 text-2xl mb-2">
+              Sign up for an account
+            </h2>
+            <h4 className="text-xs text-center opacity-50 mb-5">
+              In order to use FavOne wesite with full featues, you will need to
+              login to your account. Is this your first time? you can Join Now
+            </h4>
 
-            <TextField
-              id="email"
-              label="Email Address"
-              type="email"
-              name="emailAddress"
-              onChange={this.changeHandler}
-              className="w-96 mb-3"
-              color="primary"
-            />
+            <div className="flex flex-col w-4/4 items-center">
+              <TextField
+                id="userName"
+                label="User Name"
+                type="text"
+                name="userName"
+                onChange={this.changeHandler}
+                className="w-96 mb-3"
+                color="primary"
+              />
 
-            <Tooltip
-              title="Your password must be 8-20 characters long, contain letters and numbers, and
+              <TextField
+                id="email"
+                label="Email Address"
+                type="email"
+                name="emailAddress"
+                onChange={this.changeHandler}
+                className="w-96 mb-3"
+                color="primary"
+              />
+
+              <Tooltip
+                title="Your password must be 8-20 characters long, contain letters and numbers, and
                                     must not contain spaces, special characters, or emoji."
-            >
-              <TextField
-                id="password"
-                label="Password"
-                type="password"
-                name="password"
-                onChange={this.changeHandler}
-                className="w-96 mb-3"
-                color="primary"
-              />
-            </Tooltip>
+              >
+                <TextField
+                  id="password"
+                  label="Password"
+                  type="password"
+                  name="password"
+                  onChange={this.changeHandler}
+                  className="w-96 mb-3"
+                  color="primary"
+                />
+              </Tooltip>
 
-            <Tooltip title="Confirm the password, they should be matched">
-              <TextField
-                id="confirmPassword"
-                label="Confirm Password"
-                type="password"
-                name="confirmPassword"
-                onChange={this.changeHandler}
-                className="w-96 mb-3"
-                color="primary"
-              />
-            </Tooltip>
+              <Tooltip title="Confirm the password, they should be matched">
+                <TextField
+                  id="confirmPassword"
+                  label="Confirm Password"
+                  type="password"
+                  name="confirmPassword"
+                  onChange={this.changeHandler}
+                  className="w-96 mb-3"
+                  color="primary"
+                />
+              </Tooltip>
 
-            <Tooltip title="Click this icon to view your profile image">
-              <TextField
-                id="profileImage"
-                label="Profile Image"
-                type="url"
-                name="profileImage"
-                onChange={this.changeHandler}
-                className="w-96 mb-3"
-                color="primary"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <Animated
-                        animationIn="tada"
-                        animationInDuration={8000}
-                        isVisible={true}
-                      >
-                        <div className=" cursor-pointer transform hover:scale-110 motion-reduce:transform-none">
-                          <ImageOutlinedIcon onClick={this.handleClickOpen} />
-                        </div>
-                      </Animated>
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </Tooltip>
+              <Tooltip title="Click this icon to view your profile image">
+                <TextField
+                  id="profileImage"
+                  label="Profile Image"
+                  type="url"
+                  name="profileImage"
+                  onChange={this.changeHandler}
+                  className="w-96 mb-3"
+                  color="primary"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Animated
+                          animationIn="tada"
+                          animationInDuration={8000}
+                          isVisible={true}
+                        >
+                          <div className=" cursor-pointer transform hover:scale-110 motion-reduce:transform-none">
+                            <ImageOutlinedIcon onClick={this.handleClickOpen} />
+                          </div>
+                        </Animated>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </Tooltip>
 
-            {/* if click on the picture icon show a dialog of the actor picture  */}
-            <Dialog
-              onClose={this.handleClose}
-              aria-labelledby="customized-dialog-title"
-              open={this.state.open}
-            >
-              <div
-                id="customized-dialog-title"
+              {/* if click on the picture icon show a dialog of the actor picture  */}
+              <Dialog
                 onClose={this.handleClose}
-                className="flex flex-row w-full justify-between"
+                aria-labelledby="customized-dialog-title"
+                open={this.state.open}
               >
-                <span className="text-xl self-center pl-2">Profile Image</span>
-                {this.state.open && (
-                  <IconButton aria-label="close" onClick={this.handleClose}>
-                    <CloseIcon />
-                  </IconButton>
-                )}
-              </div>
-              {this.state.profileImage ? (
-                <img src={this.state.profileImage} />
-              ) : (
-                <div className="flex flex-col items-center ">
-                  <InfoOutlinedIcon color="primary" />{" "}
-                  <p className="m-4 text-blue-400">
-                    Add the URL of your profiles image first
-                  </p>
+                <div
+                  id="customized-dialog-title"
+                  onClose={this.handleClose}
+                  className="flex flex-row w-full justify-between"
+                >
+                  <span className="text-xl self-center pl-2">Profile Image</span>
+                  {this.state.open && (
+                    <IconButton aria-label="close" onClick={this.handleClose}>
+                      <CloseIcon />
+                    </IconButton>
+                  )}
                 </div>
-              )}
-            </Dialog>
+                {this.state.profileImage ? (
+                  <img src={this.state.profileImage} />
+                ) : (
+                  <div className="flex flex-col items-center ">
+                    <InfoOutlinedIcon color="primary" />{" "}
+                    <p className="m-4 text-blue-400">
+                      Add the URL of your profiles image first
+                    </p>
+                  </div>
+                )}
+              </Dialog>
 
-            <FormControl className="w-96 mb-3">
-              <InputLabel id="label-of-role">Are You?</InputLabel>
-              <Select
-                labelId="label-of-role"
-                name="userRole"
-                id="userRole"
-                onChange={this.changeHandler}
-              >
-                <MenuItem value="ROLE_USER">User</MenuItem>
-                <MenuItem value="ROLE_ADMIN">Admin</MenuItem>
-              </Select>
-            </FormControl>
+              <FormControl className="w-96 mb-3">
+                <InputLabel id="label-of-role">Are You?</InputLabel>
+                <Select
+                  labelId="label-of-role"
+                  name="userRole"
+                  id="userRole"
+                  onChange={this.changeHandler}
+                >
+                  <MenuItem value="ROLE_USER">User</MenuItem>
+                  <MenuItem value="ROLE_ADMIN">Admin</MenuItem>
+                </Select>
+              </FormControl>
 
-            <div className="flex flex-row w-64 justify-between">
-              <Button variant="outlined" onClick={this.handleClickCancel}>
-                Cancel
-              </Button>
-              <Button
-                type="submit"
-                onClick={this.handleSubmit}
-                variant="contained"
-                color="primary"
-              >
-                Sign Up
-              </Button>
+              <div className="flex flex-row w-64 justify-between">
+                <Button variant="outlined" onClick={this.handleClickCancel}>
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  onClick={this.handleSubmit}
+                  variant="contained"
+                  color="primary"
+                >
+                  Sign Up
+                </Button>
+              </div>
             </div>
           </div>
+          <UserInfoCard userInfo={this.state} />
+
         </div>
         <Footer></Footer>
-      </div>
+      </>
     );
   }
 }
