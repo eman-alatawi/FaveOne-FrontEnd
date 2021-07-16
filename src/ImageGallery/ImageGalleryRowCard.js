@@ -1,7 +1,9 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import { withRouter, useHistory  } from "react-router-dom";
+import { withRouter, useHistory } from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 function ImageGalleryRowCard(props) {
   const history = useHistory();
@@ -9,25 +11,21 @@ function ImageGalleryRowCard(props) {
   const showTool = props.isAuth && (
     <div className="flex flex-row justify-evenly w-full ml-3 ">
       <Tooltip title="Delete Image Gallery">
-        <span
+        <DeleteIcon
           onClick={() => {
             props.deleteImageGallery(props.id);
           }}
           className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
-        >
-          clear
-        </span>
+        />
       </Tooltip>
 
       <Tooltip title="Edit Image Gallery">
-        <span
+        <EditIcon
           onClick={() => {
             props.editView(props.id);
           }}
           className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
-        >
-          create
-        </span>
+        />
       </Tooltip>
     </div>
   );
@@ -44,12 +42,12 @@ function ImageGalleryRowCard(props) {
 
   return (
     <Card style={{ width: "24rem" }} className="ml-3 mr-2  shadow ">
-      <div className="flex flex-row justify-between text-center bg-gray-700 text-gray-300 hover:bg-gray-50 hover:border-transparent hover:shadow-xl group cursor-pointer">
+      <div className=" p-2 flex flex-row justify-between text-center bg-gray-700 text-gray-300 hover:bg-gray-50 hover:border-transparent hover:shadow-xl group cursor-pointer">
         <div>{showTool}</div>
 
         {/* called from ImageGalleryIndex  - Dispay Movie-Drama Title*/}
         {props.moviesDramas && (
-          <div className="mr-4">
+          <div className="mr-4 ">
             {props.moviesDramas.map((md, index) => (
               <div key={index}>
                 {md.imageGalleries.findIndex((x) => x.id == props.id) !==
@@ -74,11 +72,11 @@ function ImageGalleryRowCard(props) {
         )}
 
         {/* called from MDDetails  - Dispay Movie-Drama Title*/}
-        {props.movieDrama && (
+        {/* {props.movieDrama && (
           <div className="group-hover:text-gray-800 w-full text-center">
             {props.movieDrama.title}
           </div>
-        )}
+        )} */}
       </div>
 
       {cardImage}

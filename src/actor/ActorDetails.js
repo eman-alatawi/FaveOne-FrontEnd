@@ -32,7 +32,7 @@ export default function ActorDetails(props) {
           </div>
         </div>
         <div className=" w-full flex flex-col pt-2">
-          <div className=" flex flex-row justify-start w-full mb-4">
+          <div className=" p-4 flex flex-row justify-start w-full mb-4 rounded-lg bg-gray-800 text-gray-300">
             <h1 className="mr-20 text-xl">{actor.fullName}</h1>
             <h1 className="mr-20 text-xl">{actor.dateOfBirth}</h1>
             <h1 className="text-xl">{actor.gender}</h1>
@@ -40,7 +40,7 @@ export default function ActorDetails(props) {
 
           <h1 className="text-xl mb-3">Biography:</h1>
           <p className="text-justify w-5/5 pr-5 h-72 leading-8 overflow-auto">
-            {actor.biography}
+            {actor.biography} 
           </p>
         </div>
       </div>

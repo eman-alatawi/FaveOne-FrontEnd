@@ -3,6 +3,10 @@ import Card from "react-bootstrap/Card";
 import { withRouter, useHistory } from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
 import moment from "moment";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
 function EpisodeRowCard(props) {
   const history = useHistory();
   const lastUpdate = moment(props.episode.updateAt);
@@ -10,18 +14,16 @@ function EpisodeRowCard(props) {
   const showTool = props.isAuth && (
     <div className="flex flex-row justify-evenly w-full ">
       <Tooltip title="Delete Episode">
-        <span
+        <DeleteIcon
           onClick={() => {
             props.deleteEpisode(props.episode.id);
           }}
           className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
-        >
-          clear
-        </span>
+        />
       </Tooltip>
 
       <Tooltip title="More Details">
-        <span
+        <ExpandMoreIcon
           onClick={() => {
             history.push({
               pathname: `/episodeDetails/${props.episode.episodNum}`,
@@ -29,20 +31,16 @@ function EpisodeRowCard(props) {
             });
           }}
           className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
-        >
-          expand_more
-        </span>
+        />
       </Tooltip>
 
       <Tooltip title="Edit Episode">
-        <span
+        <EditIcon
           onClick={() => {
             props.editView(props.episode.id);
           }}
           className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
-        >
-          create
-        </span>
+        />
       </Tooltip>
     </div>
   );

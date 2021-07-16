@@ -11,6 +11,7 @@ import PersonIcon from "@material-ui/icons/Person";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import StarIcon from '@material-ui/icons/Star';
 
 export default function NavBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -36,7 +37,7 @@ export default function NavBar(props) {
             to="/"
             className="text-gray-200 ml-5 mr-11 text-2xl hover:text-pink-600"
           >
-            <span className="material-icons">star</span>FaveOne
+            <StarIcon fontSize="large" />FaveOne
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

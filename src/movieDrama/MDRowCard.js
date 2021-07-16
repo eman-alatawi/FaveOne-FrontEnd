@@ -3,6 +3,9 @@ import Card from "react-bootstrap/Card";
 import { withRouter, useHistory } from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
 import moment from "moment";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 function MDRowCard(props) {
   // console.log("this is props" + { props });
@@ -15,18 +18,16 @@ function MDRowCard(props) {
     (props.email == props.movieDrama.user.emailAddress ? (
       <div className="flex flex-row justify-evenly w-full ">
         <Tooltip title="Delete Drama or Movie">
-          <span
+          <DeleteIcon
             onClick={() => {
               props.deleteMD(props.movieDrama.id);
             }}
             className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
-          >
-            clear
-          </span>
+          />
         </Tooltip>
 
         <Tooltip title="More Details">
-          <span
+          <ExpandMoreIcon
             onClick={() => {
               history.push({
                 pathname: `/movieDramaDetails/${props.movieDrama.title}`,
@@ -34,26 +35,22 @@ function MDRowCard(props) {
               });
             }}
             className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
-          >
-            expand_more
-          </span>
+          />
         </Tooltip>
 
         <Tooltip title="Edit Drama or Movie">
-          <span
+          <EditIcon
             onClick={() => {
               props.editView(props.movieDrama.id);
             }}
             className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
-          >
-            create
-          </span>
+          />
         </Tooltip>
       </div>
     ) : (
       <div className="flex flex-row justify-evenly w-full ">
         <Tooltip title="More Details">
-          <span
+          <ExpandMoreIcon
             onClick={() => {
               history.push({
                 pathname: `/movieDramaDetails/${props.movieDrama.title}`,
@@ -61,9 +58,7 @@ function MDRowCard(props) {
               });
             }}
             className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
-          >
-            expand_more
-          </span>
+          />
         </Tooltip>
       </div>
     ));

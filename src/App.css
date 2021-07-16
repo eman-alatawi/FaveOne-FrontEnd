@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&family=Yomogi&display=swap');
+*{
+  font-family: 'Jost', sans-serif
+ !important
+
+}
 .App {
   text-align: center;
 }

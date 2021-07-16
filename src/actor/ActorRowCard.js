@@ -2,6 +2,9 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import { withRouter, useHistory } from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 function ActorRowCard(props) {
   const year = new Date(props.actor.dateOfBirth);
@@ -10,18 +13,16 @@ function ActorRowCard(props) {
   const showTool = props.isAuth && (
     <div className="flex flex-row justify-evenly w-full ">
       <Tooltip title="Delete Actor">
-        <span
+        <DeleteIcon
           onClick={() => {
             props.deleteActor(props.actor.id);
           }}
           className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
-        >
-          clear
-        </span>
+        />
       </Tooltip>
 
       <Tooltip title="More Details">
-        <span
+        <ExpandMoreIcon
           onClick={() => {
             history.push({
               pathname: `/actorDetails/${props.actor.fullName}`,
@@ -29,20 +30,16 @@ function ActorRowCard(props) {
             });
           }}
           className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
-        >
-          expand_more
-        </span>
+        />
       </Tooltip>
 
       <Tooltip title="Edit Actor">
-        <span
+        <EditIcon
           onClick={() => {
             props.editView(props.actor.id);
           }}
           className="material-icons  cursor-pointer  transform hover:scale-110 motion-reduce:transform-none group-hover:text-black"
-        >
-          create
-        </span>
+        />
       </Tooltip>
     </div>
   );

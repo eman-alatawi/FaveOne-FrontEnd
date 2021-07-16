@@ -39,7 +39,7 @@ export default function MDDetails(props) {
           </div>
         </div>
         <div className=" w-4/5 flex flex-col pt-2 ">
-          <div className=" flex flex-row justify-start w-full pl-1 mb-1  rounded-l-lg bg-gray-700 shadow-xl text-gray-300">
+          <div className=" p-2 flex flex-row justify-start w-full pl-1 mb-1  rounded-l-lg bg-gray-700 shadow-xl text-gray-300">
             <h4 className="mr-20 text-xl">{movieDrama.title}</h4>
             <h5 className="mr-20 text-xl">{year.getFullYear()}</h5>
             <h5 className="mr-2 text-xl">Score: </h5>
@@ -50,7 +50,7 @@ export default function MDDetails(props) {
             {movieDrama.description}
           </p>
 
-          <div className=" flex flex-row justify-start w-full pl-1 rounded-l-lg bg-gray-700 shadow-xl text-gray-300">
+          <div className="p-2 flex flex-row justify-start w-full pl-1 rounded-l-lg bg-gray-700 shadow-xl text-gray-300">
             <h5 className="mr-2 ">Duration: </h5>
             <div className="mr-20 ">{movieDrama.duration}</div>
             <h5 className="mr-2">Content Rating: </h5>
@@ -59,13 +59,13 @@ export default function MDDetails(props) {
             <div className="mr-20 ">{movieDrama.numOfEpisods}</div>
           </div>
         </div>
-        <div className="w-1/12  text-center pt-10 mt-2 mb-4 flex flex-col bg-gray-700 shadow-xl text-gray-300">
+        <div className="w-1/12 h-96 text-center pt-12 mt-2 mb-4 flex flex-col bg-gray-700 shadow-xl text-gray-300">
           <h5 className="text-left pl-1 text-xl">Genders: </h5>
           {movieDrama.genders && (
             <ul className="text-left  h-56 overflow-auto">
               {movieDrama.genders.map((gender, index) => (
                 <li key={index} className="bg-pink-900 my-2 pl-1">
-                  {gender.name}{" "}
+                  {gender.name} {" "}
                 </li>
               ))}
             </ul>
