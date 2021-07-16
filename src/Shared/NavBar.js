@@ -2,11 +2,27 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import Button from "@material-ui/core/Button";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import PersonIcon from "@material-ui/icons/Person";
+import VpnKeyIcon from "@material-ui/icons/VpnKey";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 export default function NavBar(props) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <nav>
       <Navbar
@@ -123,27 +139,48 @@ export default function NavBar(props) {
               <>
                 {props.user && (
                   <Navbar.Text className="mr-5">
-                    {" "}
-                    <span className="text-gray-400">{props.user.sub}</span>{" "}
-                    <Link to="/changePassword">
-                      {" "}
-                      <span className="text-pink-800">
-                        <PersonIcon />{" "}
-                      </span>
-                    </Link>
+                    <div>
+                      <Button
+                        aria-controls="simple-menu"
+                        aria-haspopup="true"
+                        onClick={handleClick}
+                      >
+                        <AccountCircleIcon fontSize="large" color="secondary" />
+                      </Button>
+                      <Menu
+                        id="simple-menu"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                      >
+                        <Link to="/profile">
+                          <MenuItem onClick={handleClose}>
+                            <span className="text-gray-600">
+                              <PersonIcon /> Profile
+                            </span>
+                          </MenuItem>
+                        </Link>
+
+                        <Link to="/changePassword">
+                          <MenuItem onClick={handleClose}>
+                            <span className="text-gray-600">
+                              <VpnKeyIcon /> ChangePassword
+                            </span>
+                          </MenuItem>
+                        </Link>
+
+                        <Link to="/logout" onClick={props.onLogoutHandeler}>
+                          <MenuItem onClick={handleClose}>
+                            <span className="text-gray-600">
+                              <ExitToAppIcon /> Say Bye
+                            </span>
+                          </MenuItem>
+                        </Link>
+                      </Menu>
+                    </div>
                   </Navbar.Text>
                 )}
-
-                <Nav.Link>
-                  {" "}
-                  <Link
-                    to="/logout"
-                    onClick={props.onLogoutHandeler}
-                    className="mr-5 hover:text-gray-200 text-pink-600 text-sm"
-                  >
-                    Say Bye
-                  </Link>
-                </Nav.Link>
               </>
             ) : (
               <>

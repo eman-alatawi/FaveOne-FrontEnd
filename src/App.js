@@ -618,6 +618,9 @@ export default class App extends Component {
               episodes={this.state.episodes}
             />
           </Route>
+          <Route path="/profile">
+          
+          </Route>
           <Route path="*" component={PageNotFound} />
         </Switch>
       </>
