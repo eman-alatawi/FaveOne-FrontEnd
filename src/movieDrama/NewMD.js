@@ -192,7 +192,7 @@ class NewMD extends Component {
     return (
       <div className="formBG bg-cover pt-4">
         <div className="w-full mb-5 ">
-          <h2 className="text-center md:w-2/4   opacity-75 text-xl md:text-2xl mb-4">
+          <h2 className="text-center md:w-2/4  opacity-75 text-xl md:text-2xl mb-4">
             Add New Movie - Drama{" "}
           </h2>
 
@@ -368,7 +368,7 @@ class NewMD extends Component {
                 <Tooltip title="Scroll horizontally for more">
                   <FormLabel component="legend">Actors - Cast</FormLabel>
                 </Tooltip>
-                <FormGroup className="mt-2 grid  md:gap-x-16  md:gap-y-3 h-56 overflow-auto ">
+                <FormGroup className="mt-2 items-start grid  md:gap-x-16  md:gap-y-3 h-56 overflow-auto ">
                   {this.props.actors.map((actor, index) => (
                     <div className="mr-4 mb-3">
                       <input
@@ -388,7 +388,7 @@ class NewMD extends Component {
                 <Tooltip title="Scroll horizontally for more">
                   <FormLabel component="legend">Genders - Catagory</FormLabel>
                 </Tooltip>
-                <FormGroup className="mt-2 grid  md:gap-x-28  md:gap-y-3 h-56 overflow-auto ">
+                <FormGroup className="mt-2 items-start grid  md:gap-x-28  md:gap-y-3 h-56 overflow-auto ">
                   {this.props.genders.map((gender, index) => (
                     <div className="mr-3 mb-3">
                       <input

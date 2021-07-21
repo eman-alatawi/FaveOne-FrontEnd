@@ -173,12 +173,12 @@ export default class EditMD extends Component {
   render() {
     return (
       <div className="formBG bg-cover pt-4">
-        <div className="w-full ">
-          <h2 className="text-left ml-28  opacity-75 text-2xl mb-5">
+        <div className="w-full pb-5">
+          <h2 className="text-center md:w-2/4 text-xl opacity-75 md:text-2xl mb-4">
             Edit Movie - Drama{" "}
           </h2>
-          <div className=" flex flex-row justify-between w-3/4 px-16 pb-5">
-            <div className="flex flex-col w-2/4 items-center">
+          <div className=" flex flex-col md:flex-row justify-between md:w-3/4 px-16">
+            <div className="flex flex-col md:w-2/4 items-center">
               <Tooltip title="Movie or Drama title">
                 <TextField
                   id="title"
@@ -187,7 +187,7 @@ export default class EditMD extends Component {
                   name="title"
                   value={this.state.movieDrama.title}
                   onChange={this.changeHandler}
-                  className="w-96 mb-3"
+                  className="w-48 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
@@ -199,13 +199,13 @@ export default class EditMD extends Component {
                   name="releaseYear"
                   value={this.state.movieDrama.releaseYear}
                   onChange={this.changeHandler}
-                  className="w-96 mb-3"
+                  className="w-48 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
 
               <Tooltip title="Movie or Drama Type">
-                <FormControl className="w-96 mb-3">
+                <FormControl className="w-48 md:w-96 mb-3">
                   <InputLabel id="label-of-type">Type</InputLabel>
                   <Select
                     labelId="label-of-type"
@@ -222,7 +222,7 @@ export default class EditMD extends Component {
 
               <Tooltip title="Maximum 5000 charactor">
                 <TextField
-                  className="w-96 mb-4"
+                  className="w-48 md:w-96 mb-4"
                   id="description"
                   label="Description - about the movie or drama"
                   rowsMax={4}
@@ -241,7 +241,7 @@ export default class EditMD extends Component {
                   name="poster"
                   value={this.state.movieDrama.poster}
                   onChange={this.changeHandler}
-                  className="w-96 mb-3"
+                  className="w-48 md:w-96 mb-3"
                   color="primary"
                   InputProps={{
                     startAdornment: (
@@ -301,7 +301,7 @@ export default class EditMD extends Component {
                   name="duration"
                   value={this.state.movieDrama.duration}
                   onChange={this.changeHandler}
-                  className="w-96 mb-3"
+                  className="w-48 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
@@ -314,13 +314,13 @@ export default class EditMD extends Component {
                   name="numOfEpisods"
                   value={this.state.movieDrama.numOfEpisods}
                   onChange={this.changeHandler}
-                  className="w-96 mb-3"
+                  className="w-48 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
 
               <Tooltip title="Movie or Drama Rate">
-                <FormControl className="w-96 mb-3">
+                <FormControl className="w-48 md:w-96 mb-3">
                   <InputLabel id="label-of-rate">Content Rating</InputLabel>
                   <Select
                     labelId="label-of-rate"
@@ -346,12 +346,97 @@ export default class EditMD extends Component {
                   name="score"
                   value={this.state.movieDrama.score}
                   onChange={this.changeHandler}
-                  className="w-96 mb-5"
+                  className="w-48 md:w-96 mb-5"
                   color="primary"
                 />
               </Tooltip>
 
-              <div className="flex flex-col h-24 items-center justify-between ">
+             
+            </div>
+
+            <div className="flex flex-col  md:w-2/4 bg-white rounded-r-lg px-6 pt-4 justify-evenly ">
+              <FormControl component="fieldset">
+                <Tooltip title="Scroll vertically for more">
+                  <FormLabel component="legend" className="text-left">Actors - Cast</FormLabel>
+                </Tooltip>
+                <FormGroup className="mt-3 items-start grid  md:gap-x-16  md:gap-y-3 h-56 overflow-auto ">
+                  {this.state.movieDrama.actors && (
+                    <>
+                      {this.props.actors.map((actor, index) => (
+                        <div className="mr-4 mb-3">
+                          {this.state.movieDrama.actors.findIndex(
+                            (x) => x.id == actor.id
+                          ) == -1 ? (
+                            <>
+                              <input
+                                className="mr-2 "
+                                type="checkbox"
+                                name="actors"
+                                value={index}
+                                onChange={this.changeHandler}
+                              />
+                              {actor.fullName}
+                            </>
+                          ) : (
+                            <>
+                              <input
+                                className="mr-2"
+                                type="checkbox"
+                                checked
+                                name="actors"
+                                value={index}
+                                onChange={this.changeHandler}
+                              />
+                              {actor.fullName}
+                            </>
+                          )}
+                        </div>
+                      ))}
+                    </>
+                  )}
+                </FormGroup>
+              </FormControl>
+
+              <FormControl component="fieldset">
+                <Tooltip title="Scroll horizontally for more">
+                  <FormLabel component="legend" className="text-left">Genders - Catagory</FormLabel>
+                </Tooltip>
+                <FormGroup className="mt-3 items-start grid  md:gap-x-28  md:gap-y-3 h-56 overflow-auto ">
+                  {this.props.genders.map((gender, index) => (
+                    <div className="mr-3 mb-3">
+                      {this.state.movieDrama.genders.findIndex(
+                        (x) => x.id == gender.id
+                      ) == -1 ? (
+                        <>
+                          <input
+                            className="mr-2"
+                            type="checkbox"
+                            name="genders"
+                            value={index}
+                            onChange={this.changeHandler}
+                          />
+                          {gender.name}
+                        </>
+                      ) : (
+                        <>
+                          <input
+                            className="mr-2"
+                            type="checkbox"
+                            checked
+                            name="genders"
+                            value={index}
+                            onChange={this.changeHandler}
+                          />
+                          {gender.name}
+                        </>
+                      )}
+                    </div>
+                  ))}
+                </FormGroup>
+              </FormControl>
+            </div>
+          </div>
+          <div className="flex flex-col md:w-2/4 h-24 items-center justify-between ">
                 <Button
                   onClick={this.handleSubmit}
                   variant="contained"
@@ -363,90 +448,6 @@ export default class EditMD extends Component {
                   Cancel
                 </Button>
               </div>
-            </div>
-
-            <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-3 justify-evenly ">
-              <FormControl component="fieldset">
-                <Tooltip title="Scroll vertically for more">
-                  <FormLabel component="legend">Actors - Cast</FormLabel>
-                </Tooltip>
-                <FormGroup className="grid  gap-x-16  gap-y-3 h-56 overflow-auto ">
-                  {this.state.movieDrama.actors && (
-                    <>
-                      {this.props.actors.map((actor, index) => (
-                        <div>
-                          {this.state.movieDrama.actors.findIndex(
-                            (x) => x.id == actor.id
-                          ) == -1 ? (
-                            <div className="mr-4 mb-3"> 
-                              <input
-                                className="mr-2 "
-                                type="checkbox"
-                                name="actors"
-                                value={index}
-                                onChange={this.changeHandler}
-                              />
-                              {actor.fullName}
-                            </div>
-                          ) : (
-                            <div className="mr-4 mb-3">
-                              <input
-                                className="mr-2"
-                                type="checkbox"
-                                checked
-                                name="actors"
-                                value={index}
-                                onChange={this.changeHandler}
-                              />
-                              {actor.fullName}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </>
-                  )}
-                </FormGroup>
-              </FormControl>
-
-              <FormControl component="fieldset">
-                <Tooltip title="Scroll horizontally for more">
-                  <FormLabel component="legend">Genders - Catagory</FormLabel>
-                </Tooltip>
-                <FormGroup className="grid  gap-x-28  gap-y-3 h-56 overflow-auto ">
-                  {this.props.genders.map((gender, index) => (
-                    <div>
-                      {this.state.movieDrama.genders.findIndex(
-                        (x) => x.id == gender.id
-                      ) == -1 ? (
-                        <div className="mr-3 mb-3">
-                          <input
-                            className="mr-2"
-                            type="checkbox"
-                            name="genders"
-                            value={index}
-                            onChange={this.changeHandler}
-                          />
-                          {gender.name}
-                        </div>
-                      ) : (
-                        <div className="mr-3 mb-3">
-                          <input
-                            className="mr-2"
-                            type="checkbox"
-                            checked
-                            name="genders"
-                            value={index}
-                            onChange={this.changeHandler}
-                          />
-                          {gender.name}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </FormGroup>
-              </FormControl>
-            </div>
-          </div>
         </div>
       </div>
     );
