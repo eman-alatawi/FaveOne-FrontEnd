@@ -139,7 +139,7 @@ export default class MDIndex extends Component {
   render() {
     return (
       <div className="mainBg bg-cover">
-        <div className="w-full">
+        <div className="w-full text-center">
           {!this.state.isEdit && (
             <div className=" md:h-48 pb-3 px-5  overflow-y-scroll ">
               <GendersList
@@ -165,8 +165,8 @@ export default class MDIndex extends Component {
                       </h3>
                     </div>
                   ) : (
-                    <div className=" h-full w-full pl-11  inline-grid grid-cols-1 md:grid-cols-5 md:gap-x-2  gap-y-10  mb-4 ">
-                      {this.state.searchedMDs.map((md, index) => (
+                    <div className="h-full w-full flex flex-col items-center md:px-10 md:inline-grid md:grid-cols-5 md:gap-x-2  gap-y-10  mb-4">
+                    {this.state.searchedMDs.map((md, index) => (
                         <div key={index}>
                           <MDRowCard
                             email={this.props.emailAddress}
@@ -181,8 +181,8 @@ export default class MDIndex extends Component {
                   )}
                 </div>
               ) : (
-                <div className="h-full w-full pl-11  inline-grid grid-cols-1 md:grid-cols-5 md:gap-x-2  gap-y-10  mb-4">
-                  {this.state.moviesDramas
+                <div className="h-full w-full flex flex-col items-center md:px-10 md:inline-grid md:grid-cols-5 md:gap-x-2  gap-y-10  mb-4">
+                {this.state.moviesDramas
                   .map((md, index) => (
                     <div key={index}>
                       <MDRowCard
