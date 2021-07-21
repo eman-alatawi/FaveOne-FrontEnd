@@ -92,7 +92,7 @@ class ChangePassword extends Component {
   render() {
     return (
       <div className="pt-4">
-        <div class="w-full mb-5">
+        <div class="w-full mb-5 px-5">
           <h2 className="text-center opacity-75 text-2xl mb-2">
             Change Your Account's Password
           </h2>
@@ -107,7 +107,7 @@ class ChangePassword extends Component {
               type="password"
               name="oldPassword"
               onChange={this.changeHandler}
-              className="w-96 mb-3"
+              className="w-48 md:w-96 mb-3"
               color="primary"
             />
 
@@ -121,7 +121,7 @@ class ChangePassword extends Component {
                 type="password"
                 name="password"
                 onChange={this.changeHandler}
-                className="w-96 mb-3"
+                className="w-48 md:w-96 mb-3"
                 color="primary"
               />
             </Tooltip>
@@ -133,12 +133,12 @@ class ChangePassword extends Component {
                 type="password"
                 name="confirmPassword"
                 onChange={this.changeHandler}
-                className="w-96 mb-4"
+                className="w-48 md:w-96 mb-4"
                 color="primary"
               />
             </Tooltip>
 
-            <div className="flex flex-row  w-72 justify-between">
+            <div className="mt-2 flex flex-col md:flex-row  w-72 justify-between">
               <Button variant="outlined" onClick={this.handleClickCancel}>
                 Cancel
               </Button>
@@ -147,6 +147,7 @@ class ChangePassword extends Component {
                 onClick={this.submitHandler}
                 variant="contained"
                 color="primary"
+                className="order-first mb-3"
               >
                 Change Password
               </Button>
