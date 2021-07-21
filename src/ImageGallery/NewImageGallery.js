@@ -92,11 +92,11 @@ class NewImageGallery extends Component {
     return (
       <div className="formBG bg-cover pt-4">
         <div class="w-full mb-5 ">
-          <h2 className="text-left ml-28  opacity-75 text-2xl mb-5">
+          <h2 className="text-center md:w-2/4 opacity-75 text-xl md:text-2xl mb-5">
             Add New Image Gallery{" "}
           </h2>
-          <div className=" flex flex-row  justify-between w-3/4 px-16">
-            <div className="flex flex-col w-2/4 items-center">
+          <div className=" flex flex-col md:flex-row justify-between md:w-3/4 px-16">
+            <div className="flex flex-col md:w-2/4 items-center">
               <Tooltip title="Click this icon to view the image">
                 <TextField
                   id="imageUrl"
@@ -104,7 +104,7 @@ class NewImageGallery extends Component {
                   type="text"
                   name="imageUrl"
                   onChange={this.changeHandler}
-                  className="w-96 mb-5"
+                  className="w-56 md:w-96 mb-5"
                   color="primary"
                   InputProps={{
                     startAdornment: (
@@ -155,26 +155,13 @@ class NewImageGallery extends Component {
                   </div>
                 )}
               </Dialog>
-
-              <div className="flex flex-col h-24 items-center justify-between ">
-                <Button
-                  onClick={this.handleSubmit}
-                  variant="contained"
-                  color="primary"
-                >
-                  Add Image Gallery
-                </Button>
-                <Button variant="outlined" onClick={this.handleClickCancel}>
-                  Cancel
-                </Button>
-              </div>
             </div>
-            <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-4">
+            <div className="flex flex-col md:w-2/4 bg-white rounded-r-lg px-6 pt-2">
               <FormControl component="fieldset">
                 <Tooltip title="Scroll horizontally for more">
                   <FormLabel component="legend">Movie or Drama Title</FormLabel>
                 </Tooltip>
-                <FormGroup className="grid  gap-x-10  gap-y-2 h-48 overflow-auto ">
+                <FormGroup className="my-3 grid  gap-x-10  gap-y-2 h-48 overflow-auto ">
                   {this.props.moviesDramas.map((md, index) => (
                     <div>
                       <input
@@ -191,6 +178,19 @@ class NewImageGallery extends Component {
                 </FormGroup>
               </FormControl>
             </div>
+          </div>
+
+          <div className="flex flex-col md:w-2/4 h-24 items-center justify-between ">
+            <Button
+              onClick={this.handleSubmit}
+              variant="contained"
+              color="primary"
+            >
+              Add Image Gallery
+            </Button>
+            <Button variant="outlined" onClick={this.handleClickCancel}>
+              Cancel
+            </Button>
           </div>
         </div>
         <Footer></Footer>
