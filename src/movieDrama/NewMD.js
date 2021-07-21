@@ -191,13 +191,13 @@ class NewMD extends Component {
   render() {
     return (
       <div className="formBG bg-cover pt-4">
-        <div className="w-full mb-5">
-          <h2 className="text-left ml-28 opacity-75 text-2xl mb-4">
+        <div className="w-full mb-5 ">
+          <h2 className="text-center md:text-left md:ml-28 opacity-75 text-2xl mb-4">
             Add New Movie - Drama{" "}
           </h2>
 
-          <div className="flex flex-row  justify-between w-3/4 px-16">
-            <div className="flex flex-col w-2/4 items-center">
+          <div className="flex flex-col md:flex-row  justify-between md:w-3/4 px-16">
+            <div className="flex flex-col md:w-2/4 items-center">
               <Tooltip title="Movie or Drama title">
                 <TextField
                   id="title"
@@ -205,7 +205,7 @@ class NewMD extends Component {
                   type="text"
                   name="title"
                   onChange={this.changeHandler}
-                  className="w-96 mb-3"
+                  className="w-48 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
@@ -216,13 +216,13 @@ class NewMD extends Component {
                   type="date"
                   name="releaseYear"
                   onChange={this.changeHandler}
-                  className="w-96 mb-3"
+                  className="w-48 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
 
               <Tooltip title="Movie or Drama Type">
-                <FormControl className="w-96 mb-3">
+                <FormControl className="w-48 md:w-96 mb-3">
                   <InputLabel id="label-of-type">Type</InputLabel>
                   <Select
                     labelId="label-of-type"
@@ -238,7 +238,7 @@ class NewMD extends Component {
 
               <Tooltip title="Maximum 5000 charactor">
                 <TextField
-                  className="w-96 mb-4"
+                  className="w-48 md:w-96 mb-4"
                   id="description"
                   label="Description - about the movie or drama"
                   rowsMax={4}
@@ -255,7 +255,7 @@ class NewMD extends Component {
                   type="url"
                   name="poster"
                   onChange={this.changeHandler}
-                  className="w-96 mb-3"
+                  className="w-48 md:w-96 mb-3"
                   color="primary"
                   InputProps={{
                     startAdornment: (
@@ -314,7 +314,7 @@ class NewMD extends Component {
                   type="text"
                   name="duration"
                   onChange={this.changeHandler}
-                  className="w-96 mb-3"
+                  className="w-48 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
@@ -326,13 +326,13 @@ class NewMD extends Component {
                   type="number"
                   name="numOfEpisods"
                   onChange={this.changeHandler}
-                  className="w-96 mb-3"
+                  className="w-48 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
 
               <Tooltip title="Movie or Drama Rate">
-                <FormControl className="w-96 mb-3">
+                <FormControl className="w-48 md:w-96 mb-3">
                   <InputLabel id="label-of-rate">Content Rating</InputLabel>
                   <Select
                     labelId="label-of-rate"
@@ -357,31 +357,18 @@ class NewMD extends Component {
                   type="text"
                   name="score"
                   onChange={this.changeHandler}
-                  className="w-96 mb-5"
+                  className="w-48 md:w-96 mb-5"
                   color="primary"
                 />
               </Tooltip>
-
-              <div className="flex flex-col h-24 items-center justify-between ">
-                <Button
-                  onClick={this.handleSubmit}
-                  variant="contained"
-                  color="primary"
-                >
-                  Add Movie - Drama
-                </Button>
-                <Button variant="outlined" onClick={this.handleClickCancel}>
-                  Cancel
-                </Button>
-              </div>
             </div>
 
-            <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-4 justify-evenly">
+            <div className="flex flex-col md:w-2/4 bg-white rounded-r-lg px-6 pt-4 justify-evenly">
               <FormControl component="fieldset">
                 <Tooltip title="Scroll horizontally for more">
                   <FormLabel component="legend">Actors - Cast</FormLabel>
                 </Tooltip>
-                <FormGroup className="grid  gap-x-16  gap-y-3 h-56 overflow-auto ">
+                <FormGroup className="mt-2 grid  md:gap-x-16  md:gap-y-3 h-56 overflow-auto ">
                   {this.props.actors.map((actor, index) => (
                     <div className="mr-4 mb-3">
                       <input
@@ -401,7 +388,7 @@ class NewMD extends Component {
                 <Tooltip title="Scroll horizontally for more">
                   <FormLabel component="legend">Genders - Catagory</FormLabel>
                 </Tooltip>
-                <FormGroup className="grid  gap-x-28  gap-y-3 h-56 overflow-auto ">
+                <FormGroup className="mt-2 grid  md:gap-x-28  md:gap-y-3 h-56 overflow-auto ">
                   {this.props.genders.map((gender, index) => (
                     <div className="mr-3 mb-3">
                       <input
@@ -417,6 +404,19 @@ class NewMD extends Component {
                 </FormGroup>
               </FormControl>
             </div>
+
+          </div>
+          <div className="flex flex-col md:w-2/4 h-24 items-center justify-between">
+            <Button
+              onClick={this.handleSubmit}
+              variant="contained"
+              color="primary"
+            >
+              Add Movie - Drama
+            </Button>
+            <Button variant="outlined" onClick={this.handleClickCancel}>
+              Cancel
+            </Button>
           </div>
         </div>
         <Footer></Footer>
