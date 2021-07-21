@@ -631,7 +631,7 @@ export default class App extends Component {
 
 function HomeSections(props) {
   return (
-    <div>
+    <>
       <MovieDramaSection moviesDramas={props.moviesDramas}></MovieDramaSection>
       <ActorSection actors={props.actors} isAuth={props.isAuth}></ActorSection>
       <EpisodeSection
@@ -639,7 +639,7 @@ function HomeSections(props) {
         moviesDramas={props.moviesDramas}
       ></EpisodeSection>
       <Footer></Footer>
-    </div>
+    </>
   );
 }
 

@@ -3,14 +3,14 @@ import ActorRowCard from "./ActorRowCard";
 export default class ActorSection extends Component {
   render() {
     return (
-      <div className="h-2/5 px-10 py-3  bg-blue-200 flex flex-row shadow-sm bg-cover bg-center actorSection  w-full overflow-x-scroll ">
-        <div className="h-48 w-36 ">
-          <h3 className=" my-36 text-xl  mr-2 text-center text-white">
+      <div className="max-w-md mx-auto h-2/5 px-12 py-4  flex flex-col md:flex-row shadow-sm bg-cover bg-center actorSection md:max-w-full">
+        <div className="md:h-48 md:w-24 md:p-2 ">
+          <h3 className="text-xl md:my-36 md:mx-3 text-center text-white">
             Actors
           </h3>
         </div>
 
-        <div className="flex flex-row ">
+        <div className="flex flex-row  overflow-x-scroll">
           {this.props.actors.map((actor, index) => (
             <div key={index}>
               <ActorRowCard actor={actor}></ActorRowCard>

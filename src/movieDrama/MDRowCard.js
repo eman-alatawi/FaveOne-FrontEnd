@@ -68,7 +68,7 @@ function MDRowCard(props) {
     <>
       <Card.Img
         variant="top"
-        className="h-64  w-full object-cover cursor-pointer shadow-lg"
+        className="h-64  w-full object-cover cursor-pointer"
         onClick={() => {
           history.push({
             pathname: `/movieDramaDetails/${props.movieDrama.title}`,
@@ -85,10 +85,10 @@ function MDRowCard(props) {
   );
 
   return (
-    <Card style={{ width: "14rem" }} className="ml-3 mr-4 shadow ">
+    <Card className="mx-3.5  md:my-3 shadow w-64 md:w-56 ">
       {cardImage}
       <Card.Body className="text-center bg-pink-900 text-gray-300 hover:bg-gray-50 hover:border-transparent hover:shadow-xl group rounded-b-lg">
-        <Card.Title className="group-hover:text-gray-800  whitespace-normal h-16 overflow-auto text-center">
+        <Card.Title className="group-hover:text-gray-800  whitespace-normal h-6 overflow-auto text-center">
           {props.movieDrama.title}
         </Card.Title>
         <hr></hr>
