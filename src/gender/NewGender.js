@@ -49,8 +49,8 @@ export default class NewGender extends Component {
 
   render() {
     return (
-      <div>
-        <div class="container-sm flex flex-col md:w-2/4 items-center bg-white rounded-r-lg px-6 py-4 border-2  border-dashed   border-gray-300">
+      <div className="w-full flex justify-center">
+        <div class=" flex flex-col md:w-2/4 items-center bg-white rounded-r-lg px-6 py-4 border-2  border-dashed   border-gray-300">
           <h2 className="text-center opacity-75 text-xl md:text-2xl mb-3">
             Add New Catagory
           </h2>
