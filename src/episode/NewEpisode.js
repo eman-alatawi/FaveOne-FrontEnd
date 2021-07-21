@@ -141,7 +141,7 @@ class NewEpisode extends Component {
                   type="url"
                   name="thumbnail"
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                   InputProps={{
                     startAdornment: (
@@ -206,7 +206,7 @@ class NewEpisode extends Component {
                   type="url"
                   name="episodeVideoUrl"
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                   InputProps={{
                     startAdornment: (
@@ -278,7 +278,7 @@ class NewEpisode extends Component {
                   type="number"
                   name="episodNum"
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>

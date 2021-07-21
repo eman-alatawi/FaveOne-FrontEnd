@@ -26,7 +26,7 @@ export default class EditEpisode extends Component {
       openVideo: false,
       numofEps: "",
       dmTilte: "",
-      dmType: ""
+      dmType: "",
     };
   }
 
@@ -72,7 +72,7 @@ export default class EditEpisode extends Component {
       movieDrama: updatedEpisode,
       numofEps: this.state.episode.movieDrama.numOfEpisods,
       dmTilte: this.state.episode.movieDrama.title,
-      dmType: this.state.episode.movieDrama.type
+      dmType: this.state.episode.movieDrama.type,
     });
   };
 
@@ -86,7 +86,6 @@ export default class EditEpisode extends Component {
     var thumbnail = document.getElementById("thumbnail").value;
     var episodeVideoUrl = document.getElementById("episodeVideoUrl").value;
     var episodNum = document.getElementById("episodNum").value;
-
 
     if (episodNum < 1) {
       swal("Wrong!!", "The Episode number should be 1 or more", "error");
@@ -141,13 +140,13 @@ export default class EditEpisode extends Component {
   render() {
     return (
       <div className="formBG bg-cover pt-4">
-        <div class="w-full ">
-          <h2 className="text-left ml-28 opacity-75 text-2xl mb-5">
+        <div class="w-full mb-5">
+          <h2 className="text-center md:w-2/4 opacity-75 text-xl md:text-2xl mb-5">
             Edit Episode{" "}
           </h2>
 
-          <div className=" flex flex-row  justify-between w-3/4 px-16 pb-5">
-            <div className="flex flex-col w-2/4 items-center">
+          <div className=" flex flex-col md:flex-row  justify-between md:w-3/4 px-16 pb-5">
+            <div className="flex flex-col md:w-2/4 items-center">
               <Tooltip title="Click this icon to view the poster">
                 <TextField
                   id="thumbnail"
@@ -156,7 +155,7 @@ export default class EditEpisode extends Component {
                   name="thumbnail"
                   value={this.state.episode.thumbnail}
                   onChange={this.changeHandler}
-                  className="w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                   InputProps={{
                     startAdornment: (
@@ -222,7 +221,7 @@ export default class EditEpisode extends Component {
                   name="episodeVideoUrl"
                   value={this.state.episode.episodeVideoUrl}
                   onChange={this.changeHandler}
-                  className="w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                   InputProps={{
                     startAdornment: (
@@ -285,7 +284,9 @@ export default class EditEpisode extends Component {
                 )}
               </Dialog>
 
-              <Tooltip title={`${this.state.dmTilte} ${this.state.dmType} has ${this.state.numofEps} total episodes `}>
+              <Tooltip
+                title={`${this.state.dmTilte} ${this.state.dmType} has ${this.state.numofEps} total episodes `}
+              >
                 <TextField
                   id="episodNum"
                   label="Episod Number"
@@ -293,30 +294,17 @@ export default class EditEpisode extends Component {
                   name="episodNum"
                   value={this.state.episode.episodNum}
                   onChange={this.changeHandler}
-                  className="w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
-
-              <div className="flex flex-col h-24 items-center justify-between ">
-                <Button
-                  onClick={this.handleSubmit}
-                  variant="contained"
-                  color="primary"
-                >
-                  Edit Episode
-                </Button>
-                <Button variant="outlined" onClick={this.handleClickCancel}>
-                  Cancel
-                </Button>
-              </div>
             </div>
-            <div className="flex flex-col w-2/4 bg-white rounded-r-lg px-6 pt-4">
+            <div className="flex flex-col md:w-2/4 bg-white rounded-r-lg px-6 pt-4">
               <FormControl component="fieldset">
                 <Tooltip title="Scroll horizontally for more">
                   <FormLabel component="legend">Movie or Drama Title</FormLabel>
                 </Tooltip>
-                <FormGroup className="grid  gap-x-10  gap-y-3 h-56 overflow-auto ">
+                <FormGroup className="mt-2 grid  gap-x-10  gap-y-3 h-56 overflow-auto ">
                   {this.props.moviesDramas.map((md, index) => (
                     <div>
                       {md.episodes.findIndex(
@@ -350,6 +338,18 @@ export default class EditEpisode extends Component {
                 </FormGroup>
               </FormControl>
             </div>
+          </div>
+          <div className="flex flex-col md:w-2/4 h-24 items-center justify-between ">
+            <Button
+              onClick={this.handleSubmit}
+              variant="contained"
+              color="primary"
+            >
+              Edit Episode
+            </Button>
+            <Button variant="outlined" onClick={this.handleClickCancel}>
+              Cancel
+            </Button>
           </div>
         </div>
       </div>
