@@ -3,12 +3,12 @@ import SectionDivider from "./SectionDivider";
 
 export default function HomeBanner() {
   return (
-    <div className="relative shadow ">
+    <div className="relative shadow pt-14 ">
       <img
         className="h-72 w-full object-cover"
         src="https://coverfiles.alphacoders.com/161/thumb-1920-161470.jpg"
       ></img>
-      <h1 className="text-center absolute top-24 left-5 right-5 md:left-28 md:right-28 text-gray-200 sm:text-4xl text-lg textShadow ">
+      <h1 className="text-center absolute top-40 left-5 right-5 md:left-28 md:right-28 text-gray-200 sm:text-4xl text-lg textShadow ">
         {" "}
         Welcome :) This is your place, share your favorite movies, dramas,
         actors with the world

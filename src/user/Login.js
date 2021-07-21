@@ -22,7 +22,7 @@ class Login extends Component {
   render() {
     return (
       <div className=" pt-4">
-        <div className="container flex flex-col items-center md:flex-row justify-between mb-5">
+        <div className="container flex flex-col items-center justify-between mb-5">
           <h2 className="text-center opacity-75 text-xl md:text-2xl mb-2">
             Login for your account
           </h2>

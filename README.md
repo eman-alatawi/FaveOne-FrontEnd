@@ -1,20 +1,10 @@
-# FaveOne - V2.1
+# FaveOne - V3
 Your place of your favorite Movie/Drama/Episode/Actor. The users can add their favorite movies, dramas, episodes, and actors and share them with the world. (FaveOne) is the shortcut of Favorite One, nice name right? :)
 
 ## New Features:
-- More Routes to easily navigate between different sections of the website.
-    - The user can click on the drama/movie card's image to view more details about it.
-    - The user can click on the episode card's image to view more details and enjoy watching it.
-    - almost every card's image is clickable.
-- Provide info about last updated movies, dramas, or episodes.
-- Enhance the UI.
-- Use ToolTips.
-- Add more components for specific functionality to make code DRY and clean.
-- Use React Hooks like useState, useEffect, useHistory, and useLocation.
-- provide extra information on Movie/Drama Cards, Episode Cards.
-
-
-
+- Responsive Design for mobile, small and medium devices
+- Add User-Profile feature.
+- Various improvements in the UI
 ## Important Links
 
 - [FaveOne Back-End Repo](https://github.com/eman-alatawi/FavOne-BackEnd)
@@ -115,52 +105,19 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
 
 ### App Screenshot:
 
-<img src="https://drive.google.com/uc?export=view&id=1bHDbKNY3xKJHy2vrGJf9EI0huYKu5Xin" width="400">
+<img src="https://drive.google.com/uc?export=view&id=11FQW2Skg-5OyxSbQVlzwqV4Br2MhTIpa" width="400">
+
+<img src="https://drive.google.com/uc?export=view&id=1vI2dG-kmzzNHQlDrDZ_DQh3lbZ_XO09r" width="400">
+
+<img src="https://drive.google.com/uc?export=view&id=1Y0iG0EWJKgjRquy7QGzBIWGYDBH_gsFc" width="400">
 
 
-<img src="https://drive.google.com/uc?export=view&id=1qvoaR5V_FNFN6Wl1QdBwTe3ZFE_3fS2y" width="400">
+<img src="https://drive.google.com/uc?export=view&id=14lPEKZsh8GjmhfBR4yO55KjQ8B9VUE4I" width="400">
 
 
-<img src="https://drive.google.com/uc?export=view&id=1Uw9Z2fA2pBIrPUT-vgRh34iVxF6LQyix" width="400">
-
-
-<img src="https://drive.google.com/uc?export=view&id=1y2Kdy7AbfRFN4VVRQxG0l05GZLH1jF0o" width="400">
-
-
-
-<img src="https://drive.google.com/uc?export=view&id=1_up7pCVAMHL9M1w1SL6vlTiMLS4Vbr8_" width="400">
-
-<img src="https://drive.google.com/uc?export=view&id=1rifmzEsD5rBeR8ET6YLCsdsPFymEe-1w" width="400">
-
-<img src="https://drive.google.com/uc?export=view&id=1GNBhLLVyTFjrtpZmePOpvHcU6o1Hc6Ct" width="400">
-
-<img src="https://drive.google.com/uc?export=view&id=1xDECkCkx4BQOE-pqBKho_gcLxQss5_GJ" width="400">
-
-
-
-<img src="https://drive.google.com/uc?export=view&id=14f0-QiL-c0kaf9Ew_bsaSeXGfR8ze7VZ" width="400">
-
-<img src="https://drive.google.com/uc?export=view&id=1UfJtukD04URctd3PJUnG-yDnXITkN8uO" width="400">
-
-<img src="https://drive.google.com/uc?export=view&id=1fOT1QknAtgC6OZZa-hfu5fBqUBeIa7oB" width="400">
-
-<img src="https://drive.google.com/uc?export=view&id=1waLV-9bnxT53EunxTw-i9tnYWU73oM-k" width="400">
-
-<img src="https://drive.google.com/uc?export=view&id=1S2wFTbKqJjKQE-13QY8srokZdW4BArXh" width="400">
-
-
-<img src="https://drive.google.com/uc?export=view&id=1cffgF-ZLsLdicv44pb7NPN1EPG3sKd4Z" width="400">
-
-<img src="https://drive.google.com/uc?export=view&id=1-0lJQD1bY0giTTid0Cl065C4S9VosUeb" width="400">
-
-
-
-<img src="https://drive.google.com/uc?export=view&id=1tYcEpdbiCZDKp1tqONumYW73K9NSVk3l" width="400">
 
 <img src="https://drive.google.com/uc?export=view&id=17STM4Ho_V42J5thNtiLjwNnzQlHxqR1S" width="400">
 
-
-[see more](https://drive.google.com/drive/folders/1NuVAhMvlw1wUsIhoEwBlNQyYOJJ8sa--?usp=sharing)
 
 ## Video Demo
 [FaveOne v2 Demo](https://drive.google.com/drive/folders/11uK2LeErAlwMaxxMPqED6HKN2xmQYoe3?usp=sharing)

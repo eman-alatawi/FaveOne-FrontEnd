@@ -25,7 +25,7 @@ export default function NavBar(props) {
   };
 
   return (
-    <nav>
+    <nav className="fixed z-20 w-full">
       <Navbar
         collapseOnSelect
         expand="lg"
