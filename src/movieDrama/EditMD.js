@@ -355,7 +355,7 @@ export default class EditMD extends Component {
             </div>
 
             <div className="flex flex-col  md:w-2/4 bg-white rounded-r-lg px-6 pt-4 justify-evenly ">
-              <FormControl component="fieldset">
+              <FormControl component="fieldset" className="mb-3">
                 <Tooltip title="Scroll vertically for more">
                   <FormLabel component="legend" className="text-left">Actors - Cast</FormLabel>
                 </Tooltip>

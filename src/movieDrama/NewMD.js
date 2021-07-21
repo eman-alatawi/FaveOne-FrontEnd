@@ -364,7 +364,7 @@ class NewMD extends Component {
             </div>
 
             <div className="flex flex-col md:w-2/4 bg-white rounded-r-lg px-6 pt-4 justify-evenly">
-              <FormControl component="fieldset">
+              <FormControl component="fieldset" className="mb-3">
                 <Tooltip title="Scroll horizontally for more">
                   <FormLabel component="legend">Actors - Cast</FormLabel>
                 </Tooltip>
