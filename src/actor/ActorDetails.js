@@ -27,8 +27,8 @@ export default function ActorDetails(props) {
             src={actor.picture}
           />
           <div className="w-full  flex flex-col text-center py-1">
-            <h1 className="text-xl">Social Account:</h1>
-            <p>{actor.socialAccount}</p>
+            <h1 className="text-xl">Social Account</h1>
+            <p>{`${actor.socialAccount === '-' ? "Doesn't have any social account" : actor.socialAccount}`}</p>
           </div>
         </div>
         <div className=" w-full flex flex-col pt-2">
@@ -38,7 +38,7 @@ export default function ActorDetails(props) {
             <h1 className="text-xl">{actor.gender}</h1>
           </div>
 
-          <h1 className="text-2xl mb-3 px-4 ">Biography:</h1>
+          <h1 className="text-2xl mb-3 px-4 ">Biography</h1>
           <p className="text-justify w-5/5 px-4 h-72 leading-8 overflow-auto">
             {actor.biography} 
           </p>
@@ -48,7 +48,7 @@ export default function ActorDetails(props) {
       {actor.movieDramas && (
         <div className=" flex flex-col items-center md:items-start  bg-gray-800  rounded-lg shadow p-10  w-full overflow-x-scroll ">
           <h4 className="text-gray-300 mb-3 text-xl ml-3">
-            Related Movies/Dramas:
+            Related Movies/Dramas
           </h4>
           <div className="flex flex-col gap-y-3 md:flex-row ">
             {" "}

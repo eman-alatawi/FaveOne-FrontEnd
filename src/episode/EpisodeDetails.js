@@ -105,7 +105,7 @@ export default function EpisodeDetails(props) {
         </div>
 
         <div className="md:w-2/12 w-full text-center pt-10 mt-2 mb-4 flex flex-col bg-gray-700 shadow-xl text-gray-300">
-          <h5 className="text-center">All Episodes: </h5>
+          <h5 className="text-center">All Episodes </h5>
 
           <ul className="text-left  h-72 overflow-auto">{relatedEpisodes}</ul>
         </div>

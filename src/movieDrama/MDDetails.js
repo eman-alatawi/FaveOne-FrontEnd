@@ -80,7 +80,7 @@ export default function MDDetails(props) {
 
       {movieDrama.episodes && (
         <div className=" flex flex-col items-center md:items-start bg-gray-800 shadow p-10   w-full overflow-auto">
-          <h4 className="text-gray-300 mb-3 text-xl ml-3">Related Episodes:</h4>
+          <h4 className="text-gray-300 mb-3 text-xl ml-3">Related Episodes</h4>
           <div className="flex flex-col gap-y-3 md:flex-row ">
             {" "}
             {movieDrama.episodes
@@ -100,7 +100,7 @@ export default function MDDetails(props) {
       {movieDrama.imageGalleries && (
         <div className=" flex flex-col items-center md:items-start  shadow p-10   w-full overflow-auto">
           <h4 className="text-gray-800 mb-3 text-xl ml-3">
-            Related Image Galleries:
+            Related Image Galleries
           </h4>
           <div className="flex flex-col gap-y-3 md:flex-row ">
             {" "}
@@ -117,7 +117,7 @@ export default function MDDetails(props) {
       )}
 
       <div className=" flex flex-col items-center md:items-start   bg-pink-900  shadow p-10   w-full overflow-auto">
-        <h4 className="text-gray-300 mb-3 text-xl ml-3"> Actors - Cast:</h4>
+        <h4 className="text-gray-300 mb-3 text-xl ml-3"> Actors - Cast</h4>
         <div className="flex flex-col gap-y-3 md:flex-row">
           {" "}
           {thisMovieActors.map((actor, index) => (
