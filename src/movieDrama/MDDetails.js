@@ -29,7 +29,7 @@ export default function MDDetails(props) {
   return (
     <div>
       <div className=" flex flex-col md:flex-row  bg-gray-50  rounded-lg shadow p-10 ">
-        <div className="h-96 w-full md:w-80  mr-10 flex flex-col rounded-lg bg-pink-900 text-gray-300">
+        <div className="md:h-3/3 w-full md:w-80  mr-10 flex flex-col rounded-lg bg-pink-900 text-gray-300">
           <img
             className=" h-80 w-full md:w-80 mr-10 shadow object-cover"
             src={movieDrama.poster}
@@ -49,17 +49,17 @@ export default function MDDetails(props) {
             {movieDrama.description}
           </p>
 
-          <div className="p-2 flex  flex-col md:flex-row justify-start w-full pl-1 rounded-l-lg bg-gray-700 shadow-xl text-gray-300">
+          <div className="md:p-2 flex  flex-col md:flex-row justify-start w-full pl-1 rounded-l-lg bg-gray-700 shadow-xl text-gray-300">
           <div className="mr-20 flex flex-row ">
-            <h5 className="mr-2 text-lg md:text-xl">Duration: </h5>
+            <h5 className="mr-2 text-lg  lg:text-xl">Duration: </h5>
             {movieDrama.duration}
           </div>
           <div className="mr-20 flex flex-row">
-            <h5 className="mr-2 text-lg md:text-xl">Content Rating: </h5>
+            <h5 className="mr-2 text-lg lg:text-xl">Content Rating: </h5>
             {movieDrama.contentRating}
             </div>
             <div className="mr-20 flex flex-row">
-              <h5 className="mr-2 text-lg md:text-xl" >Number Of Episodes: </h5>
+              <h5 className="mr-2 text-lg lg:text-xl" >Number Of Episodes: </h5>
             {movieDrama.numOfEpisods}
             </div>
           </div>
