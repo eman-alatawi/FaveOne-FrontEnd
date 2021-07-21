@@ -29,8 +29,8 @@ export default function Profile({ user }) {
 
   return (
     <div className="mainBg bg-cover">
-      <div className="container flex flex-row justify-between ">
-        <h1 className="text-gray-400 mt-48">Your Profile</h1>
+      <div className="container flex  flex-col items-center md:flex-row md:justify-between ">
+        <h1 className="text-gray-400 mt-16">Your Profile</h1>
 
         <img src={userProfileImage} />
         <UserInfoCard userInfo={userInfo} />
