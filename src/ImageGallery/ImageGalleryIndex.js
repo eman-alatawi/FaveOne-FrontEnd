@@ -88,7 +88,7 @@ export default class ImageGalleryIndex extends Component {
                             <div className="h-full w-full  ">
                                 <h3 className=" my-12  text-center text-gray-900 text-3xl opacity-75">All Image Galleries </h3>
                             </div>
-                            <div className="h-full w-full pl-11  inline-grid grid-cols-3 gap-x-1  gap-y-10  mb-4 " >
+                            <div className="h-full w-full flex flex-col items-center md:px-10 md:inline-grid md:grid-cols-5 md:gap-x-2  gap-y-10  mb-4">
                                 {this.state.imageGalleries.map((imageGallery, index) =>
                                     <div key={index}>
                                     <ImageGalleryRowCard {...imageGallery} moviesDramas={this.props.moviesDramas} isAuth={this.props.isAuth} editView={this.editView} detailView={this.detailView} deleteImageGallery={this.deleteImageGallery} ></ImageGalleryRowCard>
