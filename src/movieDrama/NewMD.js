@@ -192,7 +192,7 @@ class NewMD extends Component {
     return (
       <div className="formBG bg-cover pt-4">
         <div className="w-full mb-5 ">
-          <h2 className="text-center md:text-left md:ml-28 opacity-75 text-2xl mb-4">
+          <h2 className="text-center md:w-2/4   opacity-75 text-xl md:text-2xl mb-4">
             Add New Movie - Drama{" "}
           </h2>
 
