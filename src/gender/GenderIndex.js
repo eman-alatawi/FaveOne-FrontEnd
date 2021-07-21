@@ -108,19 +108,20 @@ export default class GenderIndex extends Component {
                 </Card>
               </div>
             )}
-
-            {this.state.genders.map((gender, index) => (
-              <div key={index}>
-                {!this.state.isAdd && !this.state.isEdit && (
-                  <GenderRowCard
-                    {...gender}
-                    isAuth={this.props.isAuth}
-                    editView={this.editView}
-                    deleteGender={this.deleteGender}
-                  ></GenderRowCard>
-                )}
-              </div>
-            ))}
+            {!this.state.isAdd && !this.state.isEdit && (
+              <>
+                {this.state.genders.map((gender, index) => (
+                  <div key={index}>
+                    <GenderRowCard
+                      {...gender}
+                      isAuth={this.props.isAuth}
+                      editView={this.editView}
+                      deleteGender={this.deleteGender}
+                    ></GenderRowCard>
+                  </div>
+                ))}
+              </>
+            )}
           </div>
 
           {/* partion 2 */}
@@ -128,13 +129,13 @@ export default class GenderIndex extends Component {
             {this.state.genders.map((gender, index) => (
               <div key={index}>
                 {this.state.isEdit &&
-                this.state.clickedGenderId === gender.id && (
-                  <EditGender
-                    gender={gender}
-                    editView={this.editView}
-                    editGender={this.editGender}
-                  ></EditGender>
-                )}
+                  this.state.clickedGenderId === gender.id && (
+                    <EditGender
+                      gender={gender}
+                      editView={this.editView}
+                      editGender={this.editGender}
+                    ></EditGender>
+                  )}
               </div>
             ))}
 
