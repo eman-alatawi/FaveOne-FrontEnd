@@ -86,7 +86,7 @@ export default class GenderIndex extends Component {
     return (
       <div className="genderBg pt-5 bg-cover">
         <div className="h-full w-full  ">
-          <h3 className=" mb-12  text-center text-gray-900 text-3xl opacity-75 ">
+          <h3 className=" mb-12  text-center text-gray-900  text-xl md:text-3xl opacity-75 ">
             All Movie-Drama Catagories
           </h3>
         </div>
@@ -95,7 +95,7 @@ export default class GenderIndex extends Component {
           <div className="h-full w-full flex flex-col items-center md:px-10 md:inline-grid md:grid-cols-5 md:gap-x-2  gap-y-10  mb-4">
             {this.props.isAuth && !this.state.isEdit && (
               <div>
-                <Card style={{ width: "14rem" }} className="mb-3 shadow h-24">
+                <Card className="mb-3 shadow h-24 w-48 md:w-56">
                   <Card.Body className="text-center hover:bg-pink-700 hover:border-transparent hover:shadow-lg group border-2  border-dashed   border-gray-300">
                     <Card.Title className="group-hover:text-white">
                       New Catagory

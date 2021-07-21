@@ -31,7 +31,7 @@ export default function GenderRowCard(props) {
   );
 
   return (
-    <Card style={{ width: "14rem" }} className="mr-3 mb-5 shadow rounded-2xl">
+    <Card  className="mr-3 md:mb-5 shadow rounded-2xl w-48 md:w-56">
       <Card.Body className="flex flex-row bg-blue-300 text-center hover:bg-pink-700 hover:border-transparent hover:shadow-lg group border-2  border-dashed   border-gray-300">
         <Card.Title className="w-3/4 group-hover:text-white ">
           {props.name}
