@@ -50,7 +50,7 @@ export default class EditGender extends Component {
     return (
       <div>
         <div class="container-sm flex flex-col w-2/4 items-center bg-white rounded-r-lg px-6 py-4 border-2  border-dashed   border-gray-300">
-          <h2 className="text-center opacity-75 text-2xl mb-5">
+        <h2 className="text-center opacity-75 text-xl md:text-2xl mb-3">
             Edit Catagory
           </h2>
 
@@ -62,15 +62,16 @@ export default class EditGender extends Component {
               name="name"
               value={this.state.gender.name}
               onChange={this.changeHandler}
-              className="w-96 mb-5"
+              className="w-56 md:w-96 mb-5"
               color="primary"
             />
           </Tooltip>
-          <div className="flex flex-col h-24 items-center justify-between ">
+          <div className="flex flex-col md:h-24 items-center justify-between ">
             <Button
               onClick={this.handleSubmit}
               variant="contained"
               color="primary"
+              className="mb-2"
             >
               Edit Catagory
             </Button>
