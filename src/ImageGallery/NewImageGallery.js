@@ -96,7 +96,7 @@ class NewImageGallery extends Component {
             Add New Image Gallery{" "}
           </h2>
           <div className=" flex flex-col md:flex-row justify-between md:w-3/4 px-16">
-            <div className="flex flex-col md:w-2/4 items-center">
+            <div className="flex flex-col md:w-2/4 items-center justify-center">
               <Tooltip title="Click this icon to view the image">
                 <TextField
                   id="imageUrl"
