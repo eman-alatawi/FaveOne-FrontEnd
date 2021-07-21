@@ -109,7 +109,7 @@ export default class ActorIndex extends Component {
                   All Actors
                 </h3>
               </div>
-              <div className="h-full w-full pl-4  inline-grid grid-cols-5 gap-x-2  gap-y-10 mb-5">
+              <div className="h-full w-full flex flex-col items-center md:px-10 md:inline-grid md:grid-cols-5 md:gap-x-2  gap-y-10  mb-4">
                 {this.state.actors.map((actor, index) => (
                   <div key={index}>
                     <ActorRowCard
