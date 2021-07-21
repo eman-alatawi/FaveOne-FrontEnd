@@ -141,7 +141,7 @@ export default class EditEpisode extends Component {
     return (
       <div className="formBG bg-cover pt-4">
         <div class="w-full mb-5">
-          <h2 className="text-center md:w-2/4 opacity-75 text-xl md:text-2xl mb-5">
+        <h2 className="text-center md:w-2/4 opacity-75 text-xl md:text-2xl mb-5">
             Edit Episode{" "}
           </h2>
 
