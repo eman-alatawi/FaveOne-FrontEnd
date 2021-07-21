@@ -83,7 +83,9 @@ export default function MDDetails(props) {
           <h4 className="text-gray-300 mb-3 text-xl ml-3">Related Episodes:</h4>
           <div className="flex flex-col gap-y-3 md:flex-row ">
             {" "}
-            {movieDrama.episodes.map((episode, index) => (
+            {movieDrama.episodes
+            .sort((a, b) => a.episodNum - b.episodNum)
+            .map((episode, index) => (
               <div key={index}>
                 <EpisodeRowCard
                   episode={episode}
