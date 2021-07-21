@@ -50,8 +50,8 @@ export default class NewGender extends Component {
   render() {
     return (
       <div>
-        <div class="container-sm flex flex-col w-2/4 items-center bg-white rounded-r-lg px-6 py-4 border-2  border-dashed   border-gray-300">
-          <h2 className="text-center opacity-75 text-2xl mb-5">
+        <div class="container-sm flex flex-col md:w-2/4 items-center bg-white rounded-r-lg px-6 py-4 border-2  border-dashed   border-gray-300">
+          <h2 className="text-center opacity-75 text-xl md:text-2xl mb-3">
             Add New Catagory
           </h2>
 
@@ -62,16 +62,17 @@ export default class NewGender extends Component {
               type="text"
               name="name"
               onChange={this.changeHandler}
-              className="w-96 mb-5"
+              className="w-56 md:w-96 mb-5"
               color="primary"
             />
           </Tooltip>
 
-          <div className="flex flex-col h-24 items-center justify-between ">
+          <div className="flex flex-col md:h-24 items-center justify-between ">
             <Button
               onClick={this.handleSubmit}
               variant="contained"
               color="primary"
+              className="mb-2"
             >
               Add Catagory
             </Button>

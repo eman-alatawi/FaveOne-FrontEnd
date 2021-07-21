@@ -92,7 +92,7 @@ export default class GenderIndex extends Component {
         </div>
         <div className=" h-ful flex flex-col mx-5 my-10  ">
           {/* partion 1 */}
-          <div className="h-full w-full flex flex-col items-center md:px-10 md:inline-grid md:grid-cols-5 md:gap-x-2  gap-y-10  mb-4">
+          <div className="h-full w-full flex flex-col items-center md:px-10 md:inline-grid md:grid-cols-5 md:gap-x-2  gap-y-10  md:mb-4">
             {this.props.isAuth && !this.state.isEdit && (
               <div>
                 <Card className="mb-3 shadow h-24 w-48 md:w-56">
@@ -124,7 +124,7 @@ export default class GenderIndex extends Component {
           </div>
 
           {/* partion 2 */}
-          <div className=" w-full flex flex-col justify-center h-2/4 ">
+          <div className=" w-full flex flex-col justify-center md:h-2/4 ">
             {this.state.genders.map((gender, index) => (
               <div key={index}>
                 {this.state.isEdit &&
