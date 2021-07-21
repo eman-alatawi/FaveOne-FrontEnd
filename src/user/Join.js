@@ -91,7 +91,7 @@ class join extends Component {
         <div className="container flex flex-col items-center md:flex-row justify-between ">
 
           <div class="w-2/4 mb-5 pt-4">
-            <h2 className="text-center opacity-75 text-2xl mb-2">
+            <h2 className="text-center opacity-75 text-xl md:text-2xl mb-2">
               Sign up for an account
             </h2>
             <h4 className="text-xs text-center opacity-50 mb-5">
@@ -106,7 +106,7 @@ class join extends Component {
                 type="text"
                 name="userName"
                 onChange={this.changeHandler}
-                className="w-48 md:w-96 mb-3"
+                className="w-56 md:w-96 mb-3"
                 color="primary"
               />
 
@@ -116,7 +116,7 @@ class join extends Component {
                 type="email"
                 name="emailAddress"
                 onChange={this.changeHandler}
-                className="w-48 md:w-96 mb-3"
+                className="w-56 md:w-96 mb-3"
                 color="primary"
               />
 
@@ -130,7 +130,7 @@ class join extends Component {
                   type="password"
                   name="password"
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
@@ -142,7 +142,7 @@ class join extends Component {
                   type="password"
                   name="confirmPassword"
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
@@ -154,7 +154,7 @@ class join extends Component {
                   type="url"
                   name="profileImage"
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                   InputProps={{
                     startAdornment: (
@@ -204,7 +204,7 @@ class join extends Component {
                 )}
               </Dialog>
 
-              <FormControl className="w-48 md:w-96 mb-3">
+              <FormControl className="w-56 md:w-96 mb-3">
                 <InputLabel id="label-of-role">Are You?</InputLabel>
                 <Select
                   labelId="label-of-role"

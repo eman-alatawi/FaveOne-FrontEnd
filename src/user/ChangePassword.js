@@ -93,10 +93,10 @@ class ChangePassword extends Component {
     return (
       <div className="pt-4">
         <div class="w-full mb-5 px-5">
-          <h2 className="text-center opacity-75 text-2xl mb-2">
+          <h2 className="text-center opacity-75 text-xl md:text-2xl mb-2">
             Change Your Account's Password
           </h2>
-          <h4 className="text-xs text-center opacity-50 mb-5">
+          <h4 className="text-xs text-center opacity-50 md:mb-5">
             In order to change your account's password, you should enter the
             Current password and the new password and confirm the new password
           </h4>
@@ -107,7 +107,7 @@ class ChangePassword extends Component {
               type="password"
               name="oldPassword"
               onChange={this.changeHandler}
-              className="w-48 md:w-96 mb-3"
+              className="w-56 md:w-96 mb-3"
               color="primary"
             />
 
@@ -121,7 +121,7 @@ class ChangePassword extends Component {
                 type="password"
                 name="password"
                 onChange={this.changeHandler}
-                className="w-48 md:w-96 mb-3"
+                className="w-56 md:w-96 mb-3"
                 color="primary"
               />
             </Tooltip>
@@ -133,7 +133,7 @@ class ChangePassword extends Component {
                 type="password"
                 name="confirmPassword"
                 onChange={this.changeHandler}
-                className="w-48 md:w-96 mb-4"
+                className="w-56 md:w-96 mb-4"
                 color="primary"
               />
             </Tooltip>

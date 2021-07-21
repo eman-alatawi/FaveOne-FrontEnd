@@ -187,7 +187,7 @@ export default class EditMD extends Component {
                   name="title"
                   value={this.state.movieDrama.title}
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
@@ -199,13 +199,13 @@ export default class EditMD extends Component {
                   name="releaseYear"
                   value={this.state.movieDrama.releaseYear}
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
 
               <Tooltip title="Movie or Drama Type">
-                <FormControl className="w-48 md:w-96 mb-3">
+                <FormControl className="w-56 md:w-96 mb-3">
                   <InputLabel id="label-of-type">Type</InputLabel>
                   <Select
                     labelId="label-of-type"
@@ -222,9 +222,9 @@ export default class EditMD extends Component {
 
               <Tooltip title="Maximum 5000 charactor">
                 <TextField
-                  className="w-48 md:w-96 mb-4"
+                  className="w-56 md:w-96 mb-4"
                   id="description"
-                  label="Description - about the movie or drama"
+                  label="Description"
                   rowsMax={4}
                   multiline
                   name="description"
@@ -241,7 +241,7 @@ export default class EditMD extends Component {
                   name="poster"
                   value={this.state.movieDrama.poster}
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                   InputProps={{
                     startAdornment: (
@@ -301,7 +301,7 @@ export default class EditMD extends Component {
                   name="duration"
                   value={this.state.movieDrama.duration}
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
@@ -314,13 +314,13 @@ export default class EditMD extends Component {
                   name="numOfEpisods"
                   value={this.state.movieDrama.numOfEpisods}
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
 
               <Tooltip title="Movie or Drama Rate">
-                <FormControl className="w-48 md:w-96 mb-3">
+                <FormControl className="w-56 md:w-96 mb-3">
                   <InputLabel id="label-of-rate">Content Rating</InputLabel>
                   <Select
                     labelId="label-of-rate"
@@ -346,7 +346,7 @@ export default class EditMD extends Component {
                   name="score"
                   value={this.state.movieDrama.score}
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-5"
+                  className="w-56 md:w-96 mb-5"
                   color="primary"
                 />
               </Tooltip>

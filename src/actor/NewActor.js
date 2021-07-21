@@ -87,7 +87,7 @@ class NewActor extends Component {
                 type="text"
                 name="fullName"
                 onChange={this.changeHandler}
-                className="w-48 md:w-96 mb-3"
+                className="w-56 md:w-96 mb-3"
                 color="primary"
               />
             </Tooltip>
@@ -98,13 +98,13 @@ class NewActor extends Component {
                 type="date"
                 name="dateOfBirth"
                 onChange={this.changeHandler}
-                className="w-48 md:w-96 mb-3"
+                className="w-56 md:w-96 mb-3"
                 color="primary"
               />
             </Tooltip>
 
             <Tooltip title="Actor's gender">
-              <FormControl className="w-48 md:w-96 mb-3">
+              <FormControl className="w-56 md:w-96 mb-3">
                 <InputLabel id="label-of-gender">Gender</InputLabel>
                 <Select
                   labelId="label-of-gender"
@@ -120,7 +120,7 @@ class NewActor extends Component {
 
             <Tooltip title="Maximum 5000 charactor">
               <TextField
-                className="w-48 md:w-96 mb-4"
+                className="w-56 md:w-96 mb-4"
                 id="biography"
                 label="Biography - about the actor"
                 rowsMax={4}
@@ -137,7 +137,7 @@ class NewActor extends Component {
                 type="url"
                 name="picture"
                 onChange={this.changeHandler}
-                className="w-48 md:w-96 mb-3"
+                className="w-56 md:w-96 mb-3"
                 color="primary"
                 InputProps={{
                   startAdornment: (
@@ -194,7 +194,7 @@ class NewActor extends Component {
                 type="text"
                 name="socialAccount"
                 onChange={this.changeHandler}
-                className="w-48 md:w-96 mb-4"
+                className="w-56 md:w-96 mb-4"
                 color="primary"
               />
             </Tooltip>

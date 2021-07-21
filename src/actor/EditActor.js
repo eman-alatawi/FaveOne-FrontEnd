@@ -96,7 +96,7 @@ export default class EditActor extends Component {
                 name="fullName"
                 value={this.state.actor.fullName}
                 onChange={this.changeHandler}
-                className="w-48 md:w-96 mb-3"
+                className="w-56 md:w-96 mb-3"
                 color="primary"
               />
             </Tooltip>
@@ -108,13 +108,13 @@ export default class EditActor extends Component {
                 name="dateOfBirth"
                 value={this.state.actor.dateOfBirth}
                 onChange={this.changeHandler}
-                className="w-48 md:w-96 mb-3"
+                className="w-56 md:w-96 mb-3"
                 color="primary"
               />
             </Tooltip>
 
             <Tooltip title="Actor's gender">
-              <FormControl className="w-48 md:w-96 mb-3">
+              <FormControl className="w-56 md:w-96 mb-3">
                 <InputLabel shrink id="label-of-gender">
                   Gender
                 </InputLabel>
@@ -133,7 +133,7 @@ export default class EditActor extends Component {
 
             <Tooltip title="Maximum 5000 charactor">
               <TextField
-                className="w-48 md:w-96 mb-4"
+                className="w-56 md:w-96 mb-4"
                 id="biography"
                 label="Biography - about the actor"
                 rowsMax={4}
@@ -152,7 +152,7 @@ export default class EditActor extends Component {
                 name="picture"
                 value={this.state.actor.picture}
                 onChange={this.changeHandler}
-                className="w-48 md:w-96 mb-3"
+                className="w-56 md:w-96 mb-3"
                 color="primary"
                 InputProps={{
                   startAdornment: (
@@ -210,7 +210,7 @@ export default class EditActor extends Component {
                 name="socialAccount"
                 value={this.state.actor.socialAccount}
                 onChange={this.changeHandler}
-                className="w-48 md:w-96 mb-4"
+                className="w-56 md:w-96 mb-4"
                 color="primary"
               />
             </Tooltip>

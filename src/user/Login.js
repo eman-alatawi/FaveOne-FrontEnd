@@ -23,7 +23,7 @@ class Login extends Component {
     return (
       <div className=" pt-4">
         <div className="container flex flex-col items-center md:flex-row justify-between mb-5">
-          <h2 className="text-center opacity-75 text-2xl mb-2">
+          <h2 className="text-center opacity-75 text-xl md:text-2xl mb-2">
             Login for your account
           </h2>
           <h4 className="text-xs text-center opacity-50 mb-5">
@@ -36,7 +36,7 @@ class Login extends Component {
               type="email"
               name="emailAddress"
               onChange={this.changeHandler}
-              className="w-48 md:w-96 mb-3"
+              className="w-56 md:w-96 mb-3"
               color="primary"
             />
 
@@ -45,7 +45,7 @@ class Login extends Component {
               type="password"
               name="password"
               onChange={this.changeHandler}
-              className="w-48 md:w-96 mb-3"
+              className="w-56 md:w-96 mb-3"
               color="primary"
             />
 

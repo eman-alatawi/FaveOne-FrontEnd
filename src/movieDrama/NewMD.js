@@ -205,7 +205,7 @@ class NewMD extends Component {
                   type="text"
                   name="title"
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
@@ -216,13 +216,13 @@ class NewMD extends Component {
                   type="date"
                   name="releaseYear"
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
 
               <Tooltip title="Movie or Drama Type">
-                <FormControl className="w-48 md:w-96 mb-3">
+                <FormControl className="w-56 md:w-96 mb-3">
                   <InputLabel id="label-of-type">Type</InputLabel>
                   <Select
                     labelId="label-of-type"
@@ -238,9 +238,9 @@ class NewMD extends Component {
 
               <Tooltip title="Maximum 5000 charactor">
                 <TextField
-                  className="w-48 md:w-96 mb-4"
+                  className="w-56 md:w-96 mb-4"
                   id="description"
-                  label="Description - about the movie or drama"
+                  label="Description"
                   rowsMax={4}
                   multiline
                   name="description"
@@ -255,7 +255,7 @@ class NewMD extends Component {
                   type="url"
                   name="poster"
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                   InputProps={{
                     startAdornment: (
@@ -314,7 +314,7 @@ class NewMD extends Component {
                   type="text"
                   name="duration"
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
@@ -326,13 +326,13 @@ class NewMD extends Component {
                   type="number"
                   name="numOfEpisods"
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-3"
+                  className="w-56 md:w-96 mb-3"
                   color="primary"
                 />
               </Tooltip>
 
               <Tooltip title="Movie or Drama Rate">
-                <FormControl className="w-48 md:w-96 mb-3">
+                <FormControl className="w-56 md:w-96 mb-3">
                   <InputLabel id="label-of-rate">Content Rating</InputLabel>
                   <Select
                     labelId="label-of-rate"
@@ -357,7 +357,7 @@ class NewMD extends Component {
                   type="text"
                   name="score"
                   onChange={this.changeHandler}
-                  className="w-48 md:w-96 mb-5"
+                  className="w-56 md:w-96 mb-5"
                   color="primary"
                 />
               </Tooltip>
