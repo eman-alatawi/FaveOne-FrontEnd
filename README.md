@@ -6,6 +6,7 @@ Your place of your favorite Movie/Drama/Episode/Actor. The users can add their f
 - Add User-Profile feature.
 - Various improvements in the UI.
   -  A clickable Dialog about the Actor Info when trying to add a new drama/movie or edit an existing one. [The dialog contains basic information and a list of related movies or dramas]
+  -  A clickable Dialog about the Movie/Drama Info when trying to add a new Episode or edit an existing one. [The dialog contains basic information and a list of related episodes]
 ## Important Links
 
 - [FaveOne Back-End Repo](https://github.com/eman-alatawi/FavOne-BackEnd)
@@ -119,6 +120,7 @@ From Day-1 start choosing the idea and decide the name, design the ERD, user sto
 
 <img src="https://drive.google.com/uc?export=view&id=1ig271VSbwiMiwUoibCUDbErU23ioF-U_" width="400">
 
+<img src="https://drive.google.com/uc?export=view&id=1UZm8D2wgkI5V5pX77oRmUZds3caf4qyu" width="400">
 
 ## Video Demo
 [FaveOne v3 Demo](#)

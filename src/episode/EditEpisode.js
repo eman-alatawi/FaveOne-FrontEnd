@@ -15,6 +15,10 @@ import { Animated } from "react-animated-css";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormGroup from "@material-ui/core/FormGroup";
+import Typography from "@material-ui/core/Typography";
+import CardMedia from "@material-ui/core/CardMedia";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
 export default class EditEpisode extends Component {
   constructor(props) {
@@ -27,6 +31,8 @@ export default class EditEpisode extends Component {
       numofEps: "",
       dmTilte: "",
       dmType: "",
+      openMDInfo: false,
+      clickedMD: {},
     };
   }
 
@@ -132,6 +138,17 @@ export default class EditEpisode extends Component {
     });
   };
 
+  handleOpenMDInfo = () => {
+    this.setState({
+      openMDInfo: true,
+    });
+  };
+  handleCloseMDInfo = () => {
+    this.setState({
+      openMDInfo: false,
+    });
+  };
+
   handleClickCancel = () => {
     this.props.editView(0);
     this.props.loadEpisodes();
@@ -141,7 +158,7 @@ export default class EditEpisode extends Component {
     return (
       <div className="formBG bg-cover pt-4">
         <div class="w-full mb-5">
-        <h2 className="text-center md:w-2/4 opacity-75 text-xl md:text-2xl mb-5">
+          <h2 className="text-center md:w-2/4 opacity-75 text-xl md:text-2xl mb-5">
             Edit Episode{" "}
           </h2>
 
@@ -318,7 +335,17 @@ export default class EditEpisode extends Component {
                             value={index}
                             onChange={this.changeHandler}
                           />
-                          {md.title}
+                          <span
+                            onClick={() => {
+                              this.setState({
+                                clickedMD: md,
+                              });
+                              this.handleOpenMDInfo();
+                            }}
+                            className="cursor-pointer"
+                          >
+                            {md.title}
+                          </span>
                         </div>
                       ) : (
                         <div>
@@ -330,13 +357,102 @@ export default class EditEpisode extends Component {
                             value={index}
                             onChange={this.changeHandler}
                           />
-                          {md.title}
+                          <span
+                            onClick={() => {
+                              this.setState({
+                                clickedMD: md,
+                              });
+                              this.handleOpenMDInfo();
+                            }}
+                            className="cursor-pointer"
+                          >
+                            {md.title}
+                          </span>
                         </div>
                       )}
                     </div>
                   ))}
                 </FormGroup>
               </FormControl>
+
+              {/* Dialog for the clicked movie/drama with information */}
+              <Dialog
+                onClose={this.handleCloseMDInfo}
+                aria-labelledby="customized-dialog-title"
+                open={this.state.openMDInfo}
+              >
+                <div
+                  id="customized-dialog-title"
+                  onClose={this.handleCloseMDInfo}
+                  className="flex flex-row w-full justify-between shadow-lg"
+                >
+                  <span className="text-xl self-center pl-3 font-bold">
+                    {`About The ${this.state.clickedMD.type}`}
+                  </span>
+                  {this.state.openMDInfo && (
+                    <IconButton
+                      aria-label="close"
+                      onClick={this.handleCloseMDInfo}
+                    >
+                      <CloseIcon />
+                    </IconButton>
+                  )}
+                </div>
+                <Card className="flex">
+                  <div className="flex flex-col">
+                    <CardContent className="flex flex-col">
+                      <Typography component="h5" variant="h5">
+                        {this.state.clickedMD.title}
+                      </Typography>
+                      <Typography variant="subtitle1" color="textSecondary">
+                        {this.state.clickedMD.releaseYear}
+                      </Typography>
+                      <Typography
+                        variant="subtitle2"
+                        color="textSecondary"
+                        className="mb-2"
+                      >
+                        {this.state.clickedMD.type}
+                      </Typography>
+                      <div>
+                        <Typography
+                          variant="subtitle1"
+                          className="bg-gray-100 mb-2"
+                        >
+                          Related Episodes
+                        </Typography>
+
+                        <ul className="h-32  overflow-auto whitespace-normal px-2">
+                          {this.state.clickedMD.episodes &&
+                          this.state.clickedMD.episodes.length != 0 ? (
+                            this.state.clickedMD.episodes
+                              .sort((a, b) => a.episodNum - b.episodNum)
+                              .map((episode, index) => (
+                                <li
+                                  key={index}
+                                  className="text-gray-400 list-disc ml-2"
+                                >
+                                  {`Episode ${episode.episodNum}`}
+                                </li>
+                              ))
+                          ) : (
+                            <Typography
+                              variant="subtitle2"
+                              color="textSecondary"
+                            >
+                              No episodes yet
+                            </Typography>
+                          )}
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </div>
+                  <CardMedia
+                    className="w-52 h-52 md:w-80 md:h-80 shadow-lg"
+                    image={this.state.clickedMD.poster}
+                  />
+                </Card>
+              </Dialog>
             </div>
           </div>
           <div className="flex flex-col md:w-2/4 h-24 items-center justify-between ">
