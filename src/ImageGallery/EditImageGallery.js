@@ -13,7 +13,10 @@ import { Animated } from "react-animated-css";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormGroup from "@material-ui/core/FormGroup";
-
+import Typography from "@material-ui/core/Typography";
+import CardMedia from "@material-ui/core/CardMedia";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 export default class EditImageGallery extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +24,8 @@ export default class EditImageGallery extends Component {
     this.state = {
       imageGallery: props.imageGallery,
       open: false,
+      openMDInfo: false,
+      clickedMD: {},
     };
   }
 
@@ -82,6 +87,17 @@ export default class EditImageGallery extends Component {
   handleClose = () => {
     this.setState({
       open: false,
+    });
+  };
+
+  handleOpenMDInfo = () => {
+    this.setState({
+      openMDInfo: true,
+    });
+  };
+  handleCloseMDInfo = () => {
+    this.setState({
+      openMDInfo: false,
     });
   };
 
@@ -192,7 +208,17 @@ export default class EditImageGallery extends Component {
                             value={index}
                             onChange={this.changeHandler}
                           />
-                          {md.title}
+                          <span
+                            onClick={() => {
+                              this.setState({
+                                clickedMD: md,
+                              });
+                              this.handleOpenMDInfo();
+                            }}
+                            className="cursor-pointer"
+                          >
+                            {md.title}
+                          </span>
                         </div>
                       ) : (
                         <div>
@@ -204,13 +230,102 @@ export default class EditImageGallery extends Component {
                             value={index}
                             onChange={this.changeHandler}
                           />
-                          {md.title}
+                          <span
+                            onClick={() => {
+                              this.setState({
+                                clickedMD: md,
+                              });
+                              this.handleOpenMDInfo();
+                            }}
+                            className="cursor-pointer"
+                          >
+                            {md.title}
+                          </span>
                         </div>
                       )}
                     </div>
                   ))}
                 </FormGroup>
               </FormControl>
+
+              {/* Dialog for the clicked movie/drama with information */}
+              <Dialog
+                onClose={this.handleCloseMDInfo}
+                aria-labelledby="customized-dialog-title"
+                open={this.state.openMDInfo}
+              >
+                <div
+                  id="customized-dialog-title"
+                  onClose={this.handleCloseMDInfo}
+                  className="flex flex-row w-full justify-between shadow-lg"
+                >
+                  <span className="text-xl self-center pl-3 font-bold">
+                    {`About The ${this.state.clickedMD.type}`}
+                  </span>
+                  {this.state.openMDInfo && (
+                    <IconButton
+                      aria-label="close"
+                      onClick={this.handleCloseMDInfo}
+                    >
+                      <CloseIcon />
+                    </IconButton>
+                  )}
+                </div>
+                <Card className="flex">
+                  <div className="flex flex-col">
+                    <CardContent className="flex flex-col">
+                      <Typography component="h5" variant="h5">
+                        {this.state.clickedMD.title}
+                      </Typography>
+                      <Typography variant="subtitle1" color="textSecondary">
+                        {this.state.clickedMD.releaseYear}
+                      </Typography>
+                      <Typography
+                        variant="subtitle2"
+                        color="textSecondary"
+                        className="mb-2"
+                      >
+                        {this.state.clickedMD.type}
+                      </Typography>
+                      <div>
+                        <Typography
+                          variant="subtitle1"
+                          className="bg-gray-100 mb-2"
+                        >
+                          Related Image Galleries
+                        </Typography>
+
+                        <ul className="h-48  overflow-auto whitespace-normal px-2">
+                          {this.state.clickedMD.imageGalleries &&
+                          this.state.clickedMD.imageGalleries.length != 0 ? (
+                            this.state.clickedMD.imageGalleries.map(
+                              (imageGallery, index) => (
+                                <li key={index} className="mb-2 ">
+                                  <img
+                                    src={imageGallery.imageUrl}
+                                    className="w-40 h-35"
+                                  />
+                                </li>
+                              )
+                            )
+                          ) : (
+                            <Typography
+                              variant="subtitle2"
+                              color="textSecondary"
+                            >
+                              No Images yet
+                            </Typography>
+                          )}
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </div>
+                  <CardMedia
+                    className="w-52 h-52 md:w-80 md:h-80 shadow-lg"
+                    image={this.state.clickedMD.poster}
+                  />
+                </Card>
+              </Dialog>
             </div>
           </div>
 
