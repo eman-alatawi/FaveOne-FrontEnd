@@ -461,6 +461,7 @@ class NewMD extends Component {
 
                         <ul className="h-32  overflow-auto whitespace-normal px-2">
                           {this.state.clickedActor.movieDramas &&
+                          this.state.clickedActor.movieDramas.length != 0 ? (
                             this.state.clickedActor.movieDramas.map(
                               (md, index) => (
                                 <li
@@ -470,7 +471,15 @@ class NewMD extends Component {
                                   {md.title}
                                 </li>
                               )
-                            )}
+                            )
+                          ) : (
+                            <Typography
+                              variant="subtitle2"
+                              color="textSecondary"
+                            >
+                              No movies or dramas yet
+                            </Typography>
+                          )}
                         </ul>
                       </div>
                     </CardContent>

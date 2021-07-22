@@ -367,14 +367,14 @@ export default class EditMD extends Component {
                   color="primary"
                 />
               </Tooltip>
-
-
             </div>
 
             <div className="flex flex-col  md:w-2/4 bg-white rounded-r-lg px-6 pt-4 justify-evenly ">
               <FormControl component="fieldset" className="mb-3">
                 <Tooltip title="Scroll vertically for more">
-                  <FormLabel component="legend" className="text-left">Actors - Cast</FormLabel>
+                  <FormLabel component="legend" className="text-left">
+                    Actors - Cast
+                  </FormLabel>
                 </Tooltip>
                 <FormGroup className="mt-3 items-start grid  md:gap-x-16  md:gap-y-3 h-56 overflow-auto ">
                   {this.state.movieDrama.actors && (
@@ -434,8 +434,8 @@ export default class EditMD extends Component {
                 </FormGroup>
               </FormControl>
 
-               {/* Dialog for the clicked actor with information */}
-               <Dialog
+              {/* Dialog for the clicked actor with information */}
+              <Dialog
                 onClose={this.handleCloseActorInfo}
                 aria-labelledby="customized-dialog-title"
                 open={this.state.openActorInfo}
@@ -483,6 +483,7 @@ export default class EditMD extends Component {
 
                         <ul className="h-32  overflow-auto whitespace-normal px-2">
                           {this.state.clickedActor.movieDramas &&
+                          this.state.clickedActor.movieDramas.length != 0 ? (
                             this.state.clickedActor.movieDramas.map(
                               (md, index) => (
                                 <li
@@ -492,7 +493,15 @@ export default class EditMD extends Component {
                                   {md.title}
                                 </li>
                               )
-                            )}
+                            )
+                          ) : (
+                            <Typography
+                              variant="subtitle2"
+                              color="textSecondary"
+                            >
+                              No movies or dramas yet
+                            </Typography>
+                          )}
                         </ul>
                       </div>
                     </CardContent>
@@ -506,7 +515,9 @@ export default class EditMD extends Component {
 
               <FormControl component="fieldset">
                 <Tooltip title="Scroll horizontally for more">
-                  <FormLabel component="legend" className="text-left">Genders - Catagory</FormLabel>
+                  <FormLabel component="legend" className="text-left">
+                    Genders - Catagory
+                  </FormLabel>
                 </Tooltip>
                 <FormGroup className="mt-3 items-start grid  md:gap-x-28  md:gap-y-3 h-56 overflow-auto ">
                   {this.props.genders.map((gender, index) => (
