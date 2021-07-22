@@ -17,6 +17,10 @@ import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import { useLocation } from "react-router-dom";
+import Typography from "@material-ui/core/Typography";
+import CardMedia from "@material-ui/core/CardMedia";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
 export default class EditMD extends Component {
   constructor(props) {
@@ -25,6 +29,8 @@ export default class EditMD extends Component {
     this.state = {
       movieDrama: props.movieDrama,
       open: false,
+      openActorInfo: false,
+      clickedActor: {},
     };
   }
 
@@ -109,6 +115,17 @@ export default class EditMD extends Component {
   handleClose = () => {
     this.setState({
       open: false,
+    });
+  };
+
+  handleOpenActorInfo = () => {
+    this.setState({
+      openActorInfo: true,
+    });
+  };
+  handleCloseActorInfo = () => {
+    this.setState({
+      openActorInfo: false,
     });
   };
 
@@ -351,7 +368,7 @@ export default class EditMD extends Component {
                 />
               </Tooltip>
 
-             
+
             </div>
 
             <div className="flex flex-col  md:w-2/4 bg-white rounded-r-lg px-6 pt-4 justify-evenly ">
@@ -375,7 +392,17 @@ export default class EditMD extends Component {
                                 value={index}
                                 onChange={this.changeHandler}
                               />
-                              {actor.fullName}
+                              <span
+                                onClick={() => {
+                                  this.setState({
+                                    clickedActor: actor,
+                                  });
+                                  this.handleOpenActorInfo();
+                                }}
+                                className="cursor-pointer"
+                              >
+                                {actor.fullName}
+                              </span>
                             </>
                           ) : (
                             <>
@@ -387,7 +414,17 @@ export default class EditMD extends Component {
                                 value={index}
                                 onChange={this.changeHandler}
                               />
-                              {actor.fullName}
+                              <span
+                                onClick={() => {
+                                  this.setState({
+                                    clickedActor: actor,
+                                  });
+                                  this.handleOpenActorInfo();
+                                }}
+                                className="cursor-pointer"
+                              >
+                                {actor.fullName}
+                              </span>
                             </>
                           )}
                         </div>
@@ -396,6 +433,76 @@ export default class EditMD extends Component {
                   )}
                 </FormGroup>
               </FormControl>
+
+               {/* Dialog for the clicked actor with information */}
+               <Dialog
+                onClose={this.handleCloseActorInfo}
+                aria-labelledby="customized-dialog-title"
+                open={this.state.openActorInfo}
+              >
+                <div
+                  id="customized-dialog-title"
+                  onClose={this.handleCloseActorInfo}
+                  className="flex flex-row w-full justify-between shadow-lg"
+                >
+                  <span className="text-xl self-center pl-3 font-bold">
+                    About The Actor
+                  </span>
+                  {this.state.openActorInfo && (
+                    <IconButton
+                      aria-label="close"
+                      onClick={this.handleCloseActorInfo}
+                    >
+                      <CloseIcon />
+                    </IconButton>
+                  )}
+                </div>
+                <Card className="flex">
+                  <div className="flex flex-col">
+                    <CardContent className="flex flex-col">
+                      <Typography component="h5" variant="h5">
+                        {this.state.clickedActor.fullName}
+                      </Typography>
+                      <Typography variant="subtitle1" color="textSecondary">
+                        {this.state.clickedActor.dateOfBirth}
+                      </Typography>
+                      <Typography
+                        variant="subtitle2"
+                        color="textSecondary"
+                        className="mb-2"
+                      >
+                        {this.state.clickedActor.gender}
+                      </Typography>
+                      <div>
+                        <Typography
+                          variant="subtitle1"
+                          className="bg-gray-100 mb-2"
+                        >
+                          Related drama or movie
+                        </Typography>
+
+                        <ul className="h-32  overflow-auto whitespace-normal px-2">
+                          {this.state.clickedActor.movieDramas &&
+                            this.state.clickedActor.movieDramas.map(
+                              (md, index) => (
+                                <li
+                                  key={index}
+                                  className="text-gray-400 list-disc ml-2"
+                                >
+                                  {md.title}
+                                </li>
+                              )
+                            )}
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </div>
+                  <CardMedia
+                    className="w-52 h-52 md:w-80 md:h-80 shadow-lg"
+                    image={this.state.clickedActor.picture}
+                  />
+                </Card>
+              </Dialog>
 
               <FormControl component="fieldset">
                 <Tooltip title="Scroll horizontally for more">
@@ -437,17 +544,17 @@ export default class EditMD extends Component {
             </div>
           </div>
           <div className="flex flex-col md:w-2/4 h-24 items-center justify-between ">
-                <Button
-                  onClick={this.handleSubmit}
-                  variant="contained"
-                  color="primary"
-                >
-                  Edit Movie - Drama
-                </Button>
-                <Button variant="outlined" onClick={this.handleClickCancel}>
-                  Cancel
-                </Button>
-              </div>
+            <Button
+              onClick={this.handleSubmit}
+              variant="contained"
+              color="primary"
+            >
+              Edit Movie - Drama
+            </Button>
+            <Button variant="outlined" onClick={this.handleClickCancel}>
+              Cancel
+            </Button>
+          </div>
         </div>
       </div>
     );
