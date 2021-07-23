@@ -46,10 +46,11 @@ export default function ActorDetails(props) {
       </div>
 
       {actor.movieDramas && (
-        <div className=" flex flex-col items-center md:items-start  bg-gray-800  rounded-lg shadow p-10  w-full overflow-x-scroll ">
+        <div className=" flex flex-col items-center md:items-start  bg-gray-800  rounded-lg shadow p-10  w-full ">
           <h4 className="text-gray-300 mb-3 text-xl ml-3">
             Related Movies/Dramas
           </h4>
+          <div className="w-11/12 overflow-auto">
           <div className="flex flex-col gap-y-3 md:flex-row ">
             {" "}
             {actor.movieDramas.map((md, index) => (
@@ -57,6 +58,7 @@ export default function ActorDetails(props) {
                 <MDRowCard movieDrama={md} isAuth={props.isAuth}></MDRowCard>
               </div>
             ))}
+          </div>
           </div>
         </div>
       )}

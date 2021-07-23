@@ -79,9 +79,10 @@ export default function MDDetails(props) {
       </div>
 
       {movieDrama.episodes && (
-        <div className=" flex flex-col items-center md:items-start bg-gray-800 shadow p-10   w-full overflow-auto">
+        <div className=" flex flex-col items-center md:items-start bg-gray-800 shadow p-10   w-full ">
           <h4 className="text-gray-300 mb-3 text-xl ml-3">Related Episodes</h4>
-          <div className="flex flex-col gap-y-3 md:flex-row ">
+          <div className="w-11/12 overflow-auto">
+          <div className=" flex flex-col gap-y-3 md:flex-row ">
             {" "}
             {movieDrama.episodes
             .sort((a, b) => a.episodNum - b.episodNum)
@@ -94,14 +95,16 @@ export default function MDDetails(props) {
               </div>
             ))}
           </div>
+          </div>
         </div>
       )}
 
       {movieDrama.imageGalleries && (
-        <div className=" flex flex-col items-center md:items-start  shadow p-10   w-full overflow-auto">
+        <div className=" flex flex-col items-center md:items-start  shadow p-10   w-full ">
           <h4 className="text-gray-800 mb-3 text-xl ml-3">
             Related Image Galleries
           </h4>
+          <div className="w-11/12 overflow-auto">
           <div className="flex flex-col gap-y-3 md:flex-row ">
             {" "}
             {movieDrama.imageGalleries.map((imageGallery, index) => (
@@ -113,11 +116,13 @@ export default function MDDetails(props) {
               </div>
             ))}
           </div>
+          </div>
         </div>
       )}
 
-      <div className=" flex flex-col items-center md:items-start   bg-pink-900  shadow p-10   w-full overflow-auto">
+      <div className=" flex flex-col items-center md:items-start   bg-pink-900  shadow p-10   w-full ">
         <h4 className="text-gray-300 mb-3 text-xl ml-3"> Actors - Cast</h4>
+        <div className="w-11/12 overflow-auto">
         <div className="flex flex-col gap-y-3 md:flex-row">
           {" "}
           {thisMovieActors.map((actor, index) => (
@@ -125,6 +130,7 @@ export default function MDDetails(props) {
               <ActorRowCard actor={actor}></ActorRowCard>
             </div>
           ))}
+        </div>
         </div>
       </div>
       <Footer></Footer>

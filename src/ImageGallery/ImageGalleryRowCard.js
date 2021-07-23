@@ -41,7 +41,7 @@ function ImageGalleryRowCard(props) {
   );
 
   return (
-    <Card className="ml-3 mr-2  shadow w-80 md:w-96">
+    <Card className="ml-3 mr-3  shadow w-80 md:w-96">
       <div className=" p-2 flex flex-row justify-between text-center bg-gray-700 text-gray-300 hover:bg-gray-50 hover:border-transparent hover:shadow-xl group cursor-pointer">
         <div>{showTool}</div>
 
