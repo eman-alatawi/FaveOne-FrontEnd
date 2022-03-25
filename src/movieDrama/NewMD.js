@@ -323,7 +323,7 @@ class NewMD extends Component {
                 )}
               </Dialog>
 
-              <Tooltip title="ex: 1 hour 30 min">
+              <Tooltip title="ex: 1h 30m">
                 <TextField
                   id="duration"
                   label="Duration"

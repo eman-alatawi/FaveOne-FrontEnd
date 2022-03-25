@@ -21,6 +21,7 @@ import Typography from "@material-ui/core/Typography";
 import CardMedia from "@material-ui/core/CardMedia";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import Swal from "sweetalert2";
 
 export default class EditMD extends Component {
   constructor(props) {
@@ -104,7 +105,17 @@ export default class EditMD extends Component {
 
   handleSubmit = () => {
     if (this.validate()) {
-      this.props.editMD(this.state.movieDrama);
+      Swal.fire({
+        title: "Do you want to save the changes?",
+        showCancelButton: true,
+        confirmButtonText: `Save`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          this.props.editMD(this.state.movieDrama);
+          Swal.fire("Saved!", `The ${this.state.movieDrama.type} has been changed.`, "success");
+        }
+      });
     }
   };
   handleClickOpen = () => {
@@ -310,7 +321,7 @@ export default class EditMD extends Component {
                 )}
               </Dialog>
 
-              <Tooltip title="ex: 1 hour 30 min">
+              <Tooltip title="ex: 1h 30m">
                 <TextField
                   id="duration"
                   label="Duration"

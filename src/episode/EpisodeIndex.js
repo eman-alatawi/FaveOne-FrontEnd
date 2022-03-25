@@ -99,18 +99,13 @@ export default class EpisodeIndex extends Component {
   };
   render() {
     return (
-      <div className=" mainBg bg-cover ">
+      <div>
         <div className="w-full ">
           {/* show all Episodes if the user didn't click the Edit icon - by default show the EpisodeRowCard */}
           {!this.state.isEdit && (
-            <div>
-              <div className="h-full w-full  ">
-                <h3 className=" my-12  text-center text-gray-900 text-3xl opacity-75">
-                  All Episodes
-                </h3>
-              </div>
+            <div className="my-5">
               <div className="h-full w-full flex flex-col items-center md:px-10 md:inline-grid md:grid-cols-5 md:gap-x-2  gap-y-10  mb-4">
-                {this.state.episodes.map((episode, index) => (
+                {this.state.episodes.sort((a, b) => (a.createAt - b.createAt) ? 1:-1).map((episode, index) => (
                   <div key={index}>
                     <EpisodeRowCard
                       episode={episode}
@@ -136,6 +131,7 @@ export default class EpisodeIndex extends Component {
                   loadEpisodes={this.props.loadEpisodes}
                   moviesDramas={this.props.moviesDramas}
                   editEpisode={this.editEpisode}
+                  loadMoviesDramas={this.props.loadMoviesDramas}
                 ></EditEpisode>
               )}
             </div>

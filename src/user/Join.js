@@ -88,7 +88,7 @@ class join extends Component {
     return (
       <>
       
-        <div className="container flex flex-col items-center md:flex-row justify-between ">
+        <div className="container flex flex-col items-center md:flex-row justify-between text-gray-200">
 
           <div class="w-2/4 mb-5 pt-4">
             <h2 className="text-center opacity-75 text-xl md:text-2xl mb-2">

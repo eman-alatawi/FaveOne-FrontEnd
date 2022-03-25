@@ -19,12 +19,15 @@ import Typography from "@material-ui/core/Typography";
 import CardMedia from "@material-ui/core/CardMedia";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+// import SearchBar from "../Shared/SearchBar";
+import Swal from "sweetalert2";
 
 export default class EditEpisode extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      moviesDramas: this.props.moviesDramas,
       episode: props.episode,
       openPoster: false,
       openVideo: false,
@@ -33,8 +36,36 @@ export default class EditEpisode extends Component {
       dmType: "",
       openMDInfo: false,
       clickedMD: {},
+      // filterValue: ''
     };
   }
+
+  // handleFilterChange = (event) => {
+  //   event.preventDefault();
+  //   const filterValue = event.target.value;
+  //   if (filterValue != "") {
+  //     console.log("when the there is value in input " + filterValue);
+  //     this.setState((prev, props) => {
+  //       //list of moviesDramas that match the filter
+  //       //new array containes the filtered items
+  //       //filter() return new array
+  //       const filteredMDByName = this.state.moviesDramas.filter((md) => {
+  //         return md.title.toLowerCase().includes(filterValue.toLowerCase());
+  //       });
+  //       return {
+  //         moviesDramas: filteredMDByName,
+  //         filterValue: filterValue,
+  //       };
+  //     });
+  //   }
+  //   else {
+  //     console.log("when the there is no value in input");
+  //     this.setState({
+  //       filterValue: filterValue,
+  //     });
+  //     // this.props.loadMoviesDramas();
+  //   }
+  // }
 
   changeHandler = (event) => {
     const attributeToChange = event.target.name;
@@ -84,7 +115,17 @@ export default class EditEpisode extends Component {
 
   handleSubmit = () => {
     if (this.validate()) {
-      this.props.editEpisode(this.state.episode);
+      Swal.fire({
+        title: "Do you want to save the changes?",
+        showCancelButton: true,
+        confirmButtonText: `Save`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          this.props.editEpisode(this.state.episode);
+          Swal.fire("Saved!", "The episode has been changed.", "success");
+        }
+      });
     }
   };
 
@@ -92,6 +133,7 @@ export default class EditEpisode extends Component {
     var thumbnail = document.getElementById("thumbnail").value;
     var episodeVideoUrl = document.getElementById("episodeVideoUrl").value;
     var episodNum = document.getElementById("episodNum").value;
+    var dublicateEpisode;
 
     if (episodNum < 1) {
       swal("Wrong!!", "The Episode number should be 1 or more", "error");
@@ -111,7 +153,7 @@ export default class EditEpisode extends Component {
     } else if (JSON.stringify(this.state.episode.movieDrama) === "{}") {
       swal("Empty!!", "You should select the drama or movie title", "error");
       return false;
-    } else {
+    }else {
       return true;
     }
   };
@@ -321,8 +363,12 @@ export default class EditEpisode extends Component {
                 <Tooltip title="Scroll horizontally for more">
                   <FormLabel component="legend">Movie or Drama Title</FormLabel>
                 </Tooltip>
+                {/* <SearchBar
+                  value={this.state.filterValue}
+                  onChange={this.handleFilterChange}
+                ></SearchBar> */}
                 <FormGroup className="mt-2 grid  gap-x-10  gap-y-3 h-56 overflow-auto ">
-                  {this.props.moviesDramas.map((md, index) => (
+                  {this.state.moviesDramas.map((md, index) => (
                     <div>
                       {md.episodes.findIndex(
                         (x) => x.id == this.state.episode.id

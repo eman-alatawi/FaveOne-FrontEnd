@@ -7,12 +7,11 @@ import Typography from "@material-ui/core/Typography";
 
 export default function UserInfoCard({ userInfo }) {
   return (
-    <Card className="w-80 h-1/4 shadow-lg m-3">
+    <Card className="w-80 h-1/4 shadow-lg m-3 formBG text-gray-200">
       <CardHeader
-        className="bg-indigo-300"
         avatar={<UserAvatar imageSrc={userInfo.profileImage} />}
       />
-      <div className=" h-48 p-4 flex flex-col items-start bg-blue-100">
+      <div className=" h-58 p-4 flex flex-col items-start text-gray-200">
         <div className="w-56  overflow-auto ">
           <CardHeader
             title={`User Name: ${userInfo.userName ? userInfo.userName : ""}`}
@@ -23,6 +22,7 @@ export default function UserInfoCard({ userInfo }) {
                   : "User"
                 : ""
             }`}
+            className="text-gray-200"
           />
         </div>
         <CardContent>

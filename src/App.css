@@ -4,7 +4,11 @@
  !important
 
 }
-.App {
+body{
+  background-image: linear-gradient(to bottom, #434343 0%, black 100%);
+  background-blend-mode: multiply,multiply;
+}
+/* .App {
   text-align: center;
 }
 
@@ -41,7 +45,7 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 a{
   text-decoration: none !important;
@@ -58,11 +62,27 @@ a{
 }
 
 .actorSection{
-  background-image: url(https://coverfiles.alphacoders.com/140/thumb-1920-140846.png);
-  
+   
+  background-image: linear-gradient(to right, #6d0d3c 0%, #a76460 100%);  background-blend-mode: color-dodge;
+
 }
+.bannerEffect{
+  background-image: url('https://coverfiles.alphacoders.com/161/thumb-1920-161470.jpg'), linear-gradient(to bottom, #6f6e6e 60%, rgb(0, 0, 0) 100%); 
+   background-blend-mode: multiply;
+   background-size: cover;
+   /* z-index: -4; */
+  }
+
 .episodeSection{
   background-image: url(https://coverfiles.alphacoders.com/918/thumb-1920-91831.jpg);
+  
+}
+
+.bannerHight{
+  height: 100vh;
+}
+.sectionHight{
+  height: 80vh;
 }
 
 /* .genderListBg{
@@ -107,8 +127,41 @@ a{
   background-repeat: no-repeat;
   
 } */
-
+/* 
 .formBG{
   background-image: url(https://i.ibb.co/t2zYzjh/aladdin-movie-poster-4k-s0.jpg);
   background-repeat: no-repeat;
+} */
+
+.blackBg{
+  background-image: linear-gradient(to bottom, #434343 3%, black 100%);
+ background-blend-mode: multiply,multiply;
 }
+
+.formBG{
+  /* background-image: linear-gradient(to top, #feb2b2 0%, #282c2e 100%); */
+
+  /* background-image: linear-gradient(to top, #dfe9f3 0%, white 100%); */
+  background: linear-gradient(to bottom, #323232 0%, #262626 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
+ background-blend-mode: multiply;
+}
+
+.darkenGradient{
+  background-image: linear-gradient(to bottom, #6f6e6e 60%, rgb(0, 0, 0) 100%); 
+  background-blend-mode: multiply;
+}
+
+/* .navbar{
+  background: transparent;
+  position: static;
+  height: 150px;
+  width: 100vw;
+  z-index: 1;
+  top: 0;
+  padding: 2rem;
+}
+
+.navbar.active{
+  background-image: linear-gradient(to bottom, #6f6e6e 10%, rgb(0, 0, 0) 100%); 
+  background-blend-mode: multiply;
+} */

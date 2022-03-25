@@ -21,6 +21,8 @@ import Typography from "@material-ui/core/Typography";
 import CardMedia from "@material-ui/core/CardMedia";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import SearchBar from "../Shared/SearchBar";
+import CancelIcon from '@material-ui/icons/Cancel';
 
 class NewEpisode extends Component {
   constructor(props) {
@@ -30,11 +32,40 @@ class NewEpisode extends Component {
       episode: {
         movieDrama: {},
       },
+      moviesDramas: this.props.moviesDramas,
       openPoster: false,
       openVideo: false,
       openMDInfo: false,
       clickedMD: {},
+      filterValue: ''
     };
+  }
+
+  handleFilterChange = (event) => {
+    event.preventDefault();
+    const filterValue = event.target.value;
+    if (filterValue != "") {
+      console.log("when the there is value in input " + filterValue);
+      this.setState((prev, props) => {
+        //list of moviesDramas that match the filter
+        //new array containes the filtered items
+        //filter() return new array
+        const filteredMDByName = this.state.moviesDramas.filter((md) => {
+          return md.title.toLowerCase().includes(filterValue.toLowerCase());
+        });
+        return {
+          moviesDramas: filteredMDByName,
+          filterValue: filterValue,
+        };
+      });
+    }
+    else {
+      console.log("when the there is no value in input");
+      this.setState({
+        filterValue: filterValue,
+      });
+      this.props.loadMoviesDramas();
+    }
   }
 
   changeHandler = (event) => {
@@ -78,6 +109,7 @@ class NewEpisode extends Component {
     var dmTilte = this.state.episode.movieDrama.title;
     var mdTotalNumOfEp = this.state.episode.movieDrama.numOfEpisods;
     var dmType = this.state.episode.movieDrama.type;
+    var dublicateEpisode;
 
     console.log("mdTotalNumOfEp" + mdTotalNumOfEp);
 
@@ -85,6 +117,8 @@ class NewEpisode extends Component {
       swal("Wrong!!", "The Episode number should be 1 or more", "error");
       return false;
     }
+
+
 
     if (thumbnail === "" || episodeVideoUrl === "" || episodNum === "") {
       swal("Empty!!", "Some Feilds are empty!", "error");
@@ -98,6 +132,18 @@ class NewEpisode extends Component {
       return false;
     } else if (JSON.stringify(this.state.episode.movieDrama) === "{}") {
       swal("Empty!!", "You should select the drama or movie title", "error");
+      return false;
+    } else {
+      this.state.episode.movieDrama.episodes.map(ep => {
+        if (ep.episodNum == episodNum) {
+          dublicateEpisode = episodNum;
+        }
+      })
+    }
+
+
+    if (dublicateEpisode) {
+      swal("Warning!!", `episode ${dublicateEpisode} was added before. Click on ${dmTilte} ${dmType} name from the list for more information`, "info");
       return false;
     } else {
       return true;
@@ -143,14 +189,19 @@ class NewEpisode extends Component {
 
   render() {
     return (
-      <div className="formBG bg-cover pt-4">
-        <div class="w-full mb-5 ">
-          <h2 className="text-center md:w-2/4 opacity-75 text-xl md:text-2xl mb-5">
-            Add New Episode{" "}
-          </h2>
+      <div className="formBG bg-cover pt-4 ">
+        <div class="w-full mb-5 p-5">
 
-          <div className="flex flex-col md:flex-row  justify-between md:w-3/4 px-16">
-            <div className="flex flex-col md:w-2/4 items-center">
+
+          <div className="flex flex-col md:flex-row  justify-between md:w-3/4  rounded-3xl formBG pt-5 pr-5">
+            <div className="flex flex-col md:w-2/4 items-center ">
+              <div className="flex flex-row h-16 justify-center items-center  w-full rounded-3xl">
+                <h2 className="text-center md:w-2/4 opacity-75 text-xl md:text-2xl mb-5 text-gray-200">
+                  Add New Episode{" "}
+                </h2>
+                <CancelIcon onClick={this.handleClickCancel} fontSize="large" className="rounded-full bg-pink-700 md:transform md:-translate-x-80 md:-translate-y-16 cursor-pointer" />
+
+              </div>
               <Tooltip title="Click this icon to view the poster">
                 <TextField
                   id="thumbnail"
@@ -299,14 +350,28 @@ class NewEpisode extends Component {
                   color="primary"
                 />
               </Tooltip>
+              <div className="h-16  w-full rounded-3xl ">
+            <Button
+              onClick={this.handleSubmit}
+              variant="contained"
+              color="primary"
+              className="w-full h-full"
+            >
+              Add Episode
+            </Button>
+          </div>
             </div>
-            <div className="flex flex-col md:w-2/4 bg-white rounded-r-lg px-6 pt-4">
+            <div className="flex flex-col md:w-2/4 px-6  ">
               <FormControl component="fieldset">
                 <Tooltip title="Scroll horizontally for more">
-                  <FormLabel component="legend">Movie or Drama Title</FormLabel>
+                  <label className="text-gray-200">Movie or Drama Title</label>
                 </Tooltip>
-                <FormGroup className="my-2 grid  gap-x-10  gap-y-3 h-56 overflow-auto ">
-                  {this.props.moviesDramas.map((md, index) => (
+                <SearchBar
+                  value={this.state.filterValue}
+                  onChange={this.handleFilterChange}
+                ></SearchBar>
+                <FormGroup className="my-2 grid  gap-x-10  gap-y-3 h-56 overflow-auto text-gray-200">
+                  {this.state.moviesDramas.map((md, index) => (
                     <div>
                       <input
                         id="movieDrama"
@@ -371,6 +436,13 @@ class NewEpisode extends Component {
                       >
                         {this.state.clickedMD.type}
                       </Typography>
+                      <Typography
+                        variant="subtitle2"
+                        color="textSecondary"
+                        className="mb-2"
+                      >
+                        {this.state.clickedMD.numOfEpisods}  {this.state.clickedMD.numOfEpisods > 1 ? `Episodes` : `Episode`}
+                      </Typography>
                       <div>
                         <Typography
                           variant="subtitle1"
@@ -381,7 +453,7 @@ class NewEpisode extends Component {
 
                         <ul className="h-32  overflow-auto whitespace-normal px-2">
                           {this.state.clickedMD.episodes &&
-                          this.state.clickedMD.episodes.length != 0 ? (
+                            this.state.clickedMD.episodes.length != 0 ? (
                             this.state.clickedMD.episodes
                               .sort((a, b) => a.episodNum - b.episodNum)
                               .map((episode, index) => (
@@ -413,18 +485,7 @@ class NewEpisode extends Component {
             </div>
           </div>
 
-          <div className="flex flex-col md:w-2/4 h-24 items-center justify-between ">
-            <Button
-              onClick={this.handleSubmit}
-              variant="contained"
-              color="primary"
-            >
-              Add Episode
-            </Button>
-            <Button variant="outlined" onClick={this.handleClickCancel}>
-              Cancel
-            </Button>
-          </div>
+        
         </div>
         <Footer></Footer>
       </div>

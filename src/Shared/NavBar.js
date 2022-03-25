@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -12,9 +12,26 @@ import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import StarIcon from '@material-ui/icons/Star';
+// import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 export default function NavBar(props) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  // const [navbar, setNavbar] = useState(false);
+  // const trigger = useScrollTrigger();
+
+  // const changeBackground = () => {
+
+  //   console.log(window.screenY)
+  //   if(window.screenY >= 80){
+  //     console.log('if true')
+  //     setNavbar(true)
+  //   }else{
+  //     setNavbar(false)
+  //   }
+  // }
+
+  // window.addEventListener('scroll', changeBackground);
+
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -25,19 +42,20 @@ export default function NavBar(props) {
   };
 
   return (
-    <nav className="fixed z-20 w-full">
+    // <Slide in={!trigger}>
+    <nav className=" w-full  absolute z-10 ">
       <Navbar
-        collapseOnSelect
+        fixed="top" collapseOnSelect
         expand="lg"
         variant="dark"
-        className="bg-gray-800 shadow"
+        className="formBG top-0 m-0 p-4"
       >
         <Navbar.Brand>
           <Link
             to="/"
             className="text-gray-200 ml-5 mr-11 text-2xl hover:text-pink-600"
           >
-            <StarIcon fontSize="large" />FaveOne
+            <StarIcon fontSize="large" className="bg-pink-800 rounded-full mx-2"  />FaveOne
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -146,7 +164,7 @@ export default function NavBar(props) {
                         aria-haspopup="true"
                         onClick={handleClick}
                       >
-                        <AccountCircleIcon fontSize="large" color="secondary" />
+                        <AccountCircleIcon fontSize="large" className="text-gray-200 bg-pink-700 rounded-full " />
                       </Button>
                       <Menu
                         id="simple-menu"
@@ -209,5 +227,6 @@ export default function NavBar(props) {
         </Navbar.Collapse>
       </Navbar>
     </nav>
+    // </Slide>
   );
 }

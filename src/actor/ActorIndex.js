@@ -99,18 +99,13 @@ export default class ActorIndex extends Component {
   };
   render() {
     return (
-      <div className=" mainBg bg-cover ">
+      <div>
         <div className=" w-full ">
           {/* show all actors if the user didn't click the Edit icon - by default show the ActorRowCard */}
           {!this.state.isEdit && (
-            <div>
-              <div className="h-full w-full  ">
-                <h3 className=" my-12  text-center text-gray-900 text-3xl opacity-75">
-                  All Actors
-                </h3>
-              </div>
+            <div className="my-5">
               <div className="h-full w-full flex flex-col items-center md:px-10 md:inline-grid md:grid-cols-5 md:gap-x-2  gap-y-10  mb-4">
-                {this.state.actors.map((actor, index) => (
+                {this.state.actors.sort((a, b) => (b.movieDramas.length - a.movieDramas.length)).map((actor, index) => (
                   <div key={index}>
                     <ActorRowCard
                       actor={actor}

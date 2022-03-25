@@ -17,6 +17,8 @@ import Typography from "@material-ui/core/Typography";
 import CardMedia from "@material-ui/core/CardMedia";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import Swal from "sweetalert2";
+
 export default class EditImageGallery extends Component {
   constructor(props) {
     super(props);
@@ -75,7 +77,17 @@ export default class EditImageGallery extends Component {
 
   handleSubmit = () => {
     if (this.validate()) {
-      this.props.editImageGallery(this.state.imageGallery);
+      Swal.fire({
+        title: "Do you want to save the changes?",
+        showCancelButton: true,
+        confirmButtonText: `Save`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          this.props.editImageGallery(this.state.imageGallery);
+          Swal.fire("Saved!", "The image has been changed.", "success");
+        }
+      });
     }
   };
 

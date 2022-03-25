@@ -15,6 +15,7 @@ export default function EpisodeDetails(props) {
     setEpisode({ ...episodeDetails });
   }, [location]);
 
+
   const getMovieDramaByTitle = props.moviesDramas.filter(
     (movieDrama, index) => {
       const movieTitle =
@@ -60,12 +61,12 @@ export default function EpisodeDetails(props) {
       ));
 
   return (
-    <div className=" bg-gray-50 rounded-lg shadow">
-      <div className="h-full w-full  ">
-        <h3 className="  mt-2 text-center text-gray-900 text-xl md:text-3xl opacity-75">
+    <div className="rounded-lg shadow">
+      {/* <div className="h-full w-full  ">
+        <h3 className=" m-4  text-center text-gray-100 text-xl md:text-3xl opacity-75">
           Enjoy Watching
         </h3>
-      </div>
+      </div> */}
       <div className=" flex flex-col md:flex-row items-center  p-10 ">
         <div className="h-96 w-full md:w-80  flex flex-col rounded-lg bg-pink-900 text-gray-300">
           <img
@@ -104,7 +105,7 @@ export default function EpisodeDetails(props) {
           />
         </div>
 
-        <div className="md:w-2/12 w-full text-center pt-10 mt-2 mb-4 flex flex-col bg-gray-700 shadow-xl text-gray-300">
+        <div className="md:w-2/12 w-full text-center   mb-4 flex flex-col shadow-xl text-gray-300">
           <h5 className="text-center">All Episodes </h5>
 
           <ul className="text-left  h-72 overflow-auto">{relatedEpisodes}</ul>

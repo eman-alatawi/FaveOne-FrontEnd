@@ -3,6 +3,8 @@ import swal from "sweetalert";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Tooltip from "@material-ui/core/Tooltip";
+import CancelIcon from "@material-ui/icons/Cancel";
+import Swal from "sweetalert2";
 
 export default class EditGender extends Component {
   constructor(props) {
@@ -28,7 +30,17 @@ export default class EditGender extends Component {
 
   handleSubmit = () => {
     if (this.validate()) {
-      this.props.editGender(this.state.gender);
+      Swal.fire({
+        title: "Do you want to save the changes?",
+        showCancelButton: true,
+        confirmButtonText: `Save`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          this.props.editGender(this.state.gender);
+          Swal.fire("Saved!", "The catagory has been changed.", "success");
+        }
+      });
     }
   };
 
@@ -49,10 +61,17 @@ export default class EditGender extends Component {
   render() {
     return (
       <div className="w-full flex justify-center">
-        <div class=" flex flex-col md:w-2/4 items-center bg-white rounded-r-lg px-6 py-4 border-2  border-dashed   border-gray-300">
-        <h2 className="text-center opacity-75 text-xl md:text-2xl mb-3">
-            Edit Catagory
-          </h2>
+        <div class=" flex flex-col md:w-2/4 items-center  formBG rounded-xl pt-4">
+          <div className="flex flex-row h-16 justify-center items-center  w-full rounded-3xl">
+            <h2 className="text-gray-200 text-center opacity-75 text-xl md:text-2xl mb-3">
+              Edit Catagory
+            </h2>
+            <CancelIcon
+              onClick={this.handleClickCancel}
+              fontSize="large"
+              className="rounded-full bg-pink-700 md:transform md:translate-x-64 md:-translate-y-10 cursor-pointer"
+            />
+          </div>
 
           <Tooltip title="catagories like: Action, History, ...etc ">
             <TextField
@@ -66,17 +85,14 @@ export default class EditGender extends Component {
               color="primary"
             />
           </Tooltip>
-          <div className="flex flex-col md:h-24 items-center justify-between ">
+          <div className=" h-16  w-full rounded-3xl ">
             <Button
               onClick={this.handleSubmit}
               variant="contained"
               color="primary"
-              className="mb-2"
+              className="w-full h-full"
             >
               Edit Catagory
-            </Button>
-            <Button variant="outlined" onClick={this.handleClickCancel}>
-              Cancel
             </Button>
           </div>
         </div>

@@ -16,11 +16,21 @@ import CloseIcon from "@material-ui/icons/Close";
 import Dialog from "@material-ui/core/Dialog";
 import { Animated } from "react-animated-css";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
+import CancelIcon from '@material-ui/icons/Cancel';
+
+// const useStyles = makeStyles((theme) => ({
+//   input: {
+//     color: "#d81b60",
+//   },
+// }));
+
 
 class NewActor extends Component {
   state = {
     open: false,
   };
+ 
+  
   changeHandler = (e) => {
     let temp = { ...this.state };
     temp[e.target.name] = e.target.value;
@@ -74,12 +84,17 @@ class NewActor extends Component {
   };
   render() {
     return (
-      <div className="formBG bg-cover pt-4">
-        <div className="md:w-2/4 mb-5">
-          <h2 className="text-center opacity-75 text-xl md:text-2xl mb-3">
-            Add New Actor
-          </h2>
-          <div className="flex flex-col  items-center">
+      <div className="pt-4">
+        <div className="md:w-2/4 mb-5  p-5 ">
+
+          <div className="flex flex-col  items-center  rounded-3xl formBG">
+            <div className="flex flex-row h-16 justify-center items-center  w-full rounded-3xl">
+              <h2 className="text-center text-pink-600 pt-2 opacity-75 	 text-xl md:text-2xl mb-3">
+                Add New Actor
+              </h2>
+              <CancelIcon onClick={this.handleClickCancel} fontSize="large" className="rounded-full bg-pink-700 md:transform md:translate-x-56 md:-translate-y-4 cursor-pointer" />
+            </div>
+
             <Tooltip title="Actor's name">
               <TextField
                 id="fullName"
@@ -199,17 +214,16 @@ class NewActor extends Component {
               />
             </Tooltip>
 
-            <div className="flex flex-col h-24 items-center justify-between ">
+            <div className=" h-16  w-full rounded-3xl ">
               <Button
                 variant="contained"
                 color="primary"
                 onClick={this.handleSubmit}
+                className="w-full h-full"
               >
                 Add Actor
               </Button>
-              <Button variant="outlined" onClick={this.handleClickCancel}>
-                Cancel
-              </Button>
+
             </div>
           </div>
         </div>

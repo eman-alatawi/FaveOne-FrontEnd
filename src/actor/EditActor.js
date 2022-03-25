@@ -14,6 +14,8 @@ import CloseIcon from "@material-ui/icons/Close";
 import Dialog from "@material-ui/core/Dialog";
 import { Animated } from "react-animated-css";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
+import CancelIcon from '@material-ui/icons/Cancel';
+import Swal from "sweetalert2";
 
 export default class EditActor extends Component {
   constructor(props) {
@@ -40,7 +42,17 @@ export default class EditActor extends Component {
 
   handleSubmit = () => {
     if (this.validate()) {
-      this.props.editActor(this.state.actor);
+      Swal.fire({
+        title: "Do you want to save the changes?",
+        showCancelButton: true,
+        confirmButtonText: `Save`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          this.props.editActor(this.state.actor);
+          Swal.fire("Saved!", "The actor has been changed.", "success");
+        }
+      });
     }
   };
 
@@ -84,10 +96,16 @@ export default class EditActor extends Component {
 
   render() {
     return (
-      <div className="formBG bg-cover pt-4">
-        <div className="md:w-2/4 ">
-          <h2 className="text-center opacity-75 text-xl md:text-2xl mb-3">Edit Actor</h2>
-          <div className="flex flex-col  items-center pb-5">
+      <div className=" pt-4">
+        <div className="md:w-2/4 mb-5 p-5">
+          <div className="flex flex-col  items-center  rounded-3xl formBG">
+
+            <div className="flex flex-row h-16 justify-center items-center  w-full rounded-3xl">
+              <h2 className="text-center text-pink-600 pt-2 opacity-75 	 text-xl md:text-2xl mb-3">
+               Edit actor information
+              </h2>
+              <CancelIcon onClick={this.handleClickCancel} fontSize="large" className="rounded-full bg-pink-700 md:transform md:translate-x-48 md:-translate-y-4 cursor-pointer" />
+            </div>
             <Tooltip title="Actor's name">
               <TextField
                 id="fullName"
@@ -133,7 +151,7 @@ export default class EditActor extends Component {
 
             <Tooltip title="Maximum 5000 charactor">
               <TextField
-                className="w-56 md:w-96 mb-4"
+                className="w-56 md:w-96 mb-4 "
                 id="biography"
                 label="Biography - about the actor"
                 rowsMax={4}
@@ -214,16 +232,14 @@ export default class EditActor extends Component {
                 color="primary"
               />
             </Tooltip>
-            <div className="flex flex-col h-24 items-center justify-between ">
+            <div className=" h-16  w-full rounded-3xl  ">
               <Button
                 onClick={this.handleSubmit}
                 variant="contained"
                 color="primary"
+                className="w-full h-full"
               >
                 Edit Actor
-              </Button>
-              <Button variant="outlined" onClick={this.handleClickCancel}>
-                Cancel
               </Button>
             </div>
           </div>

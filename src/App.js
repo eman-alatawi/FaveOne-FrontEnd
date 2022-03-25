@@ -581,6 +581,7 @@ export default class App extends Component {
               <NewEpisode
                 addEpisode={this.addEpisodeHandler}
                 moviesDramas={this.state.moviesDramas}
+                loadMoviesDramas={this.loadMoviesDramas}
               ></NewEpisode>
             )}
           ></Route>

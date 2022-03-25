@@ -74,38 +74,35 @@ export default class ImageGalleryIndex extends Component {
   };
   render() {
     return (
-      <div className=" mainBg bg-cover ">
+      <div >
         <div className="w-full items-center">
           {/* show all image Galleries if the user didn't click the Edit icon - by default show the ImageGalleryRowCard */}
           {!this.state.isEdit && (
-            <div>
-              <div className="h-full w-full  ">
-                <h3 className=" my-12  text-center text-gray-900 text-xl md:text-3xl opacity-75">
-                  All Image Galleries{" "}
-                </h3>
-              </div>
-              <div className="h-full w-full flex flex-col items-center justify-items-center md:inline-grid md:grid-cols-3 md:gap-x-1  gap-y-10  mb-4">
-                {this.state.imageGalleries.map((imageGallery, index) => (
-                  <div key={index}>
-                    <ImageGalleryRowCard
-                      {...imageGallery}
-                      moviesDramas={this.props.moviesDramas}
-                      isAuth={this.props.isAuth}
-                      editView={this.editView}
-                      detailView={this.detailView}
-                      deleteImageGallery={this.deleteImageGallery}
-                    ></ImageGalleryRowCard>
-                  </div>
-                ))}
-              </div>
+            <div className="my-5">
+
+            <div className="h-full w-full flex flex-col items-center justify-items-center md:inline-grid md:grid-cols-3 md:gap-x-1  gap-y-10  mb-4">
+              {this.state.imageGalleries.sort((a, b) => (a.createAt - b.createAt) ? 1:-1).map((imageGallery, index) => (
+                <div key={index}>
+                  <ImageGalleryRowCard
+                    {...imageGallery}
+                    moviesDramas={this.props.moviesDramas}
+                    isAuth={this.props.isAuth}
+                    editView={this.editView}
+                    detailView={this.detailView}
+                    deleteImageGallery={this.deleteImageGallery}
+                  ></ImageGalleryRowCard>
+                </div>
+              ))}
             </div>
+            </div>
+
           )}
 
           {/* if the user click the edit icon - show the EditImageGallery [we need to loop again using map to know the clickedImageGalleryId by user and the imageGallery.id in imageGalleries ] */}
           {this.state.imageGalleries.map((imageGallery, index) => (
             <div key={index}>
               {this.state.isEdit &&
-              this.state.clickedImageGalleryId === imageGallery.id ? (
+                this.state.clickedImageGalleryId === imageGallery.id ? (
                 <EditImageGallery
                   imageGallery={imageGallery}
                   editView={this.editView}

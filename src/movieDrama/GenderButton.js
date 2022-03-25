@@ -3,13 +3,13 @@ import React from "react";
 export default function GenderButton(props) {
   let btn_class =
     props.clickedGenderId === props.gender.id
-      ? "bg-pink-400 text-gray-800"
-      : "bg-pink-800 ";
+      ? "bg-red-300 text-gray-700"
+      : "formBG ";
   return (
     <div>
       <button
         onClick={() => props.searchView(props.gender.id)}
-        className={` p-3  rounded-b-lg text-gray-200  shadow-sm hover:bg-pink-400 hover:text-gray-100  ${btn_class}`}
+        className={` p-2 m-1  rounded-full text-gray-200  shadow-sm hover:bg-red-400   ${btn_class}`}
       >
         {" "}
         {props.gender.name}{" "}

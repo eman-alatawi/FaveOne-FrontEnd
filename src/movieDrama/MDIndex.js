@@ -138,10 +138,10 @@ export default class MDIndex extends Component {
 
   render() {
     return (
-      <div className="mainBg bg-cover">
+      <div>
         <div className="w-full text-center">
           {!this.state.isEdit && (
-            <div className=" md:h-48 pb-3 px-5  overflow-y-scroll ">
+            <div className=" md:h-48 mt-6 px-5  overflow-y-scroll ">
               <GendersList
                 genders={this.props.genders}
                 searchView={this.searchView}
@@ -160,7 +160,7 @@ export default class MDIndex extends Component {
                 <div>
                   {this.state.searchedMDs == "" ? (
                     <div className="w-full h-full">
-                      <h3 className="   text-center text-gray-900 text-xl opacity-75 mb-10">
+                      <h3 className="   text-center text-gray-200 text-xl opacity-75 py-5">
                         Sorry, there is no such movie or drama
                       </h3>
                     </div>
@@ -182,7 +182,7 @@ export default class MDIndex extends Component {
                 </div>
               ) : (
                 <div className="h-full w-full flex flex-col items-center md:px-10 md:inline-grid md:grid-cols-5 md:gap-x-2  gap-y-10  mb-4">
-                {this.state.moviesDramas
+                {this.state.moviesDramas.sort((a, b) => (a.createAt - b.createAt) ? 1:-1)
                   .map((md, index) => (
                     <div key={index}>
                       <MDRowCard

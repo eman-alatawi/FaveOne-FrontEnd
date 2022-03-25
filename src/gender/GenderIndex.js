@@ -84,25 +84,25 @@ export default class GenderIndex extends Component {
 
   render() {
     return (
-      <div className="genderBg pt-5 bg-cover">
-        <div className="h-full w-full  ">
+      <div className="pt-5 ">
+        {/* <div className="h-full w-full  ">
           <h3 className=" mb-12  text-center text-gray-900  text-xl md:text-3xl opacity-75 ">
             All Movie-Drama Catagories
           </h3>
-        </div>
+        </div> */}
         <div className=" h-ful flex flex-col mx-5 my-10  ">
           {/* partion 1 */}
           <div className="h-full w-full flex flex-col items-center md:px-10 md:inline-grid md:grid-cols-5 md:gap-x-2  gap-y-10  md:mb-4">
             {this.props.isAuth && !this.state.isEdit && (
               <div>
                 <Card className="mb-3 shadow h-24 w-48 md:w-56">
-                  <Card.Body className="text-center hover:bg-pink-700 hover:border-transparent hover:shadow-lg group border-2  border-dashed   border-gray-300">
-                    <Card.Title className="group-hover:text-white">
+                  <Card.Body className="text-gray-200 text-center hover:bg-gray-200 formBG border-0 hover:shadow-lg group ">
+                    <Card.Title>
                       New Catagory
                     </Card.Title>
                     <AddIcon
                       onClick={this.addView}
-                      className="material-icons transform hover:scale-110 motion-reduce:transform-none cursor-pointer text-xl group-hover:text-white"
+                      className=" transform hover:scale-125 motion-reduce:transform-none cursor-pointer text-xl "
                     />
                   </Card.Body>
                 </Card>
